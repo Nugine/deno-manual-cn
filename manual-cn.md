@@ -663,7 +663,7 @@ interface BenchmarkData {
 
 #### 利用JSDoc
 
-所有通过`deno`模块以及global/`window`命名空间公开的API和类型都应该有JSDoc文档. 该文档经过解析并可供TypeScript编译器使用, 因此易于在下游提供. JSDoc块就在它们应用的语句之前, 并以`/ ** doc * /`表示. 例如：
+所有通过`deno`模块以及global/`window`命名空间公开的API和类型都应该有JSDoc文档. 该文档经过解析并可供TypeScript编译器使用, 因此易于在下游提供. JSDoc块就在它们应用的语句之前, 并以`/** doc */`表示. 例如：
 
 ```ts
 /** A simple JSDoc comment */
