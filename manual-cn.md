@@ -20,7 +20,7 @@
 
 Deno旨在为现代程序员提供高效安全的脚本环境.
 
-它将始终作为单个可执行文件分发, 并且该可执行文件将能运行任何deno程序. 给定一个deno程序的URL, 你应该能够用不超过50MB的deno可执行文件运行它.
+它将始终作为单个可执行文件分发, 并且该可执行文件将能运行任何deno程序. 给定一个deno程序的URL, 您应该能够用不超过50MB的deno可执行文件运行它.
 
 Deno明确地承担了运行时和包管理器的角色. 它使用标准的浏览器兼容协议来加载模块: URL.
 
@@ -80,9 +80,9 @@ PowerShell:
 iwr https://deno.land/x/install/install.ps1 | iex
 ```
 
-Deno 也可以手动安装. 从[github.com/denoland/deno/releases](https://github.com/denoland/deno/releases)下载安装包. 这些安装包只包含一个单独的可执行文件. 在Mac和Linux上, 你必须手动设置可执行位.
+Deno 也可以手动安装. 从[github.com/denoland/deno/releases](https://github.com/denoland/deno/releases)下载安装包. 这些安装包只包含一个单独的可执行文件. 在Mac和Linux上, 您必须手动设置可执行位.
 
-一旦安装完成并设置好你的`$PATH`, 试试吧:
+一旦安装完成并设置好您的`$PATH`, 试试吧:
 
     deno https://deno.land/welcome.ts
 
@@ -113,7 +113,7 @@ cd deno
 
 #### 先决条件
 
-为了确保可重复的构建, deno在git子模块中具有大部分依赖. 但你需要单独安装:
+为了确保可重复的构建, deno在git子模块中具有大部分依赖. 但您需要单独安装:
 
 1. [Rust](https://www.rust-lang.org/en-US/install.html) >= 1.31.1
 2. [Node](https://nodejs.org/)
@@ -131,7 +131,7 @@ Windows:
 
 1. 将 `python.exe` 添加到 `PATH` (例如: `set PATH=%PATH%;C:\Python27\python.exe`)
 2. 获取[VS Community 2017](https://www.visualstudio.com/downloads/) 和
-   `Desktop development with C++` 工具包, 确保你选择了如下工具之一.
+   `Desktop development with C++` 工具包, 确保您选择了如下工具之一.
    + Windows 10 SDK >= 10.0.17134
    + Visual C++ ATL for x86 and x64
    + Visual C++ MFC for x86 and x64
@@ -290,8 +290,8 @@ main();
     > deno --allow-run ./subprocess_simple.ts
     hello
 
-默认情况下, 当你使用 `deno.run()` 时, 子进程继承父进程的`stdin`, `stdout` 和
-`stderr`. 如果你想要和子进程交流, 你可以使用`"piped"`选项.
+默认情况下, 当您使用 `deno.run()` 时, 子进程继承父进程的`stdin`, `stdout` 和
+`stderr`. 如果您想要和子进程交流, 您可以使用`"piped"`选项.
 
 ```ts
 async function main() {
@@ -549,7 +549,7 @@ lldb -- target/debug/deno tests/worker.js
 
 ```sh
 rust-lldb -- ./target/debug/deno tests/http_bench.ts --allow-net
-# 在macOS上, 你可能遇到像这样的警告
+# 在macOS上, 您可能遇到像这样的警告
 # `ImportError: cannot import name _remove_dead_weakref`
 # 在这种情况下, 设置PATH以使用系统python, 例如
 # PATH=/System/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH
