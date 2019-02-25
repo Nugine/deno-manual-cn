@@ -436,7 +436,7 @@ if (window.location.toString() == import.meta.url) {
 
 `DENO_DIR` 默认是`$HOME/.deno`，但可以被设置为任何路径来控制生成和缓存的源代码的写入和读取位置。
 
-如果设置`NO_COLOR`，Deno将关闭颜色输出。请参阅[https://no-color.org/](https://no-color.org/)。用户代码可以通过使用布尔常量`deno.noColor`来测试是否设置了`NO_COLOR`而没有`--allow-env`。
+如果设置`NO_COLOR`，Deno将关闭颜色输出。请参阅[no-color.org](https://no-color.org/)。用户代码可以通过使用布尔常量`deno.noColor`来测试是否设置了`NO_COLOR`而没有`--allow-env`。
 
 ### V8 标志
 
@@ -467,9 +467,9 @@ Rid是Deno的文件描述符版本。它们是用于引用打开文件，套接�
 ```ts
 import { resources, close } from "deno";
 console.log(resources());
-// output like: { 0: "stdin", 1: "stdout", 2: "stderr", 3: "repl" }
+// 输出示例: { 0: "stdin", 1: "stdout", 2: "stderr", 3: "repl" }
 
-// close resource by rid
+// 通过rid关闭资源
 close(3);
 ```
 
@@ -480,7 +480,7 @@ Metrics 是deno用于各种数据的内部计数器。
 ```ts
 import { metrics } from "deno";
 console.log(metrics());
-// output like: { opsDispatched: 1, opsCompleted: 1, bytesSentControl: 40, bytesSentData: 0, bytesReceived: 176 }
+// 输出示例: { opsDispatched: 1, opsCompleted: 1, bytesSentControl: 40, bytesSentData: 0, bytesReceived: 176 }
 ```
 
 ### 示意图
@@ -510,7 +510,7 @@ V8将在当前目录中写入一个如下所示的文件：`isolate-0x7fad982424
 ```sh
 D8_PATH=target/release/ ./third_party/v8/tools/linux-tick-processor
 isolate-0x7fad98242400-v8.log > prof.log
-# on macOS, use ./third_party/v8/tools/mac-tick-processor instead
+# 在macOS上，使用 ./third_party/v8/tools/mac-tick-processor
 ```
 
 `prof.log`将包含有关不同调用的tick分布的信息。
@@ -527,8 +527,8 @@ isolate-0x7fad98242400-v8.log --preprocess > prof.json
 
 要了解有关`d8`和性能分析的更多信息，请查看以下链接
 
-+ [https://v8.dev/docs/d8](https://v8.dev/docs/d8)
-+ [https://v8.dev/docs/profile](https://v8.dev/docs/profile)
++ [v8.dev/docs/d8](https://v8.dev/docs/d8)
++ [v8.dev/docs/profile](https://v8.dev/docs/profile)
 
 ### 使用LLDB进行调试
 
@@ -587,9 +587,9 @@ mv `which sccache`.sha1 prebuilt/linux64/
 gsutil acl ch -u AllUsers:R gs://denoland/608be47bf01004aa11d4ed06955414e93934516e
 ```
 
-### 持续的基准测试
+### 基准测试
 
-[https://deno.land/benchmarks.html](https://deno.land/benchmarks.html)
+[deno.land/benchmarks.html](https://deno.land/benchmarks.html)
 
 基准测试图表假设`//website/data.json`符合类型
 `BenchmarkData[]`
@@ -624,7 +624,7 @@ interface BenchmarkData {
 
 ## 贡献
 
-[Style Guide](style-guide-cn.html)
+[风格指南](style-guide-cn.html)
 
 在[此处](https://github.com/denoland/deno/milestones)跟踪未来版本的进展。
 

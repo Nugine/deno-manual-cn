@@ -272,7 +272,7 @@ code.language-yaml {
 <li><a href="#libdeno">libdeno</a></li>
 <li><a href="#flatbuffers">Flatbuffers</a></li>
 <li><a href="#%E6%9B%B4%E6%96%B0%E9%A2%84%E6%9E%84%E5%BB%BA%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6">&#x66F4;&#x65B0;&#x9884;&#x6784;&#x5EFA;&#x7684;&#x4E8C;&#x8FDB;&#x5236;&#x6587;&#x4EF6;</a></li>
-<li><a href="#%E6%8C%81%E7%BB%AD%E7%9A%84%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95">&#x6301;&#x7EED;&#x7684;&#x57FA;&#x51C6;&#x6D4B;&#x8BD5;</a></li>
+<li><a href="#%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95">&#x57FA;&#x51C6;&#x6D4B;&#x8BD5;</a></li>
 </ul>
 </li>
 <li><a href="#%E8%B4%A1%E7%8C%AE">&#x8D21;&#x732E;</a>
@@ -664,7 +664,7 @@ test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
 
 <p>&#x6709;&#x51E0;&#x4E2A;env&#x53D8;&#x91CF;&#x53EF;&#x4EE5;&#x63A7;&#x5236;Deno&#x7684;&#x884C;&#x4E3A;&#xFF1A;</p>
 <p><code>DENO_DIR</code> &#x9ED8;&#x8BA4;&#x662F;<code>$HOME/.deno</code>&#xFF0C;&#x4F46;&#x53EF;&#x4EE5;&#x88AB;&#x8BBE;&#x7F6E;&#x4E3A;&#x4EFB;&#x4F55;&#x8DEF;&#x5F84;&#x6765;&#x63A7;&#x5236;&#x751F;&#x6210;&#x548C;&#x7F13;&#x5B58;&#x7684;&#x6E90;&#x4EE3;&#x7801;&#x7684;&#x5199;&#x5165;&#x548C;&#x8BFB;&#x53D6;&#x4F4D;&#x7F6E;&#x3002;</p>
-<p>&#x5982;&#x679C;&#x8BBE;&#x7F6E;<code>NO_COLOR</code>&#xFF0C;Deno&#x5C06;&#x5173;&#x95ED;&#x989C;&#x8272;&#x8F93;&#x51FA;&#x3002;&#x8BF7;&#x53C2;&#x9605;<a href="https://no-color.org/">https://no-color.org/</a>&#x3002;&#x7528;&#x6237;&#x4EE3;&#x7801;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x5E03;&#x5C14;&#x5E38;&#x91CF;<code>deno.noColor</code>&#x6765;&#x6D4B;&#x8BD5;&#x662F;&#x5426;&#x8BBE;&#x7F6E;&#x4E86;<code>NO_COLOR</code>&#x800C;&#x6CA1;&#x6709;<code>--allow-env</code>&#x3002;</p>
+<p>&#x5982;&#x679C;&#x8BBE;&#x7F6E;<code>NO_COLOR</code>&#xFF0C;Deno&#x5C06;&#x5173;&#x95ED;&#x989C;&#x8272;&#x8F93;&#x51FA;&#x3002;&#x8BF7;&#x53C2;&#x9605;<a href="https://no-color.org/">no-color.org</a>&#x3002;&#x7528;&#x6237;&#x4EE3;&#x7801;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x5E03;&#x5C14;&#x5E38;&#x91CF;<code>deno.noColor</code>&#x6765;&#x6D4B;&#x8BD5;&#x662F;&#x5426;&#x8BBE;&#x7F6E;&#x4E86;<code>NO_COLOR</code>&#x800C;&#x6CA1;&#x6709;<code>--allow-env</code>&#x3002;</p>
 <h3 class="mume-header" id="v8-%E6%A0%87%E5%BF%97">V8 &#x6807;&#x5FD7;</h3>
 
 <p>V8&#x6709;&#x8BB8;&#x591A;&#x5185;&#x90E8;&#x547D;&#x4EE4;&#x884C;&#x6807;&#x5FD7;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>--v8-options</code>&#x67E5;&#x770B;&#x3002;&#x770B;&#x8D77;&#x6765;&#x50CF;&#x8FD9;&#x6837;&#xFF1A;<a href="https://gist.github.com/ry/1c5b080dcbdc6367e5612392049c9ee7">gist.github.com/ry</a></p>
@@ -718,16 +718,16 @@ test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
 <p>Rid&#x662F;Deno&#x7684;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x7248;&#x672C;&#x3002;&#x5B83;&#x4EEC;&#x662F;&#x7528;&#x4E8E;&#x5F15;&#x7528;&#x6253;&#x5F00;&#x6587;&#x4EF6;&#xFF0C;&#x5957;&#x63A5;&#x5B57;&#x548C;&#x5176;&#x4ED6;&#x6982;&#x5FF5;&#x7684;&#x6574;&#x6570;&#x503C;&#x3002;&#x5BF9;&#x4E8E;&#x6D4B;&#x8BD5;&#xFF0C;&#x80FD;&#x591F;&#x5728;&#x7CFB;&#x7EDF;&#x4E2D;&#x67E5;&#x8BE2;&#x6709;&#x591A;&#x5C11;&#x5F00;&#x653E;&#x8D44;&#x6E90;&#x662F;&#x4E00;&#x4EF6;&#x597D;&#x4E8B;&#x3002;</p>
 <pre data-role="codeBlock" data-info="ts" class="language-ts"><span class="token keyword">import</span> <span class="token punctuation">{</span> resources<span class="token punctuation">,</span> close <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;deno&quot;</span><span class="token punctuation">;</span>
 <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">resources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// output like: { 0: &quot;stdin&quot;, 1: &quot;stdout&quot;, 2: &quot;stderr&quot;, 3: &quot;repl&quot; }</span>
+<span class="token comment">// &#x8F93;&#x51FA;&#x793A;&#x4F8B;: { 0: &quot;stdin&quot;, 1: &quot;stdout&quot;, 2: &quot;stderr&quot;, 3: &quot;repl&quot; }</span>
 
-<span class="token comment">// close resource by rid</span>
+<span class="token comment">// &#x901A;&#x8FC7;rid&#x5173;&#x95ED;&#x8D44;&#x6E90;</span>
 <span class="token function">close</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </pre><h4 class="mume-header" id="metrics">Metrics</h4>
 
 <p>Metrics &#x662F;deno&#x7528;&#x4E8E;&#x5404;&#x79CD;&#x6570;&#x636E;&#x7684;&#x5185;&#x90E8;&#x8BA1;&#x6570;&#x5668;&#x3002;</p>
 <pre data-role="codeBlock" data-info="ts" class="language-ts"><span class="token keyword">import</span> <span class="token punctuation">{</span> metrics <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;deno&quot;</span><span class="token punctuation">;</span>
 <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">metrics</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// output like: { opsDispatched: 1, opsCompleted: 1, bytesSentControl: 40, bytesSentData: 0, bytesReceived: 176 }</span>
+<span class="token comment">// &#x8F93;&#x51FA;&#x793A;&#x4F8B;: { opsDispatched: 1, opsCompleted: 1, bytesSentControl: 40, bytesSentData: 0, bytesReceived: 176 }</span>
 </pre><h3 class="mume-header" id="%E7%A4%BA%E6%84%8F%E5%9B%BE">&#x793A;&#x610F;&#x56FE;</h3>
 
 <p><img src="schematic_v0.2.png" alt="Schematic diagram"></p>
@@ -747,7 +747,7 @@ third_party/wrk/linux/wrk http://localhost:4500/
 <p>&#x8981;&#x68C0;&#x67E5;&#x6B64;&#x6587;&#x4EF6;&#xFF1A;</p>
 <pre data-role="codeBlock" data-info="sh" class="language-bash">D8_PATH<span class="token operator">=</span>target/release/ ./third_party/v8/tools/linux-tick-processor
 isolate-0x7fad98242400-v8.log <span class="token operator">&gt;</span> prof.log
-<span class="token comment"># on macOS, use ./third_party/v8/tools/mac-tick-processor instead</span>
+<span class="token comment"># &#x5728;macOS&#x4E0A;&#xFF0C;&#x4F7F;&#x7528; ./third_party/v8/tools/mac-tick-processor</span>
 </pre><p><code>prof.log</code>&#x5C06;&#x5305;&#x542B;&#x6709;&#x5173;&#x4E0D;&#x540C;&#x8C03;&#x7528;&#x7684;tick&#x5206;&#x5E03;&#x7684;&#x4FE1;&#x606F;&#x3002;</p>
 <p>&#x8981;&#x4F7F;&#x7528;Web UI&#x67E5;&#x770B;&#x65E5;&#x5FD7;&#xFF0C;&#x8BF7;&#x751F;&#x6210;&#x65E5;&#x5FD7;&#x7684;JSON&#x6587;&#x4EF6;&#xFF1A;</p>
 <pre data-role="codeBlock" data-info="sh" class="language-bash">D8_PATH<span class="token operator">=</span>target/release/ ./third_party/v8/tools/linux-tick-processor
@@ -756,8 +756,8 @@ isolate-0x7fad98242400-v8.log --preprocess <span class="token operator">&gt;</sp
 <code>prof.json</code>&#x4EE5;&#x67E5;&#x770B;&#x5206;&#x5E03;&#x56FE;&#x3002;</p>
 <p>&#x8981;&#x4E86;&#x89E3;&#x6709;&#x5173;<code>d8</code>&#x548C;&#x6027;&#x80FD;&#x5206;&#x6790;&#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x67E5;&#x770B;&#x4EE5;&#x4E0B;&#x94FE;&#x63A5;</p>
 <ul>
-<li><a href="https://v8.dev/docs/d8">https://v8.dev/docs/d8</a></li>
-<li><a href="https://v8.dev/docs/profile">https://v8.dev/docs/profile</a></li>
+<li><a href="https://v8.dev/docs/d8">v8.dev/docs/d8</a></li>
+<li><a href="https://v8.dev/docs/profile">v8.dev/docs/profile</a></li>
 </ul>
 <h3 class="mume-header" id="%E4%BD%BF%E7%94%A8lldb%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95">&#x4F7F;&#x7528;LLDB&#x8FDB;&#x884C;&#x8C03;&#x8BD5;</h3>
 
@@ -804,9 +804,9 @@ Current executable <span class="token keyword">set</span> to <span class="token 
   -e ~/.config/gcloud/legacy_credentials/ry@tinyclouds.org/.boto <span class="token variable"><span class="token variable">`</span><span class="token function">which</span> sccache<span class="token variable">`</span></span>
 <span class="token function">mv</span> <span class="token variable"><span class="token variable">`</span><span class="token function">which</span> sccache<span class="token variable">`</span></span>.sha1 prebuilt/linux64/
 gsutil acl ch -u AllUsers:R gs://denoland/608be47bf01004aa11d4ed06955414e93934516e
-</pre><h3 class="mume-header" id="%E6%8C%81%E7%BB%AD%E7%9A%84%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95">&#x6301;&#x7EED;&#x7684;&#x57FA;&#x51C6;&#x6D4B;&#x8BD5;</h3>
+</pre><h3 class="mume-header" id="%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95">&#x57FA;&#x51C6;&#x6D4B;&#x8BD5;</h3>
 
-<p><a href="https://deno.land/benchmarks.html">https://deno.land/benchmarks.html</a></p>
+<p><a href="https://deno.land/benchmarks.html">deno.land/benchmarks.html</a></p>
 <p>&#x57FA;&#x51C6;&#x6D4B;&#x8BD5;&#x56FE;&#x8868;&#x5047;&#x8BBE;<code>//website/data.json</code>&#x7B26;&#x5408;&#x7C7B;&#x578B;<br>
 <code>BenchmarkData[]</code></p>
 <pre data-role="codeBlock" data-info="typescript" class="language-typescript"><span class="token keyword">interface</span> <span class="token class-name">ExecTimeData</span> <span class="token punctuation">{</span>
@@ -836,7 +836,7 @@ gsutil acl ch -u AllUsers:R gs://denoland/608be47bf01004aa11d4ed06955414e9393451
 <span class="token punctuation">}</span>
 </pre><h2 class="mume-header" id="%E8%B4%A1%E7%8C%AE">&#x8D21;&#x732E;</h2>
 
-<p><a href="style-guide-cn.html">Style Guide</a></p>
+<p><a href="style-guide-cn.html">&#x98CE;&#x683C;&#x6307;&#x5357;</a></p>
 <p>&#x5728;<a href="https://github.com/denoland/deno/milestones">&#x6B64;&#x5904;</a>&#x8DDF;&#x8E2A;&#x672A;&#x6765;&#x7248;&#x672C;&#x7684;&#x8FDB;&#x5C55;&#x3002;</p>
 <p>&#x8BF7;&#x4E0D;&#x8981;&#x8BA9;<a href="https://deno.land/benchmarks.html">&#x57FA;&#x51C6;&#x6D4B;&#x8BD5;</a>&#x53D8;&#x5F97;&#x66F4;&#x7CDF;&#x3002;</p>
 <p>&#x5728;<a href="https://gitter.im/denolife/Lobby">&#x793E;&#x533A;&#x804A;&#x5929;&#x5BA4;</a>&#x5BFB;&#x6C42;&#x5E2E;&#x52A9;&#x3002;</p>
