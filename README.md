@@ -1,6 +1,8 @@
 # deno-manual-cn
 
-[https://nugine.github.io/deno-manual-cn/](https://nugine.github.io/deno-manual-cn/)
+[awesome-deno](https://github.com/denolib/awesome-deno)
+
+[nugine.github.io/deno-manual-cn/](https://nugine.github.io/deno-manual-cn/)
 
 ## Deno Manual
 
