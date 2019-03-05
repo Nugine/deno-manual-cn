@@ -62,7 +62,7 @@ import * as log from "https://deno.land/x/std/log/mod.ts";
 
 Deno在OSX、Linux和Windows上工作。Deno是一个单独的二进制可执行文件，它没有外部依赖。
 
-[deno_install]([deno_install](https://github.com/denoland/deno_install)) 提供方便的脚本以下载和安装。
+[deno_install](https://github.com/denoland/deno_install) 提供方便的脚本以下载和安装。
 
 Shell:
 
@@ -454,10 +454,10 @@ V8有许多内部命令行标志，您可以使用`--v8-options`查看。看起�
 | ------------------------------: | :------------------------------- |
 |                       Processes | Web Workers                      |
 |                        Syscalls | Ops                              |
-|           File descriptors (fd) | [Resource ids (rid)](#resources) |
+|           File descriptors (fd) | Resource ids (rid)               |
 |                       Scheduler | Tokio                            |
 | Userland: libc++ / glib / boost | deno_std                         |
-|                 /proc/\$\$/stat | [deno.metrics()](#metrics)       |
+|                 /proc/\$\$/stat | deno.metrics()                   |
 |                       man pages | deno --types                     |
 
 #### 资源
@@ -485,7 +485,7 @@ console.log(metrics());
 
 ### 示意图
 
-![Schematic diagram](schematic_v0.2.png)
+![Schematic diagram](https://nugine.github.io/deno-manual-cn/schematic_v0.2.png)
 
 ### 性能分析
 
