@@ -1,0 +1,1586 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Deno 手册</title>
+        
+        <meta name="robots" content="noindex" />
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="getting_started.html"><strong aria-hidden="true">2.</strong> 入门</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="getting_started/installation.html"><strong aria-hidden="true">2.1.</strong> 安装</a></li><li class="chapter-item expanded "><a href="getting_started/setup_your_environment.html"><strong aria-hidden="true">2.2.</strong> 设置环境</a></li><li class="chapter-item expanded "><a href="getting_started/first_steps.html"><strong aria-hidden="true">2.3.</strong> 第一步</a></li><li class="chapter-item expanded "><a href="getting_started/permissions.html"><strong aria-hidden="true">2.4.</strong> 权限</a></li><li class="chapter-item expanded "><a href="getting_started/typescript.html"><strong aria-hidden="true">2.5.</strong> 使用 TypeScript</a></li><li class="chapter-item expanded "><a href="getting_started/webassembly.html"><strong aria-hidden="true">2.6.</strong> 使用 WebAssembly</a></li></ol></li><li class="chapter-item expanded "><a href="runtime.html"><strong aria-hidden="true">3.</strong> 运行时</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="runtime/program_lifecycle.html"><strong aria-hidden="true">3.1.</strong> 程序生命周期</a></li><li class="chapter-item expanded "><a href="runtime/compiler_apis.html"><strong aria-hidden="true">3.2.</strong> 编译器 API</a></li><li class="chapter-item expanded "><a href="runtime/unstable.html"><strong aria-hidden="true">3.3.</strong> 不稳定 API</a></li></ol></li><li class="chapter-item expanded "><a href="linking_to_external_code.html"><strong aria-hidden="true">4.</strong> 与第三方代码连接</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="linking_to_external_code/reloading_modules.html"><strong aria-hidden="true">4.1.</strong> 重新加载模块</a></li><li class="chapter-item expanded "><a href="linking_to_external_code/integrity_checking.html"><strong aria-hidden="true">4.2.</strong> 完整性检查</a></li><li class="chapter-item expanded "><a href="linking_to_external_code/proxies.html"><strong aria-hidden="true">4.3.</strong> 代理</a></li><li class="chapter-item expanded "><a href="linking_to_external_code/import_maps.html"><strong aria-hidden="true">4.4.</strong> 导入映射</a></li></ol></li><li class="chapter-item expanded "><a href="testing.html"><strong aria-hidden="true">5.</strong> 测试</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="testing/writing.html"><strong aria-hidden="true">5.1.</strong> 编写测试</a></li><li class="chapter-item expanded "><a href="testing/running.html"><strong aria-hidden="true">5.2.</strong> 运行测试</a></li></ol></li><li class="chapter-item expanded "><a href="plugins.html"><strong aria-hidden="true">6.</strong> 插件</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="plugins/how_do_plugins_work.html"><strong aria-hidden="true">6.1.</strong> 插件如何工作？</a></li><li class="chapter-item expanded "><a href="plugins/creating_plugins.html"><strong aria-hidden="true">6.2.</strong> 创建插件</a></li><li class="chapter-item expanded "><a href="plugins/using_plugins.html"><strong aria-hidden="true">6.3.</strong> 使用插件</a></li></ol></li><li class="chapter-item expanded "><a href="tools.html"><strong aria-hidden="true">7.</strong> 工具</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="tools/debugger.html"><strong aria-hidden="true">7.1.</strong> 调试器</a></li><li class="chapter-item expanded "><a href="tools/script_installer.html"><strong aria-hidden="true">7.2.</strong> 脚本安装器</a></li><li class="chapter-item expanded "><a href="tools/formatter.html"><strong aria-hidden="true">7.3.</strong> 格式化工具</a></li><li class="chapter-item expanded "><a href="tools/bundler.html"><strong aria-hidden="true">7.4.</strong> 打包器</a></li><li class="chapter-item expanded "><a href="tools/documentation_generator.html"><strong aria-hidden="true">7.5.</strong> 文档生成器</a></li><li class="chapter-item expanded "><a href="tools/dependency_inspector.html"><strong aria-hidden="true">7.6.</strong> 依赖检查器</a></li></ol></li><li class="chapter-item expanded "><a href="embedding_deno.html"><strong aria-hidden="true">8.</strong> 嵌入式 Deno</a></li><li class="chapter-item expanded "><a href="contributing.html"><strong aria-hidden="true">9.</strong> 贡献</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="contributing/building_from_source.html"><strong aria-hidden="true">9.1.</strong> 从源码贡献</a></li><li class="chapter-item expanded "><a href="contributing/development_tools.html"><strong aria-hidden="true">9.2.</strong> 开发工具</a></li><li class="chapter-item expanded "><a href="contributing/architecture.html"><strong aria-hidden="true">9.3.</strong> 架构</a></li></ol></li><li class="chapter-item expanded "><a href="examples.html"><strong aria-hidden="true">10.</strong> 示例</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="examples/unix_cat.html"><strong aria-hidden="true">10.1.</strong> Unix cat 程序</a></li><li class="chapter-item expanded "><a href="examples/fileserver.html"><strong aria-hidden="true">10.2.</strong> 文件服务</a></li><li class="chapter-item expanded "><a href="examples/tcp_echo.html"><strong aria-hidden="true">10.3.</strong> TCP 回声服务</a></li><li class="chapter-item expanded "><a href="examples/subprocess.html"><strong aria-hidden="true">10.4.</strong> 创建子进程</a></li><li class="chapter-item expanded "><a href="examples/permissions.html"><strong aria-hidden="true">10.5.</strong> 检查与放弃权限</a></li><li class="chapter-item expanded "><a href="examples/os_signals.html"><strong aria-hidden="true">10.6.</strong> 系统信号</a></li><li class="chapter-item expanded "><a href="examples/file_system_events.html"><strong aria-hidden="true">10.7.</strong> 文件系统事件</a></li><li class="chapter-item expanded "><a href="examples/testing_if_main.html"><strong aria-hidden="true">10.8.</strong> 测试当前文件是否为主程序</a></li></ol></li><li class="chapter-item expanded "><a href="style-guide.zh-CN.html"><strong aria-hidden="true">11.</strong> 风格指南</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Deno 手册</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#介绍" id="介绍">介绍</a></h1>
+<blockquote>
+<p>中文翻译正在进行……</p>
+</blockquote>
+<p>Deno 是一个 JavaScript/TypeScript 的运行时，默认使用安全环境执行代码，有着卓越的开发体验。</p>
+<p>Deno 建立在 V8、Rust 和 Tokio 的基础上。</p>
+<h2><a class="header" href="#功能亮点" id="功能亮点">功能亮点</a></h2>
+<ul>
+<li>
+<p>默认安全。外部代码没有文件系统、网络、环境的访问权限，除非显式开启。</p>
+</li>
+<li>
+<p>支持开箱即用的 TypeScript 的环境。</p>
+</li>
+<li>
+<p>只分发一个独立的可执行文件 (<code>deno</code>)。</p>
+</li>
+<li>
+<p>有着内建的工具箱，比如一个依赖信息查看器 (<code>deno info</code>) 和一个代码格式化工具 (<code>deno fmt</code>)。</p>
+</li>
+<li>
+<p>有一组经过审计的<a href="https://github.com/denoland/deno/tree/master/std">标准模块</a>，保证能在 Deno 上工作。</p>
+</li>
+<li>
+<p>脚本代码能被打包为一个单独的 JavaScript 文件。</p>
+</li>
+</ul>
+<h2><a class="header" href="#哲学" id="哲学">哲学</a></h2>
+<p>Deno旨在为现代程序员提供高效、安全的脚本环境。</p>
+<p>它将始终作为单个可执行文件分发，并且该可执行文件将能运行任何deno程序。给定一个 deno 程序的 URL，您应该能够用不超过 15MB 的压缩过的 deno 可执行文件运行它。</p>
+<p>Deno明确地承担了运行时和包管理器的角色。它使用标准的浏览器兼容协议(URL)来加载模块。</p>
+<p>对于过去用 bash 或 python 编写的工具脚本来说，Deno 是一个优秀的替代品。</p>
+<h2><a class="header" href="#目标" id="目标">目标</a></h2>
+<ul>
+<li>
+<p>只分发一个独立的可执行文件 (<code>deno</code>)。</p>
+</li>
+<li>
+<p>默认安全。外部代码没有文件系统、网络、环境的访问权限，除非显式开启。</p>
+</li>
+<li>
+<p>浏览器兼容：完全用JavaScript编写且不使用全局<code>Deno</code>命名空间(或功能测试)的程序是Deno程序的子集，应该能够直接在现代浏览器中运行而无需更改。</p>
+</li>
+<li>
+<p>提供内置工具来提升开发体验，比如单元测试、代码格式化、代码检查。</p>
+</li>
+<li>
+<p>不把 V8 的概念泄露到用户空间。</p>
+</li>
+<li>
+<p>能够高效地提供 HTTP 服务</p>
+</li>
+</ul>
+<h2><a class="header" href="#与-nodejs-的比较" id="与-nodejs-的比较">与 Node.js 的比较</a></h2>
+<ul>
+<li>
+<p>Deno 不使用 <code>npm</code></p>
+<ul>
+<li>它使用 URL 或文件路径引用模块</li>
+</ul>
+</li>
+<li>
+<p>Deno 在模块解析算法中不使用 <code>package.json</code>。</p>
+</li>
+<li>
+<p>Deno 中的所有异步操作返回 promise，因此 Deno 提供与 Node 不同的 API。</p>
+</li>
+<li>
+<p>Deno 需要显式指定文件、网络和环境权限。</p>
+</li>
+<li>
+<p>当未捕获的错误发生时，Deno 总是会异常退出。</p>
+</li>
+<li>
+<p>使用 ES 模块，不支持 <code>require()</code>。第三方模块通过 URL 导入。</p>
+<pre><code class="language-javascript">import * as log from &quot;https://deno.land/std/log/mod.ts&quot;;
+</code></pre>
+</li>
+</ul>
+<h2><a class="header" href="#其他关键行为" id="其他关键行为">其他关键行为</a></h2>
+<ul>
+<li>
+<p>远程代码在第一次运行时获取并缓存，直到代码通过 <code>--reload</code> 选项运行。（所以它在飞机上也能工作）</p>
+</li>
+<li>
+<p>从远程 URL 加载的模块或文件应当是不可变且可缓存的。</p>
+</li>
+</ul>
+<h2><a class="header" href="#图标" id="图标">图标</a></h2>
+<p>这些 Deno 图标在 MIT 协议下分发（公共领域，免费使用），例如 Deno 软件。</p>
+<ul>
+<li>
+<p><a href="https://deno.land/images/deno_logo.png">手绘 by @ry</a></p>
+</li>
+<li>
+<p><a href="https://github.com/denolib/animated-deno-logo/">动画 by @hashrock</a></p>
+</li>
+<li>
+<p><a href="https://github.com/denolib/high-res-deno-logo">高精度 SVG by @kevinkassimo</a></p>
+</li>
+<li>
+<p><a href="https://deno.land/images/deno_logo_4.gif">像素动画 by @tanakaworld</a></p>
+</li>
+</ul>
+<h1><a class="header" href="#入门" id="入门">入门</a></h1>
+<p>在本章节，我们将讨论；</p>
+<ul>
+<li>安装 Deno</li>
+<li>运行一个 <code>Hello World</code> 脚本</li>
+<li>编写您自己的脚本</li>
+<li>在 Deno 中使用 TypeScript</li>
+<li>在 Deno 中使用 WebAssembly</li>
+</ul>
+<h2><a class="header" href="#安装" id="安装">安装</a></h2>
+<p>Deno 能够在 macOS、Linux 和 Windows 上运行。Deno 是一个单独的可执行文件，它没有额外的依赖。</p>
+<h3><a class="header" href="#下载安装" id="下载安装">下载安装</a></h3>
+<p><a href="https://github.com/denoland/deno_install">deno_install</a> 提供了方便的脚本，用以下载安装 Deno.</p>
+<p>使用 Shell (macOS 和 Linux):</p>
+<pre><code class="language-shell">curl -fsSL https://deno.land/x/install/install.sh | sh
+</code></pre>
+<p>使用 PowerShell (Windows):</p>
+<pre><code class="language-shell">iwr https://deno.land/x/install/install.ps1 -useb | iex
+</code></pre>
+<p>使用 <a href="https://scoop.sh/">Scoop</a> (Windows):</p>
+<pre><code class="language-shell">scoop install deno
+</code></pre>
+<p>使用 <a href="https://chocolatey.org/packages/deno">Chocolatey</a> (Windows):</p>
+<pre><code class="language-shell">choco install deno
+</code></pre>
+<p>使用 <a href="https://formulae.brew.sh/formula/deno">Homebrew</a> (macOS):</p>
+<pre><code class="language-shell">brew install deno
+</code></pre>
+<p>使用 <a href="https://crates.io/crates/deno">Cargo</a> (Windows, macOS, Linux):</p>
+<pre><code class="language-shell">cargo install deno
+</code></pre>
+<p>Deno 也可以手动安装，只需从 <a href="https://github.com/denoland/deno/releases">github.com/denoland/deno/releases</a> 下载一个 zip 文件。它仅包含一个单独的可执行文件。在 macOS 和 Linux 上，您需要为它设置执行权限。</p>
+<h3><a class="header" href="#测试安装" id="测试安装">测试安装</a></h3>
+<p>运行 <code>deno --version</code>，如果它打印出 Deno 版本，说明安装成功。</p>
+<p>运行 <code>deno help</code> 以查看帮助文档。</p>
+<p>运行 <code>deno help &lt;subcommand&gt;</code> 以查看子命令的选项。</p>
+<h3><a class="header" href="#升级" id="升级">升级</a></h3>
+<p>运行 <code>deno upgrade</code>，这会从 <a href="https://github.com/denoland/deno/releases">github.com/denoland/deno/releases</a> 获取最新的发布版本，然后解压并替换现有的版本。</p>
+<h3><a class="header" href="#从源码构建" id="从源码构建">从源码构建</a></h3>
+<p>关于构建步骤的信息请查阅 <a href="getting_started/../contributing.html">贡献</a> 章节。</p>
+<h2><a class="header" href="#设置您的环境" id="设置您的环境">设置您的环境</a></h2>
+<p>要高效地使用 Deno，您应该设置环境，例如命令行自动补全、环境变量、编辑器或 IDE。</p>
+<h3><a class="header" href="#环境变量" id="环境变量">环境变量</a></h3>
+<p>这里是一些控制 Deno 行为的环境变量：</p>
+<p><code>DENO_DIR</code> 默认为 <code>$HOME/.deno</code>，但可以设置为任何路径。这是 Deno 存放生成的代码和缓存的源码的路径。</p>
+<p>如果 <code>NO_COLOR</code> 被设置，Deno 将会关闭彩色输出 (<a href="https://no-color.org/">https://no-color.org/</a>)。用户代码可以通过布尔常量 <code>Deno.noColor</code> 测试 <code>NO_COLOR</code> 是否被设置，这不需要环境权限 (<code>--allow-env</code>)。</p>
+<h3><a class="header" href="#命令行自动补全" id="命令行自动补全">命令行自动补全</a></h3>
+<p>通过 <code>deno completions &lt;shell&gt;</code> 命令可以生成补全脚本。它会输出到 stdout，您应该将它重定向到适当的文件。</p>
+<p>Deno 支持的 shell 如下：</p>
+<ul>
+<li>zsh</li>
+<li>bash</li>
+<li>fish</li>
+<li>powershell</li>
+<li>elvish</li>
+</ul>
+<p>示例：</p>
+<pre><code class="language-shell">deno completions bash &gt; /usr/local/etc/bash_completion.d/deno.bash
+source /usr/local/etc/bash_completion.d/deno.bash
+</code></pre>
+<h3><a class="header" href="#编辑器和-ide" id="编辑器和-ide">编辑器和 IDE</a></h3>
+<p>Deno 需要用文件后缀名来支持模块导入和 HTTP 导入。目前，大多数编辑器和语言服务器没有原生支持这点，一些编辑器可能会抛出无法找到文件的错误，或是不必要的文件后缀名错误。</p>
+<p>社区已经开发了一些插件用来解决这些问题。</p>
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=axetroy.vscode-deno">VS Code</a>
+by <a href="https://github.com/axetroy">@axetroy</a>.</li>
+</ul>
+<p>JetBrains 的 IDE 还没有支持 Deno，但您可以通过订阅和投票这些 issue 来得知最新的进展。</p>
+<ul>
+<li><a href="https://youtrack.jetbrains.com/issue/WEB-41607">https://youtrack.jetbrains.com/issue/WEB-41607</a></li>
+<li><a href="https://youtrack.jetbrains.com/issue/WEB-42983">https://youtrack.jetbrains.com/issue/WEB-42983</a></li>
+<li><a href="https://youtrack.jetbrains.com/issue/WEB-31667">https://youtrack.jetbrains.com/issue/WEB-31667</a></li>
+</ul>
+<p>如果您没有在列表中看到您最喜欢的 IDE，或许可以开发一个插件，我们的社区能够帮助您起步。<a href="https://discord.gg/TGMHGv6">Discord</a></p>
+<h2><a class="header" href="#第一步" id="第一步">第一步</a></h2>
+<p>这个页面包含一些简单的示例，您可以从中学到 Deno 的基本概念。</p>
+<p>我们假设您已经对 JavaScript 有过预先的了解，特别是 <code>async</code>/<code>await</code>。如果您没有了解过 JavaScript，您可能先需要阅读这个指南：<a href="https://developer.mozilla.org/zh-CN/docs/learn/JavaScript">JavaScript</a>.</p>
+<h3><a class="header" href="#hello-world" id="hello-world">Hello World</a></h3>
+<p>Deno 是一个 JavaScript 和 TypeScript 的运行时，尽可能与浏览器兼容并使用现代的功能 (features)。</p>
+<p>由于 Deno 具有浏览器兼容性，<code>Hello World</code> 程序与浏览器里的没什么不同。</p>
+<pre><code class="language-typescript">console.log(&quot;Welcome to Deno 🦕&quot;);
+</code></pre>
+<p>尝试一下：</p>
+<pre><code class="language-bash">deno run https://deno.land/std/examples/welcome.ts
+</code></pre>
+<h3><a class="header" href="#发出一个-http-请求" id="发出一个-http-请求">发出一个 HTTP 请求</a></h3>
+<p>通过 HTTP 请求从服务器获取数据是一件很常见的事。让我们编写一个简单的程序来获取文件并打印到终端。</p>
+<p>就像浏览器一样，您可以使用 web 标准的 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API"><code>fetch</code></a> API 来发出请求。</p>
+<pre><code class="language-typescript">const url = Deno.args[0];
+const res = await fetch(url);
+
+const body = new Uint8Array(await res.arrayBuffer());
+await Deno.stdout.write(body);
+</code></pre>
+<p>让我们看看它做了什么：</p>
+<ol>
+<li>
+<p>我们取得了第一个命令行参数，存储到变量 <code>url</code>。</p>
+</li>
+<li>
+<p>我们向指定的地址发出请求，等待响应，然后存储到变量 <code>res</code>。</p>
+</li>
+<li>
+<p>我们把响应体解析为一个 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer"><code>ArrayBuffer</code></a>，等待接收完毕，将其转换为 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array"><code>Uint8Array</code></a>，最后存储到变量 <code>body</code>。</p>
+</li>
+<li>
+<p>我们把 <code>body</code> 的内容写入标准输出流 <code>stdout</code>。</p>
+</li>
+</ol>
+<p>尝试一下：</p>
+<pre><code class="language-bash">deno run https://deno.land/std/examples/curl.ts https://example.com
+</code></pre>
+<p>这个程序将会返回一个关于网络权限的错误，我们做错了什么？您可能会想起来，Deno 默认用安全环境执行代码。这意味着您需要显式赋予程序权限，允许它进行一些特权操作，比如网络访问。</p>
+<p>You will see that this program returns an error regarding network access, so
+what did we do wrong? You might remember from the introduction that Deno is a
+runtime that is secure by default. This means that you need to explicitly give
+programs the permission to do certain 'privledged' actions like network access.</p>
+<p>用正确的权限选项再试一次：</p>
+<pre><code class="language-bash">deno run --allow-net=example.com https://deno.land/std/examples/curl.ts https://example.com
+</code></pre>
+<h3><a class="header" href="#读取一个文件" id="读取一个文件">读取一个文件</a></h3>
+<p>Deno 也提供内置的 API，它们都位于全局变量 <code>Deno</code> 中。您可以在此找到相关文档：<a href="https://doc.deno.land/https/github.com/denoland/deno/releases/latest/download/lib.deno.d.ts">doc.deno.land</a>。</p>
+<p>文件系统 API 没有 web 标准形式，所以 Deno 提供了内置的 API。</p>
+<p>示例：<a href="getting_started/../examples/unix_cat.html">Unix &quot;cat&quot; 程序的一个实现</a></p>
+<h3><a class="header" href="#一个简单的-tcp-服务" id="一个简单的-tcp-服务">一个简单的 TCP 服务</a></h3>
+<p>示例：<a href="getting_started/../examples/tcp_echo.html">TCP 回声服务</a></p>
+<h3><a class="header" href="#更多示例" id="更多示例">更多示例</a></h3>
+<p>您可以在 <a href="getting_started/../examples.html">示例</a> 一章找到更多示例。</p>
+<h2><a class="header" href="#权限" id="权限">权限</a></h2>
+<!-- TODO(lucacasonato): what are permissions -->
+<!-- TODO(lucacasonato): description of all permissions -->
+<h3><a class="header" href="#权限白名单" id="权限白名单">权限白名单</a></h3>
+<p>Deno 也提供了权限白名单。</p>
+<p>这是一个用白名单限制文件系统访问权限的示例。</p>
+<pre><code class="language-shell">$ deno run --allow-read=/usr https://deno.land/std/examples/cat.ts /etc/passwd
+error: Uncaught PermissionDenied: read access to &quot;/etc/passwd&quot;, run again with the --allow-read flag
+► $deno$/dispatch_json.ts:40:11
+    at DenoError ($deno$/errors.ts:20:5)
+    ...
+</code></pre>
+<p>您可以授予 <code>/etc</code> 目录的读取权限。</p>
+<pre><code class="language-shell">$ deno run --allow-read=/etc https://deno.land/std/examples/cat.ts /etc/passwd
+</code></pre>
+<p><code>--allow-write</code> 也一样，代表写入权限。</p>
+<p>这是一个限制网络主机的示例。</p>
+<pre><code class="language-ts">const result = await fetch(&quot;https://deno.land/&quot;);
+</code></pre>
+<pre><code class="language-shell">$ deno run --allow-net=deno.land https://deno.land/std/examples/curl.ts https://deno.land/
+</code></pre>
+<h2><a class="header" href="#使用-typescript" id="使用-typescript">使用 TypeScript</a></h2>
+<!-- TODO(lucacasonato): text on 'just import .ts' -->
+<h3><a class="header" href="#使用外部类型定义" id="使用外部类型定义">使用外部类型定义</a></h3>
+<p>Deno 同时支持 JavaScript 和 TypeScript，它们是 Deno 的第一等语言。
+这意味着它需要标准的模块名称，包括
+扩展名（或提供正确媒体类型的服务器）。此外，Deno 还拥有“平凡”的模块解析算法。</p>
+<p>开箱即用的 TypeScript 编译器依赖于两种无扩展名
+模块和 Node.js 模块解析逻辑，以将类型应用于 JavaScript
+模块。</p>
+<p>为了弥合这种差距，Deno 支持三种引用类型定义文件的方法，而不必求助于“魔法”的模块解析。</p>
+<h4><a class="header" href="#编译提示" id="编译提示">编译提示</a></h4>
+<p>如果您要导入 JavaScript 模块，并且知道该模块的类型定义在哪里，您可以在导入时指定类型定义。这采用编译器提示的形式。编译提示告诉 Deno <code>.d.ts</code> 文件的位置和与之相关的导入的 JavaScript 代码。编译提示指令是 <code>@deno-types</code>，当指定时，该值将在编译器中使用，而不是 JavaScript 模块。</p>
+<p>例如，如果您有 <code>foo.js</code>，但您知道旁边的 <code>foo.d.ts</code> 是该模块的类型定义，代码将像这样：</p>
+<pre><code class="language-ts">// @deno-types=&quot;./foo.d.ts&quot;
+import * as foo from &quot;./foo.js&quot;;
+</code></pre>
+<p>该值遵循与导入模块相同的解析逻辑，这意味着它需要具有扩展名，并且是相对于当前模块的。远程模块也可以使用该说明符。</p>
+<p>此编译提示影响下一个 <code>import</code> 语句，或是 <code>export ... from</code> 语句，在编译时，该值将替换模块。像上面的示例一样，Deno 编译器将加载 <code>./foo.d.ts</code>，而不是 <code>./foo.js</code>。Deno 在运行时仍然会加载 <code>./foo.js</code>。</p>
+<h4><a class="header" href="#javascript-文件中的三斜线引用指令" id="javascript-文件中的三斜线引用指令">JavaScript 文件中的三斜线引用指令</a></h4>
+<p>如果您要发布由 Deno 使用的模块，并且想要告诉 Deno 类型定义的位置，您可以使用实际代码中的三斜杠指令。</p>
+<p>例如，如果您有一个 JavaScript 模块，想为 Deno 提供类型定义的位置，您的 <code>foo.js</code> 可能看起来像这样：</p>
+<pre><code class="language-js">/// &lt;reference types=&quot;./foo.d.ts&quot; /&gt;
+export const foo = &quot;foo&quot;;
+</code></pre>
+<p>Deno会看到这一点，并且在检查类型时，编译器将使用 <code>foo.d.ts</code> 文件，尽管 <code>foo.js</code> 将在运行时加载。</p>
+<p>该值遵循与导入模块相同的解析逻辑，这意味着它需要具有扩展名，并且是相对于当前模块的。远程模块也可以使用该说明符。</p>
+<h4><a class="header" href="#x-typescript-types-自定义-header" id="x-typescript-types-自定义-header">X-TypeScript-Types 自定义 Header</a></h4>
+<p>如果您要发布由 Deno 使用的模块，并且想要告诉 Deno 类型定义的位置，您可以使用自定义 HTTP 头 <code>X-TypeScript-Types</code>，来告诉 Deno 文件位置。</p>
+<p>标头的工作方式与上述三斜杠参考相同，这只是意味着 JavaScript 文件本身的内容不需要修改后，并且类型定义的位置可以通过服务器本身确定。</p>
+<p><strong>不是所有类型定义都受支持</strong></p>
+<p>Deno 将使用编译提示来加载指示的 <code>.d.ts</code> 文件，但有些 <code>.d.ts</code> 文件包含不受支持的功能。具体来说，有些 <code>.d.ts</code> 文件期望能够从其他包中加载或引用类型定义，它们使用模块解析逻辑。</p>
+<p>例如，一个包含 <code>node</code> 的类型引用指令，希望解析为像 <code>./node_modules/@types/node/index.d.ts</code> 的某些路径。由于这取决于非相对性的模块解析算法，Deno 无法处理这种情况。</p>
+<p><strong>为什么不在 TypeScript 文件中使用三斜杠类型引用？</strong></p>
+<p>TypeScript 编译器支持三斜杠指令，包括类型
+参考指令。如果 Deno 使用此功能，则会干扰
+TypeScript 编译器。Deno仅在 JavaScript （包括 JSX）文件中查找指令。</p>
+<h3><a class="header" href="#自定义-typescript-编译器选项" id="自定义-typescript-编译器选项">自定义 TypeScript 编译器选项</a></h3>
+<p>在Deno生态系统中，所有严格标志都被默认启用，以符合 TypeScript 的理想状态。然而，Deno 支持自定义配置文件 (例如 <code>tsconfig.json</code>)。</p>
+<p>您需要通过显式设置 <code>-c</code> 选项，来明确告诉 Deno 在哪里寻找此配置。</p>
+<pre><code class="language-bash">deno run -c tsconfig.json mod.ts
+</code></pre>
+<p>以下是 Deno 当前允许的设置及其默认值：</p>
+<pre><code class="language-json">{
+  &quot;compilerOptions&quot;: {
+    &quot;allowJs&quot;: false,
+    &quot;allowUmdGlobalAccess&quot;: false,
+    &quot;allowUnreachableCode&quot;: false,
+    &quot;allowUnusedLabels&quot;: false,
+    &quot;alwaysStrict&quot;: true,
+    &quot;assumeChangesOnlyAffectDirectDependencies&quot;: false,
+    &quot;checkJs&quot;: false,
+    &quot;disableSizeLimit&quot;: false,
+    &quot;generateCpuProfile&quot;: &quot;profile.cpuprofile&quot;,
+    &quot;jsx&quot;: &quot;react&quot;,
+    &quot;jsxFactory&quot;: &quot;React.createElement&quot;,
+    &quot;lib&quot;: [],
+    &quot;noFallthroughCasesInSwitch&quot;: false,
+    &quot;noImplicitAny&quot;: true,
+    &quot;noImplicitReturns&quot;: true,
+    &quot;noImplicitThis&quot;: true,
+    &quot;noImplicitUseStrict&quot;: false,
+    &quot;noStrictGenericChecks&quot;: false,
+    &quot;noUnusedLocals&quot;: false,
+    &quot;noUnusedParameters&quot;: false,
+    &quot;preserveConstEnums&quot;: false,
+    &quot;removeComments&quot;: false,
+    &quot;resolveJsonModule&quot;: true,
+    &quot;strict&quot;: true,
+    &quot;strictBindCallApply&quot;: true,
+    &quot;strictFunctionTypes&quot;: true,
+    &quot;strictNullChecks&quot;: true,
+    &quot;strictPropertyInitialization&quot;: true,
+    &quot;suppressExcessPropertyErrors&quot;: false,
+    &quot;suppressImplicitAnyIndexErrors&quot;: false,
+    &quot;useDefineForClassFields&quot;: false
+  }
+}
+</code></pre>
+<p>有关上述选项和用例的文档，请访问 <a href="https://www.typescriptlang.org/docs/handbook/compiler-options.html">typescript docs</a>.</p>
+<p><strong>注意</strong>：Deno 不支持以上未列出的或在 TypeScript 文档中列为已弃用/实验性的任何选项。</p>
+<h1><a class="header" href="#使用-webassembly" id="使用-webassembly">使用 WebAssembly</a></h1>
+<h1><a class="header" href="#运行时" id="运行时">运行时</a></h1>
+<p>所有运行时函数的文档在这里：<a href="https://doc.deno.land/https/github.com/denoland/deno/releases/latest/download/lib.deno.d.ts">doc.deno.land</a></p>
+<p>这里包含 Web API 和全局空间 <code>Deno</code>。</p>
+<h2><a class="header" href="#web-api" id="web-api">Web API</a></h2>
+<p>对于 web 标准中存在的 API，比如 <code>fetch</code>，Deno 使用它们，而不是自己发明新的。</p>
+<p>Web API 文档：<a href="https://doc.deno.land/https/raw.githubusercontent.com/denoland/deno/master/cli/js/lib.deno.shared_globals.d.ts">doc.deno.land</a></p>
+<p>已实现的 web API 的 TypeScript 定义：</p>
+<ul>
+<li>
+<p><a href="https://github.com/denoland/deno/blob/master/cli/js/lib.deno.shared_globals.d.ts">lib.deno.shared_globals.d.ts</a></p>
+</li>
+<li>
+<p><a href="https://github.com/denoland/deno/blob/master/cli/js/lib.deno.window.d.ts">lib.deno.window.d.ts</a></p>
+</li>
+</ul>
+<p>worker 特定的 API 定义：<a href="https://github.com/denoland/deno/blob/master/cli/js/lib.deno.worker.d.ts">lib.deno.worker.d.ts</a></p>
+<h2><a class="header" href="#全局空间-deno" id="全局空间-deno">全局空间 <code>Deno</code></a></h2>
+<p>所有非 web 标准的 API 位于全局命名空间 <code>Deno</code>。</p>
+<p>这里包含从文件中读取、打开 TCP 套接字和运行子进程，还有更多 API。</p>
+<p>Deno 命名空间 的 TypeScript 定义：<a href="https://github.com/denoland/deno/blob/master/cli/js/lib.deno.ns.d.ts">lib.deno.ns.d.ts</a></p>
+<p>Deno 特定的 API 定义：<a href="https://doc.deno.land/https/raw.githubusercontent.com/denoland/deno/master/cli/js/lib.deno.ns.d.ts">doc.deno.land</a></p>
+<h2><a class="header" href="#程序生命周期" id="程序生命周期">程序生命周期</a></h2>
+<p>Deno 支持浏览器兼容的生命周期事件: <code>load</code> 和 <code>unload</code>。您可以使用这些事件在程序中设置和清除代码。</p>
+<p><code>load</code> 事件的侦听器可以是异步的，并将被等待。<code>unload</code> 事件的监听器需要是同步的。这两项事件都不能被取消。</p>
+<p>例如：</p>
+<pre><code class="language-typescript">// main.ts
+import &quot;./imported.ts&quot;;
+
+const handler = (e: Event): void =&gt; {
+  console.log(`got ${e.type} event in event handler (main)`);
+};
+
+window.addEventListener(&quot;load&quot;, handler);
+
+window.addEventListener(&quot;unload&quot;, handler);
+
+window.onload = (e: Event): void =&gt; {
+  console.log(`got ${e.type} event in onload function (main)`);
+};
+
+window.onunload = (e: Event): void =&gt; {
+  console.log(`got ${e.type} event in onunload function (main)`);
+};
+
+// imported.ts
+const handler = (e: Event): void =&gt; {
+  console.log(`got ${e.type} event in event handler (imported)`);
+};
+
+window.addEventListener(&quot;load&quot;, handler);
+window.addEventListener(&quot;unload&quot;, handler);
+
+window.onload = (e: Event): void =&gt; {
+  console.log(`got ${e.type} event in onload function (imported)`);
+};
+
+window.onunload = (e: Event): void =&gt; {
+  console.log(`got ${e.type} event in onunload function (imported)`);
+};
+
+console.log(&quot;log from imported script&quot;);
+</code></pre>
+<p>注意，您可以同时使用 <code>window.addEventListener</code> 和 <code>window.onload</code> / <code>window.onunload</code> 来定义事件的处理程序。它们之间有一个主要的区别，让我们运行以下的例子:</p>
+<pre><code class="language-shell">$ deno run main.ts
+log from imported script
+log from main script
+got load event in onload function (main)
+got load event in event handler (imported)
+got load event in event handler (main)
+got unload event in onunload function (main)
+got unload event in event handler (imported)
+got unload event in event handler (main)
+</code></pre>
+<p>所有使用 <code>window.addEventListener</code> 添加的侦听器都被运行，但是在 <code>main.ts</code> 中定义的 <code>window.onload</code> 和 <code>window.onunload</code> 覆盖了 <code>imported.ts</code> 中定义的处理程序。</p>
+<h2><a class="header" href="#编译器-api" id="编译器-api">编译器 API</a></h2>
+<p>Deno 支持对内置 TypeScript 编译器的运行时访问。<code>Deno</code> 命名空间中有三种方法提供此访问。</p>
+<h3><a class="header" href="#denocompile" id="denocompile"><code>Deno.compile()</code></a></h3>
+<p>这类似于 <code>deno cache</code>，因为它可以获取和缓存代码，编译代码，但不运行代码。它最多接受三个参数，<code>rootName</code>、可选的 <code>sources</code> 和可选的 <code>options</code>。<code>rootName</code> 是用于生成目标程序的根模块。这类似于在 <code>deno run --reload example.ts</code> 中在命令行上传递的模块名。<code>sources</code> 是一个哈希表，其中键是完全限定的模块名称，值是模块的文本源。如果传递了 <code>sources</code>，Deno 将从该哈希表中解析所有模块，而不会尝试在 Deno 之外解析它们。如果没有提供 <code>sources</code>，Deno 将解析模块，就像根模块已经在命令行上传递了一样。Deno 还将缓存所有的这些资源。<code>options</code> 参数是一组 <code>Deno.CompilerOptions</code> 类型的选项，它是包含 Deno 支持选项的 TypeScript 编译器选项的子集。</p>
+<p>该方法使用元组进行解析。第一个参数包含与代码相关的任何诊断信息（语法或类型错误）。第二个参数是一个映射，其中键是输出文件名，值是内容。</p>
+<p>提供 <code>sources</code> 的一个例子:</p>
+<pre><code class="language-ts">const [diagnostics, emitMap] = await Deno.compile(&quot;/foo.ts&quot;, {
+  &quot;/foo.ts&quot;: `import * as bar from &quot;./bar.ts&quot;;\nconsole.log(bar);\n`,
+  &quot;/bar.ts&quot;: `export const bar = &quot;bar&quot;;\n`,
+});
+
+assert(diagnostics == null); // 确保没有返回诊断信息
+console.log(emitMap);
+</code></pre>
+<p>我们希望 map 包含4个 “文件（files）” ，分别命名为 <code>/foo.js.map</code>，<code>/foo.js</code>，<code>/bar.js.map</code>，和 <code>/bar.js</code>。</p>
+<p>当不提供资源时，您可以使用本地或远程模块，就像在命令行上做的那样。所以您可以这样做:</p>
+<pre><code class="language-ts">const [diagnostics, emitMap] = await Deno.compile(
+  &quot;https://deno.land/std/examples/welcome.ts&quot;
+);
+</code></pre>
+<p>在这种情况下，<code>emitMap</code> 将包含一个简单的 <code>console.log()</code> 语句。</p>
+<h3><a class="header" href="#denobundle" id="denobundle"><code>Deno.bundle()</code></a></h3>
+<p>这与 <code>deno bundle</code> 在命令行上的工作非常相似。 它也与 <code>Deno.compile()</code> 类似，只是它不返回文件映射，而是只返回一个字符串，这是一个自包含的 JavaScript ES 模块，它将包含提供或解析的所有代码，以及提供的根模块的所有导出。它最多接受三个参数，<code>rootName</code>、可选的 <code>sources</code> 和可选的 <code>options</code>。<code>rootName</code> 是用于生成目标程序的根模块。这类似于在 <code>deno bundle example.ts</code> 中在命令行上传递的模块名。<code>sources</code> 是一个哈希表，其中键是完全限定的模块名称，值是模块的文本源。如果传递了 <code>sources</code>，Deno 将从该哈希表中解析所有模块，而不会尝试在 Deno 之外解析它们。如果没有提供 <code>sources</code>，Deno 将解析模块，就像根模块已经在命令行上传递了一样。 Deno 还将缓存所有的这些资源。<code>options</code> 参数是一组 <code>Deno.CompilerOptions</code> 类型的选项，它是包含 Deno 支持选项的 TypeScript 编译器选项的子集。</p>
+<p>提供 <code>sources</code> 的一个例子:</p>
+<pre><code class="language-ts">const [diagnostics, emit] = await Deno.bundle(&quot;/foo.ts&quot;, {
+  &quot;/foo.ts&quot;: `import * as bar from &quot;./bar.ts&quot;;\nconsole.log(bar);\n`,
+  &quot;/bar.ts&quot;: `export const bar = &quot;bar&quot;;\n`,
+});
+
+assert(diagnostics == null); // 确保没有返回诊断信息
+console.log(emit);
+</code></pre>
+<p>我们希望 <code>emit</code> 是一个 ES 模块的文本，它将包含两个模块的输出源。</p>
+<p>当不提供资源时，您可以使用本地或远程模块，就像在命令行上做的那样。所以您可以这样做:</p>
+<pre><code class="language-ts">const [diagnostics, emit] = await Deno.bundle(
+  &quot;https://deno.land/std/http/server.ts&quot;
+);
+</code></pre>
+<p>在这种情况下，<code>emit</code> 将是一个自包含的 JavaScript ES 模块，并解析了所有依赖项，导出与源模块相同的导出。</p>
+<h3><a class="header" href="#denotranspileonly" id="denotranspileonly"><code>Deno.transpileOnly()</code></a></h3>
+<p>这是基于 TypeScript 函数 <code>transpileModule()</code> 的。所有这些操作都会“擦除”模块中的任何类型并释放 JavaScript。没有类型检查和依赖关系的解析。它最多接受两个参数，第一个参数是哈希表，其中键是模块名称，值是内容。模块名称的唯一用途是在将信息放入源映射时，显示源文件名称是什么。第二个参数包含 <code>Deno.CompilerOptions</code> 类型的可选 <code>options</code>。函数通过映射解析，其中键是提供的源模块名称，值是具有 <code>source</code> 属性和可选 <code>map</code> 属性的对象。第一个是模块的输出内容。 <code>map</code> 属性是源映射。源映射是默认提供的，但可以通过 <code>options</code> 参数关闭。</p>
+<p>举个例子：</p>
+<pre><code class="language-ts">const result = await Deno.transpileOnly({
+  &quot;/foo.ts&quot;: `enum Foo { Foo, Bar, Baz };\n`,
+});
+
+console.log(result[&quot;/foo.ts&quot;].source);
+console.log(result[&quot;/foo.ts&quot;].map);
+</code></pre>
+<p>我们期望 <code>enum</code> 被重写成一个构造可枚举的 IIFE，并且映射被定义。</p>
+<h3><a class="header" href="#引用-typescript-库文件" id="引用-typescript-库文件">引用 TypeScript 库文件</a></h3>
+<p>当您使用 <code>deno run</code> 或其他 TypeScript 类型的 Deno 命令时，该代码将根据描述 Deno 支持的环境的自定义库进行评估。默认情况下，TypeScript 类型的编译器运行时 API 也使用这些库（<code>Deno.compile()</code> 和 <code>Deno.bundle()</code>）。</p>
+<p>但是，如果您希望为其他运行时编译或捆绑 TypeScript，则您可能希望重载默认库。为此，运行时 API 支持编译器选项中的 <code>lib</code> 属性。例如，如果你的 TypeScript 代码是为浏览器准备的，您可以使用 TypeScript 的 <code>&quot;dom&quot;</code> 库:</p>
+<pre><code class="language-ts">const [errors, emitted] = await Deno.compile(
+  &quot;main.ts&quot;,
+  {
+    &quot;main.ts&quot;: `document.getElementById(&quot;foo&quot;);\n`,
+  },
+  {
+    lib: [&quot;dom&quot;, &quot;esnext&quot;],
+  }
+);
+</code></pre>
+<p>有关 TypeScript 支持的所有库的列表，请参见 <a href="https://www.typescriptlang.org/docs/handbook/compiler-options.html"><code>lib</code> 编译器选项</a>。
+<strong>不要忘记包含 JavaScript 库</strong></p>
+<p>就像 <code>tsc</code> 一样，当您提供一个 <code>lib</code> 编译器选项时，它会覆盖默认的选项，这意味着基本的 JavaScript 库不会被包含，而您应该包含最能代表您的目标运行时的选项（例如 <code>es5</code>，<code>es2015</code>，<code>es2016</code>，<code>es2017</code>，<code>es2018</code>，<code>es2019</code>，<code>es2020</code> 或 <code>esnext</code>）。</p>
+<h4><a class="header" href="#包含-deno-命名空间" id="包含-deno-命名空间">包含 Deno 命名空间</a></h4>
+<p>除了 TypeScript 提供的库之外，还有四个内置在 Deno 中的库可以引用:</p>
+<ul>
+<li><code>deno.ns</code> - 提供 <code>Deno</code> 命名空间</li>
+<li><code>deno.shared_globals</code> - 提供 Deno 运行时支持的全局接口和变量，然后由最终运行时库公开</li>
+<li><code>deno.window</code> - 公开全局变量和 Deno 主工作进程中可用的 Deno 命名空间，是运行时编译器的默认 API</li>
+<li><code>deno.worker</code> - 公开在 Deno 下的工作进程中可用的全局变量。</li>
+</ul>
+<p>因此，要将 Deno 命名空间添加到编译中，需要在数组中包含 <code>deno.ns</code> 库，例如：</p>
+<pre><code class="language-ts">const [errors, emitted] = await Deno.compile(
+  &quot;main.ts&quot;,
+  {
+    &quot;main.ts&quot;: `document.getElementById(&quot;foo&quot;);\n`,
+  },
+  {
+    lib: [&quot;dom&quot;, &quot;esnext&quot;, &quot;deno.ns&quot;],
+  }
+);
+</code></pre>
+<p><strong>注意</strong>，Deno 命名空间需要一个 ES2018 或更新的运行时环境。这意味着，如果您使用的库“低于” ES2018，那么您将得到作为编译的一部分记录的错误。</p>
+<h4><a class="header" href="#使用三斜杠引用triple-slash-reference" id="使用三斜杠引用triple-slash-reference">使用三斜杠引用（triple-slash reference）</a></h4>
+<p>您不必在编译器选项中指定 <code>lib</code>。Deno 支持<a href="https://www.typescriptlang.org/docs/handbook/triple-slash-directives.html#-reference-lib-">对库的三斜杠引用</a>，并可以嵌入到文件的内容中。例如，如果你有一个 <code>main.ts</code>：</p>
+<pre><code class="language-ts">/// &lt;reference lib=&quot;dom&quot; /&gt;
+
+document.getElementById(&quot;foo&quot;);
+</code></pre>
+<p>它可以编译，且不会出现下面这样的错误：</p>
+<pre><code class="language-ts">const [errors, emitted] = await Deno.compile(&quot;./main.ts&quot;, undefined, {
+  lib: [&quot;esnext&quot;],
+});
+</code></pre>
+<p><strong>注意</strong>，<code>dom</code> 库与 Deno 的默认类型库中定义的一些默认全局变量有冲突。为了避免这种情况，需要在编译器选项中为运行时编译器 API 指定一个 <code>lib</code> 选项</p>
+<h2><a class="header" href="#不稳定性功能" id="不稳定性功能">不稳定性功能</a></h2>
+<p>并非所有的 Deno 功能目前都可以投入生产。仍处于起草阶段、还未准备完善的功能被锁定在 <code>--unstable</code> 命令行开关后。传递这个开关可以有如下效果：</p>
+<ul>
+<li>它允许在运行时使用不稳定的 API。</li>
+<li>它将<a href="https://github.com/denoland/deno/blob/master/cli/js/lib.deno.unstable.d.ts"><code>lib.deno.unstable.d.ts</code></a>文件添加到用于类型检查的类型脚本定义列表中。这包括 <code>deno types</code> 的输出。</li>
+</ul>
+<p>您应该知道，不稳定的API可能<strong>没有经过安全检查</strong>，将来可能有<strong>中断 API 更改</strong>，并且<strong>还没有准备投入生产</strong>。</p>
+<h1><a class="header" href="#与第三方代码连接" id="与第三方代码连接">与第三方代码连接</a></h1>
+<p>在 <a href="./getting_started.html">入门</a> 章节中，我们看到 Deno 能够从 URL 执行脚本。像浏览器中的 JavaScript 一样，Deno 可以从 URL 直接导入代码库。</p>
+<p>这个示例使用 URL 来导入一个断言库：</p>
+<pre><code class="language-ts">import { assertEquals } from &quot;https://deno.land/std/testing/asserts.ts&quot;;
+
+assertEquals(&quot;hello&quot;, &quot;hello&quot;);
+assertEquals(&quot;world&quot;, &quot;world&quot;);
+
+console.log(&quot;Asserted! 🎉&quot;);
+</code></pre>
+<p>尝试运行一下：</p>
+<pre><code class="language-shell">$ deno run test.ts
+Compile file:///mnt/f9/Projects/github.com/denoland/deno/docs/test.ts
+Download https://deno.land/std/testing/asserts.ts
+Download https://deno.land/std/fmt/colors.ts
+Download https://deno.land/std/testing/diff.ts
+Asserted! 🎉
+</code></pre>
+<p>对于这个程序，我们不需要提供 <code>--allow-net</code> 选项。当它访问网络时，Deno 运行时有着特殊权限来下载模块并缓存到磁盘。</p>
+<p>Deno 在一个特殊目录缓存了远程模块，该路径可以被 <code>$DENO_DIR</code> 指定，如果没有指定，默认为系统缓存目录。下一次运行这个程序时无需下载。如果这个程序没有改动，它不会被再次编译。</p>
+<p>系统缓存目录默认为：</p>
+<ul>
+<li>Linux/Redox: <code>$XDG_CACHE_HOME/deno</code> or <code>$HOME/.cache/deno</code></li>
+<li>Windows: <code>%LOCALAPPDATA%/deno</code> (<code>%LOCALAPPDATA%</code> = <code>FOLDERID_LocalAppData</code>)</li>
+<li>macOS: <code>$HOME/Library/Caches/deno</code></li>
+</ul>
+<p>如果失败，该路径设置为 <code>$HOME/.deno</code>。</p>
+<h2><a class="header" href="#faq" id="faq">FAQ</a></h2>
+<h3><a class="header" href="#如果-httpsdenoland-宕机会发生什么" id="如果-httpsdenoland-宕机会发生什么">如果 <code>https://deno.land/</code> 宕机会发生什么？</a></h3>
+<p>依赖外部服务在开发时很方便，但在生产环境很脆弱。生产级软件总是应该打包所有依赖。</p>
+<p>在 Deno 中，您应该将 <code>$DENO_DIR</code> 检入版本控制系统，并在运行时指定 <code>$DENO_DIR</code> 环境变量。</p>
+<h3><a class="header" href="#如何信任可能更改的-url" id="如何信任可能更改的-url">如何信任可能更改的 URL？</a></h3>
+<p>使用 <code>--lock</code> 命令行选项，通过一个锁文件 (lock file)，您可以确保自己运行的是所期望的代码。更多信息请看<a href="./linking_to_external_code/integrity_checking.html">这里</a></p>
+<h3><a class="header" href="#如何导入特定版本" id="如何导入特定版本">如何导入特定版本？</a></h3>
+<p>只需在 URL 中指定版本。举个例子，这个 URL 指定了要运行的版本 <code>https://unpkg.com/liltest@0.0.5/dist/liltest.js</code>。结合之前提到的在生产中设置 <code>$DENO_DIR</code> 的方法，您可以完全指定要运行的代码，并且无需访问网络。</p>
+<h3><a class="header" href="#到处导入-url-似乎很麻烦" id="到处导入-url-似乎很麻烦">到处导入 URL 似乎很麻烦</a></h3>
+<blockquote>
+<p>如果其中一个 URL 链接到一个完全不同的库版本，该怎么办？</p>
+</blockquote>
+<blockquote>
+<p>在大型项目中到处维护 URL 是否容易出错？</p>
+</blockquote>
+<p>解决办法是在一个中心化的 <code>deps.ts</code> 中重新导出所依赖的外部库，它和 Node 的 <code>package.json</code> 具有相同的作用。</p>
+<p>举个例子，您正在一个大型项目中使用一个断言库，您可以创建一个 <code>deps.ts</code> 文件来导出第三方代码，而不是到处导入 <code>&quot;https://deno.land/std/testing/asserts.ts&quot;</code>。</p>
+<pre><code class="language-ts">export {
+  assert,
+  assertEquals,
+  assertStrContains,
+} from &quot;https://deno.land/std/testing/asserts.ts&quot;;
+</code></pre>
+<p>在这个项目中，您可以从 <code>deps.ts</code> 导入，避免对相同的 URL 产生过多引用。</p>
+<pre><code class="language-ts">import { assertEquals, runTests, test } from &quot;./deps.ts&quot;;
+</code></pre>
+<p>这种设计规避了包管理、集中式代码存储库和多余的文件格式带来的过多复杂性。</p>
+<h2><a class="header" href="#重新加载特定的模块" id="重新加载特定的模块">重新加载特定的模块</a></h2>
+<p>您可以使用 <code>--reload</code> 开关使本地 <code>DENO_DIR</code> 缓存无效化。其用途如下：</p>
+<p>重新加载所有内容</p>
+<p><code>--reload</code></p>
+<p>有时我们只想升级某些模块，可以通过将参数传递给 <code>--reload</code> 开关来控制它。</p>
+<p>重新加载所有标准模块</p>
+<p><code>--reload=https://deno.land/std</code></p>
+<p>为了重新加载特定的模块（在这个例子中 - colors 和 file system utils），需要使用逗号来分隔 URL</p>
+<p><code>--reload=https://deno.land/std/fs/utils.ts,https://deno.land/std/fmt/colors.ts</code></p>
+<h2><a class="header" href="#完整性检查与锁定文件" id="完整性检查与锁定文件">完整性检查与锁定文件</a></h2>
+<p>Deno 可以使用较小的 JSON 文件存储和检查模块的子资源完整性。 使用 <code>--lock=lock.json</code> 启用和指定锁文件检查。要更新或创建锁，可以使用 <code>--lock=lock.json --lock-write</code>。</p>
+<h2><a class="header" href="#代理proxies" id="代理proxies">代理（Proxies）</a></h2>
+<p>Deno 支持模块下载和 <code>fetch</code> API 的代理。</p>
+<p>代理配置从环境变量中读取: <code>HTTP_PROXY</code> 和 <code>HTTPS_PROXY</code>。</p>
+<p>在 Windows 的环境下，如果没有发现环境变量， Deno 会退回到从注册表读取代理。</p>
+<h2><a class="header" href="#导入映射import-maps" id="导入映射import-maps">导入映射（Import maps）</a></h2>
+<blockquote>
+<p>这是一个不稳定功能。了解更多关于<a href="linking_to_external_code/../../runtime/unstable">不稳定功能</a></p>
+</blockquote>
+<p>Deno 支持<a href="https://github.com/WICG/import-maps">import maps</a></p>
+<p>您可以通过 <code>--importmap=&lt;FILE&gt;</code> 的 CLI 开关使用 import map。</p>
+<p>目前的局限性:</p>
+<ul>
+<li>导入映射单一</li>
+<li>没有后备 URL</li>
+<li>Deno 不支持 <code>std:</code> 命名空间</li>
+<li>仅支持 <code>file:</code>，<code>http:</code> 和 <code>https:</code> 方法</li>
+</ul>
+<p>例如：</p>
+<pre><code class="language-js">// import_map.json
+
+{
+   &quot;imports&quot;: {
+      &quot;http/&quot;: &quot;https://deno.land/std/http/&quot;
+   }
+}
+</code></pre>
+<pre><code class="language-ts">// hello_server.ts
+
+import { serve } from &quot;http/server.ts&quot;;
+
+const body = new TextEncoder().encode(&quot;Hello World\n&quot;);
+for await (const req of serve(&quot;:8000&quot;)) {
+  req.respond({ body });
+}
+</code></pre>
+<pre><code class="language-shell">$ deno run --importmap=import_map.json hello_server.ts
+</code></pre>
+<h1><a class="header" href="#测试" id="测试">测试</a></h1>
+<h1><a class="header" href="#编写测试" id="编写测试">编写测试</a></h1>
+<h1><a class="header" href="#运行测试" id="运行测试">运行测试</a></h1>
+<h1><a class="header" href="#插件" id="插件">插件</a></h1>
+<h1><a class="header" href="#插件如何工作" id="插件如何工作">插件如何工作？</a></h1>
+<h1><a class="header" href="#创建插件" id="创建插件">创建插件</a></h1>
+<h1><a class="header" href="#使用插件" id="使用插件">使用插件</a></h1>
+<h1><a class="header" href="#内置工具" id="内置工具">内置工具</a></h1>
+<p>Deno 提供了一些内置的工具，在处理 JavaScript 和 TypeScript 时很有用。</p>
+<!-- prettier-ignore-start -->
+<!-- prettier incorrectly moves the coming soon links to new lines -->
+<ul>
+<li><a href="../testing">测试 (<code>deno test</code>)</a></li>
+<li><a href="./formatter">代码格式化 (<code>deno fmt</code>)</a></li>
+<li><a href="./bundler">打包器 (<code>deno bundle</code>)</a></li>
+<li><a href="./debugger">调试器 (<code>--debug</code>)</a></li>
+<li><a href="./documentation_generator">文档生成器 (<code>deno doc</code>)</a></li>
+<li><a href="./dependency_inspector">依赖检查器 (<code>deno info</code>)</a></li>
+<li>linter (<code>deno lint</code>) <a href="https://github.com/denoland/deno/issues/1880">coming soon</a></li>
+</ul>
+<!-- prettier-ignore-end -->
+<h2><a class="header" href="#调试器" id="调试器">调试器</a></h2>
+<!-- TODO(lucacasonto): write things -->
+<h2><a class="header" href="#脚本安装器" id="脚本安装器">脚本安装器</a></h2>
+<p>Deno 提供 <code>deno install</code> 来安装和分发可执行代码。</p>
+<p><code>deno install [OPTIONS...] [URL] [SCRIPT_ARGS...]</code> 将把位于 <code>URL</code> 的脚本安装到名称 <code>EXE_NAME</code> 下。</p>
+<p>这个命令将会创建一个轻薄的 shell 脚本来调用 <code>deno</code>，其中写入了特定的命令行参数。它位于 <code>deno</code> 安装目录的 <code>bin</code> 子目录下。</p>
+<p>示例：</p>
+<pre><code class="language-shell">$ deno install --allow-net --allow-read https://deno.land/std/http/file_server.ts
+[1/1] Compiling https://deno.land/std/http/file_server.ts
+
+✅ Successfully installed file_server.
+/Users/deno/.deno/bin/file_server
+</code></pre>
+<p>要改变命令名称，使用 <code>-n</code>/<code>--name</code> 参数：</p>
+<pre><code class="language-shell">deno install --allow-net --allow-read -n serve https://deno.land/std/http/file_server.ts
+</code></pre>
+<p>默认情况下，Deno 会自动推导命令名称。</p>
+<ul>
+<li>
+<p>尝试获取文件名称 (file stem)，以上示例将推导为 &quot;file_server&quot;</p>
+</li>
+<li>
+<p>如果文件名称是通用的，比如 &quot;main&quot;、&quot;mod&quot;、&quot;index&quot; 或 &quot;cli&quot;，并且它的路径没有父级，那么取父级路径的文件名，否则设置为原通用名称。</p>
+</li>
+</ul>
+<p>要改变安装路径，使用 <code>--root</code> 选项：</p>
+<pre><code class="language-shell">$ deno install --allow-net --allow-read --root /usr/local https://deno.land/std/http/file_server.ts
+</code></pre>
+<p>按照优先顺序确定安装根目录：</p>
+<ul>
+<li><code>--root</code> 选项</li>
+<li><code>DENO_INSTALL_ROOT</code> 环境变量</li>
+<li><code>$HOME/.deno</code></li>
+</ul>
+<p>如果需要，它们必须被添加进 <code>PATH</code> 环境变量。</p>
+<pre><code class="language-shell">$ echo 'export PATH=&quot;$HOME/.deno/bin:$PATH&quot;' &gt;&gt; ~/.bashrc
+</code></pre>
+<p>在安装时，您必须指定脚本会用到的权限。</p>
+<pre><code class="language-shell">$ deno install --allow-net --allow-read https://deno.land/std/http/file_server.ts 8080
+</code></pre>
+<p>以上命令会创建一个名叫 <code>file_server</code> 的命令，运行时需要读取权限和网络权限，绑定到 8080 端口。</p>
+<p>我们建议使用 <a href="tools/../examples/testing_if_main.html">import.meta.main</a> 来指定作为可执行脚本时的入口点。</p>
+<p>示例：</p>
+<pre><code class="language-ts">// https://example.com/awesome/cli.ts
+async function myAwesomeCli(): Promise&lt;void&gt; {
+  -- snip --
+}
+
+if (import.meta.main) {
+  myAwesomeCli();
+}
+</code></pre>
+<p>当您创建一个可执行脚本时，最好在仓库中告诉用户如何安装，让用户看到一个示例安装命令。</p>
+<pre><code class="language-shell"># 使用 deno install 安装
+
+$ deno install -n awesome_cli https://example.com/awesome/cli.ts
+</code></pre>
+<h2><a class="header" href="#代码格式化" id="代码格式化">代码格式化</a></h2>
+<p>Deno 有着内置的格式化工具，能够格式化 TypeScript 和 JavaScript 代码。</p>
+<pre><code class="language-shell"># 格式化当前目录和子目录下的所有 JS/TS 文件
+deno fmt
+# 格式化特定的文件
+deno fmt myfile1.ts myfile2.ts
+# 检查当前目录和子目录下的所有 JS/TS 文件是否都已被格式化
+deno fmt --check
+# 将标准输入流格式化并写入标准输出流
+cat file.ts | deno fmt -
+</code></pre>
+<p>通过加上一句 <code>// deno-fmt-ignore</code> 注释来忽略格式化。</p>
+<!-- prettier-ignore-start -->
+<pre><code class="language-ts">// deno-fmt-ignore
+export const identity = [
+    1, 0, 0,
+    0, 1, 0,
+    0, 0, 1,
+];
+</code></pre>
+<!-- prettier-ignore-end -->
+<p>在文件头部加上一句 <code>// deno-fmt-ignore-file</code> 注释可以忽略整个文件。</p>
+<h2><a class="header" href="#打包" id="打包">打包</a></h2>
+<p><code>deno bundle [URL]</code> 将输出一个单独的 JavaScript 文件，其中包含了它的所有依赖。</p>
+<p>示例：</p>
+<pre><code>&gt; deno bundle https://deno.land/std/examples/colors.ts colors.bundle.js
+Bundling &quot;colors.bundle.js&quot;
+Emitting bundle to &quot;colors.bundle.js&quot;
+9.2 kB emitted.
+</code></pre>
+<p>如果您忽略了输出文件参数，打包文件将输出到 stdout。</p>
+<p>这个打包文件能够像其他任何模块一样在 Deno 中运行。</p>
+<pre><code>deno colors.bundle.js
+</code></pre>
+<p>打包文件是一个自包含 (self contained) 的 ES 模块，其中的任何导出仍然可用。</p>
+<p>举个例子，如果主模块是这样的：</p>
+<pre><code class="language-ts">export { foo } from &quot;./foo.js&quot;;
+
+export const bar = &quot;bar&quot;;
+</code></pre>
+<p>它可以像这样被导入：</p>
+<pre><code class="language-ts">import { foo, bar } from &quot;./lib.bundle.js&quot;;
+</code></pre>
+<p>打包文件也可以在浏览器中被加载，它是一个自包含的 ES 模块，因此 <code>type</code> 属性 (attribute) 必须设置为 <code>&quot;module&quot;</code>。</p>
+<p>示例：</p>
+<pre><code class="language-html">&lt;script type=&quot;module&quot; src=&quot;website.bundle.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>除了直接加载，它也可以从其他模块导入。</p>
+<pre><code class="language-html">&lt;script type=&quot;module&quot;&gt;
+  import * as website from &quot;website.bundle.js&quot;;
+&lt;/script&gt;
+</code></pre>
+<h2><a class="header" href="#文档生成器" id="文档生成器">文档生成器</a></h2>
+<!-- TODO(lucacasonto): write things -->
+<h2><a class="header" href="#依赖检查器" id="依赖检查器">依赖检查器</a></h2>
+<!-- TODO(lucacasonto): write things -->
+<h1><a class="header" href="#嵌入式-deno" id="嵌入式-deno">嵌入式 Deno</a></h1>
+<p>Deno 由多个部分组成，其中之一是 <code>deno_core</code>。这是一个 rust
+crate，可以用作 Rust 应用中的嵌入式 JavaScript 运行时。</p>
+<p>Deno 建立在 <code>deno_core</code> 的基础上。</p>
+<p>Deno crate 发布于 <a href="https://crates.io/crates/deno_core">crates.io</a>.</p>
+<p>您可以通过 <a href="https://docs.rs/deno_core">docs.rs</a> 查阅其 API。</p>
+<!-- TODO(lucacasonato): better docs -->
+<h1><a class="header" href="#贡献" id="贡献">贡献</a></h1>
+<ul>
+<li>阅读 <a href="./style-guide.zh-CN.html">风格指南</a>.</li>
+<li>通过<a href="https://github.com/denoland/deno/milestones">这里</a>跟进未来的发布。</li>
+<li>请不要让 <a href="https://deno.land/benchmarks.html">性能测试</a> 变糟。</li>
+<li>在 <a href="https://discord.gg/TGMHGv6">社区聊天室</a> 获取帮助。</li>
+<li>如果您将要在某个 issue 下做些工作，在那之前请先在 issue 中提示一下。</li>
+</ul>
+<h2><a class="header" href="#开发" id="开发">开发</a></h2>
+<p>从源码构建的步骤在<a href="./contributing/building_from_source.html">这里</a></p>
+<h2><a class="header" href="#发起一个-pull-request" id="发起一个-pull-request">发起一个 Pull Request</a></h2>
+<p>在提交之前，请确认以下步骤：</p>
+<ol>
+<li>存在一个相关 issue，并且 PR 文本中引用了它。</li>
+<li>有覆盖这些变化的测试。</li>
+<li>确保 <code>cargo test</code> 通过。</li>
+<li>使用 <code>tools/format.py</code> 格式化代码。</li>
+<li>确保 <code>./tools/lint.py</code> 通过。</li>
+</ol>
+<h2><a class="header" href="#third_party-的改动" id="third_party-的改动"><code>third_party</code> 的改动</a></h2>
+<p><a href="https://github.com/denoland/deno_third_party"><code>deno_third_party</code></a> 包含了大部分 Deno 依赖的外部代码，所以我们在任何时候都知道我们在运行什么。我们用一些手动操作和私有脚本来维护它，要做出改动，您可能需要联系 @ry 或 @piscisaureus。</p>
+<h2><a class="header" href="#增加-ops" id="增加-ops">增加 Ops</a></h2>
+<p>Ops 又称“绑定” (bindings)。</p>
+<p>我们非常担心在添加新 API 时会出错。在向 Deno 添加 Op 时，应该研究其他平台上的对应接口。请列出如何在 Go、Node、Rust 和 Python 中完成此功能。</p>
+<p>例如，参考 <code>deno.rename()</code> 是如何在
+<a href="https://github.com/denoland/deno/pull/671">PR #671</a>中提出并添加的。</p>
+<h2><a class="header" href="#api-文档" id="api-文档">API 文档</a></h2>
+<p>公开API文档很重要，我们希望它与代码内联。这有助于确保代码和文档紧密结合在一起。</p>
+<h3><a class="header" href="#利用-jsdoc" id="利用-jsdoc">利用 JSDoc</a></h3>
+<p>所有通过 <code>deno</code> 模块以及 global/<code>window</code> 命名空间公开的 API 和类型都应该有 JSDoc 文档。该文档经过解析并可供 TypeScript 编译器使用，因此易于在下游提供。JSDoc 块就在它们应用的语句之前，并以<code>/** doc */</code>表示。例如：</p>
+<pre><code class="language-ts">/** A simple JSDoc comment */
+export const FOO = &quot;foo&quot;;
+</code></pre>
+<h2><a class="header" href="#从源码构建-1" id="从源码构建-1">从源码构建</a></h2>
+<p>以下是从源码构建 Deno 的操作步骤。如果您只是想使用 Deno，您可以下载一个预构建的可执行文件，参考 <code>入门</code> 章节。</p>
+<h3><a class="header" href="#克隆-deno-仓库" id="克隆-deno-仓库">克隆 Deno 仓库</a></h3>
+<p>Linux 或 Mac 系统：</p>
+<p>Clone on Linux or Mac:</p>
+<pre><code class="language-bash">git clone --recurse-submodules https://github.com/denoland/deno.git
+</code></pre>
+<p>在 Windows 系统上有一些额外步骤：</p>
+<ol>
+<li>
+<p><a href="https://www.google.com/search?q=windows+enable+developer+mode">打开“开发者模式”</a>，否则符号链接将需要管理员权限。</p>
+</li>
+<li>
+<p>确认您正在使用 git 2.19.2.windows.1，或更高版本。</p>
+</li>
+<li>
+<p>在检出 (checkout) 前，设置 <code>core.symlinks=true</code>。</p>
+<pre><code class="language-bash">git config --global core.symlinks true
+git clone --recurse-submodules https://github.com/denoland/deno.git
+</code></pre>
+</li>
+</ol>
+<h3><a class="header" href="#前置条件" id="前置条件">前置条件</a></h3>
+<p>最简单的方式是使用预编译的 V8 ：</p>
+<pre><code>cargo build -vv
+</code></pre>
+<p>如果您想要从源码构建 Deno 和 V8 ：</p>
+<pre><code>V8_FROM_SOURCE=1 cargo build -vv
+</code></pre>
+<p>从源码构建 V8 时会有更多依赖：</p>
+<p><a href="https://www.python.org/downloads">Python 2</a>. 确认您的 <code>PATH</code> 环境变量中有一个无后缀 (suffix-less) 的 <code>python</code>/<code>python.exe</code>，并且它指向 Python 2，而不是 Python3 (<a href="https://github.com/denoland/deno/issues/464#issuecomment-411795578">issue 464</a>)。</p>
+<p>对于 Linux 用户，glib-2.0 开发文件必须已经安装。在 Ubuntu 上，运行 <code>apt install libglib2.0-dev</code>。</p>
+<p>对于 Mac 用户，<a href="https://developer.apple.com/xcode/">XCode</a> 必须已经安装。</p>
+<p>对于 Windows 用户：</p>
+<ol>
+<li>
+<p>安装 <a href="https://www.visualstudio.com/downloads/">VS Community 2019</a>，安装 &quot;Desktop development with C++&quot; 工具包，确认以下工具都已被选中和安装。</p>
+<ul>
+<li>Visual C++ tools for CMake</li>
+<li>Windows 10 SDK (10.0.17763.0)</li>
+<li>Testing tools core features - Build Tools</li>
+<li>Visual C++ ATL for x86 and x64</li>
+<li>Visual C++ MFC for x86 and x64</li>
+<li>C++/CLI support</li>
+<li>VC++ 2015.3 v14.00 (v140) toolset for desktop</li>
+</ul>
+</li>
+<li>
+<p>启用 &quot;Debugging Tools for Windows&quot;：
+&quot;Control Panel&quot; 
+→ &quot;Programs&quot; 
+→ &quot;Programs and Features&quot; 
+→ 选择 &quot;Windows Software Development Kit - Windows 10&quot; 
+→ &quot;Change&quot; 
+→ &quot;Change&quot; 
+→ 检查 &quot;Debugging Tools For Windows&quot; 
+→ &quot;Change&quot; 
+→ &quot;Finish&quot;
+或者使用 <a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/">Debugging Tools for Windows</a>，它会下载文件，您应该手动安装 <code>X64 Debuggers And Tools-x64_en-us.msi</code>。</p>
+</li>
+</ol>
+<p>有关构建 V8 的更多细节请查阅 <a href="https://github.com/denoland/rusty_v8">rusty_v8's README</a></p>
+<h3><a class="header" href="#构建" id="构建">构建</a></h3>
+<p>使用 Cargo：</p>
+<pre><code class="language-bash"># 构建：
+cargo build -vv
+
+# 构建失败？确认您位于最新的 master 分支，然后再试一次，如果还不行，尝试清除上一次的结果：Build errors?  Ensure you have latest master and try building again, or if that doesn't work try:
+cargo clean &amp;&amp; cargo build -vv
+
+# 运行：
+./target/debug/deno cli/tests/002_hello.ts
+</code></pre>
+<h2><a class="header" href="#测试和工具" id="测试和工具">测试和工具</a></h2>
+<h3><a class="header" href="#测试-1" id="测试-1">测试</a></h3>
+<p>测试 <code>deno</code>:</p>
+<pre><code class="language-bash"># 运行所有测试套件：
+cargo test
+
+# 只测试 cli/js/：
+cargo test js_unit_tests
+</code></pre>
+<p>测试 <code>std/</code>:</p>
+<pre><code class="language-bash">cargo test std_tests
+</code></pre>
+<h3><a class="header" href="#代码检查与格式化" id="代码检查与格式化">代码检查与格式化</a></h3>
+<p>检查</p>
+<pre><code class="language-bash">./tools/lint.py
+</code></pre>
+<p>格式化</p>
+<pre><code class="language-bash">./tools/format.py
+</code></pre>
+<h3><a class="header" href="#性能分析" id="性能分析">性能分析</a></h3>
+<pre><code class="language-sh"># 确认我们正在构建发布版 (release)。
+# 构建 deno 和 V8 的 d8。
+ninja -C target/release d8
+
+# 使用 --prof 选项运行想要分析的程序。
+./target/release/deno run tests/http_bench.ts --allow-net --v8-flags=--prof &amp;
+
+# 施加压力。
+third_party/wrk/linux/wrk http://localhost:4500/
+kill `pgrep deno`
+</code></pre>
+<p>V8 将在当前目录写入一个文件，像这样 <code>isolate-0x7fad98242400-v8.log</code>。查看这个文件：</p>
+<pre><code class="language-sh">D8_PATH=target/release/ ./third_party/v8/tools/linux-tick-processor
+isolate-0x7fad98242400-v8.log &gt; prof.log
+# 在 macOS 上, 使用 ./third_party/v8/tools/mac-tick-processor
+</code></pre>
+<p><code>prof.log</code> 将包含不用调用的 tick 分布。</p>
+<p>用 Web UI 查看这个日志，先生成 JSON 文件：</p>
+<pre><code class="language-sh">D8_PATH=target/release/ ./third_party/v8/tools/linux-tick-processor
+isolate-0x7fad98242400-v8.log --preprocess &gt; prof.json
+</code></pre>
+<p>在您的浏览器中打开 <code>third_party/v8/tools/profview/index.html</code>，选择 <code>prof.json</code> 以查看分布图。</p>
+<p>在性能分析时有用的 V8 选项：</p>
+<ul>
+<li>--prof</li>
+<li>--log-internal-timer-events</li>
+<li>--log-timer-events</li>
+<li>--track-gc</li>
+<li>--log-source-code</li>
+<li>--track-gc-object-stats</li>
+</ul>
+<p>有关 <code>d8</code> 和性能分析的更多信息，请查阅以下链接：</p>
+<ul>
+<li><a href="https://v8.dev/docs/d8">https://v8.dev/docs/d8</a></li>
+<li><a href="https://v8.dev/docs/profile">https://v8.dev/docs/profile</a></li>
+</ul>
+<h3><a class="header" href="#使用-lldb-调试" id="使用-lldb-调试">使用 LLDB 调试</a></h3>
+<h3><a class="header" href="#debugging-with-lldb" id="debugging-with-lldb">Debugging with LLDB</a></h3>
+<pre><code class="language-shell">$ lldb -- target/debug/deno run tests/worker.js
+&gt; run
+&gt; bt
+&gt; up
+&gt; up
+&gt; l
+</code></pre>
+<p>调试 Rust 代码，可以用 <code>rust-lldb</code>。</p>
+<pre><code class="language-shell">$ rust-lldb -- ./target/debug/deno run --allow-net tests/http_bench.ts
+# 在 macOS 上，您可能看到像这样的警告：
+# `ImportError: cannot import name _remove_dead_weakref`
+# 在这种情况下，设置 PATH 以使用系统 python，例如
+# PATH=/System/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH
+(lldb) command script import &quot;/Users/kevinqian/.rustup/toolchains/1.36.0-x86_64-apple-darwin/lib/rustlib/etc/lldb_rust_formatters.py&quot;
+(lldb) type summary add --no-value --python-function lldb_rust_formatters.print_val -x &quot;.*&quot; --category Rust
+(lldb) type category enable Rust
+(lldb) target create &quot;../deno/target/debug/deno&quot;
+Current executable set to '../deno/target/debug/deno' (x86_64).
+(lldb) settings set -- target.run-args  &quot;tests/http_bench.ts&quot; &quot;--allow-net&quot;
+(lldb) b op_start
+(lldb) r
+</code></pre>
+<h3><a class="header" href="#v8-选项" id="v8-选项">V8 选项</a></h3>
+<p>V8 有很多内部的命令行选项。</p>
+<pre><code class="language-shell"># 列出可用的 V8 选项
+$ deno --v8-flags=--help
+
+# 使用多个选项的示例
+$ deno --v8-flags=--expose-gc,--use-strict
+</code></pre>
+<p>特别有用的：</p>
+<pre><code>--async-stack-trace
+</code></pre>
+<h3><a class="header" href="#持续的性能测试" id="持续的性能测试">持续的性能测试</a></h3>
+<p>参考我们的测试 <a href="https://deno.land/benchmarks">https://deno.land/benchmarks</a></p>
+<p>测试图表假设 <a href="https://github.com/denoland/benchmark_data/data.json">https://github.com/denoland/benchmark_data/data.json</a> 有着 <code>BenchmarkData[]</code> 类型。以下是 <code>BenchmarkData</code> 的定义：</p>
+<pre><code class="language-ts">interface ExecTimeData {
+  mean: number;
+  stddev: number;
+  user: number;
+  system: number;
+  min: number;
+  max: number;
+}
+
+interface BenchmarkData {
+  created_at: string;
+  sha1: string;
+  benchmark: {
+    [key: string]: ExecTimeData;
+  };
+  binarySizeData: {
+    [key: string]: number;
+  };
+  threadCountData: {
+    [key: string]: number;
+  };
+  syscallCountData: {
+    [key: string]: number;
+  };
+}
+</code></pre>
+<h2><a class="header" href="#内部细节" id="内部细节">内部细节</a></h2>
+<h3><a class="header" href="#deno-和-linux-类比" id="deno-和-linux-类比">Deno 和 Linux 类比</a></h3>
+<table><thead><tr><th align="right"><strong>Linux</strong></th><th align="left"><strong>Deno</strong></th></tr></thead><tbody>
+<tr><td align="right">进程 (Processes)</td><td align="left">Web Workers</td></tr>
+<tr><td align="right">系统调用 (Syscalls)</td><td align="left">Ops</td></tr>
+<tr><td align="right">文件描述符 (fd)</td><td align="left"><a href="contributing/architecture.html#resources">Resource ids (rid)</a></td></tr>
+<tr><td align="right">调度器     (Scheduler)</td><td align="left">Tokio</td></tr>
+<tr><td align="right">用户空间: libc++ / glib / boost</td><td align="left">https://deno.land/std/</td></tr>
+<tr><td align="right">/proc/$$/stat</td><td align="left"><a href="contributing/architecture.html#metrics">Deno.metrics()</a></td></tr>
+<tr><td align="right">手册页   (man pages)</td><td align="left">deno types</td></tr>
+</tbody></table>
+<h4><a class="header" href="#资源-resources" id="资源-resources">资源 (Resources)</a></h4>
+<p>资源（Resources)，又称 <code>rid</code>，是 Deno 版本的文件描述符。它们是一些整数数值，用来指代打开的文件、套接字 (sockets) 和其他概念。基于 <code>rid</code>，Deno 能够查询系统中有多少个打开的资源，这在测试时很有用。</p>
+<pre><code class="language-ts">const { resources, close } = Deno;
+console.log(resources());
+// { 0: &quot;stdin&quot;, 1: &quot;stdout&quot;, 2: &quot;stderr&quot; }
+close(0);
+console.log(resources());
+// { 1: &quot;stdout&quot;, 2: &quot;stderr&quot; }
+</code></pre>
+<h4><a class="header" href="#指标-metrics" id="指标-metrics">指标 (Metrics)</a></h4>
+<p>指标 (Metrics) 是 Deno 用于各种数据的内部计数器。</p>
+<pre><code class="language-shell">&gt; console.table(Deno.metrics())
+┌──────────────────┬────────┐
+│     (index)      │ Values │
+├──────────────────┼────────┤
+│  opsDispatched   │   9    │
+│   opsCompleted   │   9    │
+│ bytesSentControl │  504   │
+│  bytesSentData   │   0    │
+│  bytesReceived   │  856   │
+└──────────────────┴────────┘
+</code></pre>
+<h3><a class="header" href="#架构示意图" id="架构示意图">架构示意图</a></h3>
+<p><img src="contributing/schematic_v0.2.png" alt="架构示意图" /></p>
+<h1><a class="header" href="#示例" id="示例">示例</a></h1>
+<p>在本章节，您可以找到一些示例程序，用来学习 Deno。</p>
+<h2><a class="header" href="#unix-cat-程序的一个实现" id="unix-cat-程序的一个实现">Unix &quot;cat&quot; 程序的一个实现</a></h2>
+<p>在这个程序中，每个命令行参数都是一个文件名，参数对应的文件将被依次打开，打印到标准输出流。</p>
+<pre><code class="language-ts">for (let i = 0; i &lt; Deno.args.length; i++) {
+  let filename = Deno.args[i];
+  let file = await Deno.open(filename);
+  await Deno.copy(file, Deno.stdout);
+  file.close();
+}
+</code></pre>
+<p>除了内核到用户空间再到内核的必要拷贝，这里的 <code>copy()</code> 函数不会产生额外的昂贵操作，从文件中读到的数据会原样写入标准输出流。这反映了 Deno I/O 流的通用设计目标。</p>
+<p>尝试一下：</p>
+<pre><code class="language-shell">$ deno run --allow-read https://deno.land/std/examples/cat.ts /etc/passwd
+</code></pre>
+<h2><a class="header" href="#文件服务器" id="文件服务器">文件服务器</a></h2>
+<h2><a class="header" href="#file-server" id="file-server">File server</a></h2>
+<p>这个示例将会启动一个本地目录的 HTTP 服务器。</p>
+<p>安装</p>
+<pre><code class="language-bash">deno install --allow-net --allow-read https://deno.land/std/http/file_server.ts
+</code></pre>
+<p>运行</p>
+<pre><code class="language-shell">$ file_server .
+Downloading https://deno.land/std/http/file_server.ts...
+[...]
+HTTP server listening on http://0.0.0.0:4500/
+</code></pre>
+<p>如果想要升级到最新版本：</p>
+<pre><code class="language-shell">$ file_server --reload
+</code></pre>
+<h2><a class="header" href="#tcp-回声服务" id="tcp-回声服务">TCP 回声服务</a></h2>
+<p>这个示例是一个简单的 TCP 回声服务，接收 8080 端口的连接，把接收到的任何数据返回给客户端。</p>
+<pre><code class="language-ts">const listener = Deno.listen({ port: 8080 });
+console.log(&quot;listening on 0.0.0.0:8080&quot;);
+for await (const conn of listener) {
+  Deno.copy(conn, conn);
+}
+</code></pre>
+<p>当这个程序启动时，它会抛出一个没有网络权限的错误。</p>
+<pre><code class="language-shell">$ deno run https://deno.land/std/examples/echo_server.ts
+error: Uncaught PermissionDenied: network access to &quot;0.0.0.0:8080&quot;, run again with the --allow-net flag
+► $deno$/dispatch_json.ts:40:11
+    at DenoError ($deno$/errors.ts:20:5)
+    ...
+</code></pre>
+<p>为了安全，Deno 不允许程序访问网络，除非显式赋予权限。使用一个命令行选项来允许程序访问网络：</p>
+<pre><code class="language-shell">$ deno run --allow-net https://deno.land/std/examples/echo_server.ts
+</code></pre>
+<p>尝试用 netcat 向它发送数据。</p>
+<pre><code class="language-shell">$ nc localhost 8080
+hello world
+hello world
+</code></pre>
+<p>像示例 <code>cat.ts</code> 一样，<code>copy()</code> 函数不会产生不必要的内存拷贝。它从内核接收数据包，然后发送回去，就这么简单。</p>
+<h2><a class="header" href="#运行子进程" id="运行子进程">运行子进程</a></h2>
+<p><a href="https://doc.deno.land/https/github.com/denoland/deno/releases/latest/download/lib.deno.d.ts#Deno.run">API 参考</a></p>
+<p>示例：</p>
+<pre><code class="language-ts">// 创建子进程
+const p = Deno.run({
+  cmd: [&quot;echo&quot;, &quot;hello&quot;],
+});
+
+// 等待完成
+await p.status();
+</code></pre>
+<p>运行</p>
+<pre><code class="language-shell">$ deno run --allow-run ./subprocess_simple.ts
+hello
+</code></pre>
+<p><code>window.onload</code> 被赋值为一个函数，它将会在主脚本加载后被调用，和浏览器的 <a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload">onload</a> 一样，可以用于主入口点。</p>
+<p>默认情况下，当您调用 <code>Deno.run()</code> 时，子进程将继承父进程的标准流。如果您想要和子进程通信，可以使用 <code>&quot;piped&quot;</code> 选项。</p>
+<pre><code class="language-ts">const fileNames = Deno.args;
+
+const p = Deno.run({
+  cmd: [
+    &quot;deno&quot;,
+    &quot;run&quot;,
+    &quot;--allow-read&quot;,
+    &quot;https://deno.land/std/examples/cat.ts&quot;,
+    ...fileNames,
+  ],
+  stdout: &quot;piped&quot;,
+  stderr: &quot;piped&quot;,
+});
+
+const { code } = await p.status();
+
+if (code === 0) {
+  const rawOutput = await p.output();
+  await Deno.stdout.write(rawOutput);
+} else {
+  const rawError = await p.stderrOutput();
+  const errorString = new TextDecoder().decode(rawError);
+  console.log(errorString);
+}
+
+Deno.exit(code);
+</code></pre>
+<p>运行</p>
+<pre><code class="language-shell">$ deno run --allow-run ./subprocess.ts &lt;somefile&gt;
+[file content]
+
+$ deno run --allow-run ./subprocess.ts non_existent_file.md
+
+Uncaught NotFound: No such file or directory (os error 2)
+    at DenoError (deno/js/errors.ts:22:5)
+    at maybeError (deno/js/errors.ts:41:12)
+    at handleAsyncMsgFromRust (deno/js/dispatch.ts:27:17)
+</code></pre>
+<h2><a class="header" href="#检查与放弃权限" id="检查与放弃权限">检查与放弃权限</a></h2>
+<h2><a class="header" href="#inspecting-and-revoking-permissions" id="inspecting-and-revoking-permissions">Inspecting and revoking permissions</a></h2>
+<blockquote>
+<p>这个程序使用了不稳定的 Deno 功能。更多信息请查阅
+<a href="examples/../runtime/unstable.html">unstable features</a></p>
+</blockquote>
+<p>有时一个程序会放弃之前获得的权限，在此之后，需要该权限的操作将失败。</p>
+<pre><code class="language-ts">// 查找一个权限
+const status = await Deno.permissions.query({ name: &quot;write&quot; });
+if (status.state !== &quot;granted&quot;) {
+  throw new Error(&quot;need write permission&quot;);
+}
+
+const log = await Deno.open(&quot;request.log&quot;, &quot;a+&quot;);
+
+// 放弃一些权限
+await Deno.permissions.revoke({ name: &quot;read&quot; });
+await Deno.permissions.revoke({ name: &quot;write&quot; });
+
+// 使用日志文件
+const encoder = new TextEncoder();
+await log.write(encoder.encode(&quot;hello\n&quot;));
+
+// 这将会失败
+await Deno.remove(&quot;request.log&quot;);
+</code></pre>
+<h2><a class="header" href="#处理系统信号" id="处理系统信号">处理系统信号</a></h2>
+<blockquote>
+<p>这个程序使用了不稳定的 Deno 功能。更多信息请查阅
+<a href="examples/../runtime/unstable.html">unstable features</a></p>
+</blockquote>
+<p><a href="https://deno.land/typedoc/index.html#signal">API 参考</a></p>
+<p>您可以使用 <code>Deno.signal()</code> 函数来处理系统信号。</p>
+<pre><code>for await (const _ of Deno.signal(Deno.Signal.SIGINT)) {
+  console.log(&quot;interrupted!&quot;);
+}
+</code></pre>
+<p><code>Deno.signal()</code> 也是一个 promise。</p>
+<pre><code>await Deno.signal(Deno.Singal.SIGINT);
+console.log(&quot;interrupted!&quot;);
+</code></pre>
+<p>如果您想要停止监控信号，可以使用信号对象的 <code>dispose()</code> 方法。</p>
+<pre><code>const sig = Deno.signal(Deno.Signal.SIGINT);
+setTimeout(() =&gt; { sig.dispose(); }, 5000);
+
+for await (const _ of sig) {
+  console.log(&quot;interrupted&quot;);
+}
+</code></pre>
+<p>以上 for-await 循环将在 sig.dispose() 被调用时退出，运行时间为 5 秒。</p>
+<h1><a class="header" href="#文件系统事件" id="文件系统事件">文件系统事件</a></h1>
+<h2><a class="header" href="#测试当前文件是否为主程序" id="测试当前文件是否为主程序">测试当前文件是否为主程序</a></h2>
+<p>当前脚本作为主程序的标志是 <code>import.meta.main</code>。</p>
+<pre><code class="language-ts">if (import.meta.main) {
+  console.log(&quot;main&quot;);
+}
+</code></pre>
+<!-- https://github.com/denoland/deno/blob/be65f6692f0f81dc88c77ba4cf22cdda40760317/std/style_guide.md -->
+<!-- copy time: 20200506 -->
+<h1><a class="header" href="#deno-风格指南" id="deno-风格指南">Deno 风格指南</a></h1>
+<h2><a class="header" href="#目录" id="目录">目录</a></h2>
+<h2><a class="header" href="#版权标题" id="版权标题">版权标题</a></h2>
+<p>存储库中的大多数模块都应具有以下版权标题:</p>
+<pre><code class="language-ts">// Copyright 2018-2020 the Deno authors. All rights reserved. MIT license.
+</code></pre>
+<p>如果代码来源于其他地方，请确保文件拥有适当的版权拥有者。 我们只允许 MIT、BSD 和 Apache 许可代码。</p>
+<h2><a class="header" href="#在文件名中使用下划线而不是破折号" id="在文件名中使用下划线而不是破折号">在文件名中使用下划线，而不是破折号</a></h2>
+<p>例如: 将文件命名为 <code>file_server.ts</code> 而不是 <code>file-server.ts</code>。</p>
+<h2><a class="header" href="#为新特性添加测试" id="为新特性添加测试">为新特性添加测试</a></h2>
+<p>每个模块都应该包含或伴随着对其公共功能的测试。</p>
+<h2><a class="header" href="#todo-注释" id="todo-注释">TODO 注释</a></h2>
+<p>TODO 注释通常应该将一个 issue 或者作者的 github 用户名放在括号中。例如:</p>
+<pre><code class="language-ts">// TODO(ry): Add tests.
+// TODO(#123): Support Windows.
+// FIXME(#349): Sometimes panics.
+</code></pre>
+<h2><a class="header" href="#不建议使用元编程meta-programming包括代理proxy的使用" id="不建议使用元编程meta-programming包括代理proxy的使用">不建议使用元编程（Meta-programming），包括代理（Proxy）的使用</a></h2>
+<p>即使要写更多的代码，也要力求明确。</p>
+<p>在某些情况下，使用这些技术可能是有意义的，但是在绝大多数情况下，它们是没有意义的。</p>
+<h2><a class="header" href="#rust" id="rust">Rust</a></h2>
+<p>遵循 Rust 约定，并与现有代码保持一致。</p>
+<h2><a class="header" href="#typescript" id="typescript">Typescript</a></h2>
+<p>代码库的 TypeScript 部分包括内置的 <code>cli/js</code> 和标准库 <code>std</code>。</p>
+<h3><a class="header" href="#使用-typescript-而不是-javascript" id="使用-typescript-而不是-javascript">使用 TypeScript 而不是 JavaScript</a></h3>
+<h3><a class="header" href="#使用术语模块module而不是库library或包package" id="使用术语模块module而不是库library或包package">使用术语“模块（module）”，而不是“库（library）”或“包（package）”</a></h3>
+<p>为了保证明确性和一致性，避免使用术语 “library” 和 “package” ，而是使用 “module” 来引用一个 JS 或 TS 文件，或者一个 TS/JS 代码目录。</p>
+<h3><a class="header" href="#不要使用-indexts-或-indexjs-作为文件名" id="不要使用-indexts-或-indexjs-作为文件名">不要使用 <code>index.ts</code> 或 <code>index.js</code> 作为文件名</a></h3>
+<p>Deno 不会以特殊的方式处理 “index.js” 或 “index.ts” 文件。如果使用了这些名称，就意味着当它们需要模块说明符时，可能被排除在外。这会造成误解。</p>
+<p>如果一个代码目录需要一个默认的入口点，使用文件名 <code>mod.ts</code>。 文件名 <code>mod.ts</code> 遵循 Rust 的约定，比 <code>index.ts</code> 短，并且没有任何关于它如何工作的先入为主的概念。</p>
+<h3><a class="header" href="#导出函数exported-functions-最多2个参数其余的放入一个选项对象options-object" id="导出函数exported-functions-最多2个参数其余的放入一个选项对象options-object">导出函数（Exported functions）: 最多2个参数，其余的放入一个选项对象（options object）</a></h3>
+<p>在设计函数接口时，请严格遵循以下规则：</p>
+<ol>
+<li>
+<p>若某函数是公共 API 的一部分，则其可以接受 0~2 个参数，如果必要的话，可以外加一个选项对象，因此最大总数为 3 个。</p>
+</li>
+<li>
+<p>可选参数通常应放到选项对象中。</p>
+<p>如果只有一个可选参数，并且将来一般不会添加更多可选参数，那么该可选参数可以不放在选项对象中。</p>
+</li>
+<li>
+<p>选项参数是唯一一个常规对象参数</p>
+<p>其他参数可以是对象，但它们在运行时必须能区别于其他一般的对象（&quot;plain&quot; Object）。有以下两种方法进行区别：</p>
+<ul>
+<li>一个独特的原型（例如：<code>Array</code>，<code>Map</code>，<code>Date</code>，<code>class MyThing</code>）</li>
+<li>一个众所周知的符号属性（例如 <code>Symbol.iterator</code>）</li>
+</ul>
+<p>这允许 API 以向后兼容的方式发展，即使选项对象的位置发生了变化。</p>
+</li>
+</ol>
+<pre><code class="language-ts">// 错误示例：可选参数不是选项对象的一部分 (#2)
+export function resolve(
+  hostname: string,
+  family?: &quot;ipv4&quot; | &quot;ipv6&quot;,
+  timeout?: number
+): IPAddress[] {}
+
+// 正确示例：
+export interface ResolveOptions {
+  family?: &quot;ipv4&quot; | &quot;ipv6&quot;;
+  timeout?: number;
+}
+export function resolve(
+  hostname: string,
+  options: ResolveOptions = {}
+): IPAddress[] {}
+</code></pre>
+<pre><code class="language-ts">export interface Environment {
+  [key: string]: string;
+}
+
+// 错误示例：`env`可以是一个常规对象，因此无法与选项对象区分 (#3)
+export function runShellWithEnv(cmdline: string, env: Environment): string {}
+
+// 正确示例
+export interface RunShellOptions {
+  env: Environment;
+}
+export function runShellWithEnv(
+  cmdline: string,
+  options: RunShellOptions
+): string {}
+</code></pre>
+<pre><code class="language-ts">// 错误示例：多于3个参数 (#1)，多个可选参数 (#2)。
+export function renameSync(
+  oldname: string,
+  newname: string,
+  replaceExisting?: boolean,
+  followLinks?: boolean
+) {}
+
+// 正确示例
+interface RenameOptions {
+  replaceExisting?: boolean;
+  followLinks?: boolean;
+}
+export function renameSync(
+  oldname: string,
+  newname: string,
+  options: RenameOptions = {}
+) {}
+</code></pre>
+<pre><code class="language-ts">// 错误示例：参数过多 (#1)
+export function pwrite(
+  fd: number,
+  buffer: TypedArray,
+  offset: number,
+  length: number,
+  position: number
+) {}
+
+// 正确示例：
+export interface PWrite {
+  fd: number;
+  buffer: TypedArray;
+  offset: number;
+  length: number;
+  position: number;
+}
+export function pwrite(options: PWrite) {}
+</code></pre>
+<h3><a class="header" href="#尽量降低依赖性不要进行循环导入" id="尽量降低依赖性不要进行循环导入">尽量降低依赖性；不要进行循环导入</a></h3>
+<p>尽管 <code>cli/js</code> 和 <code>std</code> 没有外部依赖关系，但仍然必须注意保持内部依赖关系的简单性和可管理性。请尤为注意，不要引入循环导入。</p>
+<h3><a class="header" href="#不要连接到文件名以下划线开头的文件如_foots" id="不要连接到文件名以下划线开头的文件如_foots">不要连接到文件名以下划线开头的文件，如：<code>_foo.ts</code></a></h3>
+<p>有时候可能需要一个内部模块，但是它的 API 并不稳定或者不被连接。这种情况下，在文件名前面加一个下划线。按照惯例，只有它自己目录中的文件才能导入它。</p>
+<h3><a class="header" href="#对导出的符号使用-jsdoc" id="对导出的符号使用-jsdoc">对导出的符号使用 JSDoc</a></h3>
+<p>我们力求文档的完整性。理想情况下，每个导出的文档符号都应该有一个文档行。</p>
+<p>如果可能的话，最好在 JS Doc 中使用一行代码。例如:</p>
+<pre><code class="language-ts">/** foo does bar. */
+export function foo() {
+  // ...
+}
+</code></pre>
+<p>文档易于阅读是很重要的，但是还需要提供额外的样式信息，以确保生成的文档有更丰富的含义。因此，JSDoc 通常应该遵循 markdown 标记来丰富文本。</p>
+<p>虽然 markdown 支持 HTML 标记，但是在 JSDoc 块中是禁止的。</p>
+<p>代码字符串文字应使用反引号（`）括起来，而不是用引号。例如：</p>
+<pre><code class="language-ts">/** Import something from the `deno` module. */
+</code></pre>
+<p>不要记录函数参数，除非它们的意图不明显（当然，如果它们没有明显的意图，应该重新考虑 API 的设计）。因此，通常不应使用 <code>@param</code>。如果使用了 <code>@param</code>，则不应该包含 <code>type</code> ，因为 TypeScript 已经是强类型化的了。</p>
+<pre><code class="language-ts">/**
+ * Function with non obvious param.
+ * @param foo Description of non obvious parameter.
+ */
+</code></pre>
+<p>应尽可能减小垂直间距。因此单行注释应写为：</p>
+<pre><code class="language-ts">/** 这样写单行 JSDoc 注释。 */
+</code></pre>
+<p>不要写为：</p>
+<pre><code class="language-ts">/**
+ * 不要这样写单行 JSDoc 注释。
+ */
+</code></pre>
+<p>代码示例不应使用三个反引号（```）标记。它们应该用缩进标记，要求在示例代码块前加入一个空行，并且示例代码的每一行需要有 6 个额外空格。比注释的第一列多 4 个空格。例如：</p>
+<pre><code class="language-ts">/** A straight forward comment and an example:
+ *
+ *       import { foo } from &quot;deno&quot;;
+ *       foo(&quot;bar&quot;);
+ */
+</code></pre>
+<p>既然代码示例已经是一个注释了，它就不应再包含其他注释。如果它需要进一步的注释，那意味着它不是一个很好的示例。</p>
+<h3><a class="header" href="#每个模块都应该附带一个测试模块" id="每个模块都应该附带一个测试模块">每个模块都应该附带一个测试模块</a></h3>
+<p>每个带有公共功能 <code>foo.ts</code> 的模块都应该附带一个测试模块 <code>foo_test.ts</code>。由于 <code>cli/js</code> 模块的上下文不同，它的测试应该放在 <code>cli/js/tests</code> 中，或者它应只是测试模块的同级模块。</p>
+<h3><a class="header" href="#单元测试应是明确的" id="单元测试应是明确的">单元测试应是明确的</a></h3>
+<p>为了更好地理解测试，函数应该在测试命令中按照提示正确命名，如:</p>
+<pre><code>test myTestFunction ... ok
+</code></pre>
+<p>测试示例:</p>
+<pre><code class="language-ts">import { assertEquals } from &quot;https://deno.land/std@v0.11/testing/asserts.ts&quot;;
+import { foo } from &quot;./mod.ts&quot;;
+
+Deno.test(&quot;myTestFunction&quot; function() {
+  assertEquals(foo(), { bar: &quot;bar&quot; });
+});
+</code></pre>
+<h2><a class="header" href="#顶级函数不应使用箭头arrow语法" id="顶级函数不应使用箭头arrow语法">顶级函数不应使用箭头（arrow）语法</a></h2>
+<p>顶级函数应使用 <code>function</code> 关键字。箭头语法应限于闭包。</p>
+<p>错误示例：</p>
+<pre><code class="language-ts">export const foo = (): string =&gt; {
+  return &quot;bar&quot;;
+};
+</code></pre>
+<p>正确示例：</p>
+<pre><code class="language-ts">export function foo(): string {
+  return &quot;bar&quot;;
+}
+</code></pre>
+<h3><a class="header" href="#std" id="std"><code>std</code></a></h3>
+<h4><a class="header" href="#不要依赖外部代码" id="不要依赖外部代码">不要依赖外部代码</a></h4>
+<p><code>https://deno.land/std/</code> 旨在成为所有 Deno 程序可以依赖的基础功能。我们希望向用户保证，此代码不包含任何可能未经审核的第三方代码。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+        
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+        
+        
+
+    </body>
+</html>

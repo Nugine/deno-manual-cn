@@ -1,0 +1,338 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>开发工具 - Deno 手册</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../introduction.html"><strong aria-hidden="true">1.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="../getting_started.html"><strong aria-hidden="true">2.</strong> 入门</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting_started/installation.html"><strong aria-hidden="true">2.1.</strong> 安装</a></li><li class="chapter-item expanded "><a href="../getting_started/setup_your_environment.html"><strong aria-hidden="true">2.2.</strong> 设置环境</a></li><li class="chapter-item expanded "><a href="../getting_started/first_steps.html"><strong aria-hidden="true">2.3.</strong> 第一步</a></li><li class="chapter-item expanded "><a href="../getting_started/permissions.html"><strong aria-hidden="true">2.4.</strong> 权限</a></li><li class="chapter-item expanded "><a href="../getting_started/typescript.html"><strong aria-hidden="true">2.5.</strong> 使用 TypeScript</a></li><li class="chapter-item expanded "><a href="../getting_started/webassembly.html"><strong aria-hidden="true">2.6.</strong> 使用 WebAssembly</a></li></ol></li><li class="chapter-item expanded "><a href="../runtime.html"><strong aria-hidden="true">3.</strong> 运行时</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../runtime/program_lifecycle.html"><strong aria-hidden="true">3.1.</strong> 程序生命周期</a></li><li class="chapter-item expanded "><a href="../runtime/compiler_apis.html"><strong aria-hidden="true">3.2.</strong> 编译器 API</a></li><li class="chapter-item expanded "><a href="../runtime/unstable.html"><strong aria-hidden="true">3.3.</strong> 不稳定 API</a></li></ol></li><li class="chapter-item expanded "><a href="../linking_to_external_code.html"><strong aria-hidden="true">4.</strong> 与第三方代码连接</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../linking_to_external_code/reloading_modules.html"><strong aria-hidden="true">4.1.</strong> 重新加载模块</a></li><li class="chapter-item expanded "><a href="../linking_to_external_code/integrity_checking.html"><strong aria-hidden="true">4.2.</strong> 完整性检查</a></li><li class="chapter-item expanded "><a href="../linking_to_external_code/proxies.html"><strong aria-hidden="true">4.3.</strong> 代理</a></li><li class="chapter-item expanded "><a href="../linking_to_external_code/import_maps.html"><strong aria-hidden="true">4.4.</strong> 导入映射</a></li></ol></li><li class="chapter-item expanded "><a href="../testing.html"><strong aria-hidden="true">5.</strong> 测试</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../testing/writing.html"><strong aria-hidden="true">5.1.</strong> 编写测试</a></li><li class="chapter-item expanded "><a href="../testing/running.html"><strong aria-hidden="true">5.2.</strong> 运行测试</a></li></ol></li><li class="chapter-item expanded "><a href="../plugins.html"><strong aria-hidden="true">6.</strong> 插件</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../plugins/how_do_plugins_work.html"><strong aria-hidden="true">6.1.</strong> 插件如何工作？</a></li><li class="chapter-item expanded "><a href="../plugins/creating_plugins.html"><strong aria-hidden="true">6.2.</strong> 创建插件</a></li><li class="chapter-item expanded "><a href="../plugins/using_plugins.html"><strong aria-hidden="true">6.3.</strong> 使用插件</a></li></ol></li><li class="chapter-item expanded "><a href="../tools.html"><strong aria-hidden="true">7.</strong> 工具</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tools/debugger.html"><strong aria-hidden="true">7.1.</strong> 调试器</a></li><li class="chapter-item expanded "><a href="../tools/script_installer.html"><strong aria-hidden="true">7.2.</strong> 脚本安装器</a></li><li class="chapter-item expanded "><a href="../tools/formatter.html"><strong aria-hidden="true">7.3.</strong> 格式化工具</a></li><li class="chapter-item expanded "><a href="../tools/bundler.html"><strong aria-hidden="true">7.4.</strong> 打包器</a></li><li class="chapter-item expanded "><a href="../tools/documentation_generator.html"><strong aria-hidden="true">7.5.</strong> 文档生成器</a></li><li class="chapter-item expanded "><a href="../tools/dependency_inspector.html"><strong aria-hidden="true">7.6.</strong> 依赖检查器</a></li></ol></li><li class="chapter-item expanded "><a href="../embedding_deno.html"><strong aria-hidden="true">8.</strong> 嵌入式 Deno</a></li><li class="chapter-item expanded "><a href="../contributing.html"><strong aria-hidden="true">9.</strong> 贡献</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../contributing/building_from_source.html"><strong aria-hidden="true">9.1.</strong> 从源码贡献</a></li><li class="chapter-item expanded "><a href="../contributing/development_tools.html" class="active"><strong aria-hidden="true">9.2.</strong> 开发工具</a></li><li class="chapter-item expanded "><a href="../contributing/architecture.html"><strong aria-hidden="true">9.3.</strong> 架构</a></li></ol></li><li class="chapter-item expanded "><a href="../examples.html"><strong aria-hidden="true">10.</strong> 示例</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../examples/unix_cat.html"><strong aria-hidden="true">10.1.</strong> Unix cat 程序</a></li><li class="chapter-item expanded "><a href="../examples/fileserver.html"><strong aria-hidden="true">10.2.</strong> 文件服务</a></li><li class="chapter-item expanded "><a href="../examples/tcp_echo.html"><strong aria-hidden="true">10.3.</strong> TCP 回声服务</a></li><li class="chapter-item expanded "><a href="../examples/subprocess.html"><strong aria-hidden="true">10.4.</strong> 创建子进程</a></li><li class="chapter-item expanded "><a href="../examples/permissions.html"><strong aria-hidden="true">10.5.</strong> 检查与放弃权限</a></li><li class="chapter-item expanded "><a href="../examples/os_signals.html"><strong aria-hidden="true">10.6.</strong> 系统信号</a></li><li class="chapter-item expanded "><a href="../examples/file_system_events.html"><strong aria-hidden="true">10.7.</strong> 文件系统事件</a></li><li class="chapter-item expanded "><a href="../examples/testing_if_main.html"><strong aria-hidden="true">10.8.</strong> 测试当前文件是否为主程序</a></li></ol></li><li class="chapter-item expanded "><a href="../style-guide.zh-CN.html"><strong aria-hidden="true">11.</strong> 风格指南</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Deno 手册</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2><a class="header" href="#测试和工具" id="测试和工具">测试和工具</a></h2>
+<h3><a class="header" href="#测试" id="测试">测试</a></h3>
+<p>测试 <code>deno</code>:</p>
+<pre><code class="language-bash"># 运行所有测试套件：
+cargo test
+
+# 只测试 cli/js/：
+cargo test js_unit_tests
+</code></pre>
+<p>测试 <code>std/</code>:</p>
+<pre><code class="language-bash">cargo test std_tests
+</code></pre>
+<h3><a class="header" href="#代码检查与格式化" id="代码检查与格式化">代码检查与格式化</a></h3>
+<p>检查</p>
+<pre><code class="language-bash">./tools/lint.py
+</code></pre>
+<p>格式化</p>
+<pre><code class="language-bash">./tools/format.py
+</code></pre>
+<h3><a class="header" href="#性能分析" id="性能分析">性能分析</a></h3>
+<pre><code class="language-sh"># 确认我们正在构建发布版 (release)。
+# 构建 deno 和 V8 的 d8。
+ninja -C target/release d8
+
+# 使用 --prof 选项运行想要分析的程序。
+./target/release/deno run tests/http_bench.ts --allow-net --v8-flags=--prof &amp;
+
+# 施加压力。
+third_party/wrk/linux/wrk http://localhost:4500/
+kill `pgrep deno`
+</code></pre>
+<p>V8 将在当前目录写入一个文件，像这样 <code>isolate-0x7fad98242400-v8.log</code>。查看这个文件：</p>
+<pre><code class="language-sh">D8_PATH=target/release/ ./third_party/v8/tools/linux-tick-processor
+isolate-0x7fad98242400-v8.log &gt; prof.log
+# 在 macOS 上, 使用 ./third_party/v8/tools/mac-tick-processor
+</code></pre>
+<p><code>prof.log</code> 将包含不用调用的 tick 分布。</p>
+<p>用 Web UI 查看这个日志，先生成 JSON 文件：</p>
+<pre><code class="language-sh">D8_PATH=target/release/ ./third_party/v8/tools/linux-tick-processor
+isolate-0x7fad98242400-v8.log --preprocess &gt; prof.json
+</code></pre>
+<p>在您的浏览器中打开 <code>third_party/v8/tools/profview/index.html</code>，选择 <code>prof.json</code> 以查看分布图。</p>
+<p>在性能分析时有用的 V8 选项：</p>
+<ul>
+<li>--prof</li>
+<li>--log-internal-timer-events</li>
+<li>--log-timer-events</li>
+<li>--track-gc</li>
+<li>--log-source-code</li>
+<li>--track-gc-object-stats</li>
+</ul>
+<p>有关 <code>d8</code> 和性能分析的更多信息，请查阅以下链接：</p>
+<ul>
+<li><a href="https://v8.dev/docs/d8">https://v8.dev/docs/d8</a></li>
+<li><a href="https://v8.dev/docs/profile">https://v8.dev/docs/profile</a></li>
+</ul>
+<h3><a class="header" href="#使用-lldb-调试" id="使用-lldb-调试">使用 LLDB 调试</a></h3>
+<h3><a class="header" href="#debugging-with-lldb" id="debugging-with-lldb">Debugging with LLDB</a></h3>
+<pre><code class="language-shell">$ lldb -- target/debug/deno run tests/worker.js
+&gt; run
+&gt; bt
+&gt; up
+&gt; up
+&gt; l
+</code></pre>
+<p>调试 Rust 代码，可以用 <code>rust-lldb</code>。</p>
+<pre><code class="language-shell">$ rust-lldb -- ./target/debug/deno run --allow-net tests/http_bench.ts
+# 在 macOS 上，您可能看到像这样的警告：
+# `ImportError: cannot import name _remove_dead_weakref`
+# 在这种情况下，设置 PATH 以使用系统 python，例如
+# PATH=/System/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH
+(lldb) command script import &quot;/Users/kevinqian/.rustup/toolchains/1.36.0-x86_64-apple-darwin/lib/rustlib/etc/lldb_rust_formatters.py&quot;
+(lldb) type summary add --no-value --python-function lldb_rust_formatters.print_val -x &quot;.*&quot; --category Rust
+(lldb) type category enable Rust
+(lldb) target create &quot;../deno/target/debug/deno&quot;
+Current executable set to '../deno/target/debug/deno' (x86_64).
+(lldb) settings set -- target.run-args  &quot;tests/http_bench.ts&quot; &quot;--allow-net&quot;
+(lldb) b op_start
+(lldb) r
+</code></pre>
+<h3><a class="header" href="#v8-选项" id="v8-选项">V8 选项</a></h3>
+<p>V8 有很多内部的命令行选项。</p>
+<pre><code class="language-shell"># 列出可用的 V8 选项
+$ deno --v8-flags=--help
+
+# 使用多个选项的示例
+$ deno --v8-flags=--expose-gc,--use-strict
+</code></pre>
+<p>特别有用的：</p>
+<pre><code>--async-stack-trace
+</code></pre>
+<h3><a class="header" href="#持续的性能测试" id="持续的性能测试">持续的性能测试</a></h3>
+<p>参考我们的测试 <a href="https://deno.land/benchmarks">https://deno.land/benchmarks</a></p>
+<p>测试图表假设 <a href="https://github.com/denoland/benchmark_data/data.json">https://github.com/denoland/benchmark_data/data.json</a> 有着 <code>BenchmarkData[]</code> 类型。以下是 <code>BenchmarkData</code> 的定义：</p>
+<pre><code class="language-ts">interface ExecTimeData {
+  mean: number;
+  stddev: number;
+  user: number;
+  system: number;
+  min: number;
+  max: number;
+}
+
+interface BenchmarkData {
+  created_at: string;
+  sha1: string;
+  benchmark: {
+    [key: string]: ExecTimeData;
+  };
+  binarySizeData: {
+    [key: string]: number;
+  };
+  threadCountData: {
+    [key: string]: number;
+  };
+  syscallCountData: {
+    [key: string]: number;
+  };
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../contributing/building_from_source.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../contributing/architecture.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../contributing/building_from_source.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../contributing/architecture.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

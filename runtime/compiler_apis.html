@@ -1,0 +1,316 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>编译器 API - Deno 手册</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../introduction.html"><strong aria-hidden="true">1.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="../getting_started.html"><strong aria-hidden="true">2.</strong> 入门</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting_started/installation.html"><strong aria-hidden="true">2.1.</strong> 安装</a></li><li class="chapter-item expanded "><a href="../getting_started/setup_your_environment.html"><strong aria-hidden="true">2.2.</strong> 设置环境</a></li><li class="chapter-item expanded "><a href="../getting_started/first_steps.html"><strong aria-hidden="true">2.3.</strong> 第一步</a></li><li class="chapter-item expanded "><a href="../getting_started/permissions.html"><strong aria-hidden="true">2.4.</strong> 权限</a></li><li class="chapter-item expanded "><a href="../getting_started/typescript.html"><strong aria-hidden="true">2.5.</strong> 使用 TypeScript</a></li><li class="chapter-item expanded "><a href="../getting_started/webassembly.html"><strong aria-hidden="true">2.6.</strong> 使用 WebAssembly</a></li></ol></li><li class="chapter-item expanded "><a href="../runtime.html"><strong aria-hidden="true">3.</strong> 运行时</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../runtime/program_lifecycle.html"><strong aria-hidden="true">3.1.</strong> 程序生命周期</a></li><li class="chapter-item expanded "><a href="../runtime/compiler_apis.html" class="active"><strong aria-hidden="true">3.2.</strong> 编译器 API</a></li><li class="chapter-item expanded "><a href="../runtime/unstable.html"><strong aria-hidden="true">3.3.</strong> 不稳定 API</a></li></ol></li><li class="chapter-item expanded "><a href="../linking_to_external_code.html"><strong aria-hidden="true">4.</strong> 与第三方代码连接</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../linking_to_external_code/reloading_modules.html"><strong aria-hidden="true">4.1.</strong> 重新加载模块</a></li><li class="chapter-item expanded "><a href="../linking_to_external_code/integrity_checking.html"><strong aria-hidden="true">4.2.</strong> 完整性检查</a></li><li class="chapter-item expanded "><a href="../linking_to_external_code/proxies.html"><strong aria-hidden="true">4.3.</strong> 代理</a></li><li class="chapter-item expanded "><a href="../linking_to_external_code/import_maps.html"><strong aria-hidden="true">4.4.</strong> 导入映射</a></li></ol></li><li class="chapter-item expanded "><a href="../testing.html"><strong aria-hidden="true">5.</strong> 测试</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../testing/writing.html"><strong aria-hidden="true">5.1.</strong> 编写测试</a></li><li class="chapter-item expanded "><a href="../testing/running.html"><strong aria-hidden="true">5.2.</strong> 运行测试</a></li></ol></li><li class="chapter-item expanded "><a href="../plugins.html"><strong aria-hidden="true">6.</strong> 插件</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../plugins/how_do_plugins_work.html"><strong aria-hidden="true">6.1.</strong> 插件如何工作？</a></li><li class="chapter-item expanded "><a href="../plugins/creating_plugins.html"><strong aria-hidden="true">6.2.</strong> 创建插件</a></li><li class="chapter-item expanded "><a href="../plugins/using_plugins.html"><strong aria-hidden="true">6.3.</strong> 使用插件</a></li></ol></li><li class="chapter-item expanded "><a href="../tools.html"><strong aria-hidden="true">7.</strong> 工具</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tools/debugger.html"><strong aria-hidden="true">7.1.</strong> 调试器</a></li><li class="chapter-item expanded "><a href="../tools/script_installer.html"><strong aria-hidden="true">7.2.</strong> 脚本安装器</a></li><li class="chapter-item expanded "><a href="../tools/formatter.html"><strong aria-hidden="true">7.3.</strong> 格式化工具</a></li><li class="chapter-item expanded "><a href="../tools/bundler.html"><strong aria-hidden="true">7.4.</strong> 打包器</a></li><li class="chapter-item expanded "><a href="../tools/documentation_generator.html"><strong aria-hidden="true">7.5.</strong> 文档生成器</a></li><li class="chapter-item expanded "><a href="../tools/dependency_inspector.html"><strong aria-hidden="true">7.6.</strong> 依赖检查器</a></li></ol></li><li class="chapter-item expanded "><a href="../embedding_deno.html"><strong aria-hidden="true">8.</strong> 嵌入式 Deno</a></li><li class="chapter-item expanded "><a href="../contributing.html"><strong aria-hidden="true">9.</strong> 贡献</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../contributing/building_from_source.html"><strong aria-hidden="true">9.1.</strong> 从源码贡献</a></li><li class="chapter-item expanded "><a href="../contributing/development_tools.html"><strong aria-hidden="true">9.2.</strong> 开发工具</a></li><li class="chapter-item expanded "><a href="../contributing/architecture.html"><strong aria-hidden="true">9.3.</strong> 架构</a></li></ol></li><li class="chapter-item expanded "><a href="../examples.html"><strong aria-hidden="true">10.</strong> 示例</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../examples/unix_cat.html"><strong aria-hidden="true">10.1.</strong> Unix cat 程序</a></li><li class="chapter-item expanded "><a href="../examples/fileserver.html"><strong aria-hidden="true">10.2.</strong> 文件服务</a></li><li class="chapter-item expanded "><a href="../examples/tcp_echo.html"><strong aria-hidden="true">10.3.</strong> TCP 回声服务</a></li><li class="chapter-item expanded "><a href="../examples/subprocess.html"><strong aria-hidden="true">10.4.</strong> 创建子进程</a></li><li class="chapter-item expanded "><a href="../examples/permissions.html"><strong aria-hidden="true">10.5.</strong> 检查与放弃权限</a></li><li class="chapter-item expanded "><a href="../examples/os_signals.html"><strong aria-hidden="true">10.6.</strong> 系统信号</a></li><li class="chapter-item expanded "><a href="../examples/file_system_events.html"><strong aria-hidden="true">10.7.</strong> 文件系统事件</a></li><li class="chapter-item expanded "><a href="../examples/testing_if_main.html"><strong aria-hidden="true">10.8.</strong> 测试当前文件是否为主程序</a></li></ol></li><li class="chapter-item expanded "><a href="../style-guide.zh-CN.html"><strong aria-hidden="true">11.</strong> 风格指南</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Deno 手册</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2><a class="header" href="#编译器-api" id="编译器-api">编译器 API</a></h2>
+<p>Deno 支持对内置 TypeScript 编译器的运行时访问。<code>Deno</code> 命名空间中有三种方法提供此访问。</p>
+<h3><a class="header" href="#denocompile" id="denocompile"><code>Deno.compile()</code></a></h3>
+<p>这类似于 <code>deno cache</code>，因为它可以获取和缓存代码，编译代码，但不运行代码。它最多接受三个参数，<code>rootName</code>、可选的 <code>sources</code> 和可选的 <code>options</code>。<code>rootName</code> 是用于生成目标程序的根模块。这类似于在 <code>deno run --reload example.ts</code> 中在命令行上传递的模块名。<code>sources</code> 是一个哈希表，其中键是完全限定的模块名称，值是模块的文本源。如果传递了 <code>sources</code>，Deno 将从该哈希表中解析所有模块，而不会尝试在 Deno 之外解析它们。如果没有提供 <code>sources</code>，Deno 将解析模块，就像根模块已经在命令行上传递了一样。Deno 还将缓存所有的这些资源。<code>options</code> 参数是一组 <code>Deno.CompilerOptions</code> 类型的选项，它是包含 Deno 支持选项的 TypeScript 编译器选项的子集。</p>
+<p>该方法使用元组进行解析。第一个参数包含与代码相关的任何诊断信息（语法或类型错误）。第二个参数是一个映射，其中键是输出文件名，值是内容。</p>
+<p>提供 <code>sources</code> 的一个例子:</p>
+<pre><code class="language-ts">const [diagnostics, emitMap] = await Deno.compile(&quot;/foo.ts&quot;, {
+  &quot;/foo.ts&quot;: `import * as bar from &quot;./bar.ts&quot;;\nconsole.log(bar);\n`,
+  &quot;/bar.ts&quot;: `export const bar = &quot;bar&quot;;\n`,
+});
+
+assert(diagnostics == null); // 确保没有返回诊断信息
+console.log(emitMap);
+</code></pre>
+<p>我们希望 map 包含4个 “文件（files）” ，分别命名为 <code>/foo.js.map</code>，<code>/foo.js</code>，<code>/bar.js.map</code>，和 <code>/bar.js</code>。</p>
+<p>当不提供资源时，您可以使用本地或远程模块，就像在命令行上做的那样。所以您可以这样做:</p>
+<pre><code class="language-ts">const [diagnostics, emitMap] = await Deno.compile(
+  &quot;https://deno.land/std/examples/welcome.ts&quot;
+);
+</code></pre>
+<p>在这种情况下，<code>emitMap</code> 将包含一个简单的 <code>console.log()</code> 语句。</p>
+<h3><a class="header" href="#denobundle" id="denobundle"><code>Deno.bundle()</code></a></h3>
+<p>这与 <code>deno bundle</code> 在命令行上的工作非常相似。 它也与 <code>Deno.compile()</code> 类似，只是它不返回文件映射，而是只返回一个字符串，这是一个自包含的 JavaScript ES 模块，它将包含提供或解析的所有代码，以及提供的根模块的所有导出。它最多接受三个参数，<code>rootName</code>、可选的 <code>sources</code> 和可选的 <code>options</code>。<code>rootName</code> 是用于生成目标程序的根模块。这类似于在 <code>deno bundle example.ts</code> 中在命令行上传递的模块名。<code>sources</code> 是一个哈希表，其中键是完全限定的模块名称，值是模块的文本源。如果传递了 <code>sources</code>，Deno 将从该哈希表中解析所有模块，而不会尝试在 Deno 之外解析它们。如果没有提供 <code>sources</code>，Deno 将解析模块，就像根模块已经在命令行上传递了一样。 Deno 还将缓存所有的这些资源。<code>options</code> 参数是一组 <code>Deno.CompilerOptions</code> 类型的选项，它是包含 Deno 支持选项的 TypeScript 编译器选项的子集。</p>
+<p>提供 <code>sources</code> 的一个例子:</p>
+<pre><code class="language-ts">const [diagnostics, emit] = await Deno.bundle(&quot;/foo.ts&quot;, {
+  &quot;/foo.ts&quot;: `import * as bar from &quot;./bar.ts&quot;;\nconsole.log(bar);\n`,
+  &quot;/bar.ts&quot;: `export const bar = &quot;bar&quot;;\n`,
+});
+
+assert(diagnostics == null); // 确保没有返回诊断信息
+console.log(emit);
+</code></pre>
+<p>我们希望 <code>emit</code> 是一个 ES 模块的文本，它将包含两个模块的输出源。</p>
+<p>当不提供资源时，您可以使用本地或远程模块，就像在命令行上做的那样。所以您可以这样做:</p>
+<pre><code class="language-ts">const [diagnostics, emit] = await Deno.bundle(
+  &quot;https://deno.land/std/http/server.ts&quot;
+);
+</code></pre>
+<p>在这种情况下，<code>emit</code> 将是一个自包含的 JavaScript ES 模块，并解析了所有依赖项，导出与源模块相同的导出。</p>
+<h3><a class="header" href="#denotranspileonly" id="denotranspileonly"><code>Deno.transpileOnly()</code></a></h3>
+<p>这是基于 TypeScript 函数 <code>transpileModule()</code> 的。所有这些操作都会“擦除”模块中的任何类型并释放 JavaScript。没有类型检查和依赖关系的解析。它最多接受两个参数，第一个参数是哈希表，其中键是模块名称，值是内容。模块名称的唯一用途是在将信息放入源映射时，显示源文件名称是什么。第二个参数包含 <code>Deno.CompilerOptions</code> 类型的可选 <code>options</code>。函数通过映射解析，其中键是提供的源模块名称，值是具有 <code>source</code> 属性和可选 <code>map</code> 属性的对象。第一个是模块的输出内容。 <code>map</code> 属性是源映射。源映射是默认提供的，但可以通过 <code>options</code> 参数关闭。</p>
+<p>举个例子：</p>
+<pre><code class="language-ts">const result = await Deno.transpileOnly({
+  &quot;/foo.ts&quot;: `enum Foo { Foo, Bar, Baz };\n`,
+});
+
+console.log(result[&quot;/foo.ts&quot;].source);
+console.log(result[&quot;/foo.ts&quot;].map);
+</code></pre>
+<p>我们期望 <code>enum</code> 被重写成一个构造可枚举的 IIFE，并且映射被定义。</p>
+<h3><a class="header" href="#引用-typescript-库文件" id="引用-typescript-库文件">引用 TypeScript 库文件</a></h3>
+<p>当您使用 <code>deno run</code> 或其他 TypeScript 类型的 Deno 命令时，该代码将根据描述 Deno 支持的环境的自定义库进行评估。默认情况下，TypeScript 类型的编译器运行时 API 也使用这些库（<code>Deno.compile()</code> 和 <code>Deno.bundle()</code>）。</p>
+<p>但是，如果您希望为其他运行时编译或捆绑 TypeScript，则您可能希望重载默认库。为此，运行时 API 支持编译器选项中的 <code>lib</code> 属性。例如，如果你的 TypeScript 代码是为浏览器准备的，您可以使用 TypeScript 的 <code>&quot;dom&quot;</code> 库:</p>
+<pre><code class="language-ts">const [errors, emitted] = await Deno.compile(
+  &quot;main.ts&quot;,
+  {
+    &quot;main.ts&quot;: `document.getElementById(&quot;foo&quot;);\n`,
+  },
+  {
+    lib: [&quot;dom&quot;, &quot;esnext&quot;],
+  }
+);
+</code></pre>
+<p>有关 TypeScript 支持的所有库的列表，请参见 <a href="https://www.typescriptlang.org/docs/handbook/compiler-options.html"><code>lib</code> 编译器选项</a>。
+<strong>不要忘记包含 JavaScript 库</strong></p>
+<p>就像 <code>tsc</code> 一样，当您提供一个 <code>lib</code> 编译器选项时，它会覆盖默认的选项，这意味着基本的 JavaScript 库不会被包含，而您应该包含最能代表您的目标运行时的选项（例如 <code>es5</code>，<code>es2015</code>，<code>es2016</code>，<code>es2017</code>，<code>es2018</code>，<code>es2019</code>，<code>es2020</code> 或 <code>esnext</code>）。</p>
+<h4><a class="header" href="#包含-deno-命名空间" id="包含-deno-命名空间">包含 Deno 命名空间</a></h4>
+<p>除了 TypeScript 提供的库之外，还有四个内置在 Deno 中的库可以引用:</p>
+<ul>
+<li><code>deno.ns</code> - 提供 <code>Deno</code> 命名空间</li>
+<li><code>deno.shared_globals</code> - 提供 Deno 运行时支持的全局接口和变量，然后由最终运行时库公开</li>
+<li><code>deno.window</code> - 公开全局变量和 Deno 主工作进程中可用的 Deno 命名空间，是运行时编译器的默认 API</li>
+<li><code>deno.worker</code> - 公开在 Deno 下的工作进程中可用的全局变量。</li>
+</ul>
+<p>因此，要将 Deno 命名空间添加到编译中，需要在数组中包含 <code>deno.ns</code> 库，例如：</p>
+<pre><code class="language-ts">const [errors, emitted] = await Deno.compile(
+  &quot;main.ts&quot;,
+  {
+    &quot;main.ts&quot;: `document.getElementById(&quot;foo&quot;);\n`,
+  },
+  {
+    lib: [&quot;dom&quot;, &quot;esnext&quot;, &quot;deno.ns&quot;],
+  }
+);
+</code></pre>
+<p><strong>注意</strong>，Deno 命名空间需要一个 ES2018 或更新的运行时环境。这意味着，如果您使用的库“低于” ES2018，那么您将得到作为编译的一部分记录的错误。</p>
+<h4><a class="header" href="#使用三斜杠引用triple-slash-reference" id="使用三斜杠引用triple-slash-reference">使用三斜杠引用（triple-slash reference）</a></h4>
+<p>您不必在编译器选项中指定 <code>lib</code>。Deno 支持<a href="https://www.typescriptlang.org/docs/handbook/triple-slash-directives.html#-reference-lib-">对库的三斜杠引用</a>，并可以嵌入到文件的内容中。例如，如果你有一个 <code>main.ts</code>：</p>
+<pre><code class="language-ts">/// &lt;reference lib=&quot;dom&quot; /&gt;
+
+document.getElementById(&quot;foo&quot;);
+</code></pre>
+<p>它可以编译，且不会出现下面这样的错误：</p>
+<pre><code class="language-ts">const [errors, emitted] = await Deno.compile(&quot;./main.ts&quot;, undefined, {
+  lib: [&quot;esnext&quot;],
+});
+</code></pre>
+<p><strong>注意</strong>，<code>dom</code> 库与 Deno 的默认类型库中定义的一些默认全局变量有冲突。为了避免这种情况，需要在编译器选项中为运行时编译器 API 指定一个 <code>lib</code> 选项</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../runtime/program_lifecycle.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../runtime/unstable.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../runtime/program_lifecycle.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../runtime/unstable.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
