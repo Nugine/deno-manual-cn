@@ -1,7 +1,6 @@
-## TCP echo server
+## TCP 回声服务
 
-This is an example of a simple server which accepts connections on port 8080,
-and returns to the client anything it sends.
+这个示例是一个简单的 TCP 回声服务，接收 8080 端口的连接，把接收到的任何数据返回给客户端。
 
 ```ts
 const listener = Deno.listen({ port: 8080 });
@@ -11,7 +10,7 @@ for await (const conn of listener) {
 }
 ```
 
-When this program is started, it throws PermissionDenied error.
+当这个程序启动时，它会抛出一个没有网络权限的错误。
 
 ```shell
 $ deno run https://deno.land/std/examples/echo_server.ts
@@ -21,14 +20,13 @@ error: Uncaught PermissionDenied: network access to "0.0.0.0:8080", run again wi
     ...
 ```
 
-For security reasons, Deno does not allow programs to access the network without
-explicit permission. To allow accessing the network, use a command-line flag:
+为了安全，Deno 不允许程序访问网络，除非显式赋予权限。使用一个命令行选项来允许程序访问网络：
 
 ```shell
 $ deno run --allow-net https://deno.land/std/examples/echo_server.ts
 ```
 
-To test it, try sending data to it with netcat:
+尝试用 netcat 向它发送数据。
 
 ```shell
 $ nc localhost 8080
@@ -36,6 +34,5 @@ hello world
 hello world
 ```
 
-Like the `cat.ts` example, the `copy()` function here also does not make
-unnecessary memory copies. It receives a packet from the kernel and sends back,
-without further complexity.
+像示例 `cat.ts` 一样，`copy()` 函数不会产生不必要的内存拷贝。它从内核接收数据包，然后发送回去，就这么简单。
+

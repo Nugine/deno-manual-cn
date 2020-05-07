@@ -1,11 +1,11 @@
-## Handle OS Signals
+## 处理系统信号
 
-> This program makes use of an unstable Deno feature. Learn more about
-> [unstable features](../../runtime/unstable).
+> 这个程序使用了不稳定的 Deno 功能。更多信息请查阅
+> [unstable features](../runtime/unstable.md)
 
-[API Reference](https://deno.land/typedoc/index.html#signal)
+[API 参考](https://deno.land/typedoc/index.html#signal)
 
-You can use `Deno.signal()` function for handling OS signals.
+您可以使用 `Deno.signal()` 函数来处理系统信号。
 
 ```
 for await (const _ of Deno.signal(Deno.Signal.SIGINT)) {
@@ -13,15 +13,14 @@ for await (const _ of Deno.signal(Deno.Signal.SIGINT)) {
 }
 ```
 
-`Deno.signal()` also works as a promise.
+`Deno.signal()` 也是一个 promise。
 
 ```
 await Deno.signal(Deno.Singal.SIGINT);
 console.log("interrupted!");
 ```
 
-If you want to stop watching the signal, you can use `dispose()` method of the
-signal object.
+如果您想要停止监控信号，可以使用信号对象的 `dispose()` 方法。
 
 ```
 const sig = Deno.signal(Deno.Signal.SIGINT);
@@ -32,4 +31,4 @@ for await (const _ of sig) {
 }
 ```
 
-The above for-await loop exits after 5 seconds when sig.dispose() is called.
+以上 for-await 循环将在 sig.dispose() 被调用时退出，运行时间为 5 秒。

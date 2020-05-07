@@ -1,9 +1,10 @@
-# Getting Started
+# 入门
 
-In this chapter we'll discuss:
+在本章节，我们将讨论；
 
-- Installing Deno
-- Running a simple `Hello World` script
-- Writing our own script
-- Using Deno with TypeScript
-- Using WebAssembly
+- 安装 Deno
+- 运行一个 `Hello World` 脚本
+- 编写您自己的脚本
+- 在 Deno 中使用 TypeScript
+- 在 Deno 中使用 WebAssembly
+

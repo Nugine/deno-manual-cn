@@ -1,36 +1,30 @@
-# Runtime
+# 运行时
 
-Documentation for all runtime functions (Web APIs + `Deno` global) can be found
-on
-[`doc.deno.land`](https://doc.deno.land/https/github.com/denoland/deno/releases/latest/download/lib.deno.d.ts).
+所有运行时函数的文档在这里：[doc.deno.land](https://doc.deno.land/https/github.com/denoland/deno/releases/latest/download/lib.deno.d.ts)
 
-## Web APIs
+这里包含 Web API 和全局空间 `Deno`。
 
-For APIs where a web standard already exists, like `fetch` for HTTP requests,
-Deno uses these rather than inventing a new proprietary API.
+## Web API
 
-The documentation for all of these Web APIs can be found on
-[doc.deno.land](https://doc.deno.land/https/raw.githubusercontent.com/denoland/deno/master/cli/js/lib.deno.shared_globals.d.ts).
+对于 web 标准中存在的 API，比如 `fetch`，Deno 使用它们，而不是自己发明新的。
 
-The TypeScript definitions for the implemented web APIs can be found in the
-[`lib.deno.shared_globals.d.ts`](https://github.com/denoland/deno/blob/master/cli/js/lib.deno.shared_globals.d.ts)
-and
-[`lib.deno.window.d.ts`](https://github.com/denoland/deno/blob/master/cli/js/lib.deno.window.d.ts)
-files.
+Web API 文档：[doc.deno.land](https://doc.deno.land/https/raw.githubusercontent.com/denoland/deno/master/cli/js/lib.deno.shared_globals.d.ts)
 
-Definitions that are specific to workers can be found in the
-[`lib.deno.worker.d.ts`](https://github.com/denoland/deno/blob/master/cli/js/lib.deno.worker.d.ts)
-file.
+已实现的 web API 的 TypeScript 定义：
 
-## `Deno` global
++ [lib.deno.shared_globals.d.ts](https://github.com/denoland/deno/blob/master/cli/js/lib.deno.shared_globals.d.ts)
 
-All APIs that are not web standard are contained in the global `Deno` namespace.
-It has the APIs for reading from files, opening TCP sockets, and executing
-subprocesses, ect.
++ [lib.deno.window.d.ts](https://github.com/denoland/deno/blob/master/cli/js/lib.deno.window.d.ts)
 
-The TypeScript definitions for the Deno namespaces can be found in the
-[`lib.deno.ns.d.ts`](https://github.com/denoland/deno/blob/master/cli/js/lib.deno.ns.d.ts)
-file.
+worker 特定的 API 定义：[lib.deno.worker.d.ts](https://github.com/denoland/deno/blob/master/cli/js/lib.deno.worker.d.ts)
 
-The documentation for all of the Deno specific APIs can be found on
-[doc.deno.land](https://doc.deno.land/https/raw.githubusercontent.com/denoland/deno/master/cli/js/lib.deno.ns.d.ts).
+
+## 全局空间 `Deno`
+
+所有非 web 标准的 API 位于全局命名空间 `Deno`。
+
+这里包含从文件中读取、打开 TCP 套接字和运行子进程，还有更多 API。
+
+Deno 命名空间 的 TypeScript 定义：[lib.deno.ns.d.ts](https://github.com/denoland/deno/blob/master/cli/js/lib.deno.ns.d.ts)
+
+Deno 特定的 API 定义：[doc.deno.land](https://doc.deno.land/https/raw.githubusercontent.com/denoland/deno/master/cli/js/lib.deno.ns.d.ts)

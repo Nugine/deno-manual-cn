@@ -1,70 +1,61 @@
-## Installation
+## 安装
 
-Deno works on macOS, Linux, and Windows. Deno is a single binary executable. It
-has no external dependencies.
+Deno 能够在 macOS、Linux 和 Windows 上运行。Deno 是一个单独的可执行文件，它没有额外的依赖。
 
-### Download and install
+### 下载安装
 
-[deno_install](https://github.com/denoland/deno_install) provides convenience
-scripts to download and install the binary.
+[deno_install](https://github.com/denoland/deno_install) 提供了方便的脚本，用以下载安装 Deno.
 
-Using Shell (macOS and Linux):
+使用 Shell (macOS 和 Linux):
 
 ```shell
 curl -fsSL https://deno.land/x/install/install.sh | sh
 ```
 
-Using PowerShell (Windows):
+使用 PowerShell (Windows):
 
 ```shell
 iwr https://deno.land/x/install/install.ps1 -useb | iex
 ```
 
-Using [Scoop](https://scoop.sh/) (Windows):
+使用 [Scoop](https://scoop.sh/) (Windows):
 
 ```shell
 scoop install deno
 ```
 
-Using [Chocolatey](https://chocolatey.org/packages/deno) (Windows):
+使用 [Chocolatey](https://chocolatey.org/packages/deno) (Windows):
 
 ```shell
 choco install deno
 ```
 
-Using [Homebrew](https://formulae.brew.sh/formula/deno) (macOS):
+使用 [Homebrew](https://formulae.brew.sh/formula/deno) (macOS):
 
 ```shell
 brew install deno
 ```
 
-Using [Cargo](https://crates.io/crates/deno) (Windows, macOS, Linux):
+使用 [Cargo](https://crates.io/crates/deno) (Windows, macOS, Linux):
 
 ```shell
 cargo install deno
 ```
 
-Deno binaries can also be installed manually, by downloading a zip file at
-[github.com/denoland/deno/releases](https://github.com/denoland/deno/releases).
-These packages contain just a single executable file. You will have to set the
-executable bit on macOS and Linux.
+Deno 也可以手动安装，只需从 [github.com/denoland/deno/releases](https://github.com/denoland/deno/releases) 下载一个 zip 文件。它仅包含一个单独的可执行文件。在 macOS 和 Linux 上，您需要为它设置执行权限。
 
-### Testing your installation
+### 测试安装
 
-To test your installation, run `deno --version`. If this prints the Deno version
-to the console the installation was successful.
+运行 `deno --version`，如果它打印出 Deno 版本，说明安装成功。
 
-Use `deno help` to see help text documenting Deno's flags and usage. Use
-`deno help <subcommand>` for subcommand-specific flags.
+运行 `deno help` 以查看帮助文档。
 
-### Updating
+运行 `deno help <subcommand>` 以查看子命令的选项。
 
-To update a previously installed version of Deno, you can run `deno upgrade`.
-This will fetch the latest release from
-[github.com/denoland/deno/releases](https://github.com/denoland/deno/releases),
-unzip it, and replace your current executable with it.
+### 升级
 
-### Building from source
+运行 `deno upgrade`，这会从 [github.com/denoland/deno/releases](https://github.com/denoland/deno/releases) 获取最新的发布版本，然后解压并替换现有的版本。
 
-Information about how to build from source can be found in the `Contributing`
-chapter.
+### 从源码构建
+
+关于构建步骤的信息请查阅 [贡献](../contributing.md) 章节。

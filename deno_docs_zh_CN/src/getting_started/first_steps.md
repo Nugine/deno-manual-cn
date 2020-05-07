@@ -1,41 +1,30 @@
-## First steps
+## 第一步
 
-This page contains some simple examples that can teach you about the
-fundamentals of Deno.
+这个页面包含一些简单的示例，您可以从中学到 Deno 的基本概念。
 
-This document assumes that you have some prior knowledge of JavaScript,
-especially about `async`/`await`. If you have no prior knowledge of JavaScript,
-you might want to folow a guide
-[on the basics of JavaScript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript)
-before attempting to start with Deno.
+我们假设您已经对 JavaScript 有过预先的了解，特别是 `async`/`await`。如果您没有了解过 JavaScript，您可能先需要阅读这个指南：[JavaScript](https://developer.mozilla.org/zh-CN/docs/learn/JavaScript).
 
 ### Hello World
 
-Deno is a runtime for JavaScript and TypeScript and tries to be web compatible
-and use modern features whereever possible.
+Deno 是一个 JavaScript 和 TypeScript 的运行时，尽可能与浏览器兼容并使用现代的功能 (features)。
 
-Because of this browser compatibility a simple `Hello World` program is actually
-no different to one you can run in the browser:
+由于 Deno 具有浏览器兼容性，`Hello World` 程序与浏览器里的没什么不同。
 
 ```typescript
 console.log("Welcome to Deno 🦕");
 ```
 
-Try the program:
+尝试一下：
 
 ```bash
 deno run https://deno.land/std/examples/welcome.ts
 ```
 
-### Making an HTTP request
+### 发出一个 HTTP 请求
 
-Something a lot of programs do is fetching data from from a webserver via an
-HTTP request. Lets write a small program that fetches a file and prints the
-content to the terminal.
+通过 HTTP 请求从服务器获取数据是一件很常见的事。让我们编写一个简单的程序来获取文件并打印到终端。
 
-Just like in the browser you can use the web standard
-[`fetch`](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) API to
-make HTTP calls:
+就像浏览器一样，您可以使用 web 标准的 [`fetch`](https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API) API 来发出请求。
 
 ```typescript
 const url = Deno.args[0];
@@ -45,100 +34,48 @@ const body = new Uint8Array(await res.arrayBuffer());
 await Deno.stdout.write(body);
 ```
 
-Lets walk through what this application does:
+让我们看看它做了什么：
 
-1. We get the first argument passed to the application and store it in the
-   variable `url`.
-2. We make a request to the url specified, await the response, and store it in a
-   variable named `res`.
-3. We parse the response body as an
-   [`ArrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer),
-   await the response, convert it into a
-   [`Uint8Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)
-   and store it in the variable `body`.
-4. We write the contents of the `body` variable to `stdout`.
+1. 我们取得了第一个命令行参数，存储到变量 `url`。
 
-Try it out:
+2. 我们向指定的地址发出请求，等待响应，然后存储到变量 `res`。
+
+3. 我们把响应体解析为一个 [`ArrayBuffer`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)，等待接收完毕，将其转换为 [`Uint8Array`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)，最后存储到变量 `body`。
+
+4. 我们把 `body` 的内容写入标准输出流 `stdout`。
+
+尝试一下：
 
 ```bash
 deno run https://deno.land/std/examples/curl.ts https://example.com
 ```
+
+这个程序将会返回一个关于网络权限的错误，我们做错了什么？您可能会想起来，Deno 默认用安全环境执行代码。这意味着您需要显式赋予程序权限，允许它进行一些特权操作，比如网络访问。
 
 You will see that this program returns an error regarding network access, so
 what did we do wrong? You might remember from the introduction that Deno is a
 runtime that is secure by default. This means that you need to explicitly give
 programs the permission to do certain 'privledged' actions like network access.
 
-Try it out again with the correct permission flag:
+用正确的权限选项再试一次：
 
 ```bash
 deno run --allow-net=example.com https://deno.land/std/examples/curl.ts https://example.com
 ```
 
-### Reading a file
+### 读取一个文件
 
-Deno also provides APIs which do not come from the web. These are all contained
-in the `Deno` global. You can find documentation for these APIs on
-[doc.deno.land](https://doc.deno.land/https/github.com/denoland/deno/releases/latest/download/lib.deno.d.ts).
+Deno 也提供内置的 API，它们都位于全局变量 `Deno` 中。您可以在此找到相关文档：[doc.deno.land](https://doc.deno.land/https/github.com/denoland/deno/releases/latest/download/lib.deno.d.ts)。
 
-Filesystem APIs for example do not have a web standard form, so Deno provides
-its own API.
+文件系统 API 没有 web 标准形式，所以 Deno 提供了内置的 API。
 
-In this program each command-line argument is assumed to be a filename, the file
-is opened, and printed to stdout.
+示例：[Unix "cat" 程序的一个实现](../examples/unix_cat.md)
 
-```ts
-for (let i = 0; i < Deno.args.length; i++) {
-  let filename = Deno.args[i];
-  let file = await Deno.open(filename);
-  await Deno.copy(file, Deno.stdout);
-  file.close();
-}
-```
 
-The `copy()` function here actually makes no more than the necessary kernel ->
-userspace -> kernel copies. That is, the same memory from which data is read
-from the file, is written to stdout. This illustrates a general design goal for
-I/O streams in Deno.
+### 一个简单的 TCP 服务
 
-Try the program:
+示例：[TCP 回声服务](../examples/tcp_echo.md)
 
-```bash
-deno run --allow-read https://deno.land/std/examples/cat.ts /etc/passwd
-```
+### 更多示例
 
-### A simple TCP server
-
-This is an example of a simple server which accepts connections on port 8080,
-and returns to the client anything it sends.
-
-```ts
-const listener = Deno.listen({ port: 8080 });
-console.log("listening on 0.0.0.0:8080");
-for await (const conn of listener) {
-  Deno.copy(conn, conn);
-}
-```
-
-For security reasons, Deno does not allow programs to access the network without
-explicit permission. To allow accessing the network, use a command-line flag:
-
-```shell
-$ deno run --allow-net https://deno.land/std/examples/echo_server.ts
-```
-
-To test it, try sending data to it with netcat:
-
-```shell
-$ nc localhost 8080
-hello world
-hello world
-```
-
-Like the `cat.ts` example, the `copy()` function here also does not make
-unnecessary memory copies. It receives a packet from the kernel and sends back,
-without further complexity.
-
-### More examples
-
-You can find more examples, like an HTTP file server, in the `Examples` chapter.
+您可以在 [示例](../examples.md) 一章找到更多示例。

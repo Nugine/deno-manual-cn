@@ -1,58 +1,45 @@
-# Contributing
+# 贡献
 
-- Read the [style guide](style_guide.md).
-- Progress towards future releases is tracked
-  [here](https://github.com/denoland/deno/milestones).
-- Please don't make [the benchmarks](https://deno.land/benchmarks.html) worse.
-- Ask for help in the [community chat room](https://discord.gg/TGMHGv6).
-- If you are going to work on an issue, mention so in the issue comments
-  _before_ you start working on the issue.
+- 阅读 [风格指南](../../style-guide.zh-CN.md).
+- 通过[这里](https://github.com/denoland/deno/milestones)跟进未来的发布。
+- 请不要让 [性能测试](https://deno.land/benchmarks.html) 变糟。
+- 在 [社区聊天室](https://discord.gg/TGMHGv6) 获取帮助。
+- 如果您将要在某个 issue 下做些工作，在那之前请先在 issue 中提示一下。
 
-## Development
+## 开发
 
-Instructions on how to build from source can be found
-[here](./building-from-source).
+从源码构建的步骤在[这里](./contributing/building_from_source.md)
 
-## Submitting a Pull Request
+## 发起一个 Pull Request
 
-Before submitting, please make sure the following is done:
+在提交之前，请确认以下步骤：
 
-1. That there is a related issue and it is referenced in the PR text.
-2. There are tests that cover the changes.
-3. Ensure `cargo test` passes.
-4. Format your code with `tools/format.py`
-5. Make sure `./tools/lint.py` passes.
+1. 存在一个相关 issue，并且 PR 文本中引用了它。
+2. 有覆盖这些变化的测试。
+3. 确保 `cargo test` 通过。
+4. 使用 `tools/format.py` 格式化代码。
+5. 确保 `./tools/lint.py` 通过。
 
-## Changes to `third_party`
+##  `third_party` 的改动
 
-[`deno_third_party`](https://github.com/denoland/deno_third_party) contains most
-of the external code that Deno depends on, so that we know exactly what we are
-executing at any given time. It is carefully maintained with a mixture of manual
-labor and private scripts. It's likely you will need help from @ry or
-@piscisaureus to make changes.
+[`deno_third_party`](https://github.com/denoland/deno_third_party) 包含了大部分 Deno 依赖的外部代码，所以我们在任何时候都知道我们在运行什么。我们用一些手动操作和私有脚本来维护它，要做出改动，您可能需要联系 @ry 或 @piscisaureus。
 
-## Adding Ops (aka bindings)
+## 增加 Ops 
 
-We are very concerned about making mistakes when adding new APIs. When adding an
-Op to Deno, the counterpart interfaces on other platforms should be researched.
-Please list how this functionality is done in Go, Node, Rust, and Python.
+Ops 又称“绑定” (bindings)。
 
-As an example, see how `Deno.rename()` was proposed and added in
-[PR #671](https://github.com/denoland/deno/pull/671).
+我们非常担心在添加新 API 时会出错。在向 Deno 添加 Op 时，应该研究其他平台上的对应接口。请列出如何在 Go、Node、Rust 和 Python 中完成此功能。
 
-## Documenting APIs
+例如，参考 `deno.rename()` 是如何在
+[PR #671](https://github.com/denoland/deno/pull/671)中提出并添加的。
 
-It is important to document public APIs and we want to do that inline with the
-code. This helps ensure that code and documentation are tightly coupled
-together.
+## API 文档
 
-### Utilize JSDoc
+公开API文档很重要，我们希望它与代码内联。这有助于确保代码和文档紧密结合在一起。
 
-All publicly exposed APIs and types, both via the `deno` module as well as the
-global/`window` namespace should have JSDoc documentation. This documentation is
-parsed and available to the TypeScript compiler, and therefore easy to provide
-further downstream. JSDoc blocks come just prior to the statement they apply to
-and are denoted by a leading `/**` before terminating with a `*/`. For example:
+### 利用 JSDoc
+
+所有通过 `deno` 模块以及 global/`window` 命名空间公开的 API 和类型都应该有 JSDoc 文档。该文档经过解析并可供 TypeScript 编译器使用，因此易于在下游提供。JSDoc 块就在它们应用的语句之前，并以`/** doc */`表示。例如：
 
 ```ts
 /** A simple JSDoc comment */
