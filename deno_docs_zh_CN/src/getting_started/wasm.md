@@ -1,6 +1,6 @@
-## WASM support
+## WASM 支持
 
-Deno can execute [wasm](https://webassembly.org/) binaries.
+Deno 能够运行 [wasm](https://webassembly.org/) 二进制文件。
 
 <!-- prettier-ignore-start -->
 ```js
@@ -18,12 +18,12 @@ console.log(wasmInstance.exports.main().toString());
 ```
 <!-- prettier-ignore-end -->
 
-### ES Module style imports
+### ES 模块风格的导入
 
-> This is an unstable feature. Learn more about
-> [unstable features](../../runtime/unstable).
+> 这个程序使用了不稳定的 Deno 功能。更多信息请查阅
+> [unstable features](../runtime/unstable.md)
 
-WASM files can also be loaded using imports:
+WASM 文件也可以被直接导入。
 
 ```ts
 import { fib } from "./fib.wasm";

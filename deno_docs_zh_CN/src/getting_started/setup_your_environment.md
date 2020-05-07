@@ -1,27 +1,21 @@
-## Setup your environment
+## 设置您的环境
 
-To productively get going with Deno you should set up your environment. This
-means setting up shell autocomplete, environmental variables and your editor or
-IDE of choice.
+要高效地使用 Deno，您应该设置环境，例如命令行自动补全、环境变量、编辑器或 IDE。
 
-### Environmental variables
+### 环境变量
 
-There are several env vars that control how Deno behaves:
+这里是一些控制 Deno 行为的环境变量：
 
-`DENO_DIR` defaults to `$HOME/.deno` but can be set to any path to control where
-generated and cached source code is written and read to.
+`DENO_DIR` 默认为 `$HOME/.deno`，但可以设置为任何路径。这是 Deno 存放生成的代码和缓存的源码的路径。
 
-`NO_COLOR` will turn off color output if set. See https://no-color.org/. User
-code can test if `NO_COLOR` was set without having `--allow-env` by using the
-boolean constant `Deno.noColor`.
+如果 `NO_COLOR` 被设置，Deno 将会关闭彩色输出 (<https://no-color.org/>)。用户代码可以通过布尔常量 `Deno.noColor` 测试 `NO_COLOR` 是否被设置，这不需要环境权限 (`--allow-env`)。
 
-### Shell autocomplete
 
-You can generate completion script for your shell using the
-`deno completions <shell>` command. The command outputs to stdout so you should
-redirect it to an appropriate file.
+### 命令行自动补全
 
-The supported shells are:
+通过 `deno completions <shell>` 命令可以生成补全脚本。它会输出到 stdout，您应该将它重定向到适当的文件。
+
+Deno 支持的 shell 如下：
 
 - zsh
 - bash
@@ -29,32 +23,26 @@ The supported shells are:
 - powershell
 - elvish
 
-Example:
+示例：
 
 ```shell
 deno completions bash > /usr/local/etc/bash_completion.d/deno.bash
 source /usr/local/etc/bash_completion.d/deno.bash
 ```
 
-### Editors and IDEs
+### 编辑器和 IDE
 
-Because Deno requires the use of file extensions for module imports and allows
-http imports, and the most editors and language servers do not natively support
-this at the moment, many editors will throw errors about being unable to find
-files or imports having unnecessary file extensions.
+Deno 需要用文件后缀名来支持模块导入和 HTTP 导入。目前，大多数编辑器和语言服务器没有原生支持这点，一些编辑器可能会抛出无法找到文件的错误，或是不必要的文件后缀名错误。
 
-The community has developed extensions for some editors to solve these issues:
+社区已经开发了一些插件用来解决这些问题。
 
 - [VS Code](https://marketplace.visualstudio.com/items?itemName=axetroy.vscode-deno)
   by [@axetroy](https://github.com/axetroy).
 
-Support for JetBrains IDEs is not yet available, but you can follow and upvote
-these issues to stay up to date:
+JetBrains 的 IDE 还没有支持 Deno，但您可以通过订阅和投票这些 issue 来得知最新的进展。
 
-- https://youtrack.jetbrains.com/issue/WEB-41607
-- https://youtrack.jetbrains.com/issue/WEB-42983
-- https://youtrack.jetbrains.com/issue/WEB-31667
+- <https://youtrack.jetbrains.com/issue/WEB-41607>
+- <https://youtrack.jetbrains.com/issue/WEB-42983>
+- <https://youtrack.jetbrains.com/issue/WEB-31667>
 
-If you don't see your favorite IDE on this list, maybe you can develop an
-extension. Our [community Discord group](https://discord.gg/TGMHGv6) can give
-you some pointers on where to get started.
+如果您没有在列表中看到您最喜欢的 IDE，或许可以开发一个插件，我们的社区能够帮助您起步。[Discord](https://discord.gg/TGMHGv6)

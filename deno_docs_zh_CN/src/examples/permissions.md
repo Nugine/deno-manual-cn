@@ -1,13 +1,16 @@
+## 检查与放弃权限
+
 ## Inspecting and revoking permissions
 
-> This program makes use of an unstable Deno feature. Learn more about
-> [unstable features](../../runtime/unstable).
+> 这个程序使用了不稳定的 Deno 功能。更多信息请查阅
+> [unstable features](../runtime/unstable.md)
 
-Sometimes a program may want to revoke previously granted permissions. When a
-program, at a later stage, needs those permissions, it will fail.
+
+有时一个程序会放弃之前获得的权限，在此之后，需要该权限的操作将失败。
+
 
 ```ts
-// lookup a permission
+// 查找一个权限
 const status = await Deno.permissions.query({ name: "write" });
 if (status.state !== "granted") {
   throw new Error("need write permission");
@@ -15,14 +18,14 @@ if (status.state !== "granted") {
 
 const log = await Deno.open("request.log", "a+");
 
-// revoke some permissions
+// 放弃一些权限
 await Deno.permissions.revoke({ name: "read" });
 await Deno.permissions.revoke({ name: "write" });
 
-// use the log file
+// 使用日志文件
 const encoder = new TextEncoder();
 await log.write(encoder.encode("hello\n"));
 
-// this will fail.
+// 这将会失败
 await Deno.remove("request.log");
 ```

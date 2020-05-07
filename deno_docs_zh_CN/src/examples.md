@@ -1,4 +1,3 @@
-# Examples
+# 示例
 
-In this chapter you can find some example programs that you can use to learn
-more about the runtime.
+在本章节，您可以找到一些示例程序，用来学习 Deno。

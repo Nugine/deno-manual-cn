@@ -1,34 +1,29 @@
-## Run subprocess
+## 运行子进程
 
-[API Reference](https://doc.deno.land/https/github.com/denoland/deno/releases/latest/download/lib.deno.d.ts#Deno.run)
+[API 参考](https://doc.deno.land/https/github.com/denoland/deno/releases/latest/download/lib.deno.d.ts#Deno.run)
 
-Example:
+示例：
 
 ```ts
-// create subprocess
+// 创建子进程
 const p = Deno.run({
   cmd: ["echo", "hello"],
 });
 
-// await its completion
+// 等待完成
 await p.status();
 ```
 
-Run it:
+运行
 
 ```shell
 $ deno run --allow-run ./subprocess_simple.ts
 hello
 ```
 
-Here a function is assigned to `window.onload`. This function is called after
-the main script is loaded. This is the same as
-[onload](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload)
-of the browsers, and it can be used as the main entrypoint.
+`window.onload` 被赋值为一个函数，它将会在主脚本加载后被调用，和浏览器的 [onload](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload) 一样，可以用于主入口点。
 
-By default when you use `Deno.run()` subprocess inherits `stdin`, `stdout` and
-`stderr` of parent process. If you want to communicate with started subprocess
-you can use `"piped"` option.
+默认情况下，当您调用 `Deno.run()` 时，子进程将继承父进程的标准流。如果您想要和子进程通信，可以使用 `"piped"` 选项。
 
 ```ts
 const fileNames = Deno.args;
@@ -59,7 +54,7 @@ if (code === 0) {
 Deno.exit(code);
 ```
 
-When you run it:
+运行
 
 ```shell
 $ deno run --allow-run ./subprocess.ts <somefile>

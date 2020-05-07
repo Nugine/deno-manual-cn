@@ -1,7 +1,6 @@
-## An implementation of the unix "cat" program
+## Unix "cat" 程序的一个实现
 
-In this program each command-line argument is assumed to be a filename, the file
-is opened, and printed to stdout.
+在这个程序中，每个命令行参数都是一个文件名，参数对应的文件将被依次打开，打印到标准输出流。
 
 ```ts
 for (let i = 0; i < Deno.args.length; i++) {
@@ -12,12 +11,9 @@ for (let i = 0; i < Deno.args.length; i++) {
 }
 ```
 
-The `copy()` function here actually makes no more than the necessary kernel ->
-userspace -> kernel copies. That is, the same memory from which data is read
-from the file, is written to stdout. This illustrates a general design goal for
-I/O streams in Deno.
+除了内核到用户空间再到内核的必要拷贝，这里的 `copy()` 函数不会产生额外的昂贵操作，从文件中读到的数据会原样写入标准输出流。这反映了 Deno I/O 流的通用设计目标。
 
-Try the program:
+尝试一下：
 
 ```shell
 $ deno run --allow-read https://deno.land/std/examples/cat.ts /etc/passwd
