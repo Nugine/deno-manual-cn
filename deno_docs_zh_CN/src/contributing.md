@@ -1,6 +1,6 @@
 # 贡献
 
-- 阅读 [风格指南](../../style-guide.zh-CN.md).
+- 阅读 [风格指南](./style-guide.zh-CN.md).
 - 通过[这里](https://github.com/denoland/deno/milestones)跟进未来的发布。
 - 请不要让 [性能测试](https://deno.land/benchmarks.html) 变糟。
 - 在 [社区聊天室](https://discord.gg/TGMHGv6) 获取帮助。
