@@ -1,22 +1,17 @@
-## Reloading modules
+## 重新加载特定的模块
 
-You can invalidate your local `DENO_DIR` cache using the `--reload` flag. It's
-usage is described below:
+您可以使用 `--reload` 开关使本地 `DENO_DIR` 缓存无效化。其用途如下：
 
-To reload everything
+重新加载所有内容
 
 `--reload`
 
-Sometimes we want to upgrade only some modules. You can control it by passing an
-argument to a `--reload` flag.
+有时我们只想升级某些模块，可以通过将参数传递给 `--reload` 开关来控制它。
 
-To reload all standard modules
+重新加载所有标准模块
 
 `--reload=https://deno.land/std`
 
-To reload specific modules (in this example - colors and file system utils) use
-a comma to separate URLs
+为了重新加载特定的模块（在这个例子中 - colors 和 file system utils），需要使用逗号来分隔 URL
 
 `--reload=https://deno.land/std/fs/utils.ts,https://deno.land/std/fmt/colors.ts`
-
-<!-- Should this be part of examples? --
