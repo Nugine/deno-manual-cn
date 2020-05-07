@@ -1,15 +1,8 @@
-## Unstable
+## 不稳定性功能
 
-Not all of Deno's features are ready for production yet. Features which are not
-ready because they are still in draft phase are locked behind the `--unstable`
-command line flag. Passing this flag does a few things:
+并非所有的 Deno 功能目前都可以投入生产。仍处于起草阶段、还未准备完善的功能被锁定在 `--unstable` 命令行开关后。传递这个开关可以有如下效果：
 
-- It enables the use of unstable APIs during runtime.
-- It adds the
-  [`lib.deno.unstable.d.ts`](https://github.com/denoland/deno/blob/master/cli/js/lib.deno.unstable.d.ts)
-  file to the list of TypeScript definitions that are used for typechecking.
-  This includes the output of `deno types`.
+- 它允许在运行时使用不稳定的 API。
+- 它将[`lib.deno.unstable.d.ts`](https://github.com/denoland/deno/blob/master/cli/js/lib.deno.unstable.d.ts)文件添加到用于类型检查的类型脚本定义列表中。这包括 `deno types` 的输出。
 
-You should be aware that unstable APIs have probably **not undergone a security
-review**, are likely to have **breaking API changes** in the future and are
-**not ready for production**.
+您应该知道，不稳定的API可能**没有经过安全检查**，将来可能有**中断 API 更改**，并且**还没有准备投入生产**。

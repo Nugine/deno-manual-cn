@@ -1,12 +1,10 @@
-## Program lifecycle
+## 程序生命周期
 
-Deno supports browser compatible lifecycle events: `load` and `unload`. You can
-use these events to provide setup and cleanup code in your program.
+Deno 支持浏览器兼容的生命周期事件: `load` 和 `unload`。您可以使用这些事件在程序中设置和清除代码。
 
-Listener for `load` events can be asynchronous and will be awaited. Listener for
-`unload` events need to be synchronous. Both events cannot be cancelled.
+`load` 事件的侦听器可以是异步的，并将被等待。`unload` 事件的监听器需要是同步的。这两项事件都不能被取消。
 
-Example:
+例如：
 
 ```typescript
 // main.ts
@@ -47,9 +45,7 @@ window.onunload = (e: Event): void => {
 console.log("log from imported script");
 ```
 
-Note that you can use both `window.addEventListener` and
-`window.onload`/`window.onunload` to define handlers for events. There is a
-major difference between them, let's run example:
+注意，您可以同时使用 `window.addEventListener` 和 `window.onload` / `window.onunload` 来定义事件的处理程序。它们之间有一个主要的区别，让我们运行以下的例子:
 
 ```shell
 $ deno run main.ts
@@ -63,6 +59,4 @@ got unload event in event handler (imported)
 got unload event in event handler (main)
 ```
 
-All listeners added using `window.addEventListener` were run, but
-`window.onload` and `window.onunload` defined in `main.ts` overridden handlers
-defined in `imported.ts`.
+所有使用 `window.addEventListener` 添加的侦听器都被运行，但是在 `main.ts` 中定义的 `window.onload` 和 `window.onunload` 覆盖了 `imported.ts` 中定义的处理程序。
