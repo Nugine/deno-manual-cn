@@ -5,4 +5,4 @@
 - 它允许在运行时使用不稳定的 API。
 - 它将[`lib.deno.unstable.d.ts`](https://github.com/denoland/deno/blob/master/cli/js/lib.deno.unstable.d.ts)文件添加到用于类型检查的类型脚本定义列表中。这包括 `deno types` 的输出。
 
-您应该知道，不稳定的API可能**没有经过安全检查**，将来可能有**中断 API 更改**，并且**还没有准备投入生产**。
+您应该知道，不稳定的API可能**没有经过安全检查**，将来可能有**破坏性改动**，并且**还没有准备投入生产**。

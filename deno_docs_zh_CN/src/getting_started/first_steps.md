@@ -74,7 +74,7 @@ Deno 也提供内置的 API，它们都位于全局变量 `Deno` 中。您可以
 
 ### 一个简单的 TCP 服务
 
-示例：[TCP 回声服务](../examples/tcp_echo.md)
+示例：[TCP echo](../examples/tcp_echo.md)
 
 ### 更多示例
 

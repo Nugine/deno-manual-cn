@@ -39,7 +39,7 @@
 - [示例](examples.md)
   - [Unix cat 程序](examples/unix_cat.md)
   - [文件服务](examples/fileserver.md)
-  - [TCP 回声服务](examples/tcp_echo.md)
+  - [TCP echo](examples/tcp_echo.md)
   - [创建子进程](examples/subprocess.md)
   - [检查与放弃权限](examples/permissions.md)
   - [系统信号](examples/os_signals.md)
