@@ -19,7 +19,7 @@ jobs:
           key: ${{ runner.os }}-cargo-bin-${{ hashFiles('~/.cargo/.crates2.json') }}
       
       - name: Install mdbook
-        run: cargo install mdbook
+        run: (test -x ~/.cargo/bin/mdbook || cargo install mdbook)
 
       - name: Render
         run: |
