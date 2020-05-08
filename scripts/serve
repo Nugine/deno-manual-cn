@@ -1,0 +1,4 @@
+#! /bin/sh
+cd deno_docs_zh_CN
+mdbook serve -o
+cd ..
