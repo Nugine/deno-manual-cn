@@ -1,10 +1,10 @@
 ## 设置您的环境
 
-要高效地使用 Deno，您应该设置环境，例如命令行自动补全、环境变量、编辑器或 IDE。
+要高效地使用 Deno，您应该设置环境，比如命令行自动补全、环境变量、编辑器或 IDE。
 
 ### 环境变量
 
-这里是一些控制 Deno 行为的环境变量：
+这是一些控制 Deno 行为的环境变量：
 
 `DENO_DIR` 默认为 `$HOME/.deno`，但可以设置为任何路径。这是 Deno 存放生成的代码和缓存的源码的路径。
 
@@ -32,7 +32,7 @@ source /usr/local/etc/bash_completion.d/deno.bash
 
 ### 编辑器和 IDE
 
-Deno 需要用文件后缀名来支持模块导入和 HTTP 导入。目前，大多数编辑器和语言服务器没有原生支持这点，一些编辑器可能会抛出无法找到文件的错误，或是不必要的文件后缀名错误。
+Deno 需要用文件后缀名来支持模块导入和 HTTP 导入。目前，大多数编辑器和语言服务器没有原生支持这点，一些编辑器可能会抛出“无法找到文件”的错误，或是“不必要的文件后缀名”错误。
 
 社区已经开发了一些插件用来解决这些问题。
 
@@ -45,4 +45,4 @@ JetBrains 的 IDE 还没有支持 Deno，但您可以通过订阅和投票这些
 - <https://youtrack.jetbrains.com/issue/WEB-42983>
 - <https://youtrack.jetbrains.com/issue/WEB-31667>
 
-如果您没有在列表中看到您最喜欢的 IDE，或许可以开发一个插件，我们的社区能够帮助您起步。[Discord](https://discord.gg/TGMHGv6)
+如果您没有在列表中看到您最喜欢的 IDE，或许可以开发一个插件，我们的社区能够帮助您起步：[Discord](https://discord.gg/TGMHGv6)

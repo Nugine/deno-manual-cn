@@ -52,11 +52,6 @@ deno run https://deno.land/std/examples/curl.ts https://example.com
 
 这个程序将会返回一个关于网络权限的错误，我们做错了什么？您可能会想起来，Deno 默认用安全环境执行代码。这意味着您需要显式赋予程序权限，允许它进行一些特权操作，比如网络访问。
 
-You will see that this program returns an error regarding network access, so
-what did we do wrong? You might remember from the introduction that Deno is a
-runtime that is secure by default. This means that you need to explicitly give
-programs the permission to do certain 'privledged' actions like network access.
-
 用正确的权限选项再试一次：
 
 ```bash

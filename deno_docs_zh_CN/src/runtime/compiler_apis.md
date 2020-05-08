@@ -4,7 +4,7 @@ Deno 支持对内置 TypeScript 编译器的运行时访问。`Deno` 命名空�
 
 ### `Deno.compile()`
 
-这类似于 `deno cache`，因为它可以获取和缓存代码，编译代码，但不运行代码。它最多接受三个参数，`rootName`、可选的 `sources` 和可选的 `options`。`rootName` 是用于生成目标程序的根模块。这类似于在 `deno run --reload example.ts` 中在命令行上传递的模块名。`sources` 是一个哈希表，其中键是完全限定的模块名称，值是模块的文本源。如果传递了 `sources`，Deno 将从该哈希表中解析所有模块，而不会尝试在 Deno 之外解析它们。如果没有提供 `sources`，Deno 将解析模块，就像根模块已经在命令行上传递了一样。Deno 还将缓存所有的这些资源。`options` 参数是一组 `Deno.CompilerOptions` 类型的选项，它是包含 Deno 支持选项的 TypeScript 编译器选项的子集。
+这类似于 `deno cache`，因为它可以获取代码、缓存代码、编译代码，但不运行代码。它最多接受三个参数，`rootName`、可选的 `sources` 和可选的 `options`。`rootName` 是用于生成目标程序的根模块。这类似于在 `deno run --reload example.ts` 中在命令行上传递的模块名。`sources` 是一个哈希表，其中键是完全限定的模块名称，值是模块的文本源。如果传递了 `sources`，Deno 将从该哈希表中解析所有模块，而不会尝试在 Deno 之外解析它们。如果没有提供 `sources`，Deno 将解析模块，就像根模块已经在命令行上传递了一样。Deno 还将缓存所有的这些资源。`options` 参数是一组 `Deno.CompilerOptions` 类型的选项，它是包含 Deno 支持选项的 TypeScript 编译器选项的子集。
 
 该方法使用元组进行解析。第一个参数包含与代码相关的任何诊断信息（语法或类型错误）。第二个参数是一个映射，其中键是输出文件名，值是内容。
 
@@ -123,11 +123,11 @@ const [errors, emitted] = await Deno.compile(
 );
 ```
 
-**注意**，Deno 命名空间需要一个 ES2018 或更新的运行时环境。这意味着，如果您使用的库“低于” ES2018，那么您将得到作为编译的一部分记录的错误。
+**注意**，Deno 命名空间需要一个 ES2018 或更新的运行时环境。这意味着，如果您使用的库“低于” ES2018，那么您将得到编译过程中输出的错误。
 
 #### 使用三斜杠引用（triple-slash reference）
 
-您不必在编译器选项中指定 `lib`。Deno 支持[对库的三斜杠引用](https://www.typescriptlang.org/docs/handbook/triple-slash-directives.html#-reference-lib-)，并可以嵌入到文件的内容中。例如，如果你有一个 `main.ts`：
+您不必在编译器选项中指定 `lib`。Deno 支持[对库的三斜杠引用](https://www.typescriptlang.org/docs/handbook/triple-slash-directives.html#-reference-lib-)，并可以嵌入到文件的内容中。举个例子，如果你有一个 `main.ts`：
 
 ```ts
 /// <reference lib="dom" />
@@ -143,4 +143,4 @@ const [errors, emitted] = await Deno.compile("./main.ts", undefined, {
 });
 ```
 
-**注意**，`dom` 库与 Deno 的默认类型库中定义的一些默认全局变量有冲突。为了避免这种情况，需要在编译器选项中为运行时编译器 API 指定一个 `lib` 选项
+**注意**，`dom` 库与 Deno 的默认类型库中定义的一些默认全局变量有冲突。为了避免这种情况，需要在编译器选项中为运行时编译器 API 指定一个 `lib` 选项。

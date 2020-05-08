@@ -29,7 +29,7 @@ import * as foo from "./foo.js";
 
 此编译提示影响下一个 `import` 语句，或是 `export ... from` 语句，在编译时，该值将替换模块。像上面的示例一样，Deno 编译器将加载 `./foo.d.ts`，而不是 `./foo.js`。Deno 在运行时仍然会加载 `./foo.js`。
 
-#### JavaScript 文件中的三斜线引用指令
+#### JavaScript 文件中的三斜杠引用指令
 
 如果您要发布由 Deno 使用的模块，并且想要告诉 Deno 类型定义的位置，您可以使用实际代码中的三斜杠指令。
 
@@ -64,7 +64,7 @@ TypeScript 编译器。Deno仅在 JavaScript （包括 JSX）文件中查找指�
 
 ### 自定义 TypeScript 编译器选项
 
-在Deno生态系统中，所有严格标志都被默认启用，以符合 TypeScript 的理想状态。然而，Deno 支持自定义配置文件 (例如 `tsconfig.json`)。
+在Deno生态系统中，所有严格标志都被默认启用，以符合 TypeScript 的理想状态。Deno 也支持自定义配置文件，例如 `tsconfig.json`。
 
 您需要通过显式设置 `-c` 选项，来明确告诉 Deno 在哪里寻找此配置。
 
@@ -114,5 +114,4 @@ deno run -c tsconfig.json mod.ts
 
 有关上述选项和用例的文档，请访问 [typescript docs](https://www.typescriptlang.org/docs/handbook/compiler-options.html).
 
-
-**注意**：Deno 不支持以上未列出的或在 TypeScript 文档中列为已弃用/实验性的任何选项。
+**注意**：以上列表中不包含 Deno 不支持的选项，或者 TypeScript 文档中已经标记为废弃的/实验性的选项。
