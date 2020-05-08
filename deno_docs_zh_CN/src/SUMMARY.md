@@ -33,7 +33,7 @@
   - [依赖检查器](tools/dependency_inspector.md)
 - [嵌入式 Deno](embedding_deno.md)
 - [贡献](contributing.md)
-  - [从源码贡献](contributing/building_from_source.md)
+  - [从源码构建](contributing/building_from_source.md)
   - [开发工具](contributing/development_tools.md)
   - [架构](contributing/architecture.md)
 - [示例](examples.md)

@@ -14,7 +14,7 @@ git clone --recurse-submodules https://github.com/denoland/deno.git
 
 在 Windows 系统上有一些额外步骤：
 
-1. [打开“开发者模式”](https://www.google.com/search?q=windows+enable+developer+mode)，否则符号链接将需要管理员权限。
+1. 打开“[开发者模式](https://www.google.com/search?q=windows+enable+developer+mode)”，否则符号链接将需要管理员权限。
 
 2. 确认您正在使用 git 2.19.2.windows.1，或更高版本。
 
