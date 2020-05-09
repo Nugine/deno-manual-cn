@@ -1,4 +1,4 @@
-# 与第三方代码连接
+# 与外部代码连接
 
 在 [入门](./getting_started.md) 章节中，我们看到 Deno 能够从 URL 执行脚本。像浏览器中的 JavaScript 一样，Deno 可以从 URL 直接导入代码库。
 

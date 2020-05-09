@@ -1,13 +1,9 @@
 ## 检查与放弃权限
 
-## Inspecting and revoking permissions
-
 > 这个程序使用了不稳定的 Deno 功能。更多信息请查阅
 > [unstable features](../runtime/unstable.md)
 
-
 有时一个程序会放弃之前获得的权限，在此之后，需要该权限的操作将失败。
-
 
 ```ts
 // 查找一个权限

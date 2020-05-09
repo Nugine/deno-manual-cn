@@ -1,19 +1,20 @@
 ## 导入映射（Import maps）
 
-> 这是一个不稳定功能。了解更多关于[不稳定功能](../../runtime/unstable)
+> 这个程序使用了不稳定的 Deno 功能。更多信息请查阅
+> [unstable features](../runtime/unstable.md)
 
-Deno 支持[import maps](https://github.com/WICG/import-maps)
+Deno 支持 [导入映射](https://github.com/WICG/import-maps)
 
-您可以通过 `--importmap=<FILE>` 的 CLI 开关使用 import map。
+您可以通过 `--importmap=<FILE>` 的命令行选项使用导入映射。
 
-目前的局限性:
+目前的限制:
 
-- 导入映射单一
+- 只支持单个导入映射
 - 没有后备 URL
 - Deno 不支持 `std:` 命名空间
-- 仅支持 `file:`，`http:` 和 `https:` 方法
+- 仅支持 `file:`，`http:` 和 `https:` 协议
 
-例如：
+示例：
 
 ```js
 // import_map.json

@@ -12,7 +12,7 @@
   - [程序生命周期](runtime/program_lifecycle.md)
   - [编译器 API](runtime/compiler_apis.md)
   - [不稳定 API](runtime/unstable.md)
-- [与第三方代码连接](linking_to_external_code.md)
+- [与外部代码连接](linking_to_external_code.md)
   - [重新加载模块](linking_to_external_code/reloading_modules.md)
   - [完整性检查](linking_to_external_code/integrity_checking.md)
   - [代理](linking_to_external_code/proxies.md)
