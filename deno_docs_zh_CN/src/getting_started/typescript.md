@@ -40,7 +40,7 @@ import * as foo from "./foo.js";
 export const foo = "foo";
 ```
 
-Deno会看到这一点，并且在检查类型时，编译器将使用 `foo.d.ts` 文件，尽管 `foo.js` 将在运行时加载。
+Deno 会看到这一点，并且在检查类型时，编译器将使用 `foo.d.ts` 文件，尽管 `foo.js` 将在运行时加载。
 
 该值遵循与导入模块相同的解析逻辑，这意味着它需要具有扩展名，并且是相对于当前模块的。远程模块也可以使用该说明符。
 
@@ -60,11 +60,11 @@ Deno 将使用编译提示来加载指示的 `.d.ts` 文件，但有些 `.d.ts` 
 
 TypeScript 编译器支持三斜杠指令，包括类型
 参考指令。如果 Deno 使用此功能，则会干扰
-TypeScript 编译器。Deno仅在 JavaScript （包括 JSX）文件中查找指令。
+TypeScript 编译器。Deno 仅在 JavaScript （包括 JSX）文件中查找指令。
 
 ### 自定义 TypeScript 编译器选项
 
-在Deno生态系统中，所有严格标志都被默认启用，以符合 TypeScript 的理想状态。Deno 也支持自定义配置文件，例如 `tsconfig.json`。
+在 Deno 生态系统中，所有严格标志都被默认启用，以符合 TypeScript 的理想状态。Deno 也支持自定义配置文件，例如 `tsconfig.json`。
 
 您需要通过显式设置 `-c` 选项，来明确告诉 Deno 在哪里寻找此配置。
 

@@ -10,7 +10,6 @@
 
 如果 `NO_COLOR` 被设置，Deno 将会关闭彩色输出 (<https://no-color.org/>)。用户代码可以通过布尔常量 `Deno.noColor` 测试 `NO_COLOR` 是否被设置，这不需要环境权限 (`--allow-env`)。
 
-
 ### 命令行自动补全
 
 通过 `deno completions <shell>` 命令可以生成补全脚本。它会输出到 stdout，您应该将它重定向到适当的文件。
