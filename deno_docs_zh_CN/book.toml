@@ -1,0 +1,9 @@
+[book]
+authors = ["Nugine"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Deno 手册"
+
+[output.html]
+theme = "theme"

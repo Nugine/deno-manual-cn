@@ -1,18 +1,12 @@
-# deno-manual-cn
+# Deno 中文手册
 
-[awesome-deno](https://github.com/denolib/awesome-deno)
+> 新版翻译正在进行中……
 
-[nugine.github.io/deno-manual-cn/](https://nugine.github.io/deno-manual-cn/)
+点此预览 [nugine.github.io/deno-manual-cn/](https://nugine.github.io/deno-manual-cn/)
 
-## Deno Manual
+点此勘误 [issue #2](https://github.com/Nugine/deno-manual-cn/issues/2)
 
-[nugine.github.io/deno-manual-cn/manual-cn](https://nugine.github.io/deno-manual-cn/manual-cn.html)
-
-## Deno Style Guide
-
-[nugine.github.io/deno-manual-cn/style-guide-cn](https://nugine.github.io/deno-manual-cn/style-guide-cn.html)
-
-## Contributor
+翻译者：
 
 + [Nugine](https://github.com/Nugine)
 + [sbwww](https://github.com/sbwww)
