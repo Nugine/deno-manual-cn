@@ -20,7 +20,7 @@ assert(diagnostics == null); // 确保没有返回诊断信息
 console.log(emitMap);
 ```
 
-我们希望 map 包含4个 “文件（files）” ，分别命名为 `/foo.js.map`，`/foo.js`，`/bar.js.map`，和 `/bar.js`。
+我们希望 map 包含 4 个 “文件（files）” ，分别命名为 `/foo.js.map`，`/foo.js`，`/bar.js.map`，和 `/bar.js`。
 
 当不提供资源时，您可以使用本地或远程模块，就像在命令行上做的那样。所以您可以这样做:
 

@@ -76,4 +76,4 @@ export {
 import { assertEquals, runTests, test } from "./deps.ts";
 ```
 
-这种设计规避了包管理、集中式代码存储库和多余的文件格式带来的过多复杂性。
+这种设计避免了由包管理软件、集中的代码存储库和多余的文件格式所产生的大量复杂性。

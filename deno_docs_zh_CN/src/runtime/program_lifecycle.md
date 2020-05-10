@@ -1,6 +1,6 @@
 ## 程序生命周期
 
-Deno 支持浏览器兼容的生命周期事件: `load` 和 `unload`。您可以使用这些事件在程序中提供用于安装 (setup) 和清理 (cleanup) 的代码。
+Deno 支持浏览器兼容的生命周期事件 `load` 和 `unload`。您可以使用这些事件在程序中提供用于安装 (setup) 和清理 (cleanup) 的代码。
 
 `load` 事件的侦听器 (listener) 可以是异步 (async) 的，将被等待 (await)。`unload` 事件的监听器需要是同步的。这两项事件都不能被取消。
 

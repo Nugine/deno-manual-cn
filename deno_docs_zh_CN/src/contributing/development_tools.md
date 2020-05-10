@@ -49,7 +49,6 @@ kill `pgrep deno`
 
 V8 将在当前目录写入一个文件，像这样 `isolate-0x7fad98242400-v8.log`。查看这个文件：
 
-
 ```sh
 D8_PATH=target/release/ ./third_party/v8/tools/linux-tick-processor
 isolate-0x7fad98242400-v8.log > prof.log
@@ -58,9 +57,7 @@ isolate-0x7fad98242400-v8.log > prof.log
 
 `prof.log` 将包含不用调用的 tick 分布。
 
-
 用 Web UI 查看这个日志，先生成 JSON 文件：
-
 
 ```sh
 D8_PATH=target/release/ ./third_party/v8/tools/linux-tick-processor
@@ -86,7 +83,6 @@ isolate-0x7fad98242400-v8.log --preprocess > prof.json
 ### 使用 LLDB 调试
 
 ### Debugging with LLDB
-
 
 ```shell
 $ lldb -- target/debug/deno run tests/worker.js
@@ -138,7 +134,6 @@ $ deno --v8-flags=--expose-gc,--use-strict
 参考我们的测试 [https://deno.land/benchmarks](https://deno.land/benchmarks)
 
 测试图表假设 <https://github.com/denoland/benchmark_data/data.json> 有着 `BenchmarkData[]` 类型。以下是 `BenchmarkData` 的定义：
-
 
 ```ts
 interface ExecTimeData {
