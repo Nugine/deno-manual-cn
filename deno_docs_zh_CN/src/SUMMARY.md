@@ -43,6 +43,5 @@
   - [创建子进程](examples/subprocess.md)
   - [检查与放弃权限](examples/permissions.md)
   - [系统信号](examples/os_signals.md)
-  - [文件系统事件](examples/file_system_events.md)
   - [测试当前文件是否为主程序](examples/testing_if_main.md)
 - [风格指南](style-guide.zh-CN.md)
