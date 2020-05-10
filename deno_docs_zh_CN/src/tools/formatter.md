@@ -2,7 +2,6 @@
 
 Deno 有着内置的格式化工具，能够格式化 TypeScript 和 JavaScript 代码。
 
-
 ```shell
 # 格式化当前目录和子目录下的所有 JS/TS 文件
 deno fmt
