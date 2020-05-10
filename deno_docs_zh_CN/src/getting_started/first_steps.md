@@ -2,13 +2,13 @@
 
 这个页面包含一些简单的示例，您可以从中学到 Deno 的基本概念。
 
-我们假设您已经对 JavaScript 有过预先的了解，特别是 `async`/`await`。如果您没有了解过 JavaScript，您可能先需要阅读这个指南：[JavaScript](https://developer.mozilla.org/zh-CN/docs/learn/JavaScript).
+我们假设您已经对 JavaScript 有过预先的了解，特别是 `async`/`await`。如果您没有了解过 JavaScript，您可能需要先阅读这个指南：[JavaScript](https://developer.mozilla.org/zh-CN/docs/learn/JavaScript).
 
 ### Hello World
 
-Deno 是一个 JavaScript 和 TypeScript 的运行时，尽可能与浏览器兼容并使用现代的功能 (features)。
+Deno 是一个 JavaScript 和 TypeScript 的运行时，并尝试与浏览器兼容并使用现代的功能 (features)。
 
-由于 Deno 具有浏览器兼容性，`Hello World` 程序与浏览器里的没什么不同。
+由于 Deno 具有浏览器兼容性，`Hello World` 程序与浏览器里的没有区别。
 
 ```typescript
 console.log("Welcome to Deno 🦕");

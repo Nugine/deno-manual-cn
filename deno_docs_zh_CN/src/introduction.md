@@ -16,17 +16,17 @@ Deno 建立在 V8、Rust 和 Tokio 的基础上。
 
 - 有着内建的工具箱，比如一个依赖信息查看器 (`deno info`) 和一个代码格式化工具 (`deno fmt`)。
 
-- 有一组经过审计的[标准模块](https://github.com/denoland/deno/tree/master/std)，保证能在 Deno 上工作。
+- 有一组经过审计的 [标准模块](https://github.com/denoland/deno/tree/master/std)，保证能在 Deno 上工作。
 
 - 脚本代码能被打包为一个单独的 JavaScript 文件。
 
 ## 哲学
 
-Deno旨在为现代程序员提供高效、安全的脚本环境。
+Deno 旨在为现代程序员提供高效、安全的脚本环境。
 
-它将始终作为单个可执行文件分发，并且该可执行文件将能运行任何deno程序。给定一个 deno 程序的 URL，您应该能够用不超过 15MB 的压缩过的 deno 可执行文件运行它。
+它将始终作为单个可执行文件分发，并且该可执行文件将能运行任何 Deno 程序。给定一个 Deno 程序的 URL，您应该能够用不超过 15MB 的压缩过的 Deno 可执行文件运行它。
 
-Deno明确地承担了运行时和包管理器的角色。它使用标准的浏览器兼容协议(URL)来加载模块。
+Deno 明确地承担了运行时和包管理器的角色。它使用标准的浏览器兼容协议(URL)来加载模块。
 
 对于过去用 bash 或 python 编写的工具脚本来说，Deno 是一个优秀的替代品。
 

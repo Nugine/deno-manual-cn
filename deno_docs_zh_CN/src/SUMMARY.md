@@ -7,7 +7,7 @@
   - [第一步](getting_started/first_steps.md)
   - [权限](getting_started/permissions.md)
   - [使用 TypeScript](getting_started/typescript.md)
-  - [使用 WebAssembly](getting_started/webassembly.md)
+  - [使用 WebAssembly](getting_started/wasm.md)
 - [运行时](runtime.md)
   - [程序生命周期](runtime/program_lifecycle.md)
   - [编译器 API](runtime/compiler_apis.md)
