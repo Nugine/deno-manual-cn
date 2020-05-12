@@ -8,7 +8,7 @@ Linux 或 Mac 系统：
 
 Clone on Linux or Mac:
 
-```bash
+```shell
 git clone --recurse-submodules https://github.com/denoland/deno.git
 ```
 
@@ -19,7 +19,7 @@ git clone --recurse-submodules https://github.com/denoland/deno.git
 2. 确认您正在使用 git 2.19.2.windows.1 或更高版本。
 
 3. 在检出 (checkout) 前，设置 `core.symlinks=true`。
-   ```bash
+   ```shell
    git config --global core.symlinks true
    git clone --recurse-submodules https://github.com/denoland/deno.git
    ```
@@ -76,7 +76,7 @@ V8_FROM_SOURCE=1 cargo build -vv
 
 使用 Cargo：
 
-```bash
+```shell
 # 构建：
 cargo build -vv
 
@@ -84,5 +84,5 @@ cargo build -vv
 cargo clean && cargo build -vv
 
 # 运行：
-./target/debug/deno cli/tests/002_hello.ts
+./target/debug/deno run cli/tests/002_hello.ts
 ```
