@@ -4,9 +4,15 @@ Deno 支持对内置 TypeScript 编译器的运行时访问。`Deno` 命名空�
 
 ### `Deno.compile()`
 
-这类似于 `deno cache`，因为它可以获取代码、缓存代码、编译代码，但不运行代码。它最多接受三个参数，`rootName`、可选的 `sources` 和可选的 `options`。`rootName` 是用于生成目标程序的根模块。这类似于在 `deno run --reload example.ts` 中在命令行上传递的模块名。`sources` 是一个哈希表，其中键是完全限定的模块名称，值是模块的文本源。如果传递了 `sources`，Deno 将从该哈希表中解析所有模块，而不会尝试在 Deno 之外解析它们。如果没有提供 `sources`，Deno 将解析模块，就像根模块已经在命令行上传递了一样。Deno 还将缓存所有的这些资源。`options` 参数是一组 `Deno.CompilerOptions` 类型的选项，它是包含 Deno 支持选项的 TypeScript 编译器选项的子集。
+这类似于 `deno cache`，因为它可以获取代码、缓存代码、编译代码，但不运行代码。它最多接受三个参数，`rootName`、可选的 `sources` 和可选的 `options`。
 
-该方法使用元组进行解析。第一个参数包含与代码相关的任何诊断信息（语法或类型错误）。第二个参数是一个映射，其中键是输出文件名，值是内容。
+`rootName` 是用于生成目标程序的根模块。这类似于在 `deno run --reload example.ts` 中在命令行上传递的模块名。
+
+`sources` 是一个哈希表，其中键是完全限定的模块名称，值是模块的文本源。如果传递了 `sources`，Deno 将从该哈希表中解析所有模块，而不会尝试在 Deno 之外解析它们。如果没有提供 `sources`，Deno 将解析模块，就像根模块已经在命令行上传递了一样。Deno 还将缓存所有的这些资源。所有已解析的资源都会被当成动态导入对待，导入行为是否需要读取和网络权限取决于目标在本地还是远程。
+
+`options` 参数是一组 `Deno.CompilerOptions` 类型的选项，它是包含 Deno 支持选项的 TypeScript 编译器选项的子集。
+
+该方法返回元组。第一个参数包含与代码相关的任何诊断信息（语法或类型错误）。第二个参数是一个映射，其中键是输出文件名，值是内容。
 
 提供 `sources` 的一个例子:
 
@@ -34,7 +40,13 @@ const [diagnostics, emitMap] = await Deno.compile(
 
 ### `Deno.bundle()`
 
-这与 `deno bundle` 在命令行上的工作非常相似。 它也与 `Deno.compile()` 类似，只是它不返回文件映射，而是只返回一个字符串，这是一个自包含的 JavaScript ES 模块，它将包含提供或解析的所有代码，以及提供的根模块的所有导出。它最多接受三个参数，`rootName`、可选的 `sources` 和可选的 `options`。`rootName` 是用于生成目标程序的根模块。这类似于在 `deno bundle example.ts` 中在命令行上传递的模块名。`sources` 是一个哈希表，其中键是完全限定的模块名称，值是模块的文本源。如果传递了 `sources`，Deno 将从该哈希表中解析所有模块，而不会尝试在 Deno 之外解析它们。如果没有提供 `sources`，Deno 将解析模块，就像根模块已经在命令行上传递了一样。 Deno 还将缓存所有的这些资源。`options` 参数是一组 `Deno.CompilerOptions` 类型的选项，它是包含 Deno 支持选项的 TypeScript 编译器选项的子集。
+这与 `deno bundle` 在命令行上的工作非常相似。 它也与 `Deno.compile()` 类似，只是它不返回文件映射，而是只返回一个字符串，这是一个自包含的 JavaScript ES 模块，它将包含提供或解析的所有代码，以及提供的根模块的所有导出。它最多接受三个参数，`rootName`、可选的 `sources` 和可选的 `options`。
+
+`rootName` 是用于生成目标程序的根模块。这类似于在 `deno bundle example.ts` 中在命令行上传递的模块名。
+
+`sources` 是一个哈希表，其中键是完全限定的模块名称，值是模块的文本源。如果传递了 `sources`，Deno 将从该哈希表中解析所有模块，而不会尝试在 Deno 之外解析它们。如果没有提供 `sources`，Deno 将解析模块，就像根模块已经在命令行上传递了一样。Deno 还将缓存所有的这些资源。所有已解析的资源都会被当成动态导入对待，导入行为是否需要读取和网络权限取决于目标在本地还是远程。
+
+`options` 参数是一组 `Deno.CompilerOptions` 类型的选项，它是包含 Deno 支持选项的 TypeScript 编译器选项的子集。
 
 提供 `sources` 的一个例子:
 

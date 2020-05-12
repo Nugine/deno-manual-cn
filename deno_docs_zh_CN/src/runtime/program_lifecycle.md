@@ -6,7 +6,7 @@ Deno 支持浏览器兼容的生命周期事件 `load` 和 `unload`。您可以�
 
 示例：
 
-```typescript
+```ts
 // main.ts
 import "./imported.ts";
 
