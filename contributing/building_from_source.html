@@ -152,7 +152,7 @@
 <h3><a class="header" href="#克隆-deno-仓库" id="克隆-deno-仓库">克隆 Deno 仓库</a></h3>
 <p>Linux 或 Mac 系统：</p>
 <p>Clone on Linux or Mac:</p>
-<pre><code class="language-bash">git clone --recurse-submodules https://github.com/denoland/deno.git
+<pre><code class="language-shell">git clone --recurse-submodules https://github.com/denoland/deno.git
 </code></pre>
 <p>在 Windows 系统上有一些额外步骤：</p>
 <ol>
@@ -164,7 +164,7 @@
 </li>
 <li>
 <p>在检出 (checkout) 前，设置 <code>core.symlinks=true</code>。</p>
-<pre><code class="language-bash">git config --global core.symlinks true
+<pre><code class="language-shell">git config --global core.symlinks true
 git clone --recurse-submodules https://github.com/denoland/deno.git
 </code></pre>
 </li>
@@ -211,14 +211,14 @@ git clone --recurse-submodules https://github.com/denoland/deno.git
 <p>有关构建 V8 的更多细节请查阅 <a href="https://github.com/denoland/rusty_v8">rusty_v8's README</a></p>
 <h3><a class="header" href="#构建" id="构建">构建</a></h3>
 <p>使用 Cargo：</p>
-<pre><code class="language-bash"># 构建：
+<pre><code class="language-shell"># 构建：
 cargo build -vv
 
 # 构建失败？确保您位于最新的 master 分支，然后再试一次。如果还不行，尝试清除上一次的结果：
 cargo clean &amp;&amp; cargo build -vv
 
 # 运行：
-./target/debug/deno cli/tests/002_hello.ts
+./target/debug/deno run cli/tests/002_hello.ts
 </code></pre>
 
                     </main>
