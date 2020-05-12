@@ -1,7 +1,7 @@
 ## 导入映射（Import maps）
 
-> 这是一个不稳定的特性。更多信息请查阅
-> [unstable features](../runtime/unstable.md)
+> 这是一个不稳定的特性。
+> 更多信息请查阅 [稳定性](../runtime/stability.md)
 
 Deno 支持 [导入映射](https://github.com/WICG/import-maps)。
 
@@ -38,5 +38,5 @@ for await (const req of serve(":8000")) {
 ```
 
 ```shell
-$ deno run --importmap=import_map.json hello_server.ts
+$ deno run --importmap=import_map.json --unstable hello_server.ts
 ```
