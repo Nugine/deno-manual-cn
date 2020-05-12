@@ -10,13 +10,13 @@ Deno 是一个 JavaScript 和 TypeScript 的运行时，并尝试与浏览器兼
 
 由于 Deno 具有浏览器兼容性，`Hello World` 程序与浏览器里的没有区别。
 
-```typescript
+```ts
 console.log("Welcome to Deno 🦕");
 ```
 
 尝试一下：
 
-```bash
+```shell
 deno run https://deno.land/std/examples/welcome.ts
 ```
 
@@ -64,11 +64,15 @@ Deno 也提供内置的 API，它们都位于全局变量 `Deno` 中。您可以
 
 文件系统 API 没有 web 标准形式，所以 Deno 提供了内置的 API。
 
-示例：[Unix "cat" 程序的一个实现](../examples/unix_cat.md)
+示例：[Unix cat](../examples/unix_cat.md)
+
+{{#include ../examples/unix_cat.md:2:}}
 
 ### 一个简单的 TCP 服务
 
 示例：[TCP echo](../examples/tcp_echo.md)
+
+{{#include ../examples/tcp_echo.md:2:}}
 
 ### 更多示例
 

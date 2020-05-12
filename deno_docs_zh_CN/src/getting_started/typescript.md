@@ -68,7 +68,7 @@ TypeScript 编译器。Deno 仅在 JavaScript （包括 JSX）文件中查找指
 
 您需要通过显式设置 `-c` 选项，来明确告诉 Deno 在哪里寻找此配置。
 
-```bash
+```shell
 deno run -c tsconfig.json mod.ts
 ```
 
