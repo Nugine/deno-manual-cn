@@ -1,6 +1,6 @@
 [book]
 authors = ["Nugine"]
-language = "en"
+language = "zh-CN"
 multilingual = false
 src = "src"
 title = "Deno 手册"
