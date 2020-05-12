@@ -17,15 +17,3 @@ const wasmInstance = new WebAssembly.Instance(wasmModule);
 console.log(wasmInstance.exports.main().toString());
 ```
 <!-- prettier-ignore-end -->
-
-### ES 模块风格的导入
-
-> 这是一个不稳定的 Deno 特性。更多信息请查阅
-> [unstable features](../runtime/unstable.md)
-
-WASM 文件也可以被直接导入。
-
-```ts
-import { fib } from "./fib.wasm";
-console.log(fib(20));
-```

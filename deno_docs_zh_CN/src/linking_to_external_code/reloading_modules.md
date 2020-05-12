@@ -8,6 +8,6 @@
 
 重新加载所有标准模块：`--reload=https://deno.land/std`
 
-为了重新加载特定的模块（在这个例子中是 colors 和 file system utils），需要使用逗号来分隔 URL：
+为了重新加载特定的模块（在这个例子中是 colors 和 file system copy），需要使用逗号来分隔 URL：
 
-`--reload=https://deno.land/std/fs/utils.ts,https://deno.land/std/fmt/colors.ts`
+`--reload=https://deno.land/std/fs/copy.ts,https://deno.land/std/fmt/colors.ts`

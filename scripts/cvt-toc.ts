@@ -16,11 +16,11 @@ interface Toc {
 const toc: Toc = tocUnknown as Toc; // Yes I know what I'm doing
 
 for (const k1 of Object.keys(toc)) {
-    console.log(`- [${k1}](${toc[k1].name}.md)`);
+    console.log(`- [${toc[k1].name}](${k1}.md)`);
 
     const children = toc[k1].children ?? {};
 
     for (const k2 of Object.keys(children)) {
-        console.log(`  - [${k2}](${children[k2]}.md)`);
+        console.log(`  - [${children[k2]}](${k1}/${k2}.md)`);
     }
 }
