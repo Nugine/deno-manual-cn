@@ -170,7 +170,7 @@ export function pwrite(options: PWrite) {}
 
 我们力求文档的完整性。理想情况下，每个导出的文档符号都应该有一个文档行。
 
-如果可能的话，最好在 JS Doc 中使用一行代码。例如:
+如果可能的话，最好写单行 JSDoc。例如:
 
 ```ts
 /** foo does bar. */
@@ -247,7 +247,7 @@ Deno.test("myTestFunction" function() {
 });
 ```
 
-## 顶级函数不应使用箭头（arrow）语法
+## 顶级函数不应使用箭头语法
 
 顶级函数应使用 `function` 关键字。箭头语法应限于闭包。
 
