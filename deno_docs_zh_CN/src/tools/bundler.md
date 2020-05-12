@@ -16,7 +16,7 @@ Emitting bundle to "colors.bundle.js"
 这个打包文件能够像其他任何模块一样在 Deno 中运行。
 
 ```
-deno colors.bundle.js
+deno run colors.bundle.js
 ```
 
 打包文件是一个自包含 (self contained) 的 ES 模块，其中的任何导出仍然可用。

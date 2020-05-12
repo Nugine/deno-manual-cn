@@ -23,7 +23,7 @@ error: Uncaught PermissionDenied: network access to "0.0.0.0:8080", run again wi
 为了安全，Deno 不允许程序访问网络，除非显式赋予权限。使用一个命令行选项来允许程序访问网络：
 
 ```shell
-$ deno run --allow-net https://deno.land/std/examples/echo_server.ts
+deno run --allow-net https://deno.land/std/examples/echo_server.ts
 ```
 
 尝试用 netcat 向它发送数据。
