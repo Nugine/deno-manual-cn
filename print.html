@@ -151,7 +151,9 @@
                     <main>
                         <h1><a class="header" href="#介绍" id="介绍">介绍</a></h1>
 <blockquote>
-<p>中文翻译正在进行……</p>
+<p>此版本更新于 2020 年 5 月 12 日</p>
+<p>中文：<a href="https://github.com/Nugine/deno-manual-cn">Nugine/deno-manual-cn</a>
+英文：<a href="https://github.com/denoland/deno/tree/eec085573707d1df2bb5fbec88b9a3240613ca1f">deno @ eec0855</a></p>
 </blockquote>
 <p>Deno 是一个 JavaScript/TypeScript 的运行时，默认使用安全环境执行代码，有着卓越的开发体验。</p>
 <p>Deno 建立在 V8、Rust 和 Tokio 的基础上。</p>
@@ -1309,7 +1311,197 @@ interface BenchmarkData {
   };
 }
 </code></pre>
-<h1><a class="header" href="#风格指南" id="风格指南">风格指南</a></h1>
+<!-- https://github.com/denoland/deno/blob/be65f6692f0f81dc88c77ba4cf22cdda40760317/std/style_guide.md -->
+<!-- copy time: 20200506 -->
+<h1><a class="header" href="#deno-风格指南" id="deno-风格指南">Deno 风格指南</a></h1>
+<h2><a class="header" href="#目录" id="目录">目录</a></h2>
+<h2><a class="header" href="#版权标题" id="版权标题">版权标题</a></h2>
+<p>存储库中的大多数模块都应具有以下版权标题:</p>
+<pre><code class="language-ts">// Copyright 2018-2020 the Deno authors. All rights reserved. MIT license.
+</code></pre>
+<p>如果代码来源于其他地方，请确保文件拥有适当的版权拥有者。 我们只允许 MIT、BSD 和 Apache 许可代码。</p>
+<h2><a class="header" href="#在文件名中使用下划线而不是破折号" id="在文件名中使用下划线而不是破折号">在文件名中使用下划线，而不是破折号</a></h2>
+<p>例如: 将文件命名为 <code>file_server.ts</code> 而不是 <code>file-server.ts</code>。</p>
+<h2><a class="header" href="#为新特性添加测试" id="为新特性添加测试">为新特性添加测试</a></h2>
+<p>每个模块都应该包含或伴随着对其公共功能的测试。</p>
+<h2><a class="header" href="#todo-注释" id="todo-注释">TODO 注释</a></h2>
+<p>TODO 注释通常应该将一个 issue 或者作者的 github 用户名放在括号中。例如:</p>
+<pre><code class="language-ts">// TODO(ry): Add tests.
+// TODO(#123): Support Windows.
+// FIXME(#349): Sometimes panics.
+</code></pre>
+<h2><a class="header" href="#不建议使用元编程meta-programming包括代理proxy的使用" id="不建议使用元编程meta-programming包括代理proxy的使用">不建议使用元编程（Meta-programming），包括代理（Proxy）的使用</a></h2>
+<p>即使要写更多的代码，也要力求明确。</p>
+<p>在某些情况下，使用这些技术可能是有意义的，但是在绝大多数情况下，它们是没有意义的。</p>
+<h2><a class="header" href="#rust" id="rust">Rust</a></h2>
+<p>遵循 Rust 约定，并与现有代码保持一致。</p>
+<h2><a class="header" href="#typescript" id="typescript">Typescript</a></h2>
+<p>代码库的 TypeScript 部分包括内置的 <code>cli/js</code> 和标准库 <code>std</code>。</p>
+<h3><a class="header" href="#使用-typescript-而不是-javascript" id="使用-typescript-而不是-javascript">使用 TypeScript 而不是 JavaScript</a></h3>
+<h3><a class="header" href="#使用术语模块module而不是库library或包package" id="使用术语模块module而不是库library或包package">使用术语“模块（module）”，而不是“库（library）”或“包（package）”</a></h3>
+<p>为了保证明确性和一致性，避免使用术语 “library” 和 “package” ，而是使用 “module” 来引用一个 JS 或 TS 文件，或者一个 TS/JS 代码目录。</p>
+<h3><a class="header" href="#不要使用-indexts-或-indexjs-作为文件名" id="不要使用-indexts-或-indexjs-作为文件名">不要使用 <code>index.ts</code> 或 <code>index.js</code> 作为文件名</a></h3>
+<p>Deno 不会以特殊的方式处理 “index.js” 或 “index.ts” 文件。如果使用了这些名称，就意味着当它们需要模块说明符时，可能被排除在外。这会造成误解。</p>
+<p>如果一个代码目录需要一个默认的入口点，使用文件名 <code>mod.ts</code>。 文件名 <code>mod.ts</code> 遵循 Rust 的约定，比 <code>index.ts</code> 短，并且没有任何关于它如何工作的先入为主的概念。</p>
+<h3><a class="header" href="#导出函数exported-functions-最多-2-个参数其余的放入一个选项对象options-object" id="导出函数exported-functions-最多-2-个参数其余的放入一个选项对象options-object">导出函数（Exported functions）: 最多 2 个参数，其余的放入一个选项对象（options object）</a></h3>
+<p>在设计函数接口时，请严格遵循以下规则：</p>
+<ol>
+<li>
+<p>若某函数是公共 API 的一部分，则其可以接受 0~2 个参数，如果必要的话，可以外加一个选项对象，因此最大总数为 3 个。</p>
+</li>
+<li>
+<p>可选参数通常应放到选项对象中。</p>
+<p>如果只有一个可选参数，并且将来一般不会添加更多可选参数，那么该可选参数可以不放在选项对象中。</p>
+</li>
+<li>
+<p>选项参数是唯一一个常规对象参数</p>
+<p>其他参数可以是对象，但它们在运行时必须能区别于其他一般的对象（&quot;plain&quot; Object）。有以下两种方法进行区别：</p>
+<ul>
+<li>一个独特的原型（例如：<code>Array</code>，<code>Map</code>，<code>Date</code>，<code>class MyThing</code>）</li>
+<li>一个众所周知的符号属性（例如 <code>Symbol.iterator</code>）</li>
+</ul>
+<p>这允许 API 以向后兼容的方式发展，即使选项对象的位置发生了变化。</p>
+</li>
+</ol>
+<pre><code class="language-ts">// 错误示例：可选参数不是选项对象的一部分 (#2)
+export function resolve(
+  hostname: string,
+  family?: &quot;ipv4&quot; | &quot;ipv6&quot;,
+  timeout?: number
+): IPAddress[] {}
+
+// 正确示例：
+export interface ResolveOptions {
+  family?: &quot;ipv4&quot; | &quot;ipv6&quot;;
+  timeout?: number;
+}
+export function resolve(
+  hostname: string,
+  options: ResolveOptions = {}
+): IPAddress[] {}
+</code></pre>
+<pre><code class="language-ts">export interface Environment {
+  [key: string]: string;
+}
+
+// 错误示例：`env`可以是一个常规对象，因此无法与选项对象区分 (#3)
+export function runShellWithEnv(cmdline: string, env: Environment): string {}
+
+// 正确示例
+export interface RunShellOptions {
+  env: Environment;
+}
+export function runShellWithEnv(
+  cmdline: string,
+  options: RunShellOptions
+): string {}
+</code></pre>
+<pre><code class="language-ts">// 错误示例：多于3个参数 (#1)，多个可选参数 (#2)。
+export function renameSync(
+  oldname: string,
+  newname: string,
+  replaceExisting?: boolean,
+  followLinks?: boolean
+) {}
+
+// 正确示例
+interface RenameOptions {
+  replaceExisting?: boolean;
+  followLinks?: boolean;
+}
+export function renameSync(
+  oldname: string,
+  newname: string,
+  options: RenameOptions = {}
+) {}
+</code></pre>
+<pre><code class="language-ts">// 错误示例：参数过多 (#1)
+export function pwrite(
+  fd: number,
+  buffer: TypedArray,
+  offset: number,
+  length: number,
+  position: number
+) {}
+
+// 正确示例：
+export interface PWrite {
+  fd: number;
+  buffer: TypedArray;
+  offset: number;
+  length: number;
+  position: number;
+}
+export function pwrite(options: PWrite) {}
+</code></pre>
+<h3><a class="header" href="#尽量降低依赖性不要进行循环导入" id="尽量降低依赖性不要进行循环导入">尽量降低依赖性；不要进行循环导入</a></h3>
+<p>尽管 <code>cli/js</code> 和 <code>std</code> 没有外部依赖关系，但仍然必须注意保持内部依赖关系的简单性和可管理性。请尤为注意，不要引入循环导入。</p>
+<h3><a class="header" href="#不要连接到文件名以下划线开头的文件如_foots" id="不要连接到文件名以下划线开头的文件如_foots">不要连接到文件名以下划线开头的文件，如：<code>_foo.ts</code></a></h3>
+<p>有时候可能需要一个内部模块，但是它的 API 并不稳定或者不被连接。这种情况下，在文件名前面加一个下划线。按照惯例，只有它自己目录中的文件才能导入它。</p>
+<h3><a class="header" href="#对导出的符号使用-jsdoc" id="对导出的符号使用-jsdoc">对导出的符号使用 JSDoc</a></h3>
+<p>我们力求文档的完整性。理想情况下，每个导出的文档符号都应该有一个文档行。</p>
+<p>如果可能的话，最好写单行 JSDoc。例如:</p>
+<pre><code class="language-ts">/** foo does bar. */
+export function foo() {
+  // ...
+}
+</code></pre>
+<p>文档易于阅读是很重要的，但是还需要提供额外的样式信息，以确保生成的文档有更丰富的含义。因此，JSDoc 通常应该遵循 markdown 标记来丰富文本。</p>
+<p>虽然 markdown 支持 HTML 标记，但是在 JSDoc 块中是禁止的。</p>
+<p>代码字符串文字应使用反引号（`）括起来，而不是用引号。例如：</p>
+<pre><code class="language-ts">/** Import something from the `deno` module. */
+</code></pre>
+<p>不要记录函数参数，除非它们的意图不明显（当然，如果它们没有明显的意图，应该重新考虑 API 的设计）。因此，通常不应使用 <code>@param</code>。如果使用了 <code>@param</code>，则不应该包含 <code>type</code> ，因为 TypeScript 已经是强类型化的了。</p>
+<pre><code class="language-ts">/**
+ * Function with non obvious param.
+ * @param foo Description of non obvious parameter.
+ */
+</code></pre>
+<p>应尽可能减小垂直间距。因此单行注释应写为：</p>
+<pre><code class="language-ts">/** 这样写单行 JSDoc 注释。 */
+</code></pre>
+<p>不要写为：</p>
+<pre><code class="language-ts">/**
+ * 不要这样写单行 JSDoc 注释。
+ */
+</code></pre>
+<p>代码示例不应使用三个反引号（```）标记。它们应该用缩进标记，要求在示例代码块前加入一个空行，并且示例代码的每一行需要有 6 个额外空格。比注释的第一列多 4 个空格。例如：</p>
+<pre><code class="language-ts">/** A straight forward comment and an example:
+ *
+ *       import { foo } from &quot;deno&quot;;
+ *       foo(&quot;bar&quot;);
+ */
+</code></pre>
+<p>既然代码示例已经是一个注释了，它就不应再包含其他注释。如果它需要进一步的注释，那意味着它不是一个很好的示例。</p>
+<h3><a class="header" href="#每个模块都应该附带一个测试模块" id="每个模块都应该附带一个测试模块">每个模块都应该附带一个测试模块</a></h3>
+<p>每个带有公共功能 <code>foo.ts</code> 的模块都应该附带一个测试模块 <code>foo_test.ts</code>。由于 <code>cli/js</code> 模块的上下文不同，它的测试应该放在 <code>cli/js/tests</code> 中，或者它应只是测试模块的同级模块。</p>
+<h3><a class="header" href="#单元测试应是明确的" id="单元测试应是明确的">单元测试应是明确的</a></h3>
+<p>为了更好地理解测试，函数应该在测试命令中按照提示正确命名，如:</p>
+<pre><code>test myTestFunction ... ok
+</code></pre>
+<p>测试示例:</p>
+<pre><code class="language-ts">import { assertEquals } from &quot;https://deno.land/std@v0.11/testing/asserts.ts&quot;;
+import { foo } from &quot;./mod.ts&quot;;
+
+Deno.test(&quot;myTestFunction&quot; function() {
+  assertEquals(foo(), { bar: &quot;bar&quot; });
+});
+</code></pre>
+<h2><a class="header" href="#顶级函数不应使用箭头语法" id="顶级函数不应使用箭头语法">顶级函数不应使用箭头语法</a></h2>
+<p>顶级函数应使用 <code>function</code> 关键字。箭头语法应限于闭包。</p>
+<p>错误示例：</p>
+<pre><code class="language-ts">export const foo = (): string =&gt; {
+  return &quot;bar&quot;;
+};
+</code></pre>
+<p>正确示例：</p>
+<pre><code class="language-ts">export function foo(): string {
+  return &quot;bar&quot;;
+}
+</code></pre>
+<h3><a class="header" href="#std" id="std"><code>std</code></a></h3>
+<h4><a class="header" href="#不要依赖外部代码" id="不要依赖外部代码">不要依赖外部代码</a></h4>
+<p><code>https://deno.land/std/</code> 旨在成为所有 Deno 程序可以依赖的基础功能。我们希望向用户保证，此代码不包含任何可能未经审核的第三方代码。</p>
 <h2><a class="header" href="#内部细节" id="内部细节">内部细节</a></h2>
 <h3><a class="header" href="#deno-和-linux-类比" id="deno-和-linux-类比">Deno 和 Linux 类比</a></h3>
 <table><thead><tr><th align="right"><strong>Linux</strong></th><th align="left"><strong>Deno</strong></th></tr></thead><tbody>
@@ -1360,7 +1552,20 @@ console.log(resources());
 <p>尝试一下：</p>
 <pre><code class="language-shell">deno run --allow-read https://deno.land/std/examples/cat.ts /etc/passwd
 </code></pre>
-<h1><a class="header" href="#文件服务" id="文件服务">文件服务</a></h1>
+<h2><a class="header" href="#文件服务器" id="文件服务器">文件服务器</a></h2>
+<p>这个示例将会启动一个本地目录的 HTTP 服务器。</p>
+<p>安装</p>
+<pre><code class="language-bash">deno install --allow-net --allow-read https://deno.land/std/http/file_server.ts
+</code></pre>
+<p>运行</p>
+<pre><code class="language-shell">$ file_server .
+Downloading https://deno.land/std/http/file_server.ts...
+[...]
+HTTP server listening on http://0.0.0.0:4500/
+</code></pre>
+<p>如果想要升级到最新版本：</p>
+<pre><code class="language-shell">$ file_server --reload
+</code></pre>
 <h2><a class="header" href="#tcp-echo" id="tcp-echo">TCP echo</a></h2>
 <p>这个示例是一个简单的 TCP echo 服务，接收 8080 端口的连接，把接收到的任何数据返回给客户端。</p>
 <pre><code class="language-ts">const listener = Deno.listen({ port: 8080 });
