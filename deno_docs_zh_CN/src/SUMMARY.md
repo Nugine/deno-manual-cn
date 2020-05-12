@@ -18,8 +18,6 @@
   - [代理](linking_to_external_code/proxies.md)
   - [导入映射](linking_to_external_code/import_maps.md)
 - [测试](testing.md)
-  - [编写测试](testing/writing.md)
-  - [运行测试](testing/running.md)
 - [插件](plugins.md)
   - [插件如何工作？](plugins/how_do_plugins_work.md)
   - [创建插件](plugins/creating_plugins.md)
