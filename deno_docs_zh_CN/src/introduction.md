@@ -1,6 +1,9 @@
 # 介绍
 
-> 中文翻译正在进行……
+> 此版本更新于 2020 年 5 月 12 日
+> 
+> 中文：[Nugine/deno-manual-cn](https://github.com/Nugine/deno-manual-cn)
+> 英文：[deno @ eec0855](https://github.com/denoland/deno/tree/eec085573707d1df2bb5fbec88b9a3240613ca1f)
 
 Deno 是一个 JavaScript/TypeScript 的运行时，默认使用安全环境执行代码，有着卓越的开发体验。
 
