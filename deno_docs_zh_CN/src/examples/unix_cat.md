@@ -16,5 +16,5 @@ for (let i = 0; i < Deno.args.length; i++) {
 尝试一下：
 
 ```shell
-$ deno run --allow-read https://deno.land/std/examples/cat.ts /etc/passwd
+deno run --allow-read https://deno.land/std/examples/cat.ts /etc/passwd
 ```
