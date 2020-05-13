@@ -183,11 +183,11 @@ await Deno.stdout.write(body);
 </li>
 </ol>
 <p>尝试一下：</p>
-<pre><code class="language-bash">deno run https://deno.land/std/examples/curl.ts https://example.com
+<pre><code class="language-shell">deno run https://deno.land/std/examples/curl.ts https://example.com
 </code></pre>
 <p>这个程序将会返回一个关于网络权限的错误，我们做错了什么？您可能会想起来，Deno 默认用安全环境执行代码。这意味着您需要显式赋予程序权限，允许它进行一些特权操作，比如网络访问。</p>
 <p>用正确的权限选项再试一次：</p>
-<pre><code class="language-bash">deno run --allow-net=example.com https://deno.land/std/examples/curl.ts https://example.com
+<pre><code class="language-shell">deno run --allow-net=example.com https://deno.land/std/examples/curl.ts https://example.com
 </code></pre>
 <h3><a class="header" href="#读取一个文件" id="读取一个文件">读取一个文件</a></h3>
 <p>Deno 也提供内置的 API，它们都位于全局变量 <code>Deno</code> 中。您可以在此找到相关文档：<a href="https://doc.deno.land/https/github.com/denoland/deno/releases/latest/download/lib.deno.d.ts">doc.deno.land</a>。</p>

@@ -179,7 +179,7 @@
 </ul>
 <h2><a class="header" href="#哲学" id="哲学">哲学</a></h2>
 <p>Deno 旨在为现代程序员提供高效、安全的脚本环境。</p>
-<p>它将始终作为单个可执行文件分发，并且该可执行文件将能运行任何 Deno 程序。给定一个 Deno 程序的 URL，您应该能够用不超过 15MB 的压缩过的 Deno 可执行文件运行它。</p>
+<p>它将始终作为单个可执行文件分发，并且该可执行文件将能运行任何 Deno 程序。给定一个 Deno 程序的 URL，您应该能够用压缩后不超过 15 MB 的 Deno 可执行文件运行它。</p>
 <p>Deno 明确地承担了运行时和包管理器的角色。它使用标准的浏览器兼容协议(URL)来加载模块。</p>
 <p>对于过去用 bash 或 python 编写的工具脚本来说，Deno 是一个优秀的替代品。</p>
 <h2><a class="header" href="#目标" id="目标">目标</a></h2>
@@ -361,11 +361,11 @@ await Deno.stdout.write(body);
 </li>
 </ol>
 <p>尝试一下：</p>
-<pre><code class="language-bash">deno run https://deno.land/std/examples/curl.ts https://example.com
+<pre><code class="language-shell">deno run https://deno.land/std/examples/curl.ts https://example.com
 </code></pre>
 <p>这个程序将会返回一个关于网络权限的错误，我们做错了什么？您可能会想起来，Deno 默认用安全环境执行代码。这意味着您需要显式赋予程序权限，允许它进行一些特权操作，比如网络访问。</p>
 <p>用正确的权限选项再试一次：</p>
-<pre><code class="language-bash">deno run --allow-net=example.com https://deno.land/std/examples/curl.ts https://example.com
+<pre><code class="language-shell">deno run --allow-net=example.com https://deno.land/std/examples/curl.ts https://example.com
 </code></pre>
 <h3><a class="header" href="#读取一个文件" id="读取一个文件">读取一个文件</a></h3>
 <p>Deno 也提供内置的 API，它们都位于全局变量 <code>Deno</code> 中。您可以在此找到相关文档：<a href="https://doc.deno.land/https/github.com/denoland/deno/releases/latest/download/lib.deno.d.ts">doc.deno.land</a>。</p>
@@ -1193,21 +1193,21 @@ cargo clean &amp;&amp; cargo build -vv
 <h2><a class="header" href="#测试和工具" id="测试和工具">测试和工具</a></h2>
 <h3><a class="header" href="#测试-1" id="测试-1">测试</a></h3>
 <p>测试 <code>deno</code>:</p>
-<pre><code class="language-bash"># 运行所有测试套件：
+<pre><code class="language-shell"># 运行所有测试套件：
 cargo test
 
 # 只测试 cli/js/：
 cargo test js_unit_tests
 </code></pre>
 <p>测试 <code>std/</code>:</p>
-<pre><code class="language-bash">cargo test std_tests
+<pre><code class="language-shell">cargo test std_tests
 </code></pre>
 <h3><a class="header" href="#代码检查与格式化" id="代码检查与格式化">代码检查与格式化</a></h3>
 <p>检查</p>
-<pre><code class="language-bash">./tools/lint.py
+<pre><code class="language-shell">./tools/lint.py
 </code></pre>
 <p>格式化</p>
-<pre><code class="language-bash">./tools/format.py
+<pre><code class="language-shell">./tools/format.py
 </code></pre>
 <h3><a class="header" href="#性能分析" id="性能分析">性能分析</a></h3>
 <pre><code class="language-sh"># 确认我们正在构建发布版 (release)。
@@ -1538,7 +1538,7 @@ console.log(resources());
 <p><img src="contributing/schematic_v0.2.png" alt="架构示意图" /></p>
 <h1><a class="header" href="#示例" id="示例">示例</a></h1>
 <p>在本章节，您可以找到一些示例程序，用来学习 Deno。</p>
-<h2><a class="header" href="#unix-cat-程序的一个实现" id="unix-cat-程序的一个实现">Unix &quot;cat&quot; 程序的一个实现</a></h2>
+<h2><a class="header" href="#unix-cat" id="unix-cat">Unix cat</a></h2>
 <p>在这个程序中，每个命令行参数都是一个文件名，参数对应的文件将被依次打开，打印到标准输出流。</p>
 <pre><code class="language-ts">for (let i = 0; i &lt; Deno.args.length; i++) {
   let filename = Deno.args[i];
@@ -1554,7 +1554,7 @@ console.log(resources());
 <h2><a class="header" href="#文件服务器" id="文件服务器">文件服务器</a></h2>
 <p>这个示例将会启动一个本地目录的 HTTP 服务器。</p>
 <p>安装</p>
-<pre><code class="language-bash">deno install --allow-net --allow-read https://deno.land/std/http/file_server.ts
+<pre><code class="language-shell">deno install --allow-net --allow-read https://deno.land/std/http/file_server.ts
 </code></pre>
 <p>运行</p>
 <pre><code class="language-shell">$ file_server .
@@ -1646,8 +1646,8 @@ Uncaught NotFound: No such file or directory (os error 2)
 </code></pre>
 <h2><a class="header" href="#检查与放弃权限" id="检查与放弃权限">检查与放弃权限</a></h2>
 <blockquote>
-<p>这个程序使用了不稳定的 Deno 功能。更多信息请查阅
-<a href="examples/../runtime/unstable.html">unstable features</a></p>
+<p>这个程序使用了不稳定的 Deno 特性。更多信息请查阅
+<a href="examples/../runtime/stability.html">稳定性</a></p>
 </blockquote>
 <p>有时一个程序会放弃之前获得的权限，在此之后，需要该权限的操作将失败。</p>
 <pre><code class="language-ts">// 查找一个权限
@@ -1671,8 +1671,8 @@ await Deno.remove(&quot;request.log&quot;);
 </code></pre>
 <h2><a class="header" href="#处理系统信号" id="处理系统信号">处理系统信号</a></h2>
 <blockquote>
-<p>这个程序使用了不稳定的 Deno 功能。更多信息请查阅
-<a href="examples/../runtime/unstable.html">unstable features</a></p>
+<p>这个程序使用了不稳定的 Deno 特性。更多信息请查阅
+<a href="examples/../runtime/stability.html">稳定性</a></p>
 </blockquote>
 <p><a href="https://deno.land/typedoc/index.html#signal">API 参考手册</a></p>
 <p>您可以使用 <code>Deno.signal()</code> 函数来处理系统信号。</p>
