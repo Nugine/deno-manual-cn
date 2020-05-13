@@ -46,7 +46,7 @@ await Deno.stdout.write(body);
 
 尝试一下：
 
-```bash
+```shell
 deno run https://deno.land/std/examples/curl.ts https://example.com
 ```
 
@@ -54,7 +54,7 @@ deno run https://deno.land/std/examples/curl.ts https://example.com
 
 用正确的权限选项再试一次：
 
-```bash
+```shell
 deno run --allow-net=example.com https://deno.land/std/examples/curl.ts https://example.com
 ```
 

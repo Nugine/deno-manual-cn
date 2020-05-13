@@ -4,7 +4,7 @@
 
 测试 `deno`:
 
-```bash
+```shell
 # 运行所有测试套件：
 cargo test
 
@@ -14,7 +14,7 @@ cargo test js_unit_tests
 
 测试 `std/`:
 
-```bash
+```shell
 cargo test std_tests
 ```
 
@@ -22,13 +22,13 @@ cargo test std_tests
 
 检查
 
-```bash
+```shell
 ./tools/lint.py
 ```
 
 格式化
 
-```bash
+```shell
 ./tools/format.py
 ```
 

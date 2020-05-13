@@ -1,7 +1,7 @@
 ## 处理系统信号
 
-> 这个程序使用了不稳定的 Deno 功能。更多信息请查阅
-> [unstable features](../runtime/unstable.md)
+> 这个程序使用了不稳定的 Deno 特性。更多信息请查阅
+> [稳定性](../runtime/stability.md)
 
 [API 参考手册](https://deno.land/typedoc/index.html#signal)
 
