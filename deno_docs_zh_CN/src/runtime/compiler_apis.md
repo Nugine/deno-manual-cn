@@ -1,5 +1,8 @@
 ## 编译器 API
 
+> 这是一个不稳定的 Deno 特性。
+> 更多信息请查阅 [稳定性](stability.md)
+
 Deno 支持对内置 TypeScript 编译器的运行时访问。`Deno` 命名空间中有三种方法提供此访问。
 
 ### `Deno.compile()`

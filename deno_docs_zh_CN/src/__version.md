@@ -1,3 +1,3 @@
 > <a href="https://github.com/Nugine/deno-manual-cn/" rel="noopener noreferrer" target="_blank" style="display:inline-flex;align-items:center"><span style="margin-right:1em">deno-manual-cn</span><img alt="GitHub stars" src="https://img.shields.io/github/stars/Nugine/deno-manual-cn?style=social"> </a>
 > 
-> 此版本更新于 2020 年 5 月 12 日 [deno @ eec0855](https://github.com/denoland/deno/tree/eec085573707d1df2bb5fbec88b9a3240613ca1f)
+> 此版本更新于 2020 年 5 月 14 日 [deno @ d397b86](https://github.com/denoland/deno/tree/d397b86c6cea1517342dfa92055d8ed00c564ee1)

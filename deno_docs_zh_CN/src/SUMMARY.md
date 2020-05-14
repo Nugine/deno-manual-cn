@@ -18,6 +18,7 @@
   - [完整性检查](linking_to_external_code/integrity_checking.md)
   - [代理](linking_to_external_code/proxies.md)
   - [导入映射](linking_to_external_code/import_maps.md)
+- [标准库](standard_library.md)
 - [测试](testing.md)
 - [工具](tools.md)
   - [调试器](tools/debugger.md)
