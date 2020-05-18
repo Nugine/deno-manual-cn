@@ -35,13 +35,20 @@ Deno 需要用文件后缀名来支持模块导入和 HTTP 导入。目前，大
 
 社区已经开发了一些插件用来解决这些问题。
 
-- [VS Code](https://marketplace.visualstudio.com/items?itemName=axetroy.vscode-deno)
-  by [@axetroy](https://github.com/axetroy).
+#### VS Code
+
+目前内侧版的 [vscode_deno](https://github.com/denoland/vscode_deno) 扩展已经发布到了 [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=justjavac.vscode-deno)。如果遇到 bug 欢迎提 issues。
+
+#### JetBrains IDEs
 
 JetBrains 的 IDE 还没有支持 Deno，但您可以通过订阅和投票这些 issue 来得知最新的进展。
 
 - <https://youtrack.jetbrains.com/issue/WEB-41607>
 - <https://youtrack.jetbrains.com/issue/WEB-42983>
 - <https://youtrack.jetbrains.com/issue/WEB-31667>
+
+### Vim 和 NeoVim
+
+如果您安装 [CoC](https://github.com/neoclide/coc.nvim)（intellisense engine and language server protocol），Vim 对于 Deno/TypeScript 来说非常友好 。当安装完 CoC 后，可以在 Vim 内部运行 `:CocInstall coc-deno`。你会发现，诸如 `gd`（转到定义）和 `gr`（转到/查找引用）之类的东西可以正常工作了。
 
 如果您没有在列表中看到您最喜欢的 IDE，或许可以开发一个插件，我们的社区能够帮助您起步：[Discord](https://discord.gg/TGMHGv6)
