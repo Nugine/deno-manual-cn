@@ -3,7 +3,7 @@
 > 这个程序使用了不稳定的 Deno 特性。更多信息请查阅
 > [稳定性](../runtime/stability.md)
 
-[API 参考手册](https://deno.land/typedoc/index.html#signal)
+[API 参考手册](https://doc.deno.land/https/raw.githubusercontent.com/denoland/deno/master/cli/js/lib.deno.unstable.d.ts#Deno.signal)
 
 您可以使用 `Deno.signal()` 函数来处理系统信号。
 
@@ -16,7 +16,7 @@ for await (const _ of Deno.signal(Deno.Signal.SIGINT)) {
 `Deno.signal()` 也是一个 promise。
 
 ```ts
-await Deno.signal(Deno.Singal.SIGINT);
+await Deno.signal(Deno.Signal.SIGINT);
 console.log("interrupted!");
 ```
 

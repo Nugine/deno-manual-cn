@@ -45,3 +45,5 @@ Ops 又称“绑定” (bindings)。
 /** A simple JSDoc comment */
 export const FOO = "foo";
 ```
+
+更多信息位于 <https://jsdoc.app/>
