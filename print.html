@@ -152,7 +152,7 @@
                         <h1><a class="header" href="#介绍" id="介绍">介绍</a></h1>
 <blockquote>
 <p><a href="https://github.com/Nugine/deno-manual-cn/" rel="noopener noreferrer" target="_blank" style="display:inline-flex;align-items:center"><span style="margin-right:1em">deno-manual-cn</span><img alt="GitHub stars" src="https://img.shields.io/github/stars/Nugine/deno-manual-cn?style=social"> </a></p>
-<p>此版本更新于 2020 年 5 月 14 日 <a href="https://github.com/denoland/deno/tree/d397b86c6cea1517342dfa92055d8ed00c564ee1">deno @ d397b86</a></p>
+<p>此版本更新于 2020 年 5 月 18 日 <a href="https://github.com/denoland/deno/tree/2d5abbe909071571def869bfc968f33cd62dbe83">deno @ 2d5abbe</a></p>
 </blockquote>
 <p>Deno 是一个 JavaScript/TypeScript 的运行时，默认使用安全环境执行代码，有着卓越的开发体验。</p>
 <p>Deno 建立在 V8、Rust 和 Tokio 的基础上。</p>
@@ -580,6 +580,8 @@ window.onunload = (e: Event): void =&gt; {
   console.log(`got ${e.type} event in onunload function (main)`);
 };
 
+console.log(&quot;log from main script&quot;);
+
 // imported.ts
 const handler = (e: Event): void =&gt; {
   console.log(`got ${e.type} event in event handler (imported)`);
@@ -887,7 +889,7 @@ for await (const req of serve(&quot;:8000&quot;)) {
   req.respond({ body });
 }
 </code></pre>
-<pre><code class="language-shell">$ deno run --importmap=import_map.json --unstable hello_server.ts
+<pre><code class="language-shell">$ deno run --allow-net --importmap=import_map.json --unstable hello_server.ts
 </code></pre>
 <h1><a class="header" href="#标准库" id="标准库">标准库</a></h1>
 <p>Deno 提供一组标准模块，它们经过核心团队审计，保证能在 Deno 上工作。</p>
@@ -1225,6 +1227,7 @@ crate，可以用作 Rust 应用中的嵌入式 JavaScript 运行时。</p>
 <pre><code class="language-ts">/** A simple JSDoc comment */
 export const FOO = &quot;foo&quot;;
 </code></pre>
+<p>更多信息位于 <a href="https://jsdoc.app/">https://jsdoc.app/</a></p>
 <h2><a class="header" href="#从源码构建-1" id="从源码构建-1">从源码构建</a></h2>
 <p>以下是从源码构建 Deno 的操作步骤。如果您只是想使用 Deno，您可以下载一个预构建的可执行文件，参考 <code>入门</code> 章节。</p>
 <h3><a class="header" href="#克隆-deno-仓库" id="克隆-deno-仓库">克隆 Deno 仓库</a></h3>
@@ -1782,14 +1785,14 @@ await Deno.remove(&quot;request.log&quot;);
 <p>这个程序使用了不稳定的 Deno 特性。更多信息请查阅
 <a href="examples/../runtime/stability.html">稳定性</a></p>
 </blockquote>
-<p><a href="https://deno.land/typedoc/index.html#signal">API 参考手册</a></p>
+<p><a href="https://doc.deno.land/https/raw.githubusercontent.com/denoland/deno/master/cli/js/lib.deno.unstable.d.ts#Deno.signal">API 参考手册</a></p>
 <p>您可以使用 <code>Deno.signal()</code> 函数来处理系统信号。</p>
 <pre><code class="language-ts">for await (const _ of Deno.signal(Deno.Signal.SIGINT)) {
   console.log(&quot;interrupted!&quot;);
 }
 </code></pre>
 <p><code>Deno.signal()</code> 也是一个 promise。</p>
-<pre><code class="language-ts">await Deno.signal(Deno.Singal.SIGINT);
+<pre><code class="language-ts">await Deno.signal(Deno.Signal.SIGINT);
 console.log(&quot;interrupted!&quot;);
 </code></pre>
 <p>如果您想要停止监控信号，可以使用信号对象的 <code>dispose()</code> 方法。</p>

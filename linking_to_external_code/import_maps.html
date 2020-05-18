@@ -179,7 +179,7 @@ for await (const req of serve(&quot;:8000&quot;)) {
   req.respond({ body });
 }
 </code></pre>
-<pre><code class="language-shell">$ deno run --importmap=import_map.json --unstable hello_server.ts
+<pre><code class="language-shell">$ deno run --allow-net --importmap=import_map.json --unstable hello_server.ts
 </code></pre>
 
                     </main>
