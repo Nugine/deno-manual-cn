@@ -170,16 +170,17 @@ source /usr/local/etc/bash_completion.d/deno.bash
 <h3><a class="header" href="#编辑器和-ide" id="编辑器和-ide">编辑器和 IDE</a></h3>
 <p>Deno 需要用文件后缀名来支持模块导入和 HTTP 导入。目前，大多数编辑器和语言服务器没有原生支持这点，一些编辑器可能会抛出“无法找到文件”的错误，或是“不必要的文件后缀名”错误。</p>
 <p>社区已经开发了一些插件用来解决这些问题。</p>
-<ul>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=axetroy.vscode-deno">VS Code</a>
-by <a href="https://github.com/axetroy">@axetroy</a>.</li>
-</ul>
+<h4><a class="header" href="#vs-code" id="vs-code">VS Code</a></h4>
+<p>目前内侧版的 <a href="https://github.com/denoland/vscode_deno">vscode_deno</a> 扩展已经发布到了 <a href="https://marketplace.visualstudio.com/items?itemName=justjavac.vscode-deno">Visual Studio Marketplace</a>。如果遇到 bug 欢迎提 issues。</p>
+<h4><a class="header" href="#jetbrains-ides" id="jetbrains-ides">JetBrains IDEs</a></h4>
 <p>JetBrains 的 IDE 还没有支持 Deno，但您可以通过订阅和投票这些 issue 来得知最新的进展。</p>
 <ul>
 <li><a href="https://youtrack.jetbrains.com/issue/WEB-41607">https://youtrack.jetbrains.com/issue/WEB-41607</a></li>
 <li><a href="https://youtrack.jetbrains.com/issue/WEB-42983">https://youtrack.jetbrains.com/issue/WEB-42983</a></li>
 <li><a href="https://youtrack.jetbrains.com/issue/WEB-31667">https://youtrack.jetbrains.com/issue/WEB-31667</a></li>
 </ul>
+<h3><a class="header" href="#vim-和-neovim" id="vim-和-neovim">Vim 和 NeoVim</a></h3>
+<p>如果您安装 <a href="https://github.com/neoclide/coc.nvim">CoC</a>（intellisense engine and language server protocol），Vim 对于 Deno/TypeScript 来说非常友好 。当安装完 CoC 后，可以在 Vim 内部运行 <code>:CocInstall coc-deno</code>。你会发现，诸如 <code>gd</code>（转到定义）和 <code>gr</code>（转到/查找引用）之类的东西可以正常工作了。</p>
 <p>如果您没有在列表中看到您最喜欢的 IDE，或许可以开发一个插件，我们的社区能够帮助您起步：<a href="https://discord.gg/TGMHGv6">Discord</a></p>
 
                     </main>
