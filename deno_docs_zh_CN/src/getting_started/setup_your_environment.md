@@ -37,7 +37,7 @@ Deno 需要用文件后缀名来支持模块导入和 HTTP 导入。目前，大
 
 #### VS Code
 
-目前内侧版的 [vscode_deno](https://github.com/denoland/vscode_deno) 扩展已经发布到了 [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=justjavac.vscode-deno)。如果遇到 bug 欢迎提 issues。
+目前内测版的 [vscode_deno](https://github.com/denoland/vscode_deno) 扩展已经发布到了 [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=justjavac.vscode-deno)。如果遇到 bug 欢迎提 issues。
 
 #### JetBrains IDEs
 

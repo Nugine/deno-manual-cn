@@ -12,7 +12,7 @@ if (status.state !== "granted") {
   throw new Error("need write permission");
 }
 
-const log = await Deno.open("request.log", "a+");
+const log = await Deno.open("request.log", { write: true, append: true });
 
 // 放弃一些权限
 await Deno.permissions.revoke({ name: "read" });

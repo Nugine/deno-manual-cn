@@ -133,7 +133,7 @@ $ deno --v8-flags=--expose-gc,--use-strict
 
 参考我们的测试 [https://deno.land/benchmarks](https://deno.land/benchmarks)
 
-测试图表假设 <https://github.com/denoland/benchmark_data/data.json> 有着 `BenchmarkData[]` 类型。以下是 `BenchmarkData` 的定义：
+测试图表假设 <https://github.com/denoland/benchmark_data/blob/gh-pages/data.json> 有着 `BenchmarkData[]` 类型。以下是 `BenchmarkData` 的定义：
 
 ```ts
 interface ExecTimeData {
