@@ -151,22 +151,27 @@
 <!-- TODO(lucacasonato): what are permissions -->
 <!-- TODO(lucacasonato): description of all permissions -->
 <h3><a class="header" href="#权限白名单" id="权限白名单">权限白名单</a></h3>
-<p>Deno 也提供了权限白名单。</p>
-<p>这是一个用白名单限制文件系统访问权限的示例。</p>
+<p>Deno 还允许您使用白名单控制权限的粒度。</p>
+<p>这是一个用白名单限制文件系统访问权限的示例，仅允许访问 <code>/usr</code> 目录。</p>
 <pre><code class="language-shell">$ deno run --allow-read=/usr https://deno.land/std/examples/cat.ts /etc/passwd
 error: Uncaught PermissionDenied: read access to &quot;/etc/passwd&quot;, run again with the --allow-read flag
 ► $deno$/dispatch_json.ts:40:11
     at DenoError ($deno$/errors.ts:20:5)
     ...
 </code></pre>
-<p>您可以授予 <code>/etc</code> 目录的读取权限。</p>
+<p>改为 <code>/etc</code> 目录，赋予正确的权限，再试一次：</p>
 <pre><code class="language-shell">$ deno run --allow-read=/etc https://deno.land/std/examples/cat.ts /etc/passwd
 </code></pre>
 <p><code>--allow-write</code> 也一样，代表写入权限。</p>
-<p>这是一个限制网络主机的示例。</p>
+<h3><a class="header" href="#网络访问" id="网络访问">网络访问</a></h3>
+<p><em>fetch.ts</em>:</p>
 <pre><code class="language-ts">const result = await fetch(&quot;https://deno.land/&quot;);
 </code></pre>
-<pre><code class="language-shell">$ deno run --allow-net=deno.land https://deno.land/std/examples/curl.ts https://deno.land/
+<p>这是一个设置 host 或 url 白名单的示例：</p>
+<pre><code class="language-shell">$ deno run --allow-net=github.com,deno.land fetch.ts
+</code></pre>
+<p>允许访问任意地址：</p>
+<pre><code class="language-shell">$ deno run --allow-net fetch.ts
 </code></pre>
 
                     </main>

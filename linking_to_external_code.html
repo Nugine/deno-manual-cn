@@ -175,13 +175,8 @@ Asserted! 🎉
 </ul>
 <p>如果失败，该路径设置为 <code>$HOME/.deno</code>。</p>
 <h2><a class="header" href="#faq" id="faq">FAQ</a></h2>
-<h3><a class="header" href="#如果-httpsdenoland-宕机会发生什么" id="如果-httpsdenoland-宕机会发生什么">如果 <code>https://deno.land/</code> 宕机会发生什么？</a></h3>
-<p>依赖外部服务在开发时很方便，但在生产环境很脆弱。生产级软件总是应该打包所有依赖。</p>
-<p>在 Deno 中，您应该将 <code>$DENO_DIR</code> 检入版本控制系统，并在运行时指定 <code>$DENO_DIR</code> 环境变量。</p>
-<h3><a class="header" href="#如何信任可能更改的-url" id="如何信任可能更改的-url">如何信任可能更改的 URL？</a></h3>
-<p>使用 <code>--lock</code> 命令行选项，通过一个锁文件 (lock file)，您可以确保自己运行的是所期望的代码。更多信息请看<a href="./linking_to_external_code/integrity_checking.html">这里</a></p>
 <h3><a class="header" href="#如何导入特定版本" id="如何导入特定版本">如何导入特定版本？</a></h3>
-<p>只需在 URL 中指定版本。举个例子，这个 URL 指定了要运行的版本 <code>https://unpkg.com/liltest@0.0.5/dist/liltest.js</code>。结合之前提到的在生产中设置 <code>$DENO_DIR</code> 的方法，您可以完全指定要运行的代码，并且无需访问网络。</p>
+<p>只需在 URL 中指定版本。举个例子，这个 URL 指定了要运行的版本 <code>https://unpkg.com/liltest@0.0.5/dist/liltest.js</code>。</p>
 <h3><a class="header" href="#到处导入-url-似乎很麻烦" id="到处导入-url-似乎很麻烦">到处导入 URL 似乎很麻烦</a></h3>
 <blockquote>
 <p>如果其中一个 URL 链接到一个完全不同的库版本，该怎么办？</p>
@@ -201,6 +196,23 @@ Asserted! 🎉
 <pre><code class="language-ts">import { assertEquals, runTests, test } from &quot;./deps.ts&quot;;
 </code></pre>
 <p>这种设计避免了由包管理软件、集中的代码存储库和多余的文件格式所产生的大量复杂性。</p>
+<h3><a class="header" href="#如何信任可能更改的-url" id="如何信任可能更改的-url">如何信任可能更改的 URL？</a></h3>
+<p>使用 <code>--lock</code> 命令行选项，通过一个锁文件 (lock file)，您可以确保从一个 URL 下载的代码和初始开发时一样。更多信息请看 <a href="./linking_to_external_code/integrity_checking.html">这里</a>。</p>
+<h3><a class="header" href="#如果依赖宕机怎么办源代码将不再可用" id="如果依赖宕机怎么办源代码将不再可用">如果依赖宕机怎么办？源代码将不再可用。</a></h3>
+<p>像上面一样，这是 <em>任何</em> 远程依赖系统都要面对的问题。</p>
+<p>依赖外部服务在开发时很方便，但在生产环境很脆弱。生产级软件总是应该打包 (vendor) 所有依赖。</p>
+<p>在 Node 中，这需要将 <code>node_modules</code> 检入版本控制系统。</p>
+<p>在 Deno 中，这需要在运行时将 <code>$DENO_DIR</code> 指向项目内的目录，同样把依赖检入版本控制系统。</p>
+<pre><code class="language-shell"># 下载依赖
+DENO_DIR=./deno_dir deno cache src/deps.ts
+
+# 确保需要缓存的任何命令都设置了 `DENO_DIR` 变量
+DENO_DIR=./deno_dir deno test src
+
+# 将缓存目录检入版本控制
+git add -u deno_dir
+git commit
+</code></pre>
 
                     </main>
 

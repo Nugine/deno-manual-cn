@@ -152,7 +152,7 @@
                         <h1><a class="header" href="#介绍" id="介绍">介绍</a></h1>
 <blockquote>
 <p><a href="https://github.com/Nugine/deno-manual-cn/" rel="noopener noreferrer" target="_blank" style="display:inline-flex;align-items:center"><span style="margin-right:1em">deno-manual-cn</span><img alt="GitHub stars" src="https://img.shields.io/github/stars/Nugine/deno-manual-cn?style=social"> </a></p>
-<p>此版本更新于 2020 年 5 月 18 日 <a href="https://github.com/denoland/deno/tree/2d5abbe909071571def869bfc968f33cd62dbe83">deno @ 2d5abbe</a></p>
+<p>此版本更新于 2020 年 5 月 25 日 <a href="https://github.com/denoland/deno/tree/e934df5f7dd7ebc52e8c74033d478c88fa638224">deno @ e934df5</a></p>
 </blockquote>
 <p>Deno 是一个 JavaScript/TypeScript 的运行时，默认使用安全环境执行代码，有着卓越的开发体验。</p>
 <p>Deno 建立在 V8、Rust 和 Tokio 的基础上。</p>
@@ -315,7 +315,7 @@ source /usr/local/etc/bash_completion.d/deno.bash
 <p>Deno 需要用文件后缀名来支持模块导入和 HTTP 导入。目前，大多数编辑器和语言服务器没有原生支持这点，一些编辑器可能会抛出“无法找到文件”的错误，或是“不必要的文件后缀名”错误。</p>
 <p>社区已经开发了一些插件用来解决这些问题。</p>
 <h4><a class="header" href="#vs-code" id="vs-code">VS Code</a></h4>
-<p>目前内侧版的 <a href="https://github.com/denoland/vscode_deno">vscode_deno</a> 扩展已经发布到了 <a href="https://marketplace.visualstudio.com/items?itemName=justjavac.vscode-deno">Visual Studio Marketplace</a>。如果遇到 bug 欢迎提 issues。</p>
+<p>目前内测版的 <a href="https://github.com/denoland/vscode_deno">vscode_deno</a> 扩展已经发布到了 <a href="https://marketplace.visualstudio.com/items?itemName=justjavac.vscode-deno">Visual Studio Marketplace</a>。如果遇到 bug 欢迎提 issues。</p>
 <h4><a class="header" href="#jetbrains-ides" id="jetbrains-ides">JetBrains IDEs</a></h4>
 <p>JetBrains 的 IDE 还没有支持 Deno，但您可以通过订阅和投票这些 issue 来得知最新的进展。</p>
 <ul>
@@ -415,22 +415,27 @@ hello world
 <!-- TODO(lucacasonato): what are permissions -->
 <!-- TODO(lucacasonato): description of all permissions -->
 <h3><a class="header" href="#权限白名单" id="权限白名单">权限白名单</a></h3>
-<p>Deno 也提供了权限白名单。</p>
-<p>这是一个用白名单限制文件系统访问权限的示例。</p>
+<p>Deno 还允许您使用白名单控制权限的粒度。</p>
+<p>这是一个用白名单限制文件系统访问权限的示例，仅允许访问 <code>/usr</code> 目录。</p>
 <pre><code class="language-shell">$ deno run --allow-read=/usr https://deno.land/std/examples/cat.ts /etc/passwd
 error: Uncaught PermissionDenied: read access to &quot;/etc/passwd&quot;, run again with the --allow-read flag
 ► $deno$/dispatch_json.ts:40:11
     at DenoError ($deno$/errors.ts:20:5)
     ...
 </code></pre>
-<p>您可以授予 <code>/etc</code> 目录的读取权限。</p>
+<p>改为 <code>/etc</code> 目录，赋予正确的权限，再试一次：</p>
 <pre><code class="language-shell">$ deno run --allow-read=/etc https://deno.land/std/examples/cat.ts /etc/passwd
 </code></pre>
 <p><code>--allow-write</code> 也一样，代表写入权限。</p>
-<p>这是一个限制网络主机的示例。</p>
+<h3><a class="header" href="#网络访问" id="网络访问">网络访问</a></h3>
+<p><em>fetch.ts</em>:</p>
 <pre><code class="language-ts">const result = await fetch(&quot;https://deno.land/&quot;);
 </code></pre>
-<pre><code class="language-shell">$ deno run --allow-net=deno.land https://deno.land/std/examples/curl.ts https://deno.land/
+<p>这是一个设置 host 或 url 白名单的示例：</p>
+<pre><code class="language-shell">$ deno run --allow-net=github.com,deno.land fetch.ts
+</code></pre>
+<p>允许访问任意地址：</p>
+<pre><code class="language-shell">$ deno run --allow-net fetch.ts
 </code></pre>
 <h2><a class="header" href="#使用-typescript" id="使用-typescript">使用 TypeScript</a></h2>
 <!-- TODO(lucacasonato): text on 'just import .ts' -->
@@ -816,13 +821,8 @@ Asserted! 🎉
 </ul>
 <p>如果失败，该路径设置为 <code>$HOME/.deno</code>。</p>
 <h2><a class="header" href="#faq" id="faq">FAQ</a></h2>
-<h3><a class="header" href="#如果-httpsdenoland-宕机会发生什么" id="如果-httpsdenoland-宕机会发生什么">如果 <code>https://deno.land/</code> 宕机会发生什么？</a></h3>
-<p>依赖外部服务在开发时很方便，但在生产环境很脆弱。生产级软件总是应该打包所有依赖。</p>
-<p>在 Deno 中，您应该将 <code>$DENO_DIR</code> 检入版本控制系统，并在运行时指定 <code>$DENO_DIR</code> 环境变量。</p>
-<h3><a class="header" href="#如何信任可能更改的-url" id="如何信任可能更改的-url">如何信任可能更改的 URL？</a></h3>
-<p>使用 <code>--lock</code> 命令行选项，通过一个锁文件 (lock file)，您可以确保自己运行的是所期望的代码。更多信息请看<a href="./linking_to_external_code/integrity_checking.html">这里</a></p>
 <h3><a class="header" href="#如何导入特定版本" id="如何导入特定版本">如何导入特定版本？</a></h3>
-<p>只需在 URL 中指定版本。举个例子，这个 URL 指定了要运行的版本 <code>https://unpkg.com/liltest@0.0.5/dist/liltest.js</code>。结合之前提到的在生产中设置 <code>$DENO_DIR</code> 的方法，您可以完全指定要运行的代码，并且无需访问网络。</p>
+<p>只需在 URL 中指定版本。举个例子，这个 URL 指定了要运行的版本 <code>https://unpkg.com/liltest@0.0.5/dist/liltest.js</code>。</p>
 <h3><a class="header" href="#到处导入-url-似乎很麻烦" id="到处导入-url-似乎很麻烦">到处导入 URL 似乎很麻烦</a></h3>
 <blockquote>
 <p>如果其中一个 URL 链接到一个完全不同的库版本，该怎么办？</p>
@@ -842,6 +842,23 @@ Asserted! 🎉
 <pre><code class="language-ts">import { assertEquals, runTests, test } from &quot;./deps.ts&quot;;
 </code></pre>
 <p>这种设计避免了由包管理软件、集中的代码存储库和多余的文件格式所产生的大量复杂性。</p>
+<h3><a class="header" href="#如何信任可能更改的-url" id="如何信任可能更改的-url">如何信任可能更改的 URL？</a></h3>
+<p>使用 <code>--lock</code> 命令行选项，通过一个锁文件 (lock file)，您可以确保从一个 URL 下载的代码和初始开发时一样。更多信息请看 <a href="./linking_to_external_code/integrity_checking.html">这里</a>。</p>
+<h3><a class="header" href="#如果依赖宕机怎么办源代码将不再可用" id="如果依赖宕机怎么办源代码将不再可用">如果依赖宕机怎么办？源代码将不再可用。</a></h3>
+<p>像上面一样，这是 <em>任何</em> 远程依赖系统都要面对的问题。</p>
+<p>依赖外部服务在开发时很方便，但在生产环境很脆弱。生产级软件总是应该打包 (vendor) 所有依赖。</p>
+<p>在 Node 中，这需要将 <code>node_modules</code> 检入版本控制系统。</p>
+<p>在 Deno 中，这需要在运行时将 <code>$DENO_DIR</code> 指向项目内的目录，同样把依赖检入版本控制系统。</p>
+<pre><code class="language-shell"># 下载依赖
+DENO_DIR=./deno_dir deno cache src/deps.ts
+
+# 确保需要缓存的任何命令都设置了 `DENO_DIR` 变量
+DENO_DIR=./deno_dir deno test src
+
+# 将缓存目录检入版本控制
+git add -u deno_dir
+git commit
+</code></pre>
 <h2><a class="header" href="#重新加载特定的模块" id="重新加载特定的模块">重新加载特定的模块</a></h2>
 <p>您可以使用 <code>--reload</code> 选项使本地 <code>DENO_DIR</code> 缓存失效。其用途如下：</p>
 <p>重新加载所有内容：<code>--reload</code></p>
@@ -850,11 +867,30 @@ Asserted! 🎉
 <p>为了重新加载特定的模块（在这个例子中是 colors 和 file system copy），需要使用逗号来分隔 URL：</p>
 <p><code>--reload=https://deno.land/std/fs/copy.ts,https://deno.land/std/fmt/colors.ts</code></p>
 <h2><a class="header" href="#完整性检查与锁定文件" id="完整性检查与锁定文件">完整性检查与锁定文件</a></h2>
-<p>Deno 可以使用较小的 JSON 文件存储和检查模块的子资源完整性。</p>
+<p>Deno 可以使用一个较小的 JSON 文件存储和检查模块的子资源完整性。</p>
 <p>使用 <code>--lock=lock.json</code> 启用和指定锁文件检查。</p>
 <p>要更新或创建锁，可以使用 <code>--lock=lock.json --lock-write</code>。</p>
+<p>一个典型的工作流看起来像这样：</p>
+<pre><code class="language-ts">// 向 &quot;src/deps.ts&quot; 添加一个新的依赖，在别处使用。
+export { xyz } from &quot;https://unpkg.com/xyz-lib@v0.9.0/lib.ts&quot;;
+</code></pre>
+<pre><code class="language-shell"># 创建或更新锁文件 &quot;lock.json&quot;
+deno cache --lock=lock.json --lock-write src/deps.ts
+
+# 在提交时包含这一变化
+git add -u lock.json
+git commit -m &quot;feat: Add support for xyz using xyz-lib&quot;
+git push
+</code></pre>
+<p>另一台机器上的合作者刚刚把项目克隆下来：</p>
+<pre><code class="language-shell"># 下载、缓存并检查项目的依赖
+deno cache -r --lock=lock.json src/deps.ts
+
+# 在这完成之后，您可以安心开发了
+deno test --allow-read src
+</code></pre>
 <h2><a class="header" href="#代理proxies" id="代理proxies">代理（Proxies）</a></h2>
-<p>Deno 支持模块下载和 <code>fetch</code> API 的代理。</p>
+<p>Deno 支持模块下载和 Web 标准 <code>fetch</code> API 的代理。</p>
 <p>代理配置从环境变量中读取: <code>HTTP_PROXY</code> 和 <code>HTTPS_PROXY</code>。</p>
 <p>在 Windows 的环境下，如果没有发现环境变量，Deno 会从注册表中读取代理。</p>
 <h2><a class="header" href="#导入映射import-maps" id="导入映射import-maps">导入映射（Import maps）</a></h2>
@@ -1031,7 +1067,8 @@ Compile https://deno.land/std@v0.50.0/http/file_server.ts
 <p>在 <code>listenAndServe</code> 方法处加一个断点。</p>
 <p><img src="tools/../images/debugger4.jpg" alt="Break in file_server.ts" /></p>
 <p>添加断点后，开发者工具会自动打开源映射文件，让我们能在包含类型的实际源码中步进。</p>
-<p>让我们发送一个请求，看看开发者工具中发生了什么。</p>
+<p>现在我们已经设置了断点，在触发断点时，我们可以检查传入的请求，也可以继续执行脚本。点击恢复脚本执行的按钮即可，您可能需要点两次。</p>
+<p>当脚本继续运行时，让我们发送一个请求，看看开发者工具中发生了什么。</p>
 <pre><code>$ curl http://0.0.0.0:4500/
 </code></pre>
 <p><img src="tools/../images/debugger5.jpg" alt="Break in request handling" /></p>
@@ -1186,7 +1223,72 @@ export const bar = &quot;bar&quot;;
 <h2><a class="header" href="#文档生成器" id="文档生成器">文档生成器</a></h2>
 <!-- TODO(lucacasonto): write things -->
 <h2><a class="header" href="#依赖检查器" id="依赖检查器">依赖检查器</a></h2>
-<!-- TODO(lucacasonto): write things -->
+<p><code>deno info [URL]</code> 会列出 ES 模块和它的所有依赖。</p>
+<pre><code class="language-shell">deno info https://deno.land/std@0.52.0/http/file_server.ts
+Download https://deno.land/std@0.52.0/http/file_server.ts
+...
+local: /Users/deno/Library/Caches/deno/deps/https/deno.land/5bd138988e9d20db1a436666628ffb3f7586934e0a2a9fe2a7b7bf4fb7f70b98
+type: TypeScript
+compiled: /Users/deno/Library/Caches/deno/gen/https/deno.land/std@0.52.0/http/file_server.ts.js
+map: /Users/deno/Library/Caches/deno/gen/https/deno.land/std@0.52.0/http/file_server.ts.js.map
+deps:
+https://deno.land/std@0.52.0/http/file_server.ts
+  ├─┬ https://deno.land/std@0.52.0/path/mod.ts
+  │ ├─┬ https://deno.land/std@0.52.0/path/win32.ts
+  │ │ ├── https://deno.land/std@0.52.0/path/_constants.ts
+  │ │ ├─┬ https://deno.land/std@0.52.0/path/_util.ts
+  │ │ │ └── https://deno.land/std@0.52.0/path/_constants.ts
+  │ │ └─┬ https://deno.land/std@0.52.0/testing/asserts.ts
+  │ │   ├── https://deno.land/std@0.52.0/fmt/colors.ts
+  │ │   └── https://deno.land/std@0.52.0/testing/diff.ts
+  │ ├─┬ https://deno.land/std@0.52.0/path/posix.ts
+  │ │ ├── https://deno.land/std@0.52.0/path/_constants.ts
+  │ │ └── https://deno.land/std@0.52.0/path/_util.ts
+  │ ├─┬ https://deno.land/std@0.52.0/path/common.ts
+  │ │ └── https://deno.land/std@0.52.0/path/separator.ts
+  │ ├── https://deno.land/std@0.52.0/path/separator.ts
+  │ ├── https://deno.land/std@0.52.0/path/interface.ts
+  │ └─┬ https://deno.land/std@0.52.0/path/glob.ts
+  │   ├── https://deno.land/std@0.52.0/path/separator.ts
+  │   ├── https://deno.land/std@0.52.0/path/_globrex.ts
+  │   ├── https://deno.land/std@0.52.0/path/mod.ts
+  │   └── https://deno.land/std@0.52.0/testing/asserts.ts
+  ├─┬ https://deno.land/std@0.52.0/http/server.ts
+  │ ├── https://deno.land/std@0.52.0/encoding/utf8.ts
+  │ ├─┬ https://deno.land/std@0.52.0/io/bufio.ts
+  │ │ ├─┬ https://deno.land/std@0.52.0/io/util.ts
+  │ │ │ ├── https://deno.land/std@0.52.0/path/mod.ts
+  │ │ │ └── https://deno.land/std@0.52.0/encoding/utf8.ts
+  │ │ └── https://deno.land/std@0.52.0/testing/asserts.ts
+  │ ├── https://deno.land/std@0.52.0/testing/asserts.ts
+  │ ├─┬ https://deno.land/std@0.52.0/async/mod.ts
+  │ │ ├── https://deno.land/std@0.52.0/async/deferred.ts
+  │ │ ├── https://deno.land/std@0.52.0/async/delay.ts
+  │ │ └─┬ https://deno.land/std@0.52.0/async/mux_async_iterator.ts
+  │ │   └── https://deno.land/std@0.52.0/async/deferred.ts
+  │ └─┬ https://deno.land/std@0.52.0/http/_io.ts
+  │   ├── https://deno.land/std@0.52.0/io/bufio.ts
+  │   ├─┬ https://deno.land/std@0.52.0/textproto/mod.ts
+  │   │ ├── https://deno.land/std@0.52.0/io/util.ts
+  │   │ ├─┬ https://deno.land/std@0.52.0/bytes/mod.ts
+  │   │ │ └── https://deno.land/std@0.52.0/io/util.ts
+  │   │ └── https://deno.land/std@0.52.0/encoding/utf8.ts
+  │   ├── https://deno.land/std@0.52.0/testing/asserts.ts
+  │   ├── https://deno.land/std@0.52.0/encoding/utf8.ts
+  │   ├── https://deno.land/std@0.52.0/http/server.ts
+  │   └── https://deno.land/std@0.52.0/http/http_status.ts
+  ├─┬ https://deno.land/std@0.52.0/flags/mod.ts
+  │ └── https://deno.land/std@0.52.0/testing/asserts.ts
+  └── https://deno.land/std@0.52.0/testing/asserts.ts
+</code></pre>
+<p>依赖检查器对本地或远程的任意 ES 模块都有效。</p>
+<h2><a class="header" href="#缓存位置" id="缓存位置">缓存位置</a></h2>
+<p><code>deno info</code> 可以用来显示与缓存位置有关的信息：</p>
+<pre><code class="language-shell">deno info
+DENO_DIR location: &quot;/Users/deno/Library/Caches/deno&quot;
+Remote modules cache: &quot;/Users/deno/Library/Caches/deno/deps&quot;
+TypeScript compiler cache: &quot;/Users/deno/Library/Caches/deno/gen&quot;
+</code></pre>
 <h1><a class="header" href="#嵌入式-deno" id="嵌入式-deno">嵌入式 Deno</a></h1>
 <p>Deno 由多个部分组成，其中之一是 <code>deno_core</code>。这是一个 rust
 crate，可以用作 Rust 应用中的嵌入式 JavaScript 运行时。</p>
@@ -1394,7 +1496,7 @@ $ deno --v8-flags=--expose-gc,--use-strict
 </code></pre>
 <h3><a class="header" href="#持续的性能测试" id="持续的性能测试">持续的性能测试</a></h3>
 <p>参考我们的测试 <a href="https://deno.land/benchmarks">https://deno.land/benchmarks</a></p>
-<p>测试图表假设 <a href="https://github.com/denoland/benchmark_data/data.json">https://github.com/denoland/benchmark_data/data.json</a> 有着 <code>BenchmarkData[]</code> 类型。以下是 <code>BenchmarkData</code> 的定义：</p>
+<p>测试图表假设 <a href="https://github.com/denoland/benchmark_data/blob/gh-pages/data.json">https://github.com/denoland/benchmark_data/blob/gh-pages/data.json</a> 有着 <code>BenchmarkData[]</code> 类型。以下是 <code>BenchmarkData</code> 的定义：</p>
 <pre><code class="language-ts">interface ExecTimeData {
   mean: number;
   stddev: number;
@@ -1767,7 +1869,7 @@ if (status.state !== &quot;granted&quot;) {
   throw new Error(&quot;need write permission&quot;);
 }
 
-const log = await Deno.open(&quot;request.log&quot;, &quot;a+&quot;);
+const log = await Deno.open(&quot;request.log&quot;, { write: true, append: true });
 
 // 放弃一些权限
 await Deno.permissions.revoke({ name: &quot;read&quot; });
