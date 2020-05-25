@@ -38,19 +38,9 @@ Deno 在一个特殊目录缓存了远程模块，该路径可以被 `$DENO_DIR`
 
 ## FAQ
 
-### 如果 `https://deno.land/` 宕机会发生什么？
-
-依赖外部服务在开发时很方便，但在生产环境很脆弱。生产级软件总是应该打包所有依赖。
-
-在 Deno 中，您应该将 `$DENO_DIR` 检入版本控制系统，并在运行时指定 `$DENO_DIR` 环境变量。
-
-### 如何信任可能更改的 URL？
-
-使用 `--lock` 命令行选项，通过一个锁文件 (lock file)，您可以确保自己运行的是所期望的代码。更多信息请看[这里](./linking_to_external_code/integrity_checking.md)
-
 ### 如何导入特定版本？
 
-只需在 URL 中指定版本。举个例子，这个 URL 指定了要运行的版本 `https://unpkg.com/liltest@0.0.5/dist/liltest.js`。结合之前提到的在生产中设置 `$DENO_DIR` 的方法，您可以完全指定要运行的代码，并且无需访问网络。
+只需在 URL 中指定版本。举个例子，这个 URL 指定了要运行的版本 `https://unpkg.com/liltest@0.0.5/dist/liltest.js`。
 
 ### 到处导入 URL 似乎很麻烦
 
@@ -77,3 +67,30 @@ import { assertEquals, runTests, test } from "./deps.ts";
 ```
 
 这种设计避免了由包管理软件、集中的代码存储库和多余的文件格式所产生的大量复杂性。
+
+### 如何信任可能更改的 URL？
+
+使用 `--lock` 命令行选项，通过一个锁文件 (lock file)，您可以确保从一个 URL 下载的代码和初始开发时一样。更多信息请看 [这里](./linking_to_external_code/integrity_checking.md)。
+
+
+### 如果依赖宕机怎么办？源代码将不再可用。
+
+像上面一样，这是 _任何_ 远程依赖系统都要面对的问题。
+
+依赖外部服务在开发时很方便，但在生产环境很脆弱。生产级软件总是应该打包 (vendor) 所有依赖。
+
+在 Node 中，这需要将 `node_modules` 检入版本控制系统。
+
+在 Deno 中，这需要在运行时将 `$DENO_DIR` 指向项目内的目录，同样把依赖检入版本控制系统。
+
+```shell
+# 下载依赖
+DENO_DIR=./deno_dir deno cache src/deps.ts
+
+# 确保需要缓存的任何命令都设置了 `DENO_DIR` 变量
+DENO_DIR=./deno_dir deno test src
+
+# 将缓存目录检入版本控制
+git add -u deno_dir
+git commit
+```
