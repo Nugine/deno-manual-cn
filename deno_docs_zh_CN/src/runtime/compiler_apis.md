@@ -39,7 +39,7 @@ const [diagnostics, emitMap] = await Deno.compile(
 );
 ```
 
-在这种情况下，`emitMap` 将包含一个简单的 `console.log()` 语句。
+在这种情况下，`emitMap` 将包含一个 `console.log()` 语句。
 
 ### `Deno.bundle()`
 

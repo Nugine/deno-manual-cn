@@ -2,11 +2,16 @@
 
 <!-- TODO(lucacasonato): text on 'just import .ts' -->
 
-### 使用外部类型定义
-
 Deno 同时支持 JavaScript 和 TypeScript，它们是 Deno 的第一等语言。
 这意味着它需要标准的模块名称，包括
-扩展名（或提供正确媒体类型的服务器）。此外，Deno 还拥有“平凡”的模块解析算法。
+扩展名（或提供正确媒体类型的服务器）。此外，Deno 还拥有“平凡”的模块解析算法。导入模块指定为文件（包括扩展名）或全限定 URL (fully qualified URL)。TypeScript 模块可以被直接导入，例如：
+
+```ts
+import { Response } from "https://deno.land/std@0.53.0/http/server.ts";
+import { queue } from "./collections.ts";
+```
+
+### 使用外部类型定义
 
 开箱即用的 TypeScript 编译器依赖于两种无扩展名
 模块和 Node.js 模块解析逻辑，以将类型应用于 JavaScript
@@ -66,7 +71,7 @@ TypeScript 编译器。Deno 仅在 JavaScript （包括 JSX）文件中查找指
 
 在 Deno 生态系统中，所有严格标志都被默认启用，以符合 TypeScript 的理想状态。Deno 也支持自定义配置文件，例如 `tsconfig.json`。
 
-您需要通过显式设置 `-c` 选项，来明确告诉 Deno 在哪里寻找此配置。
+您需要通过显式设置 `-c` 或 `--config` 选项，来明确告诉 Deno 在哪里寻找此配置。
 
 ```shell
 deno run -c tsconfig.json mod.ts

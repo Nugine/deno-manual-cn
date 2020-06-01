@@ -1,10 +1,12 @@
 ## TCP echo
 
-这个示例是一个简单的 TCP echo 服务，接收 8080 端口的连接，把接收到的任何数据返回给客户端。
+这个示例是一个 TCP echo 服务，接收 8080 端口的连接，把接收到的任何数据返回给客户端。
 
 ```ts
-const listener = Deno.listen({ port: 8080 });
-console.log("listening on 0.0.0.0:8080");
+const hostname = "0.0.0.0";
+const port = 8080;
+const listener = Deno.listen({ hostname, port });
+console.log(`Listening on ${hostname}:${port}`);
 for await (const conn of listener) {
   Deno.copy(conn, conn);
 }

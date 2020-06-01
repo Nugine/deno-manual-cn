@@ -6,8 +6,9 @@ Deno 支持浏览器兼容的生命周期事件 `load` 和 `unload`。您可以�
 
 示例：
 
+**main.ts**
+
 ```ts
-// main.ts
 import "./imported.ts";
 
 const handler = (e: Event): void => {
@@ -27,8 +28,11 @@ window.onunload = (e: Event): void => {
 };
 
 console.log("log from main script");
+```
 
-// imported.ts
+**imported.ts**
+
+```ts
 const handler = (e: Event): void => {
   console.log(`got ${e.type} event in event handler (imported)`);
 };
@@ -62,3 +66,6 @@ got unload event in event handler (main)
 ```
 
 所有通过 `window.addEventListener` 添加的侦听器都被运行，但是在 `main.ts` 中定义的 `window.onload` 和 `window.onunload` 覆盖了 `imported.ts` 中定义的处理程序。
+
+换句话说，您可以注册多个 `window.addEventListener` `"load"` 或
+`"unload"` 事件，但只有最后加载的 `window.onload` 或 `window.onunload` 事件将被执行。

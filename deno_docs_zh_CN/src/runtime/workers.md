@@ -21,11 +21,15 @@ new Worker("./worker.js", { type: "classic" });
 
 对于使用本地模块的 worker，Deno 需要读取 (`--allow-read`) 权限：
 
-```ts
-// main.ts
-new Worker("./worker.ts", { type: "module" });
+**main.ts**
 
-// worker.ts
+```ts
+new Worker("./worker.ts", { type: "module" });
+```
+
+**worker.ts**
+
+```ts
 console.log("hello world");
 self.close();
 ```
@@ -40,11 +44,15 @@ hello world
 
 对于使用远程模块的 worker，Deno 需要网络 (`--allow-net`) 权限：
 
-```ts
-// main.ts
-new Worker("https://example.com/worker.ts", { type: "module" });
+**main.ts**
 
-// worker.ts
+```ts
+new Worker("https://example.com/worker.ts", { type: "module" });
+```
+
+**worker.ts**
+
+```ts
 console.log("hello world");
 self.close();
 ```
@@ -66,20 +74,27 @@ hello world
 
 要想启用 `Deno` 命名空间，在创建新的 worker 时传递 `deno: true` 选项：
 
+**main.js**
+
 ```ts
-// main.js
 const worker = new Worker("./worker.js", { type: "module", deno: true });
 worker.postMessage({ filename: "./log.txt" });
+```
 
-// worker.js
+**worker.js**
+
+```ts
 self.onmessage = async (e) => {
   const { filename } = e.data;
   const text = await Deno.readTextFile(filename);
   console.log(text);
   self.close();
 };
+```
 
-// log.txt
+**log.txt**
+
+```
 hello world
 ```
 

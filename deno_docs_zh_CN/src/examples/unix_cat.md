@@ -3,9 +3,9 @@
 在这个程序中，每个命令行参数都是一个文件名，参数对应的文件将被依次打开，打印到标准输出流。
 
 ```ts
-for (let i = 0; i < Deno.args.length; i++) {
-  let filename = Deno.args[i];
-  let file = await Deno.open(filename);
+const filenames = Deno.args;
+for (const filename of filenames) {
+  const file = await Deno.open(filename);
   await Deno.copy(file, Deno.stdout);
   file.close();
 }

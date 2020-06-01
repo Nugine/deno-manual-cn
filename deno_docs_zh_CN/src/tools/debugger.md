@@ -10,7 +10,7 @@ Deno 支持 [V8 Inspector Protocol](https://v8.dev/docs/inspector).
 
 ### Chrome Devtools
 
-让我们用 Chrome 开发者工具来调试一个简单的程序，我们将使用来自 `std` 的 [file_server.ts](https://deno.land/std@v0.50.0/http/file_server.ts)，这是一个简单的静态文件服务。
+让我们用 Chrome 开发者工具来调试一个程序，我们将使用来自 `std` 的 [file_server.ts](https://deno.land/std@v0.50.0/http/file_server.ts)，这是一个静态文件服务。
 
 使用 `--inspect-brk` 选项，在第一行代码处暂停执行。
 
@@ -87,10 +87,10 @@ Deno 可以在 VSCode 中调试。
 
 ```ts
 import { serve } from "https://deno.land/std@v0.50.0/http/server.ts";
-const s = serve({ port: 8000 });
+const server = serve({ port: 8000 });
 console.log("http://localhost:8000/");
 
-for await (const req of s) {
+for await (const req of server) {
   req.respond({ body: "Hello World\n" });
 }
 ```
@@ -100,6 +100,10 @@ for await (const req of s) {
 ![VSCode debugger](../images/debugger6.jpg)
 
 ![VSCode debugger](../images/debugger7.jpg)
+
+### JetBrains IDE
+
+您可以使用 JetBrains IDE 来调试 Deno，右击您想要调试的文件，选择 `Debug 'Deno: <file name>'`。这会创建一个没有权限设置的 运行/调试 配置，您可能需要更改 `Arguments` 字段来提供所需权限。
 
 ### 其他
 
