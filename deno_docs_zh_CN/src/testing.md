@@ -32,6 +32,8 @@ Deno.test("hello world", () => {
 为此，您可以在定义函数时使用 `async` 关键字：
 
 ```ts
+import { delay } from "https://deno.land/std/async/delay.ts";
+
 Deno.test("async hello world", async () => {
   const x = 1 + 2;
 

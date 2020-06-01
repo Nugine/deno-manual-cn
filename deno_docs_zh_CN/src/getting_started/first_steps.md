@@ -1,6 +1,6 @@
 ## 第一步
 
-这个页面包含一些简单的示例，您可以从中学到 Deno 的基本概念。
+这个页面包含一些示例，您可以从中学到 Deno 的基本概念。
 
 我们假设您已经对 JavaScript 有过预先的了解，特别是 `async`/`await`。如果您没有了解过 JavaScript，您可能需要先阅读这个指南：[JavaScript](https://developer.mozilla.org/zh-CN/docs/learn/JavaScript).
 
@@ -68,7 +68,7 @@ Deno 也提供内置的 API，它们都位于全局变量 `Deno` 中。您可以
 
 {{#include ../examples/unix_cat.md:2:}}
 
-### 一个简单的 TCP 服务
+### TCP 服务
 
 示例：[TCP echo](../examples/tcp_echo.md)
 

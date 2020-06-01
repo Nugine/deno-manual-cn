@@ -54,7 +54,20 @@ Deno 也可以手动安装，只需从 [github.com/denoland/deno/releases](https
 
 ### 升级
 
-运行 `deno upgrade`，这会从 [github.com/denoland/deno/releases](https://github.com/denoland/deno/releases) 获取最新的发布版本，然后解压并替换现有的版本。
+要升级已安装的版本，运行：
+
+```shell
+deno upgrade
+```
+
+这会从 [github.com/denoland/deno/releases](https://github.com/denoland/deno/releases) 获取最新的发布版本，然后解压并替换现有的版本。
+
+您也可以用此来安装一个特定的版本：
+
+```shell
+deno upgrade --version 1.0.1
+```
+
 
 ### 从源码构建
 

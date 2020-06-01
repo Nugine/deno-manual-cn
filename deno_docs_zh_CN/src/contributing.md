@@ -33,9 +33,13 @@ Ops 又称“绑定” (bindings)。
 例如，参考 `deno.rename()` 是如何在
 [PR #671](https://github.com/denoland/deno/pull/671) 中提出并添加的。
 
+## 发布
+
+以往发布的所做更改的总结在 [这里](https://github.com/denoland/deno/releases)。
+
 ## API 文档
 
-公开 API 文档很重要，我们希望它与代码内联。这有助于确保代码和文档紧密结合在一起。
+公开 API 的文档很重要，我们希望它与代码内联。这有助于确保代码和文档紧密结合在一起。
 
 ### 利用 JSDoc
 
