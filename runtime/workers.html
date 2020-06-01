@@ -161,11 +161,11 @@ new Worker(&quot;./worker.js&quot;, { type: &quot;classic&quot; });
 <h3><a class="header" href="#权限" id="权限">权限</a></h3>
 <p>创建一个新的 <code>Worker</code> 实例的行为与动态导入类似，因此 Deno 需要适当的权限来做这个操作。</p>
 <p>对于使用本地模块的 worker，Deno 需要读取 (<code>--allow-read</code>) 权限：</p>
-<pre><code class="language-ts">// main.ts
-new Worker(&quot;./worker.ts&quot;, { type: &quot;module&quot; });
-
-// worker.ts
-console.log(&quot;hello world&quot;);
+<p><strong>main.ts</strong></p>
+<pre><code class="language-ts">new Worker(&quot;./worker.ts&quot;, { type: &quot;module&quot; });
+</code></pre>
+<p><strong>worker.ts</strong></p>
+<pre><code class="language-ts">console.log(&quot;hello world&quot;);
 self.close();
 </code></pre>
 <pre><code class="language-shell">$ deno run main.ts
@@ -175,11 +175,11 @@ $ deno run --allow-read main.ts
 hello world
 </code></pre>
 <p>对于使用远程模块的 worker，Deno 需要网络 (<code>--allow-net</code>) 权限：</p>
-<pre><code class="language-ts">// main.ts
-new Worker(&quot;https://example.com/worker.ts&quot;, { type: &quot;module&quot; });
-
-// worker.ts
-console.log(&quot;hello world&quot;);
+<p><strong>main.ts</strong></p>
+<pre><code class="language-ts">new Worker(&quot;https://example.com/worker.ts&quot;, { type: &quot;module&quot; });
+</code></pre>
+<p><strong>worker.ts</strong></p>
+<pre><code class="language-ts">console.log(&quot;hello world&quot;);
 self.close();
 </code></pre>
 <pre><code class="language-shell">$ deno run main.ts
@@ -195,20 +195,20 @@ hello world
 </blockquote>
 <p>默认情况下，<code>Deno</code> 命名空间在 worker 作用域中不可用。</p>
 <p>要想启用 <code>Deno</code> 命名空间，在创建新的 worker 时传递 <code>deno: true</code> 选项：</p>
-<pre><code class="language-ts">// main.js
-const worker = new Worker(&quot;./worker.js&quot;, { type: &quot;module&quot;, deno: true });
+<p><strong>main.js</strong></p>
+<pre><code class="language-ts">const worker = new Worker(&quot;./worker.js&quot;, { type: &quot;module&quot;, deno: true });
 worker.postMessage({ filename: &quot;./log.txt&quot; });
-
-// worker.js
-self.onmessage = async (e) =&gt; {
+</code></pre>
+<p><strong>worker.js</strong></p>
+<pre><code class="language-ts">self.onmessage = async (e) =&gt; {
   const { filename } = e.data;
   const text = await Deno.readTextFile(filename);
   console.log(text);
   self.close();
 };
-
-// log.txt
-hello world
+</code></pre>
+<p><strong>log.txt</strong></p>
+<pre><code>hello world
 </code></pre>
 <pre><code class="language-shell">$ deno run --allow-read --unstable main.js
 hello world

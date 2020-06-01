@@ -338,6 +338,11 @@ Deno.test(&quot;myTestFunction&quot; function() {
 <h3><a class="header" href="#std" id="std"><code>std</code></a></h3>
 <h4><a class="header" href="#不要依赖外部代码" id="不要依赖外部代码">不要依赖外部代码</a></h4>
 <p><code>https://deno.land/std/</code> 旨在成为所有 Deno 程序可以依赖的基础功能。我们希望向用户保证，此代码不包含任何可能未经审核的第三方代码。</p>
+<h4><a class="header" href="#文档以及维护浏览器兼容性" id="文档以及维护浏览器兼容性">文档以及维护浏览器兼容性</a></h4>
+<p>如果一个模块兼容浏览器，在模块顶部的 JSDoc 中包含以下声明：</p>
+<pre><code class="language-ts">/** This module is browser compatible. */
+</code></pre>
+<p>为该模块维护浏览器兼容性，在代码和测试中都不要使用 <code>Deno</code> 命名空间，确保任何新的依赖都兼容浏览器。</p>
 
                     </main>
 

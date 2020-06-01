@@ -151,7 +151,7 @@
 <p>要高效地使用 Deno，您需要设置环境，比如命令行自动补全、环境变量、编辑器或 IDE。</p>
 <h3><a class="header" href="#环境变量" id="环境变量">环境变量</a></h3>
 <p>这是一些控制 Deno 行为的环境变量：</p>
-<p><code>DENO_DIR</code> 默认为 <code>$HOME/.deno</code>，但可以设置为任何路径。这是 Deno 存放生成的代码和缓存的源码的路径。</p>
+<p><code>DENO_DIR</code> 默认为 <code>$HOME/.cache/deno</code>，但可以设置为任何路径。这是 Deno 存放生成的代码和缓存的源码的路径。</p>
 <p>如果 <code>NO_COLOR</code> 被设置，Deno 将会关闭彩色输出 (<a href="https://no-color.org/">https://no-color.org/</a>)。用户代码可以通过布尔常量 <code>Deno.noColor</code> 测试 <code>NO_COLOR</code> 是否被设置，这不需要环境权限 (<code>--allow-env</code>)。</p>
 <h3><a class="header" href="#命令行自动补全" id="命令行自动补全">命令行自动补全</a></h3>
 <p>通过 <code>deno completions &lt;shell&gt;</code> 命令可以生成补全脚本。它会输出到 stdout，您应该将它重定向到适当的文件。</p>
@@ -172,15 +172,34 @@ source /usr/local/etc/bash_completion.d/deno.bash
 <p>社区已经开发了一些插件用来解决这些问题。</p>
 <h4><a class="header" href="#vs-code" id="vs-code">VS Code</a></h4>
 <p>目前内测版的 <a href="https://github.com/denoland/vscode_deno">vscode_deno</a> 扩展已经发布到了 <a href="https://marketplace.visualstudio.com/items?itemName=denoland.vscode-deno">Visual Studio Marketplace</a>。如果遇到 bug 欢迎提 issues。</p>
-<h4><a class="header" href="#jetbrains-ides" id="jetbrains-ides">JetBrains IDEs</a></h4>
-<p>JetBrains 的 IDE 还没有支持 Deno，但您可以通过订阅和投票这些 issue 来得知最新的进展。</p>
-<ul>
-<li><a href="https://youtrack.jetbrains.com/issue/WEB-41607">https://youtrack.jetbrains.com/issue/WEB-41607</a></li>
-<li><a href="https://youtrack.jetbrains.com/issue/WEB-42983">https://youtrack.jetbrains.com/issue/WEB-42983</a></li>
-<li><a href="https://youtrack.jetbrains.com/issue/WEB-31667">https://youtrack.jetbrains.com/issue/WEB-31667</a></li>
-</ul>
+<h4><a class="header" href="#jetbrains-ide" id="jetbrains-ide">JetBrains IDE</a></h4>
+<p>JetBrains IDE 通过插件来提供 Deno 支持：<a href="https://plugins.jetbrains.com/plugin/14382-deno">Deno 插件</a></p>
+<p>要了解有关设置步骤的更多信息，请在 YouTrack 上阅读 <a href="https://youtrack.jetbrains.com/issue/WEB-41607#focus=streamItem-27-4160152.0-0">这个评论</a>。</p>
 <h3><a class="header" href="#vim-和-neovim" id="vim-和-neovim">Vim 和 NeoVim</a></h3>
 <p>如果您安装 <a href="https://github.com/neoclide/coc.nvim">CoC</a>（intellisense engine and language server protocol），Vim 对于 Deno/TypeScript 来说非常友好 。当安装完 CoC 后，可以在 Vim 内部运行 <code>:CocInstall coc-deno</code>。你会发现，诸如 <code>gd</code>（转到定义）和 <code>gr</code>（转到/查找引用）之类的东西可以正常工作了。</p>
+<h4><a class="header" href="#emacs" id="emacs">Emacs</a></h4>
+<p>对于目标为 Deno 的 TypeScript 项目，Emacs 工作得很好，只需使用两个插件：</p>
+<ul>
+<li>
+<p><a href="https://github.com/ananthakumaran/tide">tide</a>：这是在 Emacs 中使用 TypeScript 的典范方法。</p>
+</li>
+<li>
+<p><a href="https://github.com/justjavac/typescript-deno-plugin">typescript-deno-plugin</a>：它被 <a href="https://github.com/denoland/vscode_deno">Deno 官方 VSCode 插件</a> 使用。</p>
+</li>
+</ul>
+<p>首先确保您已经安装了 <code>tide</code>，下一步，按照 <a href="https://github.com/justjavac/typescript-deno-plugin">typescript-deno-plugin</a> 页面的指示，在项目中运行 <code>npm install --save-dev typescript-deno-plugin typescript</code> (<code>npm init -y</code> 是必要的)，并在 <code>tsconfig.json</code> 中添加以下设置，然后准备开发吧！</p>
+<pre><code class="language-json">{
+  &quot;compilerOptions&quot;: {
+    &quot;plugins&quot;: [
+      {
+        &quot;name&quot;: &quot;typescript-deno-plugin&quot;,
+        &quot;enable&quot;: true, // default is `true`
+        &quot;importmap&quot;: &quot;import_map.json&quot;
+      }
+    ]
+  }
+}
+</code></pre>
 <p>如果您没有在列表中看到您最喜欢的 IDE，或许可以开发一个插件，我们的社区能够帮助您起步：<a href="https://discord.gg/TGMHGv6">Discord</a></p>
 
                     </main>

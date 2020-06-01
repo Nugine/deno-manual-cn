@@ -153,7 +153,7 @@
 <p>要启用调试功能，用 <code>--inspect</code> 或 <code>--inspect-brk</code> 选项运行 Deno。</p>
 <p><code>--inspect</code> 选项允许在任何时间点连接调试器，而 <code>--inspect-brk</code> 选项会等待调试器连接，在第一行代码处暂停执行。</p>
 <h3><a class="header" href="#chrome-devtools" id="chrome-devtools">Chrome Devtools</a></h3>
-<p>让我们用 Chrome 开发者工具来调试一个简单的程序，我们将使用来自 <code>std</code> 的 <a href="https://deno.land/std@v0.50.0/http/file_server.ts">file_server.ts</a>，这是一个简单的静态文件服务。</p>
+<p>让我们用 Chrome 开发者工具来调试一个程序，我们将使用来自 <code>std</code> 的 <a href="https://deno.land/std@v0.50.0/http/file_server.ts">file_server.ts</a>，这是一个静态文件服务。</p>
 <p>使用 <code>--inspect-brk</code> 选项，在第一行代码处暂停执行。</p>
 <pre><code class="language-shell">$ deno run --inspect-brk --allow-read --allow-net https://deno.land/std@v0.50.0/http/file_server.ts
 Debugger listening on ws://127.0.0.1:9229/ws/1e82c406-85a9-44ab-86b6-7341583480b1
@@ -200,16 +200,18 @@ Compile https://deno.land/std@v0.50.0/http/file_server.ts
 <p><strong>注意</strong>：将 <code>&lt;entry_point&gt;</code> 替换为实际的脚本名称。</p>
 <p>让我们尝试一下本地源文件，创建 <code>server.ts</code>：</p>
 <pre><code class="language-ts">import { serve } from &quot;https://deno.land/std@v0.50.0/http/server.ts&quot;;
-const s = serve({ port: 8000 });
+const server = serve({ port: 8000 });
 console.log(&quot;http://localhost:8000/&quot;);
 
-for await (const req of s) {
+for await (const req of server) {
   req.respond({ body: &quot;Hello World\n&quot; });
 }
 </code></pre>
 <p>将 <code>&lt;entry_point&gt;</code> 改为 <code>server.ts</code>，然后运行。</p>
 <p><img src="../images/debugger6.jpg" alt="VSCode debugger" /></p>
 <p><img src="../images/debugger7.jpg" alt="VSCode debugger" /></p>
+<h3><a class="header" href="#jetbrains-ide" id="jetbrains-ide">JetBrains IDE</a></h3>
+<p>您可以使用 JetBrains IDE 来调试 Deno，右击您想要调试的文件，选择 <code>Debug 'Deno: &lt;file name&gt;'</code>。这会创建一个没有权限设置的 运行/调试 配置，您可能需要更改 <code>Arguments</code> 字段来提供所需权限。</p>
 <h3><a class="header" href="#其他" id="其他">其他</a></h3>
 <p>实现 Devtools 协议的任何客户端都能连接 Deno 进程。</p>
 <h3><a class="header" href="#限制" id="限制">限制</a></h3>

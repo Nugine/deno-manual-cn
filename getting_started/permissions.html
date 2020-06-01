@@ -148,11 +148,25 @@
                 <div id="content" class="content">
                     <main>
                         <h2><a class="header" href="#权限" id="权限">权限</a></h2>
-<!-- TODO(lucacasonato): what are permissions -->
-<!-- TODO(lucacasonato): description of all permissions -->
+<p>默认情况下，Deno是安全的。因此 Deno 模块没有文件、网络或环境的访问权限，除非您为它授权。在命令行参数中为 deno 进程授权后才能访问安全敏感的功能。</p>
+<p>在以下示例中，<code>mod.ts</code> 只被授予文件系统的只读权限。它无法对其进行写入，或执行任何其他对安全性敏感的操作。</p>
+<pre><code class="language-shell">deno run --allow-read mod.ts
+</code></pre>
+<h3><a class="header" href="#权限列表" id="权限列表">权限列表</a></h3>
+<p>以下权限是可用的：</p>
+<ul>
+<li><strong>-A, --allow-all</strong> 允许所有权限，这将禁用所有安全限制。</li>
+<li><strong>--allow-env</strong> 允许环境访问，例如读取和设置环境变量。</li>
+<li><strong>--allow-hrtime</strong> 允许高精度时间测量，高精度时间能够在计时攻击和特征识别中使用。</li>
+<li><strong>--allow-net=&lt;allow-net&gt;</strong> 允许网络访问。您可以指定一系列用逗号分隔的域名，来提供域名白名单。</li>
+<li><strong>--allow-plugin</strong> 允许加载插件。请注意：这是一个不稳定功能。</li>
+<li><strong>--allow-read=&lt;allow-read&gt;</strong> 允许读取文件系统。您可以指定一系列用逗号分隔的目录或文件，来提供文件系统白名单。</li>
+<li><strong>--allow-run</strong> 允许运行子进程。请注意，子进程不在沙箱中运行，因此没有与 deno 进程相同的安全限制，请谨慎使用。</li>
+<li><strong>--allow-write=&lt;allow-write&gt;</strong> 允许写入文件系统。您可以指定一系列用逗号分隔的目录或文件，来提供文件系统白名单。</li>
+</ul>
 <h3><a class="header" href="#权限白名单" id="权限白名单">权限白名单</a></h3>
 <p>Deno 还允许您使用白名单控制权限的粒度。</p>
-<p>这是一个用白名单限制文件系统访问权限的示例，仅允许访问 <code>/usr</code> 目录。</p>
+<p>这是一个用白名单限制文件系统访问权限的示例，仅允许访问 <code>/usr</code> 目录，但它会在尝试访问 <code>/etc</code> 目录时失败。</p>
 <pre><code class="language-shell">$ deno run --allow-read=/usr https://deno.land/std/examples/cat.ts /etc/passwd
 error: Uncaught PermissionDenied: read access to &quot;/etc/passwd&quot;, run again with the --allow-read flag
 ► $deno$/dispatch_json.ts:40:11
@@ -170,6 +184,7 @@ error: Uncaught PermissionDenied: read access to &quot;/etc/passwd&quot;, run ag
 <p>这是一个设置 host 或 url 白名单的示例：</p>
 <pre><code class="language-shell">$ deno run --allow-net=github.com,deno.land fetch.ts
 </code></pre>
+<p>如果 <code>fetch.ts</code> 尝试与其他域名建立网络连接，那么这个进程将会失败。</p>
 <p>允许访问任意地址：</p>
 <pre><code class="language-shell">$ deno run --allow-net fetch.ts
 </code></pre>

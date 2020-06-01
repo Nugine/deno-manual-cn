@@ -175,7 +175,13 @@
 <p>运行 <code>deno help</code> 以查看帮助文档。</p>
 <p>运行 <code>deno help &lt;subcommand&gt;</code> 以查看子命令的选项。</p>
 <h3><a class="header" href="#升级" id="升级">升级</a></h3>
-<p>运行 <code>deno upgrade</code>，这会从 <a href="https://github.com/denoland/deno/releases">github.com/denoland/deno/releases</a> 获取最新的发布版本，然后解压并替换现有的版本。</p>
+<p>要升级已安装的版本，运行：</p>
+<pre><code class="language-shell">deno upgrade
+</code></pre>
+<p>这会从 <a href="https://github.com/denoland/deno/releases">github.com/denoland/deno/releases</a> 获取最新的发布版本，然后解压并替换现有的版本。</p>
+<p>您也可以用此来安装一个特定的版本：</p>
+<pre><code class="language-shell">deno upgrade --version 1.0.1
+</code></pre>
 <h3><a class="header" href="#从源码构建" id="从源码构建">从源码构建</a></h3>
 <p>关于构建步骤的信息请查阅 <a href="../contributing.html">贡献</a> 章节。</p>
 

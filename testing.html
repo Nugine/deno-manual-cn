@@ -169,7 +169,9 @@ Deno.test(&quot;hello world&quot;, () =&gt; {
 <h3><a class="header" href="#异步函数" id="异步函数">异步函数</a></h3>
 <p>您还可以通过传递一个测试函数来测试异步代码，该函数返回一个 promise。
 为此，您可以在定义函数时使用 <code>async</code> 关键字：</p>
-<pre><code class="language-ts">Deno.test(&quot;async hello world&quot;, async () =&gt; {
+<pre><code class="language-ts">import { delay } from &quot;https://deno.land/std/async/delay.ts&quot;;
+
+Deno.test(&quot;async hello world&quot;, async () =&gt; {
   const x = 1 + 2;
 
   // await some async task

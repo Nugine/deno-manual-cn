@@ -174,7 +174,7 @@ console.log(emitMap);
   &quot;https://deno.land/std/examples/welcome.ts&quot;
 );
 </code></pre>
-<p>在这种情况下，<code>emitMap</code> 将包含一个简单的 <code>console.log()</code> 语句。</p>
+<p>在这种情况下，<code>emitMap</code> 将包含一个 <code>console.log()</code> 语句。</p>
 <h3><a class="header" href="#denobundle" id="denobundle"><code>Deno.bundle()</code></a></h3>
 <p>这与 <code>deno bundle</code> 在命令行上的工作非常相似。 它也与 <code>Deno.compile()</code> 类似，只是它不返回文件映射，而是只返回一个字符串，这是一个自包含的 JavaScript ES 模块，它将包含提供或解析的所有代码，以及提供的根模块的所有导出。它最多接受三个参数，<code>rootName</code>、可选的 <code>sources</code> 和可选的 <code>options</code>。</p>
 <p><code>rootName</code> 是用于生成目标程序的根模块。这类似于在 <code>deno bundle example.ts</code> 中在命令行上传递的模块名。</p>

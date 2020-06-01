@@ -173,8 +173,10 @@
 <p>我们非常担心在添加新 API 时会出错。在向 Deno 添加 Op 时，应该研究其他平台上的对应接口。请列出如何在 Go、Node、Rust 和 Python 中完成此功能。</p>
 <p>例如，参考 <code>deno.rename()</code> 是如何在
 <a href="https://github.com/denoland/deno/pull/671">PR #671</a> 中提出并添加的。</p>
+<h2><a class="header" href="#发布" id="发布">发布</a></h2>
+<p>以往发布的所做更改的总结在 <a href="https://github.com/denoland/deno/releases">这里</a>。</p>
 <h2><a class="header" href="#api-文档" id="api-文档">API 文档</a></h2>
-<p>公开 API 文档很重要，我们希望它与代码内联。这有助于确保代码和文档紧密结合在一起。</p>
+<p>公开 API 的文档很重要，我们希望它与代码内联。这有助于确保代码和文档紧密结合在一起。</p>
 <h3><a class="header" href="#利用-jsdoc" id="利用-jsdoc">利用 JSDoc</a></h3>
 <p>所有通过 <code>deno</code> 模块以及 global/<code>window</code> 命名空间公开的 API 和类型都应该有 JSDoc 文档。该文档经过解析并可供 TypeScript 编译器使用，因此易于在下游提供。JSDoc 块就在它们应用的语句之前，并以 <code>/** doc */</code> 表示。例如：</p>
 <pre><code class="language-ts">/** A simple JSDoc comment */

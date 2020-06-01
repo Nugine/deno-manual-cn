@@ -151,8 +151,8 @@
 <p>Deno 支持浏览器兼容的生命周期事件 <code>load</code> 和 <code>unload</code>。您可以使用这些事件在程序中提供用于安装 (setup) 和清理 (cleanup) 的代码。</p>
 <p><code>load</code> 事件的侦听器 (listener) 可以是异步 (async) 的，将被等待 (await)。<code>unload</code> 事件的监听器需要是同步的。这两项事件都不能被取消。</p>
 <p>示例：</p>
-<pre><code class="language-ts">// main.ts
-import &quot;./imported.ts&quot;;
+<p><strong>main.ts</strong></p>
+<pre><code class="language-ts">import &quot;./imported.ts&quot;;
 
 const handler = (e: Event): void =&gt; {
   console.log(`got ${e.type} event in event handler (main)`);
@@ -171,9 +171,9 @@ window.onunload = (e: Event): void =&gt; {
 };
 
 console.log(&quot;log from main script&quot;);
-
-// imported.ts
-const handler = (e: Event): void =&gt; {
+</code></pre>
+<p><strong>imported.ts</strong></p>
+<pre><code class="language-ts">const handler = (e: Event): void =&gt; {
   console.log(`got ${e.type} event in event handler (imported)`);
 };
 
@@ -202,6 +202,8 @@ got unload event in event handler (imported)
 got unload event in event handler (main)
 </code></pre>
 <p>所有通过 <code>window.addEventListener</code> 添加的侦听器都被运行，但是在 <code>main.ts</code> 中定义的 <code>window.onload</code> 和 <code>window.onunload</code> 覆盖了 <code>imported.ts</code> 中定义的处理程序。</p>
+<p>换句话说，您可以注册多个 <code>window.addEventListener</code> <code>&quot;load&quot;</code> 或
+<code>&quot;unload&quot;</code> 事件，但只有最后加载的 <code>window.onload</code> 或 <code>window.onunload</code> 事件将被执行。</p>
 
                     </main>
 

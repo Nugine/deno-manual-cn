@@ -148,7 +148,7 @@
                 <div id="content" class="content">
                     <main>
                         <h2><a class="header" href="#第一步" id="第一步">第一步</a></h2>
-<p>这个页面包含一些简单的示例，您可以从中学到 Deno 的基本概念。</p>
+<p>这个页面包含一些示例，您可以从中学到 Deno 的基本概念。</p>
 <p>我们假设您已经对 JavaScript 有过预先的了解，特别是 <code>async</code>/<code>await</code>。如果您没有了解过 JavaScript，您可能需要先阅读这个指南：<a href="https://developer.mozilla.org/zh-CN/docs/learn/JavaScript">JavaScript</a>.</p>
 <h3><a class="header" href="#hello-world" id="hello-world">Hello World</a></h3>
 <p>Deno 是一个 JavaScript 和 TypeScript 的运行时，并尝试与浏览器兼容并使用现代的功能 (features)。</p>
@@ -194,9 +194,9 @@ await Deno.stdout.write(body);
 <p>文件系统 API 没有 web 标准形式，所以 Deno 提供了内置的 API。</p>
 <p>示例：<a href="../examples/unix_cat.html">Unix cat</a></p>
 <p>在这个程序中，每个命令行参数都是一个文件名，参数对应的文件将被依次打开，打印到标准输出流。</p>
-<pre><code class="language-ts">for (let i = 0; i &lt; Deno.args.length; i++) {
-  let filename = Deno.args[i];
-  let file = await Deno.open(filename);
+<pre><code class="language-ts">const filenames = Deno.args;
+for (const filename of filenames) {
+  const file = await Deno.open(filename);
   await Deno.copy(file, Deno.stdout);
   file.close();
 }
@@ -205,11 +205,13 @@ await Deno.stdout.write(body);
 <p>尝试一下：</p>
 <pre><code class="language-shell">deno run --allow-read https://deno.land/std/examples/cat.ts /etc/passwd
 </code></pre>
-<h3><a class="header" href="#一个简单的-tcp-服务" id="一个简单的-tcp-服务">一个简单的 TCP 服务</a></h3>
+<h3><a class="header" href="#tcp-服务" id="tcp-服务">TCP 服务</a></h3>
 <p>示例：<a href="../examples/tcp_echo.html">TCP echo</a></p>
-<p>这个示例是一个简单的 TCP echo 服务，接收 8080 端口的连接，把接收到的任何数据返回给客户端。</p>
-<pre><code class="language-ts">const listener = Deno.listen({ port: 8080 });
-console.log(&quot;listening on 0.0.0.0:8080&quot;);
+<p>这个示例是一个 TCP echo 服务，接收 8080 端口的连接，把接收到的任何数据返回给客户端。</p>
+<pre><code class="language-ts">const hostname = &quot;0.0.0.0&quot;;
+const port = 8080;
+const listener = Deno.listen({ hostname, port });
+console.log(`Listening on ${hostname}:${port}`);
 for await (const conn of listener) {
   Deno.copy(conn, conn);
 }

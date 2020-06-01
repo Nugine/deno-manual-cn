@@ -149,10 +149,13 @@
                     <main>
                         <h2><a class="header" href="#使用-typescript" id="使用-typescript">使用 TypeScript</a></h2>
 <!-- TODO(lucacasonato): text on 'just import .ts' -->
-<h3><a class="header" href="#使用外部类型定义" id="使用外部类型定义">使用外部类型定义</a></h3>
 <p>Deno 同时支持 JavaScript 和 TypeScript，它们是 Deno 的第一等语言。
 这意味着它需要标准的模块名称，包括
-扩展名（或提供正确媒体类型的服务器）。此外，Deno 还拥有“平凡”的模块解析算法。</p>
+扩展名（或提供正确媒体类型的服务器）。此外，Deno 还拥有“平凡”的模块解析算法。导入模块指定为文件（包括扩展名）或全限定 URL (fully qualified URL)。TypeScript 模块可以被直接导入，例如：</p>
+<pre><code class="language-ts">import { Response } from &quot;https://deno.land/std@0.53.0/http/server.ts&quot;;
+import { queue } from &quot;./collections.ts&quot;;
+</code></pre>
+<h3><a class="header" href="#使用外部类型定义" id="使用外部类型定义">使用外部类型定义</a></h3>
 <p>开箱即用的 TypeScript 编译器依赖于两种无扩展名
 模块和 Node.js 模块解析逻辑，以将类型应用于 JavaScript
 模块。</p>
@@ -185,7 +188,7 @@ export const foo = &quot;foo&quot;;
 TypeScript 编译器。Deno 仅在 JavaScript （包括 JSX）文件中查找指令。</p>
 <h3><a class="header" href="#自定义-typescript-编译器选项" id="自定义-typescript-编译器选项">自定义 TypeScript 编译器选项</a></h3>
 <p>在 Deno 生态系统中，所有严格标志都被默认启用，以符合 TypeScript 的理想状态。Deno 也支持自定义配置文件，例如 <code>tsconfig.json</code>。</p>
-<p>您需要通过显式设置 <code>-c</code> 选项，来明确告诉 Deno 在哪里寻找此配置。</p>
+<p>您需要通过显式设置 <code>-c</code> 或 <code>--config</code> 选项，来明确告诉 Deno 在哪里寻找此配置。</p>
 <pre><code class="language-shell">deno run -c tsconfig.json mod.ts
 </code></pre>
 <p>以下是 Deno 当前允许的设置及其默认值：</p>
