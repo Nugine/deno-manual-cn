@@ -47,7 +47,9 @@ JetBrains IDE 通过插件来提供 Deno 支持：[Deno 插件](https://plugins.
 
 ### Vim 和 NeoVim
 
-如果您安装 [CoC](https://github.com/neoclide/coc.nvim)（intellisense engine and language server protocol），Vim 对于 Deno/TypeScript 来说非常友好 。当安装完 CoC 后，可以在 Vim 内部运行 `:CocInstall coc-deno`。你会发现，诸如 `gd`（转到定义）和 `gr`（转到/查找引用）之类的东西可以正常工作了。
+如果您安装 [CoC](https://github.com/neoclide/coc.nvim)（intellisense engine and language server protocol），Vim 对于 Deno/TypeScript 来说非常友好。
+
+当安装完 CoC 后，可以在 Vim 内部运行 `:CocInstall coc-deno`。你会发现，诸如 `gd`（转到定义）和 `gr`（转到/查找引用）之类的东西可以正常工作了。
 
 #### Emacs
 

@@ -1,10 +1,14 @@
 # 贡献
 
 - 阅读 [风格指南](./style-guide.zh-CN.md).
-- 通过 [里程碑](https://github.com/denoland/deno/milestones) 跟进未来的发布。
+
 - 请不要让 [性能测试](https://deno.land/benchmarks.html) 变糟。
+
 - 在 [社区聊天室](https://discord.gg/TGMHGv6) 获取帮助。
+
 - 如果您将要在某个 issue 下做些工作，在那之前请先在 issue 中提示一下。
+
+- 请在论坛上保持专业。我们遵循 Rust 的[行为准则](https://www.rust-lang.org/policies/code-of-conduct) (Code of conduct)。有问题请向 ry 发邮件(ry@tinyclouds.org)。
 
 ## 开发
 
