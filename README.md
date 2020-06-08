@@ -9,3 +9,9 @@
 ## 如何参与改进？
 
 勘误：<https://github.com/Nugine/deno-manual-cn/issues/new/choose>
+
+## 协议
+
+[![Creative Commons License](https://licensebuttons.net/l/by-nc/4.0/88x31.png)](http://creativecommons.org/licenses/by-nc/4.0/)
+
+本项目采用 [CC BY-NC 4.0](http://creativecommons.org/licenses/by-nc/4.0/) 协议。
