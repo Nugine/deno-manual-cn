@@ -328,7 +328,8 @@ source /usr/local/etc/bash_completion.d/deno.bash
 <p>JetBrains IDE 通过插件来提供 Deno 支持：<a href="https://plugins.jetbrains.com/plugin/14382-deno">Deno 插件</a></p>
 <p>要了解有关设置步骤的更多信息，请在 YouTrack 上阅读 <a href="https://youtrack.jetbrains.com/issue/WEB-41607#focus=streamItem-27-4160152.0-0">这个评论</a>。</p>
 <h3><a class="header" href="#vim-和-neovim" id="vim-和-neovim">Vim 和 NeoVim</a></h3>
-<p>如果您安装 <a href="https://github.com/neoclide/coc.nvim">CoC</a>（intellisense engine and language server protocol），Vim 对于 Deno/TypeScript 来说非常友好 。当安装完 CoC 后，可以在 Vim 内部运行 <code>:CocInstall coc-deno</code>。你会发现，诸如 <code>gd</code>（转到定义）和 <code>gr</code>（转到/查找引用）之类的东西可以正常工作了。</p>
+<p>如果您安装 <a href="https://github.com/neoclide/coc.nvim">CoC</a>（intellisense engine and language server protocol），Vim 对于 Deno/TypeScript 来说非常友好。</p>
+<p>当安装完 CoC 后，可以在 Vim 内部运行 <code>:CocInstall coc-deno</code>。你会发现，诸如 <code>gd</code>（转到定义）和 <code>gr</code>（转到/查找引用）之类的东西可以正常工作了。</p>
 <h4><a class="header" href="#emacs" id="emacs">Emacs</a></h4>
 <p>对于目标为 Deno 的 TypeScript 项目，Emacs 工作得很好，只需使用两个插件：</p>
 <ul>
@@ -1279,7 +1280,29 @@ export const bar = &quot;bar&quot;;
 &lt;/script&gt;
 </code></pre>
 <h2><a class="header" href="#文档生成器" id="文档生成器">文档生成器</a></h2>
-<!-- TODO(lucacasonto): write things -->
+<p><code>deno doc</code> 将处理一个或一组源文件，为每个模块的<strong>导出</strong>成员打印出 JSDoc 文档。</p>
+<p>目前只支持两种导出声明：</p>
+<ul>
+<li><code>export &lt;declaration&gt;</code></li>
+<li><code>export ... from ...</code></li>
+</ul>
+<p>例如，对于这样的一个文件 <code>add.ts</code>：</p>
+<pre><code class="language-ts">/**
+ * Adds x and y.
+ * @param {number} x
+ * @param {number} y
+ * @returns {number} Sum of x and y
+ */
+export function add(x: number, y: number): number {
+  return x + y;
+}
+</code></pre>
+<p>运行 Deno <code>doc</code> 命令，把该函数的 JSDoc 注释打印到 <code>stdout</code>：</p>
+<pre><code class="language-shell">deno doc add.ts
+function add(x: number, y: number): number
+  Adds x and y. @param {number} x @param {number} y @returns {number} Sum of x and y
+</code></pre>
+<p>使用 <code>--json</code> 选项，用 JSON 格式输出文档。该格式在 <a href="https://github.com/denoland/doc_website">deno doc website</a> 使用，用以生成模块文档。</p>
 <h2><a class="header" href="#依赖检查器" id="依赖检查器">依赖检查器</a></h2>
 <p><code>deno info [URL]</code> 会列出 ES 模块和它的所有依赖。</p>
 <pre><code class="language-shell">deno info https://deno.land/std@0.52.0/http/file_server.ts
@@ -1356,11 +1379,21 @@ crate，可以用作 Rust 应用中的嵌入式 JavaScript 运行时。</p>
 <!-- TODO(lucacasonato): better docs -->
 <h1><a class="header" href="#贡献" id="贡献">贡献</a></h1>
 <ul>
-<li>阅读 <a href="./style-guide.zh-CN.html">风格指南</a>.</li>
-<li>通过 <a href="https://github.com/denoland/deno/milestones">里程碑</a> 跟进未来的发布。</li>
-<li>请不要让 <a href="https://deno.land/benchmarks.html">性能测试</a> 变糟。</li>
-<li>在 <a href="https://discord.gg/TGMHGv6">社区聊天室</a> 获取帮助。</li>
-<li>如果您将要在某个 issue 下做些工作，在那之前请先在 issue 中提示一下。</li>
+<li>
+<p>阅读 <a href="./style-guide.zh-CN.html">风格指南</a>.</p>
+</li>
+<li>
+<p>请不要让 <a href="https://deno.land/benchmarks.html">性能测试</a> 变糟。</p>
+</li>
+<li>
+<p>在 <a href="https://discord.gg/TGMHGv6">社区聊天室</a> 获取帮助。</p>
+</li>
+<li>
+<p>如果您将要在某个 issue 下做些工作，在那之前请先在 issue 中提示一下。</p>
+</li>
+<li>
+<p>请在论坛上保持专业。我们遵循 Rust 的<a href="https://www.rust-lang.org/policies/code-of-conduct">行为准则</a> (Code of conduct)。有问题请向 ry 发邮件(ry@tinyclouds.org)。</p>
+</li>
 </ul>
 <h2><a class="header" href="#开发" id="开发">开发</a></h2>
 <p>从源码构建的步骤在 <a href="./contributing/building_from_source.html">这里</a></p>

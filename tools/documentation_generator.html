@@ -148,7 +148,29 @@
                 <div id="content" class="content">
                     <main>
                         <h2><a class="header" href="#文档生成器" id="文档生成器">文档生成器</a></h2>
-<!-- TODO(lucacasonto): write things -->
+<p><code>deno doc</code> 将处理一个或一组源文件，为每个模块的<strong>导出</strong>成员打印出 JSDoc 文档。</p>
+<p>目前只支持两种导出声明：</p>
+<ul>
+<li><code>export &lt;declaration&gt;</code></li>
+<li><code>export ... from ...</code></li>
+</ul>
+<p>例如，对于这样的一个文件 <code>add.ts</code>：</p>
+<pre><code class="language-ts">/**
+ * Adds x and y.
+ * @param {number} x
+ * @param {number} y
+ * @returns {number} Sum of x and y
+ */
+export function add(x: number, y: number): number {
+  return x + y;
+}
+</code></pre>
+<p>运行 Deno <code>doc</code> 命令，把该函数的 JSDoc 注释打印到 <code>stdout</code>：</p>
+<pre><code class="language-shell">deno doc add.ts
+function add(x: number, y: number): number
+  Adds x and y. @param {number} x @param {number} y @returns {number} Sum of x and y
+</code></pre>
+<p>使用 <code>--json</code> 选项，用 JSON 格式输出文档。该格式在 <a href="https://github.com/denoland/doc_website">deno doc website</a> 使用，用以生成模块文档。</p>
 
                     </main>
 
