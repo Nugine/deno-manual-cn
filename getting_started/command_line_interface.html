@@ -1,0 +1,301 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>命令行界面 - Deno 手册</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../introduction.html"><strong aria-hidden="true">1.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="../getting_started.html"><strong aria-hidden="true">2.</strong> 入门</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting_started/installation.html"><strong aria-hidden="true">2.1.</strong> 安装</a></li><li class="chapter-item expanded "><a href="../getting_started/setup_your_environment.html"><strong aria-hidden="true">2.2.</strong> 设置环境</a></li><li class="chapter-item expanded "><a href="../getting_started/first_steps.html"><strong aria-hidden="true">2.3.</strong> 第一步</a></li><li class="chapter-item expanded "><a href="../getting_started/command_line_interface.html" class="active"><strong aria-hidden="true">2.4.</strong> 命令行界面</a></li><li class="chapter-item expanded "><a href="../getting_started/permissions.html"><strong aria-hidden="true">2.5.</strong> 权限</a></li><li class="chapter-item expanded "><a href="../getting_started/typescript.html"><strong aria-hidden="true">2.6.</strong> 使用 TypeScript</a></li><li class="chapter-item expanded "><a href="../getting_started/webassembly.html"><strong aria-hidden="true">2.7.</strong> 使用 WebAssembly</a></li></ol></li><li class="chapter-item expanded "><a href="../runtime.html"><strong aria-hidden="true">3.</strong> 运行时</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../runtime/stability.html"><strong aria-hidden="true">3.1.</strong> 稳定性</a></li><li class="chapter-item expanded "><a href="../runtime/program_lifecycle.html"><strong aria-hidden="true">3.2.</strong> 程序生命周期</a></li><li class="chapter-item expanded "><a href="../runtime/compiler_apis.html"><strong aria-hidden="true">3.3.</strong> 编译器 API</a></li><li class="chapter-item expanded "><a href="../runtime/workers.html"><strong aria-hidden="true">3.4.</strong> Worker</a></li></ol></li><li class="chapter-item expanded "><a href="../linking_to_external_code.html"><strong aria-hidden="true">4.</strong> 与外部代码连接</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../linking_to_external_code/reloading_modules.html"><strong aria-hidden="true">4.1.</strong> 重新加载模块</a></li><li class="chapter-item expanded "><a href="../linking_to_external_code/integrity_checking.html"><strong aria-hidden="true">4.2.</strong> 完整性检查</a></li><li class="chapter-item expanded "><a href="../linking_to_external_code/proxies.html"><strong aria-hidden="true">4.3.</strong> 代理</a></li><li class="chapter-item expanded "><a href="../linking_to_external_code/import_maps.html"><strong aria-hidden="true">4.4.</strong> 导入映射</a></li></ol></li><li class="chapter-item expanded "><a href="../standard_library.html"><strong aria-hidden="true">5.</strong> 标准库</a></li><li class="chapter-item expanded "><a href="../testing.html"><strong aria-hidden="true">6.</strong> 测试</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../testing/assertions.html"><strong aria-hidden="true">6.1.</strong> 断言</a></li></ol></li><li class="chapter-item expanded "><a href="../tools.html"><strong aria-hidden="true">7.</strong> 工具</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tools/debugger.html"><strong aria-hidden="true">7.1.</strong> 调试器</a></li><li class="chapter-item expanded "><a href="../tools/script_installer.html"><strong aria-hidden="true">7.2.</strong> 脚本安装器</a></li><li class="chapter-item expanded "><a href="../tools/formatter.html"><strong aria-hidden="true">7.3.</strong> 格式化工具</a></li><li class="chapter-item expanded "><a href="../tools/bundler.html"><strong aria-hidden="true">7.4.</strong> 打包器</a></li><li class="chapter-item expanded "><a href="../tools/documentation_generator.html"><strong aria-hidden="true">7.5.</strong> 文档生成器</a></li><li class="chapter-item expanded "><a href="../tools/dependency_inspector.html"><strong aria-hidden="true">7.6.</strong> 依赖检查器</a></li><li class="chapter-item expanded "><a href="../tools/linter.html"><strong aria-hidden="true">7.7.</strong> Linter</a></li></ol></li><li class="chapter-item expanded "><a href="../embedding_deno.html"><strong aria-hidden="true">8.</strong> 嵌入 Deno</a></li><li class="chapter-item expanded "><a href="../contributing.html"><strong aria-hidden="true">9.</strong> 贡献</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../contributing/building_from_source.html"><strong aria-hidden="true">9.1.</strong> 从源码构建</a></li><li class="chapter-item expanded "><a href="../contributing/development_tools.html"><strong aria-hidden="true">9.2.</strong> 开发工具</a></li><li class="chapter-item expanded "><a href="../contributing/style_guide.html"><strong aria-hidden="true">9.3.</strong> 风格指南</a></li><li class="chapter-item expanded "><a href="../contributing/architecture.html"><strong aria-hidden="true">9.4.</strong> 架构</a></li></ol></li><li class="chapter-item expanded "><a href="../examples.html"><strong aria-hidden="true">10.</strong> 示例</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../examples/unix_cat.html"><strong aria-hidden="true">10.1.</strong> Unix cat</a></li><li class="chapter-item expanded "><a href="../examples/file_server.html"><strong aria-hidden="true">10.2.</strong> 文件服务</a></li><li class="chapter-item expanded "><a href="../examples/tcp_echo.html"><strong aria-hidden="true">10.3.</strong> TCP echo</a></li><li class="chapter-item expanded "><a href="../examples/subprocess.html"><strong aria-hidden="true">10.4.</strong> 创建子进程</a></li><li class="chapter-item expanded "><a href="../examples/permissions.html"><strong aria-hidden="true">10.5.</strong> 检查与放弃权限</a></li><li class="chapter-item expanded "><a href="../examples/os_signals.html"><strong aria-hidden="true">10.6.</strong> 系统信号</a></li><li class="chapter-item expanded "><a href="../examples/file_system_events.html"><strong aria-hidden="true">10.7.</strong> 文件系统事件</a></li><li class="chapter-item expanded "><a href="../examples/testing_if_main.html"><strong aria-hidden="true">10.8.</strong> 测试当前文件是否为主程序</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Deno 手册</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2><a class="header" href="#命令行界面" id="命令行界面">命令行界面</a></h2>
+<p>Deno 是一个命令行程序。到目前为止，看过这些示例后，您应该熟悉了一些简单的命令，并且已经了解了 shell 的基本用法。</p>
+<p>这是查看主要帮助文档的几种方法：</p>
+<pre><code class="language-shell"># 使用子命令
+deno help
+
+# 使用短选项 —— 输出和上面一样
+deno -h
+
+# 使用长选项 —— 输出更加详细
+deno --help
+</code></pre>
+<p>Deno 的 CLI 是基于子命令的。上面的帮助命令应该显示了一个子命令列表，例如 <code>deno bundle</code>。</p>
+<p>要查看特定于子命令的帮助，您可以参考以下示例：</p>
+<pre><code class="language-shell">deno help bundle
+deno bundle -h
+deno bundle --help
+</code></pre>
+<p>各个子命令的详细指南在 <a href="../tools.html">这里</a>。</p>
+<h3><a class="header" href="#脚本来源" id="脚本来源">脚本来源</a></h3>
+<p>Deno 可以从多个来源获取脚本，一个文件名，一个 URL，或者是 &quot;-&quot;，表示从标准输入读取。后者在与其他应用集成时很有用。</p>
+<pre><code class="language-shell">deno run main.ts
+deno run https://mydomain.com/main.ts
+cat main.ts | deno run -
+</code></pre>
+<h3><a class="header" href="#脚本参数" id="脚本参数">脚本参数</a></h3>
+<p>通过在脚本名称后指定参数，您可以将用户空间参数传递给要运行的脚本，这些参数与 Deno 运行时选项区分开。</p>
+<pre><code class="language-shell">deno run main.ts a b -c --quiet
+</code></pre>
+<pre><code class="language-ts">// main.ts
+console.log(Deno.args); // [ &quot;a&quot;, &quot;b&quot;, &quot;-c&quot;, &quot;--quiet&quot; ]
+</code></pre>
+<p><strong>请注意，在脚本名称之后传递的所有内容都将作为脚本参数传递，而不会用作 Deno 运行时选项。</strong></p>
+<p>这将导致以下陷阱：</p>
+<pre><code class="language-shell"># 正常情况：我们给 net_client.ts 授予网络权限。
+deno run --allow-net net_client.ts
+
+# 错误情况：--allow-net 传递为 Deno.args，引发网络权限错误。
+deno run net_client.ts --allow-net
+</code></pre>
+<p>有人认为这打破了常规：</p>
+<blockquote>
+<p>一个非位置选项的解析方式会根据位置变化。</p>
+</blockquote>
+<p>然而：</p>
+<ol>
+<li>这是区分运行时选项和脚本参数的最合乎逻辑的方法。</li>
+<li>这是区分运行时选项和脚本参数的最符合人体工程学的方法。</li>
+<li>实际上，这和其他流行的运行时具有相同的行为。
+<ul>
+<li>试试 <code>node -c index.js</code> 和 <code>node index.js -c</code>，第一个只会根据 <code>-c</code> 选项对 <code>index.js</code> 做语法检查，而第二个会 <em>执行</em> <code>index.js</code>，将 <code>-c</code> 传递为 <code>require(&quot;process&quot;).argv</code>。</li>
+</ul>
+</li>
+</ol>
+<hr />
+<p>下面是在相关的子命令之间共享的逻辑选项组。</p>
+<h3><a class="header" href="#完整性选项" id="完整性选项">完整性选项</a></h3>
+<p>影响可以将资源下载到缓存的命令：<code>deno cache</code>，<code>deno run</code> 和 <code>deno test</code>.</p>
+<pre><code>--lock &lt;FILE&gt;    检查指定的锁文件
+--lock-write     写入锁文件，和 --lock 一起使用
+</code></pre>
+<p>更多信息在 <a href="../linking_to_external_code/integrity_checking.html">这里</a>。</p>
+<h3><a class="header" href="#缓存和编译选项" id="缓存和编译选项">缓存和编译选项</a></h3>
+<p>影响可以增加缓存的命令：<code>deno cache</code>，<code>deno run</code> 和 <code>deno test</code>. </p>
+<p>以及影响模块解析、编译配置等的选项。</p>
+<pre><code>--config &lt;FILE&gt;               加载 tsconfig.json 配置文件
+--importmap &lt;FILE&gt;            不稳定的: 加载导入映射文件
+--no-remote                   不要解析远程模块
+--reload=&lt;CACHE_BLOCKLIST&gt;    重新加载源代码缓存（重新编译 TypeScript）
+--unstable                    启用不稳定 API
+</code></pre>
+<h3><a class="header" href="#运行时选项" id="运行时选项">运行时选项</a></h3>
+<p>影响可以运行用户代码的命令：<code>deno run</code> 和 <code>deno test</code>.</p>
+<h4><a class="header" href="#权限选项" id="权限选项">权限选项</a></h4>
+<p><a href="./permissions.html#%E6%9D%83%E9%99%90%E5%88%97%E8%A1%A8">这里</a> 列出了所有权限选项。</p>
+<h4><a class="header" href="#其他运行时选项" id="其他运行时选项">其他运行时选项</a></h4>
+<p>影响运行时环境的更多选项：</p>
+<pre><code>--cached-only                要求远程依赖已经被缓存
+--inspect=&lt;HOST:PORT&gt;        在 host:port 启动检查器
+--inspect-brk=&lt;HOST:PORT&gt;    在 host:port 启动检查器并且暂停执行
+--seed &lt;NUMBER&gt;              指定 Math.random() 的随机种子
+--v8-flags=&lt;v8-flags&gt;        设置 V8 命令行选项
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../getting_started/first_steps.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../getting_started/permissions.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../getting_started/first_steps.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../getting_started/permissions.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

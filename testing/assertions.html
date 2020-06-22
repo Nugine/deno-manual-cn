@@ -1,0 +1,350 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>断言 - Deno 手册</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../introduction.html"><strong aria-hidden="true">1.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="../getting_started.html"><strong aria-hidden="true">2.</strong> 入门</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting_started/installation.html"><strong aria-hidden="true">2.1.</strong> 安装</a></li><li class="chapter-item expanded "><a href="../getting_started/setup_your_environment.html"><strong aria-hidden="true">2.2.</strong> 设置环境</a></li><li class="chapter-item expanded "><a href="../getting_started/first_steps.html"><strong aria-hidden="true">2.3.</strong> 第一步</a></li><li class="chapter-item expanded "><a href="../getting_started/command_line_interface.html"><strong aria-hidden="true">2.4.</strong> 命令行界面</a></li><li class="chapter-item expanded "><a href="../getting_started/permissions.html"><strong aria-hidden="true">2.5.</strong> 权限</a></li><li class="chapter-item expanded "><a href="../getting_started/typescript.html"><strong aria-hidden="true">2.6.</strong> 使用 TypeScript</a></li><li class="chapter-item expanded "><a href="../getting_started/webassembly.html"><strong aria-hidden="true">2.7.</strong> 使用 WebAssembly</a></li></ol></li><li class="chapter-item expanded "><a href="../runtime.html"><strong aria-hidden="true">3.</strong> 运行时</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../runtime/stability.html"><strong aria-hidden="true">3.1.</strong> 稳定性</a></li><li class="chapter-item expanded "><a href="../runtime/program_lifecycle.html"><strong aria-hidden="true">3.2.</strong> 程序生命周期</a></li><li class="chapter-item expanded "><a href="../runtime/compiler_apis.html"><strong aria-hidden="true">3.3.</strong> 编译器 API</a></li><li class="chapter-item expanded "><a href="../runtime/workers.html"><strong aria-hidden="true">3.4.</strong> Worker</a></li></ol></li><li class="chapter-item expanded "><a href="../linking_to_external_code.html"><strong aria-hidden="true">4.</strong> 与外部代码连接</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../linking_to_external_code/reloading_modules.html"><strong aria-hidden="true">4.1.</strong> 重新加载模块</a></li><li class="chapter-item expanded "><a href="../linking_to_external_code/integrity_checking.html"><strong aria-hidden="true">4.2.</strong> 完整性检查</a></li><li class="chapter-item expanded "><a href="../linking_to_external_code/proxies.html"><strong aria-hidden="true">4.3.</strong> 代理</a></li><li class="chapter-item expanded "><a href="../linking_to_external_code/import_maps.html"><strong aria-hidden="true">4.4.</strong> 导入映射</a></li></ol></li><li class="chapter-item expanded "><a href="../standard_library.html"><strong aria-hidden="true">5.</strong> 标准库</a></li><li class="chapter-item expanded "><a href="../testing.html"><strong aria-hidden="true">6.</strong> 测试</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../testing/assertions.html" class="active"><strong aria-hidden="true">6.1.</strong> 断言</a></li></ol></li><li class="chapter-item expanded "><a href="../tools.html"><strong aria-hidden="true">7.</strong> 工具</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tools/debugger.html"><strong aria-hidden="true">7.1.</strong> 调试器</a></li><li class="chapter-item expanded "><a href="../tools/script_installer.html"><strong aria-hidden="true">7.2.</strong> 脚本安装器</a></li><li class="chapter-item expanded "><a href="../tools/formatter.html"><strong aria-hidden="true">7.3.</strong> 格式化工具</a></li><li class="chapter-item expanded "><a href="../tools/bundler.html"><strong aria-hidden="true">7.4.</strong> 打包器</a></li><li class="chapter-item expanded "><a href="../tools/documentation_generator.html"><strong aria-hidden="true">7.5.</strong> 文档生成器</a></li><li class="chapter-item expanded "><a href="../tools/dependency_inspector.html"><strong aria-hidden="true">7.6.</strong> 依赖检查器</a></li><li class="chapter-item expanded "><a href="../tools/linter.html"><strong aria-hidden="true">7.7.</strong> Linter</a></li></ol></li><li class="chapter-item expanded "><a href="../embedding_deno.html"><strong aria-hidden="true">8.</strong> 嵌入 Deno</a></li><li class="chapter-item expanded "><a href="../contributing.html"><strong aria-hidden="true">9.</strong> 贡献</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../contributing/building_from_source.html"><strong aria-hidden="true">9.1.</strong> 从源码构建</a></li><li class="chapter-item expanded "><a href="../contributing/development_tools.html"><strong aria-hidden="true">9.2.</strong> 开发工具</a></li><li class="chapter-item expanded "><a href="../contributing/style_guide.html"><strong aria-hidden="true">9.3.</strong> 风格指南</a></li><li class="chapter-item expanded "><a href="../contributing/architecture.html"><strong aria-hidden="true">9.4.</strong> 架构</a></li></ol></li><li class="chapter-item expanded "><a href="../examples.html"><strong aria-hidden="true">10.</strong> 示例</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../examples/unix_cat.html"><strong aria-hidden="true">10.1.</strong> Unix cat</a></li><li class="chapter-item expanded "><a href="../examples/file_server.html"><strong aria-hidden="true">10.2.</strong> 文件服务</a></li><li class="chapter-item expanded "><a href="../examples/tcp_echo.html"><strong aria-hidden="true">10.3.</strong> TCP echo</a></li><li class="chapter-item expanded "><a href="../examples/subprocess.html"><strong aria-hidden="true">10.4.</strong> 创建子进程</a></li><li class="chapter-item expanded "><a href="../examples/permissions.html"><strong aria-hidden="true">10.5.</strong> 检查与放弃权限</a></li><li class="chapter-item expanded "><a href="../examples/os_signals.html"><strong aria-hidden="true">10.6.</strong> 系统信号</a></li><li class="chapter-item expanded "><a href="../examples/file_system_events.html"><strong aria-hidden="true">10.7.</strong> 文件系统事件</a></li><li class="chapter-item expanded "><a href="../examples/testing_if_main.html"><strong aria-hidden="true">10.8.</strong> 测试当前文件是否为主程序</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Deno 手册</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2><a class="header" href="#断言" id="断言">断言</a></h2>
+<p>为了帮助开发者编写测试，Deno 标准库提供了内置的 <a href="https://deno.land/std/testing/asserts.ts">断言模块</a>，可从 <code>https://deno.land/std/testing/asserts.ts</code> 导入。</p>
+<pre><code class="language-js">import { assert } from &quot;https://deno.land/std/testing/asserts.ts&quot;;
+
+Deno.test(&quot;Hello Test&quot;, () =&gt; {
+  assert(&quot;Hello&quot;);
+});
+</code></pre>
+<p>断言模块提供了九个断言函数：</p>
+<ul>
+<li><code>assert(expr: unknown, msg = &quot;&quot;): asserts expr</code></li>
+<li><code>assertEquals(actual: unknown, expected: unknown, msg?: string): void</code></li>
+<li><code>assertNotEquals(actual: unknown, expected: unknown, msg?: string): void</code></li>
+<li><code>assertStrictEquals(actual: unknown, expected: unknown, msg?: string): void</code></li>
+<li><code>assertStringContains(actual: string, expected: string, msg?: string): void</code></li>
+<li><code>assertArrayContains(actual: unknown[], expected: unknown[], msg?: string): void</code></li>
+<li><code>assertMatch(actual: string, expected: RegExp, msg?: string): void</code></li>
+<li><code>assertThrows(fn: () =&gt; void, ErrorClass?: Constructor, msgIncludes = &quot;&quot;, msg?: string): Error</code></li>
+<li><code>assertThrowsAsync(fn: () =&gt; Promise&lt;void&gt;, ErrorClass?: Constructor, msgIncludes = &quot;&quot;, msg?: string): Promise&lt;Error&gt;</code></li>
+</ul>
+<h3><a class="header" href="#断言-1" id="断言-1">断言</a></h3>
+<p><code>assert</code> 方法是一个简单的“真值”断言，可用于断言任何可以推导为 <code>true</code> 的值。</p>
+<pre><code class="language-js">Deno.test(&quot;Test Assert&quot;, () =&gt; {
+  assert(1);
+  assert(&quot;Hello&quot;);
+  assert(true);
+});
+</code></pre>
+<h3><a class="header" href="#相等性" id="相等性">相等性</a></h3>
+<p>可用的相等性断言有三个：<code>assertEquals()</code>，<code>assertNotEquals()</code> 和 <code>assertStrictEquals()</code>.</p>
+<p><code>assertEquals()</code> 和 <code>assertNotEquals()</code> 方法提供常规的相等性检查，并能够断言基本类型和对象的相等性。</p>
+<pre><code class="language-js">Deno.test(&quot;Test Assert Equals&quot;, () =&gt; {
+  assertEquals(1, 1);
+  assertEquals(&quot;Hello&quot;, &quot;Hello&quot;);
+  assertEquals(true, true);
+  assertEquals(undefined, undefined);
+  assertEquals(null, null);
+  assertEquals(new Date(), new Date());
+  assertEquals(new RegExp(&quot;abc&quot;), new RegExp(&quot;abc&quot;));
+
+  class Foo {}
+  const foo1 = new Foo();
+  const foo2 = new Foo();
+
+  assertEquals(foo1, foo2);
+});
+
+Deno.test(&quot;Test Assert Not Equals&quot;, () =&gt; {
+  assertNotEquals(1, 2);
+  assertNotEquals(&quot;Hello&quot;, &quot;World&quot;);
+  assertNotEquals(true, false);
+  assertNotEquals(undefined, &quot;&quot;);
+  assertNotEquals(new Date(), Date.now());
+  assertNotEquals(new RegExp(&quot;abc&quot;), new RegExp(&quot;def&quot;));
+});
+</code></pre>
+<p><code>assertStrictEquals()</code> 基于 <code>===</code> 运算符提供了更简单、严格的检查。相同对象的两个实例不会判断为相等，因为引用不相同。</p>
+<pre><code class="language-js">Deno.test(&quot;Test Assert Strict Equals&quot;, () =&gt; {
+  assertStrictEquals(1, 1);
+  assertStrictEquals(&quot;Hello&quot;, &quot;Hello&quot;);
+  assertStrictEquals(true, true);
+  assertStrictEquals(undefined, undefined);
+});
+</code></pre>
+<p><code>assertStrictEquals()</code> 最好用于精确判断两个基本类型的相等性。</p>
+<h3><a class="header" href="#包含" id="包含">包含</a></h3>
+<p><code>assertStringContains()</code> 和 <code>assertArrayContains()</code> 可用于断言包含关系。</p>
+<p><code>assertStringContains()</code> 方法检查一个字符串是否包含了预期的字符串。</p>
+<pre><code class="language-js">Deno.test(&quot;Test Assert String Contains&quot;, () =&gt; {
+  assertStringContains(&quot;Hello World&quot;, &quot;Hello&quot;);
+});
+</code></pre>
+<p><code>assertArrayContains()</code> 方法稍微高级一些，能够找到一个数组内的值，或是子数组。</p>
+<pre><code class="language-js">Deno.test(&quot;Test Assert Array Contains&quot;, () =&gt; {
+  assertArrayContains([1, 2, 3], [1]);
+  assertArrayContains([1, 2, 3], [1, 2]);
+  assertArrayContains(Array.from(&quot;Hello World&quot;), Array.from(&quot;Hello&quot;));
+});
+</code></pre>
+<h3><a class="header" href="#正则表达式" id="正则表达式">正则表达式</a></h3>
+<p>通过 <code>assertMatch()</code> 方法断言正则匹配。</p>
+<pre><code class="language-js">Deno.test(&quot;Test Assert Match&quot;, () =&gt; {
+  assertMatch(&quot;abcdefghi&quot;, new RegExp(&quot;def&quot;));
+
+  const basicUrl = new RegExp(&quot;^https?://[a-z.]+.com$&quot;);
+  assertMatch(&quot;https://www.google.com&quot;, basicUrl);
+  assertMatch(&quot;http://facebook.com&quot;, basicUrl);
+});
+</code></pre>
+<h3><a class="header" href="#抛出错误" id="抛出错误">抛出错误</a></h3>
+<p>在 Deno 中有两种方式断言抛出错误的行为：<code>assertThrows()</code> 和 <code>assertAsyncThrows()</code>。</p>
+<p>两种方式都能检查抛出<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Error">错误</a> 的类型和信息。</p>
+<p>两种方式的区别是 <code>assertThrows()</code> 接收一个标准函数，而 <code>assertAsyncThrows()</code> 接收一个返回 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a> 的函数。</p>
+<p><code>assertThrows()</code> 将检查抛出的错误，也可以检查所抛出的错误的类型是否正确，并判断错误消息是否符合预期。</p>
+<pre><code class="language-js">Deno.test(&quot;Test Assert Throws&quot;, () =&gt; {
+  assertThrows(
+    () =&gt; {
+      throw new Error(&quot;Panic!&quot;);
+    },
+    Error,
+    &quot;Panic!&quot;
+  );
+});
+</code></pre>
+<p><code>assertAsyncThrows()</code> 稍微复杂一点，主要是因为它处理 Promise。它将捕获 Promise 中抛出的错误或 rejection。您还可以选择检查错误类型和错误消息。</p>
+<pre><code class="language-js">Deno.test(&quot;Test Assert Throws Async&quot;, () =&gt; {
+  assertThrowsAsync(
+    () =&gt; {
+      return new Promise(() =&gt; {
+        throw new Error(&quot;Panic! Threw Error&quot;);
+      });
+    },
+    Error,
+    &quot;Panic! Threw Error&quot;
+  );
+
+  assertThrowsAsync(
+    () =&gt; {
+      return Promise.reject(new Error(&quot;Panic! Reject Error&quot;));
+    },
+    Error,
+    &quot;Panic! Reject Error&quot;
+  );
+});
+</code></pre>
+<h3><a class="header" href="#自定义消息" id="自定义消息">自定义消息</a></h3>
+<p>Deno 的每个内置断言都允许您覆盖标准 CLI 错误消息。</p>
+<p>这个示例将输出 &quot;Values Don't Match!&quot;，而不是标准 CLI 错误消息。</p>
+<pre><code class="language-js">Deno.test(&quot;Test Assert Equal Fail Custom Message&quot;, () =&gt; {
+  assertEquals(1, 2, &quot;Values Don't Match!&quot;);
+});
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../testing.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../tools.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../testing.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../tools.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
