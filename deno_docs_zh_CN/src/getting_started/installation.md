@@ -52,6 +52,8 @@ Deno 也可以手动安装，只需从 [github.com/denoland/deno/releases](https
 
 运行 `deno help <subcommand>` 以查看子命令的选项。
 
+CLI 的详细指南在 [这里](./command_line_interface.md)。
+
 ### 升级
 
 要升级已安装的版本，运行：

@@ -38,7 +38,7 @@ Compile https://deno.land/std@v0.50.0/http/file_server.ts
 
 _仔细观察，您会发现每个文件都有重复的条目，一个是正常字体，另一个是斜体。前者是编译后的源文件（所以 `.ts` 文件会生成 JavaScript 源代码），后者是该文件的源映射 (source map)。_
 
-在 `listenAndServe` 方法处加一个断点。
+下一步，在 `listenAndServe` 方法处加一个断点。
 
 ![Break in file_server.ts](../images/debugger4.jpg)
 
@@ -62,7 +62,7 @@ Deno 可以在 VSCode 中调试。
 
 插件的官方支持正在开发中 <https://github.com/denoland/vscode_deno/issues/12>
 
-我们也可以通过手动提供 `launch.json` 配置，来连接调试器：
+我们也可以通过手动提供 [`launch.json`](https://code.visualstudio.com/docs/editor/debugging#_launch-configurations) 配置，来连接调试器：
 
 ```json
 {
@@ -74,14 +74,14 @@ Deno 可以在 VSCode 中调试。
       "request": "launch",
       "cwd": "${workspaceFolder}",
       "runtimeExecutable": "deno",
-      "runtimeArgs": ["run", "--inspect-brk", "-A", "<entry_point>"],
+      "runtimeArgs": ["run", "--inspect-brk", "-A", "${file}"],
       "port": 9229
     }
   ]
 }
 ```
 
-**注意**：将 `<entry_point>` 替换为实际的脚本名称。
+**注意**：这将使用您打开的文件作为入口点；如果需要固定的入口点，请用脚本名称替换 `${file}`。
 
 让我们尝试一下本地源文件，创建 `server.ts`：
 
@@ -95,9 +95,7 @@ for await (const req of server) {
 }
 ```
 
-将 `<entry_point>` 改为 `server.ts`，然后运行。
-
-![VSCode debugger](../images/debugger6.jpg)
+然后我们可以设置断点，运行已创建的配置：
 
 ![VSCode debugger](../images/debugger7.jpg)
 

@@ -11,6 +11,6 @@ Deno 提供了一些内置的工具，在处理 JavaScript 和 TypeScript 时很
 - [文档生成器 (`deno doc`)](./tools/documentation_generator.md)
 - [代码格式化 (`deno fmt`)](./tools/formatter.md)
 - [测试 (`deno test`)](./testing.md)
-- linter (`deno lint`) [coming soon](https://github.com/denoland/deno/issues/1880)
+- [linter (`deno lint`)](./tools/linter.md)
 
 <!-- prettier-ignore-end -->

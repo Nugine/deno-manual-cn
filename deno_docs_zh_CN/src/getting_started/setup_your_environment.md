@@ -22,12 +22,21 @@ Deno 支持的 shell 如下：
 - powershell
 - elvish
 
-示例：
+示例 (bash)：
 
 ```shell
 deno completions bash > /usr/local/etc/bash_completion.d/deno.bash
 source /usr/local/etc/bash_completion.d/deno.bash
 ```
+
+示例 (zsh):
+
+```shell
+mkdir ~/.oh-my-zsh/custom/plugins/deno
+deno completions zsh > ~/.oh-my-zsh/custom/plugins/deno/_deno
+```
+
+在此之后，在 `~/.zshrc` 文件中的 plugins 标签下增加 `deno` 插件。
 
 ### 编辑器和 IDE
 

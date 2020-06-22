@@ -31,7 +31,7 @@ deno install --allow-net --allow-read -n serve https://deno.land/std/http/file_s
 要改变安装路径，使用 `--root` 选项：
 
 ```shell
-$ deno install --allow-net --allow-read --root /usr/local https://deno.land/std/http/file_server.ts
+deno install --allow-net --allow-read --root /usr/local https://deno.land/std/http/file_server.ts
 ```
 
 按照优先顺序确定安装根目录：
@@ -43,13 +43,13 @@ $ deno install --allow-net --allow-read --root /usr/local https://deno.land/std/
 如果需要，它们必须被添加进 `PATH` 环境变量。
 
 ```shell
-$ echo 'export PATH="$HOME/.deno/bin:$PATH"' >> ~/.bashrc
+echo 'export PATH="$HOME/.deno/bin:$PATH"' >> ~/.bashrc
 ```
 
 在安装时，您必须指定脚本会用到的权限。
 
 ```shell
-$ deno install --allow-net --allow-read https://deno.land/std/http/file_server.ts 8080
+deno install --allow-net --allow-read https://deno.land/std/http/file_server.ts 8080
 ```
 
 以上命令会创建一个名叫 `file_server` 的命令，运行时需要读取权限和网络权限，绑定到 8080 端口。

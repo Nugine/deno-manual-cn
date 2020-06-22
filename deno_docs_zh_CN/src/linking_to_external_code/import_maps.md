@@ -16,27 +16,26 @@ Deno 支持 [导入映射](https://github.com/WICG/import-maps)。
 
 示例：
 
-```js
-// import_map.json
+**import_map.json**
 
+```js
 {
    "imports": {
-      "http/": "https://deno.land/std/http/"
+      "fmt/": "https://deno.land/std@0.55.0/fmt/"
    }
 }
 ```
 
+**color.ts**
+
 ```ts
-// hello_server.ts
+import { red } from "fmt/colors.ts";
 
-import { serve } from "http/server.ts";
-
-const body = new TextEncoder().encode("Hello World\n");
-for await (const req of serve(":8000")) {
-  req.respond({ body });
-}
+console.log(red("hello world"));
 ```
 
+运行：
+
 ```shell
-$ deno run --allow-net --importmap=import_map.json --unstable hello_server.ts
+$ deno run --importmap=import_map.json --unstable color.ts
 ```

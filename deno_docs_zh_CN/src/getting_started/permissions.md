@@ -38,7 +38,7 @@ error: Uncaught PermissionDenied: read access to "/etc/passwd", run again with t
 改为 `/etc` 目录，赋予正确的权限，再试一次：
 
 ```shell
-$ deno run --allow-read=/etc https://deno.land/std/examples/cat.ts /etc/passwd
+deno run --allow-read=/etc https://deno.land/std/examples/cat.ts /etc/passwd
 ```
 
 `--allow-write` 也一样，代表写入权限。
@@ -54,7 +54,7 @@ const result = await fetch("https://deno.land/");
 这是一个设置 host 或 url 白名单的示例：
 
 ```shell
-$ deno run --allow-net=github.com,deno.land fetch.ts
+deno run --allow-net=github.com,deno.land fetch.ts
 ```
 
 如果 `fetch.ts` 尝试与其他域名建立网络连接，那么这个进程将会失败。
@@ -62,5 +62,5 @@ $ deno run --allow-net=github.com,deno.land fetch.ts
 允许访问任意地址：
 
 ```shell
-$ deno run --allow-net fetch.ts
+deno run --allow-net fetch.ts
 ```
