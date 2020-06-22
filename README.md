@@ -15,3 +15,15 @@
 [![Creative Commons License](https://licensebuttons.net/l/by-nc/4.0/88x31.png)](http://creativecommons.org/licenses/by-nc/4.0/)
 
 本项目采用 [CC BY-NC 4.0](http://creativecommons.org/licenses/by-nc/4.0/) 协议。
+
+## 镜像部署
+
++ Deno 中文社区：<https://manual.deno.js.cn/>
++ Deno 中文网：<https://denolang.cn/manual/>
+
+欢迎补充！
+
+## 生成器
+
++ 本项目：[rust-lang/mdBook](https://github.com/rust-lang/mdBook)
++ [Deno 中文社区镜像](https://github.com/denocn/deno_manual)：[xcatliu/pagic](https://github.com/xcatliu/pagic)
