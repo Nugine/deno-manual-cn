@@ -6,23 +6,41 @@ Deno 有一个内置的测试器，可以用来测试 JavaScript 或 TypeScript 
 
 要定义测试，需要使用要测试的名称和函数调用 `Deno.test`。
 
+您可以使用两种风格：
+
 ```ts
-Deno.test("hello world", () => {
+// 传递名称和函数，紧凑的形式，但不能配置
+Deno.test("hello world #1", () => {
   const x = 1 + 2;
-  if (x !== 3) {
-    throw Error("x should be equal to 3");
+  assertEquals(x, 3);
+});
+
+// 全面的测试定义，更长的形式，但可配置（请参见下文）
+Deno.test({
+  name: "hello world #2",
+  fn() => {
+    const x = 1 + 2;
+    assertEquals(x, 3);
   }
 });
+
 ```
 
-在 [https://deno.land/std/testing](https://deno.land/std/testing) 上有一些有用的断言实用程序，可以简化测试：
+
+## Assertions
+
+在 [https://deno.land/std/testing](https://deno.land/std/testing#usage) 上有一些有用的断言实用程序，可以简化测试：
 
 ```ts
-import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
+import {
+  assertEquals,
+  assertArrayContains,
+} from "https://deno.land/std/testing/asserts.ts";
 
 Deno.test("hello world", () => {
   const x = 1 + 2;
   assertEquals(x, 3);
+  assertArrayContains([1, 2, 3, 4, 5, 6], [3], "Expected 3 to be in the array");
 });
 ```
 
@@ -67,7 +85,44 @@ Deno.test({
 });
 ```
 
-### 忽略测试
+## 运行测试
+
+要运行测试，使用 `deno test` 命令，传入包含测试函数的文件。您也可以忽略文件名，这样当前目录树内所有符合通配符 `{*_,*.,}test.{js,mjs,ts,jsx,tsx}` 的测试都会被运行。如果您传入了一个目录，那么该目录下所有匹配的文件都会被运行。
+
+```shell
+# 运行当前目录树内的所有测试
+deno test
+
+# 运行 util 目录内的所有测试
+deno test util/
+
+# 只运行 my_test.ts
+deno test my_test.ts
+```
+
+`deno test` 和 `deno run` 使用相同的权限模型，比如在测试期间有可能要求 `--allow-write` 来写入文件系统。
+
+使用 `deno help test` 命令来查看相关选项。
+
+## 过滤
+
+有许多选项可以过滤要运行的测试。
+
+### 命令行过滤
+
+使用 `--filter` 选项可以单独或成组运行测试。
+
+```shell
+deno test --filter "hello world" tests/
+```
+
+对于在 `tests/` 目录中的文件中找到的测试，此命令将运行所有名称中包含字符串 "hello world" 的测试。
+
+### 测试定义过滤
+
+在测试本身中，您有两个过滤选项。
+
+#### 忽略测试
 
 有时您希望忽略基于某种条件的测试（例如您只希望在 Windows 上运行测试）。
 为此，您可以使用 `ignore` 测试定义中的布尔值。
@@ -83,13 +138,26 @@ Deno.test({
 });
 ```
 
-## 运行测试
+#### 启用测试
 
-要运行测试，请使用包含您测试函数的文件调用 `deno test` 。
+有时您可能会在大型测试中遇到问题，只想专注于有问题的测试，忽略其他测试。
 
-```shell
-deno test my_test.ts
+为此您可以使用 `only` 选项来让测试框架只运行一部分测试。多个测试可以设置此选项。尽管测试框架将报告每个测试的成功或失败，但当任何一个测试标记为 `only` 时，总体测试将始终失败。因为这只是一种临时措施，几乎会禁用所有测试。
+
+```ts
+Deno.test({
+  name: "Focus on this test only",
+  only: true,
+  fn() {
+    testComplicatedStuff();
+  },
+});
 ```
 
-您还可以省略文件名，在这种情况下，当前目录（递归）下所有与通配符 `{*_,}test.{js,ts,jsx,tsx}` 匹配的测试将会被运行。
-如果传递一个目录，则该目录中与此 glob 匹配的所有文件将运行。
+## 快速失败
+
+如果您有一个运行时间较长的测试，并希望它在第一次失败时停止运行，则可以在运行测试时指定 `--failfast` 选项。
+
+```shell
+deno test --failfast
+```

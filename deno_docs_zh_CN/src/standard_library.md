@@ -6,11 +6,25 @@ Deno 提供一组标准模块，它们经过核心团队审计，保证能在 De
 
 ## 版本和稳定性
 
-标准库尚不稳定，因此采用与 Deno 不同的版本号。
+标准库尚不稳定，因此采用与 Deno 不同的版本号。每次 Deno 发布时，标准库也会一起发布。
 
 最新的发布请查阅 <https://deno.land/std/> 或 <https://deno.land/std/version.ts>。
 
 我们强烈建议：始终使用确定版本的标准库，以避免意外的改动。
+
+例如，连接到随时可能更改的主分支时可能会导致编译错误或意外行为：
+
+```typescript
+// 从 master 导入，这应当避免
+import { copy } from "https://deno.land/std/fs/copy.ts";
+```
+
+更好的选择是使用不可变且不会更改的 std 库版本：
+
+```typescript
+// 从不可变的 std v0.50.0 导入
+import { copy } from "https://deno.land/std@0.50.0/fs/copy.ts";
+```
 
 ## 排错 (Troubleshooting)
 
@@ -45,9 +59,9 @@ TS2339 [ERROR]: Property 'utimeSync' does not exist on type 'typeof Deno'.
 解决方法是加上 `--unstable` 选项：
 
 ```shell
-$ deno run --allow-read --allow-write --unstable main.ts
+deno run --allow-read --allow-write --unstable main.ts
 ```
 
 要确定哪些 API 是不稳定的，请查阅类型声明 [lib.deno.unstable.d.ts](https://github.com/denoland/deno/blob/master/cli/js/lib.deno.unstable.d.ts)
 
-这个问题会在不远的将来解决。
+这个问题会在不远的将来解决。如果您依赖的特定模块在没有该选项的情况下成功编译，则可以忽略该选项。

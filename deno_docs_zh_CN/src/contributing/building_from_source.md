@@ -26,6 +26,15 @@ git clone --recurse-submodules https://github.com/denoland/deno.git
 
 ### 前置条件
 
+您需要 [安装 Rust](https://www.rust-lang.org/tools/install)。Deno 不支持每晚版本(nightly) 构建，请确定您获取的是最新的稳定版本(stable release)。
+
+检查以下工具是否已经安装：
+
+```
+rustc -V
+cargo -V
+```
+
 最简单的方式是使用预编译的 V8 ：
 
 ```

@@ -6,13 +6,16 @@ Worker 能够用来在多个线程中运行代码，`Worker` 的每个实例都�
 
 目前，Deno 只支持 `module` 类型的 worker，因此在创建新的 worker 时必须传递 `type: "module"` 选项。
 
+目前，相对模块说明符 (Relative module specifiers) [尚不支持](https://github.com/denoland/deno/issues/5216)。作为代替，您可以用 `URL` 构造函数和 `import.meta.url` 来为附近的脚本创建说明符。
+
 ```ts
 // Good
-new Worker("./worker.js", { type: "module" });
+new Worker(new URL("worker.js", import.meta.url).href, { type: "module" });
 
 // Bad
-new Worker("./worker.js");
-new Worker("./worker.js", { type: "classic" });
+new Worker(new URL("worker.js", import.meta.url).href);
+new Worker(new URL("worker.js", import.meta.url).href, { type: "classic" });
+new Worker("./worker.js", { type: "module" });
 ```
 
 ### 权限
@@ -24,7 +27,7 @@ new Worker("./worker.js", { type: "classic" });
 **main.ts**
 
 ```ts
-new Worker("./worker.ts", { type: "module" });
+new Worker(new URL("worker.ts", import.meta.url).href, { type: "module" });
 ```
 
 **worker.ts**
@@ -77,7 +80,10 @@ hello world
 **main.js**
 
 ```ts
-const worker = new Worker("./worker.js", { type: "module", deno: true });
+const worker = new Worker(new URL("worker.js", import.meta.url).href, {
+  type: "module",
+  deno: true,
+});
 worker.postMessage({ filename: "./log.txt" });
 ```
 

@@ -20,5 +20,5 @@ HTTP server listening on http://0.0.0.0:4500/
 如果想要升级到最新版本：
 
 ```shell
-$ file_server --reload
+file_server --reload
 ```

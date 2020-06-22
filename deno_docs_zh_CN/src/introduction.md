@@ -62,15 +62,3 @@ Deno 明确地承担了运行时和包管理器的角色。它使用标准的浏
 - 远程代码在第一次运行时获取并缓存，直到代码通过 `--reload` 选项运行。（所以它在飞机上也能工作）
 
 - 从远程 URL 加载的模块或文件应当是不可变且可缓存的。
-
-## 图标
-
-这些 Deno 图标在 MIT 协议下分发（公共领域，免费使用），例如 Deno 软件。
-
-- [手绘 by @ry](https://deno.land/images/deno_logo.png)
-
-- [动画 by @hashrock](https://github.com/denolib/animated-deno-logo/)
-
-- [高精度 SVG by @kevinkassimo](https://github.com/denolib/high-res-deno-logo)
-
-- [像素动画 by @tanakaworld](https://deno.land/images/deno_logo_4.gif)

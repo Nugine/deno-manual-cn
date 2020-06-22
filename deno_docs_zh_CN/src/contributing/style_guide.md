@@ -40,6 +40,12 @@ TODO 注释通常应该将一个 issue 或者作者的 github 用户名放在括
 
 在某些情况下，使用这些技术可能是有意义的，但是在绝大多数情况下，它们是没有意义的。
 
+## 包含代码（Inclusive code）
+
+请遵循有关包含代码的准则，网址为：
+
+<https://chromium.googlesource.com/chromium/src/+/master/styleguide/inclusive_code.md>
+
 ## Rust
 
 遵循 Rust 约定，并与现有代码保持一致。
