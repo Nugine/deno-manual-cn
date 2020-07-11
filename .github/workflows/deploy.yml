@@ -19,7 +19,9 @@ jobs:
           key: ${{ runner.os }}-cargo-bin-${{ hashFiles('~/.cargo/.crates2.json') }}
       
       - name: Install mdbook
-        run: (test -x ~/.cargo/bin/mdbook || cargo install mdbook)
+        run: |
+          (test -x ~/.cargo/bin/mdbook || cargo install mdbook)
+          mdbook -V
 
       - name: Render
         run: |
@@ -36,7 +38,6 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH: gh-pages # The branch the action should deploy to.
-          FOLDER: deno_docs_zh_CN/book # The folder the action should deploy.
+          BRANCH: gh-pages
+          FOLDER: deno_docs_zh_CN/book
           CLEAN: true
-          DEBUG: true
