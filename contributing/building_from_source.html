@@ -5,12 +5,19 @@
         <meta charset="UTF-8">
         <title>从源码构建 - Deno 手册</title>
         
+        
+
+
+        <!-- Custom HTML head -->
+        
+
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
+        <link rel="icon" href="../favicon.svg">
         <link rel="shortcut icon" href="../favicon.png">
         <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/general.css">
@@ -19,8 +26,9 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../highlight.css">
@@ -36,7 +44,7 @@
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
             var path_to_root = "../";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
@@ -147,7 +155,8 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h2><a class="header" href="#从源码构建" id="从源码构建">从源码构建</a></h2>
+                        <p>TODO</p>
+<h2><a class="header" href="#从源码构建" id="从源码构建">从源码构建</a></h2>
 <p>以下是从源码构建 Deno 的操作步骤。如果您只是想使用 Deno，您可以下载一个预构建的可执行文件，参考 <code>入门</code> 章节。</p>
 <h3><a class="header" href="#克隆-deno-仓库" id="克隆-deno-仓库">克隆 Deno 仓库</a></h3>
 <p>Linux 或 Mac 系统：</p>
@@ -175,6 +184,11 @@ git clone --recurse-submodules https://github.com/denoland/deno.git
 <pre><code>rustc -V
 cargo -V
 </code></pre>
+<h3><a class="header" href="#设置-rust-的编译目标和组件" id="设置-rust-的编译目标和组件">设置 rust 的编译目标和组件</a></h3>
+<pre><code class="language-shell">rustup target add wasm32-unknown-unknown
+rustup target add wasm32-wasi
+</code></pre>
+<h3><a class="header" href="#构建-deno" id="构建-deno">构建 Deno</a></h3>
 <p>最简单的方式是使用预编译的 V8 ：</p>
 <pre><code>cargo build -vv
 </code></pre>
@@ -183,9 +197,9 @@ cargo -V
 </code></pre>
 <p>从源码构建 V8 时会有更多依赖：</p>
 <p><a href="https://www.python.org/downloads">Python 2</a>. 确认您的 <code>PATH</code> 环境变量中有一个无后缀 (suffix-less) 的 <code>python</code>/<code>python.exe</code>，并且它指向 Python 2，而不是 Python3 (<a href="https://github.com/denoland/deno/issues/464#issuecomment-411795578">issue 464</a>)。</p>
-<p>对于 Linux 用户，必须已经安装 glib-2.0 开发文件。（在 Ubuntu 上，运行 <code>apt install libglib2.0-dev</code>）</p>
-<p>对于 Mac 用户，必须已经安装 <a href="https://developer.apple.com/xcode/">XCode</a> 。</p>
-<p>对于 Windows 用户：</p>
+<p>Linux 用户：必须已经安装 glib-2.0 开发文件。（在 Ubuntu 上，运行 <code>apt install libglib2.0-dev</code>）</p>
+<p>Mac 用户：必须已经安装 Command Line Tools。（<a href="https://developer.apple.com/xcode/">XCode</a> 已经包含了 CLT。运行 <code>xcode-select --install</code> 来在没有 XCode 的情况下安装它。）</p>
+<p>Windows 用户：</p>
 <ol>
 <li>
 <p>安装 <a href="https://www.visualstudio.com/downloads/">VS Community 2019</a>，安装 &quot;Desktop development with C++&quot; 工具包，确认以下工具都已被选中和安装。</p>
@@ -268,10 +282,10 @@ cargo clean &amp;&amp; cargo build -vv
         
 
         
-        
+
         
         <script type="text/javascript">
-            window.playpen_copyable = true;
+            window.playground_copyable = true;
         </script>
         
 

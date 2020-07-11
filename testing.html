@@ -5,12 +5,19 @@
         <meta charset="UTF-8">
         <title>测试 - Deno 手册</title>
         
+        
+
+
+        <!-- Custom HTML head -->
+        
+
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
+        <link rel="icon" href="favicon.svg">
         <link rel="shortcut icon" href="favicon.png">
         <link rel="stylesheet" href="css/variables.css">
         <link rel="stylesheet" href="css/general.css">
@@ -19,8 +26,9 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="highlight.css">
@@ -36,7 +44,7 @@
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
             var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
@@ -161,14 +169,13 @@ Deno.test(&quot;hello world #1&quot;, () =&gt; {
 // 全面的测试定义，更长的形式，但可配置（请参见下文）
 Deno.test({
   name: &quot;hello world #2&quot;,
-  fn() =&gt; {
+  fn: () =&gt; {
     const x = 1 + 2;
     assertEquals(x, 3);
-  }
+  },
 });
-
 </code></pre>
-<h2><a class="header" href="#assertions" id="assertions">Assertions</a></h2>
+<h2><a class="header" href="#断言" id="断言">断言</a></h2>
 <p>在 <a href="https://deno.land/std/testing#usage">https://deno.land/std/testing</a> 上有一些有用的断言实用程序，可以简化测试：</p>
 <pre><code class="language-ts">import {
   assertEquals,
@@ -229,9 +236,19 @@ deno test my_test.ts
 <p>有许多选项可以过滤要运行的测试。</p>
 <h3><a class="header" href="#命令行过滤" id="命令行过滤">命令行过滤</a></h3>
 <p>使用 <code>--filter</code> 选项可以单独或成组运行测试。</p>
-<pre><code class="language-shell">deno test --filter &quot;hello world&quot; tests/
+<p>该选项接受一个字符串或一个模式作为值。</p>
+<p>假设有以下测试：</p>
+<pre><code class="language-ts">Deno.test({ name: &quot;my-test&quot;, fn: myTest });
+Deno.test({ name: &quot;test-1&quot;, fn: test1 });
+Deno.test({ name: &quot;test2&quot;, fn: test2 });
 </code></pre>
-<p>对于在 <code>tests/</code> 目录中的文件中找到的测试，此命令将运行所有名称中包含字符串 &quot;hello world&quot; 的测试。</p>
+<p>以下命令将会运行所有包含 &quot;test&quot; 的测试：</p>
+<pre><code class="language-shell">deno test --filter &quot;test&quot; tests/
+</code></pre>
+<p>以下命令将会运行匹配该模式的测试，即第二个和第三个：</p>
+<pre><code class="language-shell">deno test --filter &quot;/test-*\d/&quot; tests/
+</code></pre>
+<p>像 JavaScript 的正则表达式语法糖一样，Deno 会将用斜杠包裹的过滤字符串认为是模式。</p>
 <h3><a class="header" href="#测试定义过滤" id="测试定义过滤">测试定义过滤</a></h3>
 <p>在测试本身中，您有两个过滤选项。</p>
 <h4><a class="header" href="#忽略测试" id="忽略测试">忽略测试</a></h4>
@@ -304,10 +321,10 @@ deno test my_test.ts
         
 
         
-        
+
         
         <script type="text/javascript">
-            window.playpen_copyable = true;
+            window.playground_copyable = true;
         </script>
         
 

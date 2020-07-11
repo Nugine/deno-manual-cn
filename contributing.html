@@ -5,12 +5,19 @@
         <meta charset="UTF-8">
         <title>贡献 - Deno 手册</title>
         
+        
+
+
+        <!-- Custom HTML head -->
+        
+
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
+        <link rel="icon" href="favicon.svg">
         <link rel="shortcut icon" href="favicon.png">
         <link rel="stylesheet" href="css/variables.css">
         <link rel="stylesheet" href="css/general.css">
@@ -19,8 +26,9 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="highlight.css">
@@ -36,7 +44,7 @@
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
             var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
@@ -156,7 +164,7 @@
 <p>请不要让 <a href="https://deno.land/benchmarks.html">性能测试</a> 变糟。</p>
 </li>
 <li>
-<p>在 <a href="https://discord.gg/TGMHGv6">社区聊天室</a> 获取帮助。</p>
+<p>在 <a href="https://discord.gg/deno">社区聊天室</a> 获取帮助。</p>
 </li>
 <li>
 <p>如果您将要在某个 issue 下做些工作，在那之前请先在 issue 中提示一下。</p>
@@ -173,7 +181,7 @@
 <li>存在一个相关 issue，并且 PR 文本中引用了它。</li>
 <li>有覆盖这些变化的测试。</li>
 <li>确保 <code>cargo test</code> 通过。</li>
-<li>使用 <code>tools/format.py</code> 格式化代码。</li>
+<li>使用 <code>./tools/format.py</code> 格式化代码。</li>
 <li>确保 <code>./tools/lint.py</code> 通过。</li>
 </ol>
 <h2><a class="header" href="#third_party-的改动" id="third_party-的改动"><code>third_party</code> 的改动</a></h2>
@@ -236,10 +244,10 @@ export const FOO = &quot;foo&quot;;
         
 
         
-        
+
         
         <script type="text/javascript">
-            window.playpen_copyable = true;
+            window.playground_copyable = true;
         </script>
         
 
