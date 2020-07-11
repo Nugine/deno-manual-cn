@@ -84,4 +84,4 @@ JetBrains IDE 通过插件来提供 Deno 支持：[Deno 插件](https://plugins.
 }
 ```
 
-如果您没有在列表中看到您最喜欢的 IDE，或许可以开发一个插件，我们的社区能够帮助您起步：[Discord](https://discord.gg/TGMHGv6)
+如果您没有在列表中看到您最喜欢的 IDE，或许可以开发一个插件，我们的社区能够帮助您起步：[Discord](https://discord.gg/deno)

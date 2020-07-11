@@ -39,3 +39,33 @@ console.log(red("hello world"));
 ```shell
 $ deno run --importmap=import_map.json --unstable color.ts
 ```
+
+为绝对导入使用起始目录：
+
+```json
+// import_map.json
+
+{
+  "imports": {
+    "/": "./"
+  }
+}
+```
+
+```ts
+// main.ts
+
+import { MyUtil } from "/util.ts";
+```
+
+您可以映射一个不同的目录（比如 src）：
+
+```json
+// import_map.json
+
+{
+  "imports": {
+    "/": "./src"
+  }
+}
+```

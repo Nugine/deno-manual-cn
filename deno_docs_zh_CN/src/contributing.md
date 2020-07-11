@@ -4,7 +4,7 @@
 
 - 请不要让 [性能测试](https://deno.land/benchmarks.html) 变糟。
 
-- 在 [社区聊天室](https://discord.gg/TGMHGv6) 获取帮助。
+- 在 [社区聊天室](https://discord.gg/deno) 获取帮助。
 
 - 如果您将要在某个 issue 下做些工作，在那之前请先在 issue 中提示一下。
 
@@ -21,7 +21,7 @@
 1. 存在一个相关 issue，并且 PR 文本中引用了它。
 2. 有覆盖这些变化的测试。
 3. 确保 `cargo test` 通过。
-4. 使用 `tools/format.py` 格式化代码。
+4. 使用 `./tools/format.py` 格式化代码。
 5. 确保 `./tools/lint.py` 通过。
 
 ## `third_party` 的改动
