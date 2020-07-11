@@ -18,16 +18,15 @@ Deno.test("hello world #1", () => {
 // 全面的测试定义，更长的形式，但可配置（请参见下文）
 Deno.test({
   name: "hello world #2",
-  fn() => {
+  fn: () => {
     const x = 1 + 2;
     assertEquals(x, 3);
-  }
+  },
 });
-
 ```
 
 
-## Assertions
+## 断言
 
 在 [https://deno.land/std/testing](https://deno.land/std/testing#usage) 上有一些有用的断言实用程序，可以简化测试：
 
@@ -112,11 +111,29 @@ deno test my_test.ts
 
 使用 `--filter` 选项可以单独或成组运行测试。
 
-```shell
-deno test --filter "hello world" tests/
+该选项接受一个字符串或一个模式作为值。
+
+假设有以下测试：
+
+```ts
+Deno.test({ name: "my-test", fn: myTest });
+Deno.test({ name: "test-1", fn: test1 });
+Deno.test({ name: "test2", fn: test2 });
 ```
 
-对于在 `tests/` 目录中的文件中找到的测试，此命令将运行所有名称中包含字符串 "hello world" 的测试。
+以下命令将会运行所有包含 "test" 的测试：
+
+```shell
+deno test --filter "test" tests/
+```
+
+以下命令将会运行匹配该模式的测试，即第二个和第三个：
+
+```shell
+deno test --filter "/test-*\d/" tests/
+```
+
+像 JavaScript 的正则表达式语法糖一样，Deno 会将用斜杠包裹的过滤字符串认为是模式。
 
 ### 测试定义过滤
 

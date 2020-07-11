@@ -28,14 +28,6 @@ jobs:
           cd book
           cd ..
 
-      - name: Fix favicon # FIXME when mdbook supports favicon.svg
-        run: |
-          cd deno_docs_zh_CN/book
-          sed -e "s/favicon.png/favicon.svg/g" index.html > out
-          mv out index.html
-          cp ../theme/favicon.svg ./
-          cd ../..
-
       - name: Debug
         run: |
           ls deno_docs_zh_CN/book
