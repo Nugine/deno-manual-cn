@@ -155,9 +155,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <!-- https://github.com/denoland/deno/blob/be65f6692f0f81dc88c77ba4cf22cdda40760317/std/style_guide.md -->
-<!-- copy time: 20200506 -->
-<h1><a class="header" href="#deno-风格指南" id="deno-风格指南">Deno 风格指南</a></h1>
+                        <h1><a class="header" href="#deno-风格指南" id="deno-风格指南">Deno 风格指南</a></h1>
 <h2><a class="header" href="#目录" id="目录">目录</a></h2>
 <h2><a class="header" href="#版权标题" id="版权标题">版权标题</a></h2>
 <p>存储库中的大多数模块都应具有以下版权标题:</p>
@@ -214,7 +212,7 @@
 export function resolve(
   hostname: string,
   family?: &quot;ipv4&quot; | &quot;ipv6&quot;,
-  timeout?: number
+  timeout?: number,
 ): IPAddress[] {}
 
 // 正确示例：
@@ -224,7 +222,7 @@ export interface ResolveOptions {
 }
 export function resolve(
   hostname: string,
-  options: ResolveOptions = {}
+  options: ResolveOptions = {},
 ): IPAddress[] {}
 </code></pre>
 <pre><code class="language-ts">export interface Environment {
@@ -240,7 +238,7 @@ export interface RunShellOptions {
 }
 export function runShellWithEnv(
   cmdline: string,
-  options: RunShellOptions
+  options: RunShellOptions,
 ): string {}
 </code></pre>
 <pre><code class="language-ts">// 错误示例：多于3个参数 (#1)，多个可选参数 (#2)。
@@ -248,7 +246,7 @@ export function renameSync(
   oldname: string,
   newname: string,
   replaceExisting?: boolean,
-  followLinks?: boolean
+  followLinks?: boolean,
 ) {}
 
 // 正确示例
@@ -259,7 +257,7 @@ interface RenameOptions {
 export function renameSync(
   oldname: string,
   newname: string,
-  options: RenameOptions = {}
+  options: RenameOptions = {},
 ) {}
 </code></pre>
 <pre><code class="language-ts">// 错误示例：参数过多 (#1)
@@ -268,7 +266,7 @@ export function pwrite(
   buffer: TypedArray,
   offset: number,
   length: number,
-  position: number
+  position: number,
 ) {}
 
 // 正确示例：

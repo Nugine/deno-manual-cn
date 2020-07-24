@@ -196,7 +196,7 @@ TS2339 [ERROR]: Property 'utimeSync' does not exist on type 'typeof Deno'.
 <p>解决方法是加上 <code>--unstable</code> 选项：</p>
 <pre><code class="language-shell">deno run --allow-read --allow-write --unstable main.ts
 </code></pre>
-<p>要确定哪些 API 是不稳定的，请查阅类型声明 <a href="https://github.com/denoland/deno/blob/master/cli/js/lib.deno.unstable.d.ts">lib.deno.unstable.d.ts</a></p>
+<p>要确定哪些 API 是不稳定的，请查阅类型声明 <a href="https://github.com/denoland/deno/blob/master/cli/dts/lib.deno.unstable.d.ts">lib.deno.unstable.d.ts</a></p>
 <p>这个问题会在不远的将来解决。如果您依赖的特定模块在没有该选项的情况下成功编译，则可以忽略该选项。</p>
 
                     </main>

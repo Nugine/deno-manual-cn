@@ -163,6 +163,18 @@
 <pre><code class="language-ts">import { Response } from &quot;https://deno.land/std@0.53.0/http/server.ts&quot;;
 import { queue } from &quot;./collections.ts&quot;;
 </code></pre>
+<h3><a class="header" href="#--no-check-选项" id="--no-check-选项"><code>--no-check</code> 选项</a></h3>
+<p>当使用 <code>deno run</code>、<code>deno test</code>、<code>deno cache</code>、<code>deno info</code> 或 <code>deno bundle</code> 时，您可以指定 <code>--no-check</code> 选项来禁用 TypeScript 的类型检查。这会大大减少程序的启动时间。当您的编辑器提供了类型检查并且您想要程序启动得尽可能快时（比如当文件变化时自动重启），这个选项将非常有用。</p>
+<p>由于 <code>--no-check</code> 不执行 TypeScript 类型检查，我们不能自动删除类型导入导出，这需要类型信息。为此 TypeScript 提供了 <a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-8.html#type-only-imports-and-exports"><code>import type</code> 和 <code>export type</code> 语法</a></p>
+<p>从一个不同的文件</p>
+<ul>
+<li>导出类型：<code>export type { AnInterface } from &quot;./mod.ts&quot;;</code>，</li>
+<li>导入类型：<code>import type { AnInterface } from &quot;./mod.ts&quot;;</code></li>
+</ul>
+<p>您可以通过将 TypeScript 编译选项 <code>importsNotUsedAsValues</code> 设置为 <code>&quot;error&quot;</code> 来检查此类导入导出的必要性。</p>
+<p>您可以在标准库中看到这一选项的示例：<a href="https://github.com/denoland/deno/blob/master/std/tsconfig_test.json"><code>tsconfig_test.json</code></a>。</p>
+<p>由于使用 <code>--no-check</code> 时没有类型信息，<code>const enum</code> 是不支持的。</p>
+<p><code>--no-check</code> 也不支持遗留的 <code>import =</code> 和 <code>export =</code> 语法。</p>
 <h3><a class="header" href="#使用外部类型定义" id="使用外部类型定义">使用外部类型定义</a></h3>
 <p>开箱即用的 TypeScript 编译器依赖于两种无扩展名
 模块和 Node.js 模块解析逻辑，以将类型应用于 JavaScript

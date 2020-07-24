@@ -179,7 +179,7 @@ console.log(emitMap);
 <p>我们希望 map 包含 4 个 “文件（files）” ，分别命名为 <code>/foo.js.map</code>，<code>/foo.js</code>，<code>/bar.js.map</code>，和 <code>/bar.js</code>。</p>
 <p>当不提供资源时，您可以使用本地或远程模块，就像在命令行上做的那样。所以您可以这样做:</p>
 <pre><code class="language-ts">const [diagnostics, emitMap] = await Deno.compile(
-  &quot;https://deno.land/std/examples/welcome.ts&quot;
+  &quot;https://deno.land/std/examples/welcome.ts&quot;,
 );
 </code></pre>
 <p>在这种情况下，<code>emitMap</code> 将包含一个 <code>console.log()</code> 语句。</p>
@@ -200,7 +200,7 @@ console.log(emit);
 <p>我们希望 <code>emit</code> 是一个 ES 模块的文本，它将包含两个模块的输出源。</p>
 <p>当不提供资源时，您可以使用本地或远程模块，就像在命令行上做的那样。所以您可以这样做:</p>
 <pre><code class="language-ts">const [diagnostics, emit] = await Deno.bundle(
-  &quot;https://deno.land/std/http/server.ts&quot;
+  &quot;https://deno.land/std/http/server.ts&quot;,
 );
 </code></pre>
 <p>在这种情况下，<code>emit</code> 将是一个自包含的 JavaScript ES 模块，并解析了所有依赖项，导出与源模块相同的导出。</p>
@@ -225,7 +225,7 @@ console.log(result[&quot;/foo.ts&quot;].map);
   },
   {
     lib: [&quot;dom&quot;, &quot;esnext&quot;],
-  }
+  },
 );
 </code></pre>
 <p>有关 TypeScript 支持的所有库的列表，请参见 <a href="https://www.typescriptlang.org/docs/handbook/compiler-options.html"><code>lib</code> 编译器选项</a>。
@@ -247,7 +247,7 @@ console.log(result[&quot;/foo.ts&quot;].map);
   },
   {
     lib: [&quot;dom&quot;, &quot;esnext&quot;, &quot;deno.ns&quot;],
-  }
+  },
 );
 </code></pre>
 <p><strong>注意</strong>，Deno 命名空间需要一个 ES2018 或更新的运行时环境。这意味着，如果您使用的库“低于” ES2018，那么您将得到编译过程中输出的错误。</p>

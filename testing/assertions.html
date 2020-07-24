@@ -255,7 +255,7 @@ Deno.test(&quot;Test Assert Not Equals&quot;, () =&gt; {
       throw new Error(&quot;Panic!&quot;);
     },
     Error,
-    &quot;Panic!&quot;
+    &quot;Panic!&quot;,
   );
 });
 </code></pre>
@@ -268,7 +268,7 @@ Deno.test(&quot;Test Assert Not Equals&quot;, () =&gt; {
       });
     },
     Error,
-    &quot;Panic! Threw Error&quot;
+    &quot;Panic! Threw Error&quot;,
   );
 
   assertThrowsAsync(
@@ -276,7 +276,7 @@ Deno.test(&quot;Test Assert Not Equals&quot;, () =&gt; {
       return Promise.reject(new Error(&quot;Panic! Reject Error&quot;));
     },
     Error,
-    &quot;Panic! Reject Error&quot;
+    &quot;Panic! Reject Error&quot;,
   );
 });
 </code></pre>
