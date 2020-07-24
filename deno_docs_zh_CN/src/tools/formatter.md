@@ -15,8 +15,6 @@ cat file.ts | deno fmt -
 
 通过加上一句 `// deno-fmt-ignore` 注释来忽略格式化。
 
-<!-- prettier-ignore-start -->
-
 ```ts
 // deno-fmt-ignore
 export const identity = [
@@ -25,7 +23,5 @@ export const identity = [
     0, 0, 1,
 ];
 ```
-
-<!-- prettier-ignore-end -->
 
 在文件头部加上一句 `// deno-fmt-ignore-file` 注释可以忽略整个文件。

@@ -1,7 +1,3 @@
-<!-- https://github.com/denoland/deno/blob/be65f6692f0f81dc88c77ba4cf22cdda40760317/std/style_guide.md -->
-
-<!-- copy time: 20200506 -->
-
 # Deno 风格指南
 
 ## 目录
@@ -90,7 +86,7 @@ Deno 不会以特殊的方式处理 “index.js” 或 “index.ts” 文件。�
 export function resolve(
   hostname: string,
   family?: "ipv4" | "ipv6",
-  timeout?: number
+  timeout?: number,
 ): IPAddress[] {}
 
 // 正确示例：
@@ -100,7 +96,7 @@ export interface ResolveOptions {
 }
 export function resolve(
   hostname: string,
-  options: ResolveOptions = {}
+  options: ResolveOptions = {},
 ): IPAddress[] {}
 ```
 
@@ -118,7 +114,7 @@ export interface RunShellOptions {
 }
 export function runShellWithEnv(
   cmdline: string,
-  options: RunShellOptions
+  options: RunShellOptions,
 ): string {}
 ```
 
@@ -128,7 +124,7 @@ export function renameSync(
   oldname: string,
   newname: string,
   replaceExisting?: boolean,
-  followLinks?: boolean
+  followLinks?: boolean,
 ) {}
 
 // 正确示例
@@ -139,7 +135,7 @@ interface RenameOptions {
 export function renameSync(
   oldname: string,
   newname: string,
-  options: RenameOptions = {}
+  options: RenameOptions = {},
 ) {}
 ```
 
@@ -150,7 +146,7 @@ export function pwrite(
   buffer: TypedArray,
   offset: number,
   length: number,
-  position: number
+  position: number,
 ) {}
 
 // 正确示例：

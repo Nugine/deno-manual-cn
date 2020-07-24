@@ -1,6 +1,6 @@
 # Deno 中文手册
 
-> 此版本更新于 2020 年 7 月 12 日
+> 此版本更新于 2020 年 7 月 24 日
 
 点此阅读：[nugine.github.io/deno-manual-cn/](https://nugine.github.io/deno-manual-cn/)
 

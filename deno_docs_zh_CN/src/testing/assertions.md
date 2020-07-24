@@ -133,7 +133,7 @@ Deno.test("Test Assert Throws", () => {
       throw new Error("Panic!");
     },
     Error,
-    "Panic!"
+    "Panic!",
   );
 });
 ```
@@ -149,7 +149,7 @@ Deno.test("Test Assert Throws Async", () => {
       });
     },
     Error,
-    "Panic! Threw Error"
+    "Panic! Threw Error",
   );
 
   assertThrowsAsync(
@@ -157,7 +157,7 @@ Deno.test("Test Assert Throws Async", () => {
       return Promise.reject(new Error("Panic! Reject Error"));
     },
     Error,
-    "Panic! Reject Error"
+    "Panic! Reject Error",
   );
 });
 ```
