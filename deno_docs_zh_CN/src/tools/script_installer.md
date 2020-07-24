@@ -58,6 +58,8 @@ deno install --allow-net --allow-read https://deno.land/std/http/file_server.ts 
 
 示例：
 
+<!-- dprint-ignore -->
+
 ```ts
 // https://example.com/awesome/cli.ts
 async function myAwesomeCli(): Promise<void> {

@@ -2,7 +2,8 @@
 
 Deno 能够运行 [WebAssembly](https://webassembly.org/) 二进制文件。
 
-<!-- prettier-ignore-start -->
+<!-- dprint-ignore -->
+
 ```js
 const wasmCode = new Uint8Array([
   0, 97, 115, 109, 1, 0, 0, 0, 1, 133, 128, 128, 128, 0, 1, 96, 0, 1, 127,
@@ -16,4 +17,3 @@ const wasmModule = new WebAssembly.Module(wasmCode);
 const wasmInstance = new WebAssembly.Instance(wasmModule);
 console.log(wasmInstance.exports.main().toString());
 ```
-<!-- prettier-ignore-end -->
