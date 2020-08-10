@@ -10,15 +10,15 @@ Deno 支持 [V8 Inspector Protocol](https://v8.dev/docs/inspector).
 
 ### Chrome Devtools
 
-让我们用 Chrome 开发者工具来调试一个程序，我们将使用来自 `std` 的 [file_server.ts](https://deno.land/std@v0.50.0/http/file_server.ts)，这是一个静态文件服务。
+让我们用 Chrome 开发者工具来调试一个程序，我们将使用来自 `std` 的 [file_server.ts](https://deno.land/std@$STD_VERSION/http/file_server.ts)，这是一个静态文件服务。
 
 使用 `--inspect-brk` 选项，在第一行代码处暂停执行。
 
 ```shell
-$ deno run --inspect-brk --allow-read --allow-net https://deno.land/std@v0.50.0/http/file_server.ts
+$ deno run --inspect-brk --allow-read --allow-net https://deno.land/std@$STD_VERSION/http/file_server.ts
 Debugger listening on ws://127.0.0.1:9229/ws/1e82c406-85a9-44ab-86b6-7341583480b1
-Download https://deno.land/std@v0.50.0/http/file_server.ts
-Compile https://deno.land/std@v0.50.0/http/file_server.ts
+Download https://deno.land/std@$STD_VERSION/http/file_server.ts
+Compile https://deno.land/std@$STD_VERSION/http/file_server.ts
 ...
 ```
 
@@ -86,7 +86,7 @@ Deno 可以在 VSCode 中调试。
 让我们尝试一下本地源文件，创建 `server.ts`：
 
 ```ts
-import { serve } from "https://deno.land/std@v0.50.0/http/server.ts";
+import { serve } from "https://deno.land/std@$STD_VERSION/http/server.ts";
 const server = serve({ port: 8000 });
 console.log("http://localhost:8000/");
 

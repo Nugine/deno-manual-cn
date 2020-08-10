@@ -1,9 +1,9 @@
 ## 断言
 
-为了帮助开发者编写测试，Deno 标准库提供了内置的 [断言模块](https://deno.land/std/testing/asserts.ts)，可从 `https://deno.land/std/testing/asserts.ts` 导入。
+为了帮助开发者编写测试，Deno 标准库提供了内置的 [断言模块](https://deno.land/std@$STD_VERSION/testing/asserts.ts)，可从 `https://deno.land/std@$STD_VERSION/testing/asserts.ts` 导入。
 
 ```js
-import { assert } from "https://deno.land/std/testing/asserts.ts";
+import { assert } from "https://deno.land/std@$STD_VERSION/testing/asserts.ts";
 
 Deno.test("Hello Test", () => {
   assert("Hello");

@@ -35,7 +35,7 @@ console.log(emitMap);
 
 ```ts
 const [diagnostics, emitMap] = await Deno.compile(
-  "https://deno.land/std/examples/welcome.ts",
+  "https://deno.land/std@$STD_VERSION/examples/welcome.ts",
 );
 ```
 
@@ -69,7 +69,7 @@ console.log(emit);
 
 ```ts
 const [diagnostics, emit] = await Deno.bundle(
-  "https://deno.land/std/http/server.ts",
+  "https://deno.land/std@$STD_VERSION/http/server.ts",
 );
 ```
 

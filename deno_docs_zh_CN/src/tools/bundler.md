@@ -5,7 +5,7 @@
 示例：
 
 ```
-> deno bundle https://deno.land/std/examples/colors.ts colors.bundle.js
+> deno bundle https://deno.land/std@$STD_VERSION/examples/colors.ts colors.bundle.js
 Bundling "colors.bundle.js"
 Emitting bundle to "colors.bundle.js"
 9.2 kB emitted.

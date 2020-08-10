@@ -28,13 +28,13 @@ Deno.test({
 
 ## 断言
 
-在 [https://deno.land/std/testing](https://deno.land/std/testing#usage) 上有一些有用的断言实用程序，可以简化测试：
+在 [https://deno.land/std@$STD_VERSION/testing](https://deno.land/std@$STD_VERSION/testing#usage) 上有一些有用的断言实用程序，可以简化测试：
 
 ```ts
 import {
   assertEquals,
   assertArrayContains,
-} from "https://deno.land/std/testing/asserts.ts";
+} from "https://deno.land/std@$STD_VERSION/testing/asserts.ts";
 
 Deno.test("hello world", () => {
   const x = 1 + 2;
@@ -49,7 +49,7 @@ Deno.test("hello world", () => {
 为此，您可以在定义函数时使用 `async` 关键字：
 
 ```ts
-import { delay } from "https://deno.land/std/async/delay.ts";
+import { delay } from "https://deno.land/std@$STD_VERSION/async/delay.ts";
 
 Deno.test("async hello world", async () => {
   const x = 1 + 2;
