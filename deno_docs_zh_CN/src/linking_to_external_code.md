@@ -7,7 +7,7 @@
 **test.ts**
 
 ```ts
-import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
+import { assertEquals } from "https://deno.land/std@$STD_VERSION/testing/asserts.ts";
 
 assertEquals("hello", "hello");
 assertEquals("world", "world");
@@ -20,9 +20,9 @@ console.log("Asserted! ✓");
 ```shell
 $ deno run test.ts
 Compile file:///mnt/f9/Projects/github.com/denoland/deno/docs/test.ts
-Download https://deno.land/std/testing/asserts.ts
-Download https://deno.land/std/fmt/colors.ts
-Download https://deno.land/std/testing/diff.ts
+Download https://deno.land/std@$STD_VERSION/testing/asserts.ts
+Download https://deno.land/std@$STD_VERSION/fmt/colors.ts
+Download https://deno.land/std@$STD_VERSION/testing/diff.ts
 Asserted! ✓
 ```
 
@@ -52,7 +52,7 @@ Deno 在一个特殊目录缓存了远程模块，该路径可以被 `DENO_DIR` 
 
 解决办法是在一个中心化的 `deps.ts` 中重新导出所依赖的外部库，它和 Node 的 `package.json` 具有相同的作用。
 
-举个例子，您正在一个大型项目中使用一个断言库，您可以创建一个 `deps.ts` 文件来导出第三方代码，而不是到处导入 `"https://deno.land/std/testing/asserts.ts"`。
+举个例子，您正在一个大型项目中使用一个断言库，您可以创建一个 `deps.ts` 文件来导出第三方代码，而不是到处导入 `"https://deno.land/std@$STD_VERSION/testing/asserts.ts"`。
 
 **deps.ts**
 
@@ -61,7 +61,7 @@ export {
   assert,
   assertEquals,
   assertStrContains,
-} from "https://deno.land/std/testing/asserts.ts";
+} from "https://deno.land/std@$STD_VERSION/testing/asserts.ts";
 ```
 
 在这个项目中，您可以从 `deps.ts` 导入，避免对相同的 URL 产生过多引用。

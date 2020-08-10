@@ -54,7 +54,7 @@ Deno 明确地承担了运行时和包管理器的角色。它使用标准的浏
 - 使用 ES 模块，不支持 `require()`。第三方模块通过 URL 导入。
 
   ```javascript
-  import * as log from "https://deno.land/std/log/mod.ts";
+  import * as log from "https://deno.land/std@$STD_VERSION/log/mod.ts";
   ```
 
 ## 其他关键行为

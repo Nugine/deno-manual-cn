@@ -9,8 +9,8 @@ Deno 提供 `deno install` 来安装和分发可执行代码。
 示例：
 
 ```shell
-$ deno install --allow-net --allow-read https://deno.land/std/http/file_server.ts
-[1/1] Compiling https://deno.land/std/http/file_server.ts
+$ deno install --allow-net --allow-read https://deno.land/std@$STD_VERSION/http/file_server.ts
+[1/1] Compiling https://deno.land/std@$STD_VERSION/http/file_server.ts
 
 ✅ Successfully installed file_server.
 /Users/deno/.deno/bin/file_server
@@ -19,7 +19,7 @@ $ deno install --allow-net --allow-read https://deno.land/std/http/file_server.t
 要改变命令名称，使用 `-n`/`--name` 参数：
 
 ```shell
-deno install --allow-net --allow-read -n serve https://deno.land/std/http/file_server.ts
+deno install --allow-net --allow-read -n serve https://deno.land/std@$STD_VERSION/http/file_server.ts
 ```
 
 默认情况下，Deno 会自动推导命令名称。
@@ -31,7 +31,7 @@ deno install --allow-net --allow-read -n serve https://deno.land/std/http/file_s
 要改变安装路径，使用 `--root` 选项：
 
 ```shell
-deno install --allow-net --allow-read --root /usr/local https://deno.land/std/http/file_server.ts
+deno install --allow-net --allow-read --root /usr/local https://deno.land/std@$STD_VERSION/http/file_server.ts
 ```
 
 按照优先顺序确定安装根目录：
@@ -49,7 +49,7 @@ echo 'export PATH="$HOME/.deno/bin:$PATH"' >> ~/.bashrc
 在安装时，您必须指定脚本会用到的权限。
 
 ```shell
-deno install --allow-net --allow-read https://deno.land/std/http/file_server.ts 8080
+deno install --allow-net --allow-read https://deno.land/std@$STD_VERSION/http/file_server.ts 8080
 ```
 
 以上命令会创建一个名叫 `file_server` 的命令，运行时需要读取权限和网络权限，绑定到 8080 端口。

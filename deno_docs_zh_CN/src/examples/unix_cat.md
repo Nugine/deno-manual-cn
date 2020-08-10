@@ -16,5 +16,5 @@ for (const filename of filenames) {
 尝试一下：
 
 ```shell
-deno run --allow-read https://deno.land/std/examples/cat.ts /etc/passwd
+deno run --allow-read https://deno.land/std@$STD_VERSION/examples/cat.ts /etc/passwd
 ```

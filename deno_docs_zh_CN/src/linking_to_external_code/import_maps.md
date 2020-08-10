@@ -21,7 +21,7 @@ Deno 支持 [导入映射](https://github.com/WICG/import-maps)。
 ```js
 {
    "imports": {
-      "fmt/": "https://deno.land/std@0.55.0/fmt/"
+      "fmt/": "https://deno.land/std@$STD_VERSION/fmt/"
    }
 }
 ```

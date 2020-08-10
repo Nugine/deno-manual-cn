@@ -7,7 +7,7 @@ Deno 同时支持 JavaScript 和 TypeScript，它们是 Deno 的第一等语言�
 扩展名（或提供正确媒体类型的服务器）。此外，Deno 还拥有“平凡”的模块解析算法。导入模块指定为文件（包括扩展名）或全限定 URL (fully qualified URL)。TypeScript 模块可以被直接导入，例如：
 
 ```ts
-import { Response } from "https://deno.land/std@0.53.0/http/server.ts";
+import { Response } from "https://deno.land/std@$STD_VERSION/http/server.ts";
 import { queue } from "./collections.ts";
 ```
 

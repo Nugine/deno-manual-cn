@@ -14,16 +14,16 @@ deno cache --reload my_module.ts
 
 有时我们只想升级某些模块，可以通过将参数传递给 `--reload` 选项来控制它。
 
-重新加载所有 v0.55.0 的标准模块：
+重新加载所有 \$STD_VERSION 的标准模块：
 
 ```ts
-deno cache --reload=https://deno.land/std@v0.55.0 my_module.ts
+deno cache --reload=https://deno.land/std@$STD_VERSION my_module.ts
 ```
 
 为了重新加载特定的模块（在这个例子中是 colors 和 file system copy），需要使用逗号来分隔 URL：
 
 ```ts
-deno cache --reload=https://deno.land/std/fs/copy.ts,https://deno.land/std/fmt/colors.ts my_module.ts
+deno cache --reload=https://deno.land/std@$STD_VERSION/fs/copy.ts,https://deno.land/std@$STD_VERSION/fmt/colors.ts my_module.ts
 ```
 
 <!-- Should this be part of examples? -->

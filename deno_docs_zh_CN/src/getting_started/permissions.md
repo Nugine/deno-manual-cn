@@ -28,7 +28,7 @@ Deno 还允许您使用白名单控制权限的粒度。
 这是一个用白名单限制文件系统访问权限的示例，仅允许访问 `/usr` 目录，但它会在尝试访问 `/etc` 目录时失败。
 
 ```shell
-$ deno run --allow-read=/usr https://deno.land/std/examples/cat.ts /etc/passwd
+$ deno run --allow-read=/usr https://deno.land/std@$STD_VERSION/examples/cat.ts /etc/passwd
 error: Uncaught PermissionDenied: read access to "/etc/passwd", run again with the --allow-read flag
 ► $deno$/dispatch_json.ts:40:11
     at DenoError ($deno$/errors.ts:20:5)
@@ -38,7 +38,7 @@ error: Uncaught PermissionDenied: read access to "/etc/passwd", run again with t
 改为 `/etc` 目录，赋予正确的权限，再试一次：
 
 ```shell
-deno run --allow-read=/etc https://deno.land/std/examples/cat.ts /etc/passwd
+deno run --allow-read=/etc https://deno.land/std@$STD_VERSION/examples/cat.ts /etc/passwd
 ```
 
 `--allow-write` 也一样，代表写入权限。

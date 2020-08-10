@@ -17,7 +17,7 @@ console.log("Welcome to Deno 🦕");
 尝试一下：
 
 ```shell
-deno run https://deno.land/std/examples/welcome.ts
+deno run https://deno.land/std@$STD_VERSION/examples/welcome.ts
 ```
 
 ### 发出一个 HTTP 请求
@@ -47,7 +47,7 @@ await Deno.stdout.write(body);
 尝试一下：
 
 ```shell
-deno run https://deno.land/std/examples/curl.ts https://example.com
+deno run https://deno.land/std@$STD_VERSION/examples/curl.ts https://example.com
 ```
 
 这个程序将会返回一个关于网络权限的错误，我们做错了什么？您可能会想起来，Deno 默认用安全环境执行代码。这意味着您需要显式赋予程序权限，允许它进行一些特权操作，比如网络访问。
@@ -55,7 +55,7 @@ deno run https://deno.land/std/examples/curl.ts https://example.com
 用正确的权限选项再试一次：
 
 ```shell
-deno run --allow-net=example.com https://deno.land/std/examples/curl.ts https://example.com
+deno run --allow-net=example.com https://deno.land/std@$STD_VERSION/examples/curl.ts https://example.com
 ```
 
 ### 读取一个文件

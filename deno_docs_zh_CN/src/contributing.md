@@ -2,7 +2,7 @@
 
 - 阅读 [风格指南](./style-guide.zh-CN.md).
 
-- 请不要让 [性能测试](https://deno.land/benchmarks.html) 变糟。
+- 请不要让 [性能测试](https://deno.land/benchmarks) 变糟。
 
 - 在 [社区聊天室](https://discord.gg/deno) 获取帮助。
 
