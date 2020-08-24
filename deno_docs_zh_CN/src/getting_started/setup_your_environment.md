@@ -29,14 +29,31 @@ deno completions bash > /usr/local/etc/bash_completion.d/deno.bash
 source /usr/local/etc/bash_completion.d/deno.bash
 ```
 
-示例 (zsh):
+示例 (zsh without framework)：
+
+```shell
+mkdir ~/.zsh # 新建一个文件夹来保存您的补全，它可以在任意地方。
+deno completions zsh > .zsh/_deno
+```
+
+然后把以下内容加入您的 `.zshrc`
+
+```shell
+fpath=(~/.zsh $fpath)
+autoload -Uz compinit
+compinit -u
+```
+
+重启您的终端。如果补全仍未加载，您可能需要运行 `rm ~/.zcompdump/` 来移除之前生成的补全，然后运行 `compinit` 来再次生成它们。
+
+示例 (zsh + oh-my-zsh) \[推荐\]：
 
 ```shell
 mkdir ~/.oh-my-zsh/custom/plugins/deno
 deno completions zsh > ~/.oh-my-zsh/custom/plugins/deno/_deno
 ```
 
-在此之后，在 `~/.zshrc` 文件中的 plugins 标签下增加 `deno` 插件。
+在此之后，在 `~/.zshrc` 文件中的 plugins 标签下增加 `deno` 插件。对于 `antigen` 之类的工具，路径将会是 `~/.antigen/bundles/robbyrussell/oh-my-zsh/plugins`，命令将是 `antigen bundle deno`。
 
 ### 编辑器和 IDE
 

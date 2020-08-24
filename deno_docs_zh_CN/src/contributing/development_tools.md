@@ -1,5 +1,3 @@
-TODO
-
 ## 测试和工具
 
 ### 测试
@@ -35,6 +33,8 @@ cargo test std_tests
 ```
 
 ### 性能分析
+
+开始性能分析：
 
 ```sh
 # 确认我们正在构建发布版 (release)。
@@ -115,7 +115,7 @@ Current executable set to '../deno/target/debug/deno' (x86_64).
 
 ### V8 选项
 
-V8 有很多内部的命令行选项。
+V8 有很多内部的命令行选项：
 
 ```shell
 $ deno run --v8-flags=--help _

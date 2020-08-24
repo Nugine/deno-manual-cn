@@ -60,7 +60,7 @@ deno lint --unstable myfile1.ts myfile2.ts
 
 #### 文件
 
-要忽略整个文件，`// deno-lint-ignore-file` 指令应该置于文件顶部。
+要忽略整个文件，`// deno-lint-ignore-file` 指令应该置于文件顶部：
 
 ```ts
 // deno-lint-ignore-file
@@ -90,7 +90,7 @@ function foo(): any {
 
 #### 诊断 (Diagnostics)
 
-要忽略某些诊断，`// deno-lint-ignore <codes ...>` 指令应该置于违规行之前。必须指定要忽略的规则名称。
+要忽略某些诊断，`// deno-lint-ignore <codes ...>` 指令应该置于违规行之前。必须指定要忽略的规则名称：
 
 ```ts
 // deno-lint-ignore no-explicit-any
@@ -104,7 +104,7 @@ function bar(a: any) {
 }
 ```
 
-为了与 ESLint 兼容，`deno lint` 也支持 `// eslint-ignore-next-line` 指令。像 `// deno-lint-ignore` 一样，这也需要指定忽略的规则名称。
+为了与 ESLint 兼容，`deno lint` 也支持 `// eslint-ignore-next-line` 指令。像 `// deno-lint-ignore` 一样，这也需要指定忽略的规则名称：
 
 ```ts
 // eslint-ignore-next-line no-empty

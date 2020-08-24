@@ -44,3 +44,8 @@ console.log(Deno.resources());
 ### 架构示意图
 
 ![架构示意图](schematic_v0.2.png)
+
+### 会议
+
+[Ryan Dahl - An interesting case with
+Deno](https://www.youtube.com/watch?v=1b7FoBwxc7E)

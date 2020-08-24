@@ -22,7 +22,7 @@ import { queue } from "./collections.ts";
 + 导出类型：`export type { AnInterface } from "./mod.ts";`，
 + 导入类型：`import type { AnInterface } from "./mod.ts";`
 
-您可以通过将 TypeScript 编译选项 `importsNotUsedAsValues` 设置为 `"error"` 来检查此类导入导出的必要性。
+您可以通过将 TypeScript 编译选项 `isolatedModules` 设置为 `true` 来检查此类导入导出的必要性。
 
 您可以在标准库中看到这一选项的示例：[`tsconfig_test.json`](https://github.com/denoland/deno/blob/master/std/tsconfig_test.json)。
 

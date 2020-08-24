@@ -19,6 +19,7 @@
     "children": {
       "stability": "稳定性",
       "program_lifecycle": "程序生命周期",
+      "permission_apis": "权限 API",
       "compiler_apis": "编译器 API",
       "workers": "Worker"
     }
@@ -75,7 +76,6 @@
       "file_server": "文件服务",
       "tcp_echo": "TCP echo",
       "subprocess": "创建子进程",
-      "permissions": "检查与放弃权限",
       "os_signals": "系统信号",
       "file_system_events": "文件系统事件",
       "testing_if_main": "测试当前文件是否为主程序"

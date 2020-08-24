@@ -1,7 +1,5 @@
 # Deno 风格指南
 
-## 目录
-
 ## 版权标题
 
 存储库中的大多数模块都应具有以下版权标题:
@@ -46,7 +44,7 @@ TODO 注释通常应该将一个 issue 或者作者的 github 用户名放在括
 
 遵循 Rust 约定，并与现有代码保持一致。
 
-## Typescript
+## TypeScript
 
 代码库的 TypeScript 部分包括内置的 `cli/js` 和标准库 `std`。
 
