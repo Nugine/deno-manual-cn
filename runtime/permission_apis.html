@@ -1,0 +1,361 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>权限 API - Deno 手册</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../favicon.png">
+        
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../introduction.html"><strong aria-hidden="true">1.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="../getting_started.html"><strong aria-hidden="true">2.</strong> 入门</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting_started/installation.html"><strong aria-hidden="true">2.1.</strong> 安装</a></li><li class="chapter-item expanded "><a href="../getting_started/setup_your_environment.html"><strong aria-hidden="true">2.2.</strong> 设置环境</a></li><li class="chapter-item expanded "><a href="../getting_started/first_steps.html"><strong aria-hidden="true">2.3.</strong> 第一步</a></li><li class="chapter-item expanded "><a href="../getting_started/command_line_interface.html"><strong aria-hidden="true">2.4.</strong> 命令行界面</a></li><li class="chapter-item expanded "><a href="../getting_started/permissions.html"><strong aria-hidden="true">2.5.</strong> 权限</a></li><li class="chapter-item expanded "><a href="../getting_started/typescript.html"><strong aria-hidden="true">2.6.</strong> 使用 TypeScript</a></li><li class="chapter-item expanded "><a href="../getting_started/webassembly.html"><strong aria-hidden="true">2.7.</strong> 使用 WebAssembly</a></li></ol></li><li class="chapter-item expanded "><a href="../runtime.html"><strong aria-hidden="true">3.</strong> 运行时</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../runtime/stability.html"><strong aria-hidden="true">3.1.</strong> 稳定性</a></li><li class="chapter-item expanded "><a href="../runtime/program_lifecycle.html"><strong aria-hidden="true">3.2.</strong> 程序生命周期</a></li><li class="chapter-item expanded "><a href="../runtime/permission_apis.html" class="active"><strong aria-hidden="true">3.3.</strong> 权限 API</a></li><li class="chapter-item expanded "><a href="../runtime/compiler_apis.html"><strong aria-hidden="true">3.4.</strong> 编译器 API</a></li><li class="chapter-item expanded "><a href="../runtime/workers.html"><strong aria-hidden="true">3.5.</strong> Worker</a></li></ol></li><li class="chapter-item expanded "><a href="../linking_to_external_code.html"><strong aria-hidden="true">4.</strong> 与外部代码连接</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../linking_to_external_code/reloading_modules.html"><strong aria-hidden="true">4.1.</strong> 重新加载模块</a></li><li class="chapter-item expanded "><a href="../linking_to_external_code/integrity_checking.html"><strong aria-hidden="true">4.2.</strong> 完整性检查</a></li><li class="chapter-item expanded "><a href="../linking_to_external_code/proxies.html"><strong aria-hidden="true">4.3.</strong> 代理</a></li><li class="chapter-item expanded "><a href="../linking_to_external_code/import_maps.html"><strong aria-hidden="true">4.4.</strong> 导入映射</a></li></ol></li><li class="chapter-item expanded "><a href="../standard_library.html"><strong aria-hidden="true">5.</strong> 标准库</a></li><li class="chapter-item expanded "><a href="../testing.html"><strong aria-hidden="true">6.</strong> 测试</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../testing/assertions.html"><strong aria-hidden="true">6.1.</strong> 断言</a></li></ol></li><li class="chapter-item expanded "><a href="../tools.html"><strong aria-hidden="true">7.</strong> 工具</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tools/debugger.html"><strong aria-hidden="true">7.1.</strong> 调试器</a></li><li class="chapter-item expanded "><a href="../tools/script_installer.html"><strong aria-hidden="true">7.2.</strong> 脚本安装器</a></li><li class="chapter-item expanded "><a href="../tools/formatter.html"><strong aria-hidden="true">7.3.</strong> 格式化工具</a></li><li class="chapter-item expanded "><a href="../tools/bundler.html"><strong aria-hidden="true">7.4.</strong> 打包器</a></li><li class="chapter-item expanded "><a href="../tools/documentation_generator.html"><strong aria-hidden="true">7.5.</strong> 文档生成器</a></li><li class="chapter-item expanded "><a href="../tools/dependency_inspector.html"><strong aria-hidden="true">7.6.</strong> 依赖检查器</a></li><li class="chapter-item expanded "><a href="../tools/linter.html"><strong aria-hidden="true">7.7.</strong> Linter</a></li></ol></li><li class="chapter-item expanded "><a href="../embedding_deno.html"><strong aria-hidden="true">8.</strong> 嵌入 Deno</a></li><li class="chapter-item expanded "><a href="../contributing.html"><strong aria-hidden="true">9.</strong> 贡献</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../contributing/building_from_source.html"><strong aria-hidden="true">9.1.</strong> 从源码构建</a></li><li class="chapter-item expanded "><a href="../contributing/development_tools.html"><strong aria-hidden="true">9.2.</strong> 开发工具</a></li><li class="chapter-item expanded "><a href="../contributing/style_guide.html"><strong aria-hidden="true">9.3.</strong> 风格指南</a></li><li class="chapter-item expanded "><a href="../contributing/architecture.html"><strong aria-hidden="true">9.4.</strong> 架构</a></li></ol></li><li class="chapter-item expanded "><a href="../examples.html"><strong aria-hidden="true">10.</strong> 示例</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../examples/hello_world.html"><strong aria-hidden="true">10.1.</strong> Hello World</a></li><li class="chapter-item expanded "><a href="../examples/import_export.html"><strong aria-hidden="true">10.2.</strong> 导入和导出模块</a></li><li class="chapter-item expanded "><a href="../examples/manage_dependencies.html"><strong aria-hidden="true">10.3.</strong> 管理依赖</a></li><li class="chapter-item expanded "><a href="../examples/unix_cat.html"><strong aria-hidden="true">10.4.</strong> Unix cat</a></li><li class="chapter-item expanded "><a href="../examples/file_server.html"><strong aria-hidden="true">10.5.</strong> 文件服务</a></li><li class="chapter-item expanded "><a href="../examples/tcp_echo.html"><strong aria-hidden="true">10.6.</strong> TCP echo</a></li><li class="chapter-item expanded "><a href="../examples/subprocess.html"><strong aria-hidden="true">10.7.</strong> 创建子进程</a></li><li class="chapter-item expanded "><a href="../examples/os_signals.html"><strong aria-hidden="true">10.8.</strong> 系统信号</a></li><li class="chapter-item expanded "><a href="../examples/file_system_events.html"><strong aria-hidden="true">10.9.</strong> 文件系统事件</a></li><li class="chapter-item expanded "><a href="../examples/testing_if_main.html"><strong aria-hidden="true">10.10.</strong> 测试当前文件是否为主程序</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Deno 手册</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2><a class="header" href="#权限-api" id="权限-api">权限 API</a></h2>
+<h2><a class="header" href="#permission-apis" id="permission-apis">Permission APIs</a></h2>
+<blockquote>
+<p>这是一个不稳定的 Deno API。
+更多信息请查阅 <a href="stability.html">稳定性</a></p>
+</blockquote>
+<p>权限是在运行 <code>deno</code> 命令时从 CLI 授予的。用户代码通常会假定自己拥有一组必需的权限，但是在执行过程中不能保证 <em>已授予</em> 的权限集合中包含所需权限。</p>
+<p>在某些情况下，具有容错能力的程序需要一种在运行时与权限系统进行交互的方法。</p>
+<h3><a class="header" href="#权限描述符" id="权限描述符">权限描述符</a></h3>
+<p>在 CLI 中，<code>/foo/bar</code> 的读取权限表示为 <code>--allow-read=/foo/bar</code>。</p>
+<p>在运行时，它表示为以下形式：</p>
+<pre><code class="language-ts">const desc = { name: &quot;read&quot;, path: &quot;/foo/bar&quot; };
+</code></pre>
+<p>其他示例：</p>
+<pre><code class="language-ts">// 全局写入权限
+const desc1 = { name: &quot;write&quot; };
+
+// `$PWD/foo/bar` 的写入权限
+const desc2 = { name: &quot;write&quot;, path: &quot;foo/bar&quot; };
+
+// 全局网络权限
+const desc3 = { name: &quot;net&quot; };
+
+// 访问 127.0.0.1:8000 的网络权限
+const desc4 = { name: &quot;net&quot;, url: &quot;127.0.0.1:8000&quot; };
+
+// 高精度计时权限
+const desc5 = { name: &quot;hrtime&quot; };
+</code></pre>
+<h3><a class="header" href="#检查权限" id="检查权限">检查权限</a></h3>
+<p>检查一个权限是否已被授予：</p>
+<pre><code class="language-ts">// deno run --unstable --allow-read=/foo main.ts
+
+const desc1 = { name: &quot;read&quot;, path: &quot;/foo&quot; };
+console.log(await Deno.permissions.query(desc1));
+// PermissionStatus { state: &quot;granted&quot; }
+
+const desc2 = { name: &quot;read&quot;, path: &quot;/foo/bar&quot; };
+console.log(await Deno.permissions.query(desc2));
+// PermissionStatus { state: &quot;granted&quot; }
+
+const desc3 = { name: &quot;read&quot;, path: &quot;/bar&quot; };
+console.log(await Deno.permissions.query(desc3));
+// PermissionStatus { state: &quot;prompt&quot; }
+</code></pre>
+<h3><a class="header" href="#权限状态" id="权限状态">权限状态</a></h3>
+<p>权限状态可以是以下之一：</p>
+<ul>
+<li>granted (已授予)</li>
+<li>prompt（提示）</li>
+<li>denied（已禁止）</li>
+</ul>
+<p>从 CLI 授予的权限是 <code>{ state: &quot;granted&quot; }</code>，其他未授予的权限默认为 <code>{ state: &quot;prompt&quot; }</code>，明确禁止的权限是 <code>{ state: &quot;denied&quot; }</code>。</p>
+<p>相关说明在 <a href="#%E8%AF%B7%E6%B1%82%E6%9D%83%E9%99%90">请求权限</a>。</p>
+<h3><a class="header" href="#权限强度" id="权限强度">权限强度</a></h3>
+<p><a href="#%E6%A3%80%E6%9F%A5%E6%9D%83%E9%99%90">检查权限</a> 中第二个查询的直观理解：读取权限授予到 <code>/foo</code>，<code>/foo/bar</code> 包含在 <code>/foo</code> 中，所以允许读取 <code>/foo/bar</code>。</p>
+<p>我们也可以说 <code>desc1</code> <em><a href="https://www.w3.org/TR/permissions/#ref-for-permissiondescriptor-stronger-than">强于</a></em> <code>desc2</code>。这意味着对于任意从 CLI 授予的权限：</p>
+<ol>
+<li>如果 <code>desc1</code> 状态为 <code>{ state: &quot;granted&quot; }</code>，那么 <code>desc2</code> 也是。</li>
+<li>如果 <code>desc2</code> 状态为 <code>{ state: &quot;denied&quot; }</code>，那么 <code>desc1</code> 也是。</li>
+</ol>
+<p>更多示例：</p>
+<pre><code class="language-ts">const desc1 = { name: &quot;write&quot; };
+// 强于
+const desc2 = { name: &quot;write&quot;, path: &quot;/foo&quot; };
+
+const desc3 = { name: &quot;net&quot; };
+// 强于
+const desc4 = { name: &quot;net&quot;, url: &quot;127.0.0.1:8000&quot; };
+</code></pre>
+<h3><a class="header" href="#请求权限" id="请求权限">请求权限</a></h3>
+<p>通过 CLI 提示来请求一个未授予的权限：</p>
+<pre><code class="language-ts">// deno run --unstable main.ts
+
+const desc1 = { name: &quot;read&quot;, path: &quot;/foo&quot; };
+const status1 = await Deno.permissions.request(desc1);
+// ⚠️ Deno requests read access to &quot;/foo&quot;. Grant? [g/d (g = grant, d = deny)] g
+console.log(status1);
+// PermissionStatus { state: &quot;granted&quot; }
+
+const desc2 = { name: &quot;read&quot;, path: &quot;/bar&quot; };
+const status2 = await Deno.permissions.request(desc2);
+// ⚠️ Deno requests read access to &quot;/bar&quot;. Grant? [g/d (g = grant, d = deny)] d
+console.log(status2);
+// PermissionStatus { state: &quot;denied&quot; }
+</code></pre>
+<p>如果当前权限状态是 &quot;prompt&quot;，用户终端中会出现一个提示来询问用户是否要授权。<code>desc1</code> 的授权请求通过，所以新的状态会返回，程序继续执行。<code>desc2</code> 的授权被禁止，权限状态会从 &quot;prompt&quot; 降级为 &quot;denied&quot;。</p>
+<p>如果当前权限状态已经是 &quot;granted&quot; 或 &quot;denied&quot;，请求将表现为一个检查，直接返回当前权限状态，这会阻止多余的提示。</p>
+<h3><a class="header" href="#放弃权限" id="放弃权限">放弃权限</a></h3>
+<p>将权限状态从 &quot;granted&quot; 降级为 &quot;prompt&quot;：</p>
+<pre><code class="language-ts">// deno run --unstable --allow-read=/foo main.ts
+
+const desc = { name: &quot;read&quot;, path: &quot;/foo&quot; };
+console.log(await Deno.permissions.revoke(desc));
+// PermissionStatus { state: &quot;prompt&quot; }
+</code></pre>
+<p>然而，当尝试放弃 <em>一部分</em> 权限时，会发生什么？</p>
+<pre><code class="language-ts">// deno run --unstable --allow-read=/foo main.ts
+
+const desc = { name: &quot;read&quot;, path: &quot;/foo/bar&quot; };
+console.log(await Deno.permissions.revoke(desc));
+// PermissionStatus { state: &quot;granted&quot; }
+</code></pre>
+<p>它不会被放弃。</p>
+<p>想象 Deno 存储了一个 <em>明确授予的权限描述符</em> 的内部集合。在 CLI 中指定 <code>--allow-read=/foo,/bar</code> 会把这一集合初始化为：</p>
+<pre><code class="language-ts">[
+  { name: &quot;read&quot;, path: &quot;/foo&quot; },
+  { name: &quot;read&quot;, path: &quot;/bar&quot; },
+];
+</code></pre>
+<p>一个运行时授权 <code>{ name: &quot;write&quot;, path: &quot;/foo&quot; }</code> 会更新这个集合：</p>
+<pre><code class="language-ts">[
+  { name: &quot;read&quot;, path: &quot;/foo&quot; },
+  { name: &quot;read&quot;, path: &quot;/bar&quot; },
+  { name: &quot;write&quot;, path: &quot;/foo&quot; },
+];
+</code></pre>
+<p>Deno 的权限撤销算法将所有不强于参数权限描述符的元素从集合中移除。</p>
+<p>要确保 <code>desc</code> 不再有效，您需要传递一个参数权限描述符，它必须 <em>强于</em> 集合中所有 <em>强于</em> <code>desc</code> 的 <em>显式授予的权限描述符</em>。</p>
+<pre><code class="language-ts">// deno run --unstable --allow-read=/foo main.ts
+
+const desc = { name: &quot;read&quot;, path: &quot;/foo/bar&quot; };
+console.log(await Deno.permissions.revoke(desc)); // 无效
+// PermissionStatus { state: &quot;granted&quot; }
+
+const strongDesc = { name: &quot;read&quot;, path: &quot;/foo&quot; };
+await Deno.permissions.revoke(strongDesc); // 正确
+
+console.log(await Deno.permissions.query(desc));
+// PermissionStatus { state: &quot;prompt&quot; }
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../runtime/program_lifecycle.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../runtime/compiler_apis.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../runtime/program_lifecycle.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../runtime/compiler_apis.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
